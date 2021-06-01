@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     private float turnTimer;
     private float wallJumpTimer;
     private float noise = 0.6f;
+    private float knockbackStartTime;
+    [SerializeField]
+    private float knockbackDuration;
 
     private int amountOfJumpsLeft;
     private int facingDirection = 1;
@@ -29,6 +32,10 @@ public class PlayerController : MonoBehaviour
     private bool isTouchingLedge;
     private bool canClimbLedge = false;
     private bool ledgeDetected;
+    private bool knockback;
+
+    [SerializeField]
+    private Vector2 knockbackSpeed;
 
     private Vector2 ledgePosBot;
     private Vector2 ledgePos1;
@@ -87,6 +94,7 @@ public class PlayerController : MonoBehaviour
         CheckIfWallSliding();
         CheckJump();
         CheckLedgeClimb();
+        CheckKnockback();
     }
 
     private void FixedUpdate()
@@ -107,6 +115,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Knockback(int direction)
+    {
+        knockback = true;
+        knockbackStartTime = Time.time;
+        rb.velocity = new Vector2(knockbackSpeed.x * direction, knockbackSpeed.y);
+    }
+
+    private void CheckKnockback()
+    {
+        if (Time.time>=knockbackStartTime+knockbackDuration && knockback)
+        {
+            knockback = false;
+            rb.velocity = new Vector2(0.0f, rb.velocity.y);
+        }
+    }
+
     private void CheckLedgeClimb()
     {
         if (ledgeDetected && !canClimbLedge)
@@ -117,7 +141,6 @@ public class PlayerController : MonoBehaviour
             {
                 ledgePos1 = new Vector2(Mathf.Floor(ledgePosBot.x + wallCheckDistance) - ledgeClimbXOffset1, Mathf.Floor(ledgePosBot.y) + ledgeClimbYOffset1);
                 ledgePos2 = new Vector2(Mathf.Floor(ledgePosBot.x + wallCheckDistance) + playerCollider.size.x / ledgeCollider + noise, Mathf.Floor(ledgePosBot.y) + ledgeClimbYOffset2);
-                Debug.Log(playerCollider.size.x);
             }
             else
             {
@@ -332,11 +355,11 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyMovement()
     {
-        if (!isGrounded && !isWallSliding && movementInputDirection == 0)
+        if (!isGrounded && !isWallSliding && movementInputDirection == 0 && !knockback)
         {
             rb.velocity = new Vector2(rb.velocity.x * airDragMiltiplier, rb.velocity.y);
         }
-        else if (canMove)
+        else if (canMove && !knockback)
         {
             rb.velocity = new Vector2(movementSpeed * movementInputDirection, rb.velocity.y);
         }
@@ -365,7 +388,7 @@ public class PlayerController : MonoBehaviour
 
     private void Flip()
     {
-        if (!isWallSliding && canFlip)
+        if (!isWallSliding && canFlip && !knockback)
         {
             facingDirection *= -1;
             isFacingRight = !isFacingRight;

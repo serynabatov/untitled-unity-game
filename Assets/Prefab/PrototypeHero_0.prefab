@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70035630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.099, y: -0.307, z: 0}
+  m_LocalPosition: {x: -0.095, y: -0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3114025141018965904}
@@ -114,7 +114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1260723704155418149}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.194, z: 0}
+  m_LocalPosition: {x: 0, y: -1.189, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3114025141018965904}
@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 3114025141018965904}
   - component: {fileID: 7169321543029015318}
   - component: {fileID: 3477265659043120398}
+  - component: {fileID: 3971368078717779702}
   - component: {fileID: 3114025141018965911}
   - component: {fileID: 3114025141018965910}
   - component: {fileID: 3114025141018965905}
@@ -150,7 +151,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3114025141018965909}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3380984394720961115}
@@ -192,6 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d322f488bdf68a54da9161e762eda87a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockbackDuration: 0.2
+  knockbackSpeed: {x: 10, y: 5}
   amountOfJumps: 2
   movementSpeed: 9
   jumpForce: 16
@@ -215,6 +218,23 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &3971368078717779702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3114025141018965909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770ae6c86a62e7f43b1537a1814ed202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
+  deathChunckParticle: {fileID: 4004577984776635127, guid: 3a355f501c514f64b98350ef5d954b64,
+    type: 3}
+  deathBloodParticle: {fileID: 405471187481590203, guid: 8e85915630696a5439cb5b1f5730a4d4,
+    type: 3}
 --- !u!212 &3114025141018965911
 SpriteRenderer:
   m_ObjectHideFlags: 0
