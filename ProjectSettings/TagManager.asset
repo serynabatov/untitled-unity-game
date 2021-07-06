@@ -3,9 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - AttackSensor
-  - Enemy
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -15,10 +13,10 @@ TagManager:
   - UI
   - 
   - 
-  - Ground
-  - Damageable
-  - Dead
-  - Player
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -42,13 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Background
-    uniqueID: 3671293855
-    locked: 0
-  - name: Midground
-    uniqueID: 3646510543
-    locked: 0
-  - name: Foreground
-    uniqueID: 521768281
     locked: 0
