@@ -51,3 +51,9 @@ TagManager:
   - name: Foreground
     uniqueID: 4237831197
     locked: 0
+  - name: WaterPuzzle
+    uniqueID: 2015685187
+    locked: 0
+  - name: PipeElement
+    uniqueID: 2627575483
+    locked: 0
