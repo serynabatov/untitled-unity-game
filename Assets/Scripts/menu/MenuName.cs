@@ -4,8 +4,8 @@ using UnityEngine;
 
 public enum MenuName 
 {
-    Difficulty, 
-    HighScore,
     Main,
-    Pause
+    Options,
+    Credits,
+    Exit
 }
