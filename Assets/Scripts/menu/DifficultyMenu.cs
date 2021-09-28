@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿/*
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,4 +44,4 @@ public class DifficultyMenu : IntEventInvoker
         AudioManager.Play(AudioClipName.MenuButtonClick);
         unityEvents[EventName.GameStartedEvent].Invoke((int)Difficulty.Hard);
     }
-}
+}*/
