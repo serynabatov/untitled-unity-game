@@ -83,11 +83,11 @@ public class PlayerCombatController : MonoBehaviour
 
         foreach (Collider2D collider in detectedObjects)
         {
-            //Нижний вариант если противник с чайлд объектов
-            collider.transform.parent.SendMessage("Damage", attackDetails);
+            //Этот вариант если противник с/без чайлд объектами
+           // collider.transform.parent.SendMessage("Damage", attackDetails);
              
-            //Нижний вариант если противник без чайлд объектов
-            // collider.SendMessage("Damage", attackDetails);
+            //Или этот вариант если противник с/без чайлд объектов
+             collider.SendMessage("Damage", attackDetails);
            
             //instantiate hit particles
         }
