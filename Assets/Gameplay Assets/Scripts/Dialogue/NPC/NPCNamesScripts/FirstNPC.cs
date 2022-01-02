@@ -10,6 +10,7 @@ public class FirstNPC : AbstractNPC
 
     public override void EnterDialogueMode(TextAsset inkJSON)
     {
+
         this.currentStory = new Story(inkJSON.text);
 
         // Access the global variable and change its value
