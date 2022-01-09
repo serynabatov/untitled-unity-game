@@ -5,14 +5,15 @@ using UnityEngine;
 public class FirstLevelManager : MonoBehaviour
 {
     [Header("Gates")]
-     public GameObject fireGate;
-     public GameObject iceGate;
-     public GameObject topGate;
+    public GameObject fireGate;
+    public GameObject iceGate;
+    public GameObject topGate;
 
     private bool fireGateActiv;
     private bool iceGateActiv;
 
-    private int baseBoxCount = 0;
+    private bool fireTrigger;
+    private bool iceTrigger;
 
     private static FirstLevelManager instance;
 
@@ -20,7 +21,7 @@ public class FirstLevelManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogWarning("Found more than one Dialogue Manager in the scene");
+            Debug.LogWarning("Found more than one First Level Manager in the scene");
         }
         instance = this;
     }
@@ -33,50 +34,51 @@ public class FirstLevelManager : MonoBehaviour
     public void BaseBox(bool triggerStat, GameObject triggerGO)
     {
         //Debug.Log("triggreGO = " + triggerGO.name);
-        if (triggerGO.name == "FinalGateTrigger")
+        switch (triggerGO.name)
         {
-            Debug.Log("Поздравляю первый урвоень пройден");
-            topGate.SetActive(!triggerStat);
+            case "FinalGateTrigger":
+                Debug.Log("Поздравляю первый урвоень пройден");
+                topGate.SetActive(!triggerStat);
+                break;
+            case "BaseBoxTriggerIce":
+                iceTrigger = triggerStat;
+                this.CheckGates(iceGateActiv, iceGate, iceTrigger);
+                break;
+            case "BaseBoxTriggerFire":
+                fireTrigger = triggerStat;
+                this.CheckGates(fireGateActiv, fireGate, fireTrigger);
+                break;
         }
-        if (triggerGO.name == "BaseBoxTrigger")
-        {
-            if (triggerStat)
-            {
-                baseBoxCount++;
-                Debug.Log("BaseboxCount = " + baseBoxCount);
-            }
-            else
-            {
-                baseBoxCount--;
-                Debug.Log("BaseboxCount = " + baseBoxCount);
-            }
-        }
-        if (baseBoxCount >= 2 && fireGateActiv && iceGateActiv)
-        {
-            fireGate.SetActive(false);
-            iceGate.SetActive(false);
-        }
-        else
-        {
-            fireGate.SetActive(true);
-            iceGate.SetActive(true);
-        }
-
     }
 
-    public void IceBox(bool triggerStat,GameObject triggerGO)
+    public void IceBox(bool triggerStat, GameObject triggerGO)
     {
         if (triggerGO.name == "IceTrigger")
         {
             iceGateActiv = triggerStat;
+            this.CheckGates(iceGateActiv, iceGate, iceTrigger);
         }
     }
+
     public void FireBox(bool triggerStat, GameObject triggerGO)
     {
         if (triggerGO.name == "FireTrigger")
         {
             fireGateActiv = triggerStat;
+            this.CheckGates(fireGateActiv, fireGate, fireTrigger);
         }
     }
 
+    private void CheckGates(bool gateActiv, GameObject gate, bool gateTrigger)
+    {
+        //Debug.Log(string.Format("active Gate = {0} , gate name = {1}", gateActiv, gate.name));
+        if (gateActiv && gateTrigger)
+        {
+            gate.SetActive(false);
+        }
+        else
+        {
+            gate.SetActive(true);
+        }
+    }
 }

@@ -5,7 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Box
+  - DialogueTrigger
+  - GreenBox
+  - YellowBox
+  - IceBox
+  - FireBox
   layers:
   - Default
   - TransparentFX

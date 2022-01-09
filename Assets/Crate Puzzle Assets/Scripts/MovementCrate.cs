@@ -45,47 +45,65 @@ public class MovementCrate : MonoBehaviour
         {
             // Debug.Log("Get instance");
 
-            if (grabCheckLeft.collider != null && grabCheckLeft.collider.tag == "Box")
+            if (grabCheckLeft.collider != null)
             {
-               // runSpeedY = 0;
-                this.GrabSex(grabCheckLeft, boxHolderLeft);
+                // runSpeedY = 0; && grabCheckLeft.collider.tag == "Box"
+                this.GrabSex(grabCheckLeft, boxHolderLeft, grabCheckLeft.collider.tag);
             }
 
-            if (grabCheckRight.collider != null && grabCheckRight.collider.tag == "Box")
+            if (grabCheckRight.collider != null)
             {
-                //runSpeedY = 0;
-                this.GrabSex(grabCheckRight, boxHolderRight);
+                //runSpeedY = 0; && grabCheckRight.collider.tag == "Box"
+                this.GrabSex(grabCheckRight, boxHolderRight, grabCheckRight.collider.tag);
             }
 
-            if (grabCheckUp.collider != null && grabCheckUp.collider.tag == "Box")
+            if (grabCheckUp.collider != null)
             {
-               // runSpeedX = 0;
-                this.GrabSex(grabCheckUp, boxHolderUp);
+                // runSpeedX = 0; && grabCheckUp.collider.tag == "Box"
+                this.GrabSex(grabCheckUp, boxHolderUp, grabCheckUp.collider.tag);
             }
 
-            if (grabCheckDown.collider != null && grabCheckDown.collider.tag == "Box")
+            if (grabCheckDown.collider != null)
             {
-               // runSpeedX = 0;
-                this.GrabSex(grabCheckDown, boxHolderDown);
+                // runSpeedX = 0; && grabCheckDown.collider.tag == "Box"
+                this.GrabSex(grabCheckDown, boxHolderDown, grabCheckDown.collider.tag);
             }
         }
     }
 
-    private void GrabSex(RaycastHit2D grabCheck, Transform boxHolder)
+    private void GrabSex(RaycastHit2D grabCheck, Transform boxHolder, string tag)
     {
         //Debug.Log(interactPress);
 
         if (this.interactPress)
         {
+            switch (tag)
+            {
+                case "GreenBox": 
+                    runSpeedX = 3f;
+                    runSpeedY = 3f;
+                    break;
+                case "YellowBox":
+                    runSpeedX = 4f;
+                    runSpeedY = 4f;
+                    break;
+                case "IceBox":
+                    runSpeedX = 3f;
+                    runSpeedY = 3f; 
+                    break;
+                case "FireBox":
+                    runSpeedX = 3f;
+                    runSpeedY = 3f;
+                    break;
+            }
             this.interactPress = false;
             grabCheck.collider.gameObject.transform.parent = boxHolder;
             grabCheck.collider.gameObject.transform.position = boxHolder.position;
-
         }
         else
         {
-           // runSpeedX = 5f;
-            //runSpeedY = 5f;
+            runSpeedX = 5f;
+            runSpeedY = 5f;
             this.interactPress = true;
             grabCheck.collider.gameObject.transform.parent = null;
         }
