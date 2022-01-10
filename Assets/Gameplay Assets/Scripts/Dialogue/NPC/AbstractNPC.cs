@@ -8,10 +8,8 @@ public abstract class AbstractNPC : MonoBehaviour
     public abstract Story currentStory { get; set; }
 
     private string nameNPC { get; set; }
-    private void InitializeComponents()
-    {
-       
-    }
+
+    private void InitializeComponents() {}
 
     protected virtual void Initialize()
     {
@@ -38,4 +36,22 @@ public abstract class AbstractNPC : MonoBehaviour
     public abstract void NPCDialogueFunction(string variableName, object variableState);
 
     public abstract List<string> ObservedVariablesList();
+
+    /// <summary>
+    /// Here we're checking the data that was written to the different npcs
+    /// </summary>
+    /// <param name="name">name of the variable</param>
+    /// <param name="npc">npc where to check</param>
+    /// <returns>
+    /// returning the value of an object
+    /// </returns>
+    public abstract object LookUpInTheState(string name, AbstractNPC npc);
+
+    /// <summary>
+    /// get model
+    /// </summary>
+    /// <returns>
+    /// returns the model to work with the saving lookup
+    /// </returns>
+    public abstract AbstractNPCDataModel GetNPCDataModel();
 }

@@ -14,16 +14,16 @@ public class SaveSystemManager
         }
     }
 
-    public static void Save(string saveData)
+    public static void Save(string saveData, string dataFile)
     {
-        File.WriteAllText(dataPath +"npcOneState.txt", saveData);
+        File.WriteAllText(dataPath + dataFile, saveData);
     }
 
-    public static string Load()
+    public static string Load(string dataFile)
     {
-        if (File.Exists(dataPath + "npcOneState.txt"))
+        if (File.Exists(dataPath + dataFile))
         {
-            return File.ReadAllText(dataPath + "npcOneState.txt");
+            return File.ReadAllText(dataPath + dataFile);
         }
         else
         {

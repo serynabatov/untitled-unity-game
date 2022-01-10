@@ -89,22 +89,6 @@ public class DialogueManager : MonoBehaviour
     //Мы передаём это абстрактному НПС, чтоыб каждый НПС мог имплементировать метод
     public void EnterDialogueMode(TextAsset inkJSON, AbstractNPC abstractNPC)
     {
-        /*  this.currentStory = new Story(inkJSON.text);
-
-          //Принимает объект триггера, который начал диалог
-          this.dialogueObject = dialogueObject;
-
-          // Access the global variable and change its value
-          string jsonLoad = SaveSystemManager.Load();
-          if (jsonLoad != null)
-          {
-              NPCOneModel nPCOneModel = JsonUtility.FromJson<NPCOneModel>(jsonLoad);
-          }
-
-
-          //Следит за состоянием каждой переменной из списка
-          
-          */
         
         abstractNPC.EnterDialogueMode(inkJSON);
         this.currentStory = abstractNPC.currentStory;

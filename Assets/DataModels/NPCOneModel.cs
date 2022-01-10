@@ -5,5 +5,9 @@ using UnityEngine;
 public class NPCOneModel :AbstractNPCDataModel
 {
     public bool isRunning;
-
+    
+    public NPCOneModel()
+    {
+        dataFile = "npcOneState.txt";
+    }
 }

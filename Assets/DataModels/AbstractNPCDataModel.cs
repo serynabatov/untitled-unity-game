@@ -5,4 +5,5 @@ using UnityEngine;
 public abstract class AbstractNPCDataModel
 {
     private long id;
+    public string dataFile;
 }
