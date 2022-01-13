@@ -38,7 +38,7 @@ public class FirstNPC : AbstractNPC
 
     public override object LookUpInTheState(string name, AbstractNPC npc)
     {
-        AbstractNPCDataModel npcDataModel = npc.GetNPCDataModel();
+        var npcDataModel = npc.GetNPCDataModel();
 
         if (npcDataModel.GetType().GetProperty(name) == null)
         {
