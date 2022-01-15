@@ -1,18 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using Ink.Runtime;
 using UnityEngine;
 
 public class FirstNPC : AbstractNPC
 {
     public override Story currentStory { get; set; }
-    private NPCOneModel npcOneModel;
+    private NPCOneModel npcOneModel = new NPCOneModel();
 
     public override void EnterDialogueMode(TextAsset inkJSON)
     {
 
         this.currentStory = new Story(inkJSON.text);
-
         // Access the global variable and change its value
         string jsonLoad = SaveSystemManager.Load(npcOneModel.dataFile);
         if (jsonLoad != null)
@@ -49,7 +50,10 @@ public class FirstNPC : AbstractNPC
         string jsonLoad = SaveSystemManager.Load(npcDataModel.dataFile);
         if (jsonLoad != null)
         {
-            AbstractNPCDataModel abstractNPCData = JsonUtility.FromJson<AbstractNPCDataModel>(jsonLoad);
+            Type npcDataType = npcDataModel.GetType();
+            var abstractNPCData = typeof(JsonUtility).GetMethod("FromJson").MakeGenericMethod(npcDataType)
+                .Invoke(null, new object[] { jsonLoad});
+            //AbstractNPCDataModel  = JsonUtility.FromJson<AbstractNPCDataModel>(jsonLoad);
             return abstractNPCData.GetType().GetProperty(name).GetValue(abstractNPCData, null);
         }
 
