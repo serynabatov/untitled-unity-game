@@ -21,13 +21,13 @@ public class TriggerManager : MonoBehaviour
         switch (collision.name)
         {
             case "BaseBox":
-                FirstLevelManager.GetInstance().BaseBox(true, this.gameObject);
+                FirstLevelManager.GetInstance().BaseBox(true, this.gameObject, collision.GetComponent<SpriteRenderer>());
                 break;
             case "IceBox":
-                FirstLevelManager.GetInstance().IceBox(true, this.gameObject);
+                FirstLevelManager.GetInstance().IceBox(true, this.gameObject, collision.GetComponent<SpriteRenderer>());
                 break;
             case "FireBox":
-                FirstLevelManager.GetInstance().FireBox(true, this.gameObject);
+                FirstLevelManager.GetInstance().FireBox(true, this.gameObject, collision.GetComponent<SpriteRenderer>());
                 break; ;
         }
     }
@@ -39,13 +39,13 @@ public class TriggerManager : MonoBehaviour
         switch (collision.name)
         {
             case "BaseBox":
-                FirstLevelManager.GetInstance().BaseBox(false, this.gameObject);
+                FirstLevelManager.GetInstance().BaseBox(false, this.gameObject, collision.GetComponent<SpriteRenderer>());
                 break;
             case "IceBox":
-                FirstLevelManager.GetInstance().IceBox(false, this.gameObject);
+                FirstLevelManager.GetInstance().IceBox(false, this.gameObject, collision.GetComponent<SpriteRenderer>());
                 break;
             case "FireBox":
-                FirstLevelManager.GetInstance().FireBox(false, this.gameObject);
+                FirstLevelManager.GetInstance().FireBox(false, this.gameObject, collision.GetComponent<SpriteRenderer>());
                 break; ;
         }
     }

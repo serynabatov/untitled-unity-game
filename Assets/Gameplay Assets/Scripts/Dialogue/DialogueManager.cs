@@ -80,11 +80,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void EnterDialogueMode()
-    {
-
-    }
-
     //TODO: Переместить этот метод в другой класс
     //Мы передаём это абстрактному НПС, чтоыб каждый НПС мог имплементировать метод
     public void EnterDialogueMode(TextAsset inkJSON, AbstractNPC abstractNPC)
