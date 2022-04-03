@@ -19,6 +19,9 @@ public class MovementCrate : MonoBehaviour
 
     private bool interactPress = true;
 
+    private GameObject boxTemp;
+    private Transform boxHolderTemp;
+
     // components attached to player
     private CircleCollider2D coll;
 
@@ -32,9 +35,11 @@ public class MovementCrate : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+
     private void FixedUpdate()
     {
         HandleMovement();
+
 
         RaycastHit2D grabCheckLeft = Physics2D.Raycast(grabDetect.position, Vector2.left, rayDist, grabAble);
         RaycastHit2D grabCheckRight = Physics2D.Raycast(grabDetect.position, Vector2.right, rayDist, grabAble);
@@ -43,78 +48,75 @@ public class MovementCrate : MonoBehaviour
 
         if (InputManager.GetInstance().GetInteractPressed())
         {
-            // Debug.Log("Get instance");
-
-            if (grabCheckLeft.collider != null)
+            //Debug.Log("Get instance");
+            if (this.interactPress)
             {
-                // runSpeedY = 0; && grabCheckLeft.collider.tag == "Box"
-                this.GrabSex(grabCheckLeft, boxHolderLeft, grabCheckLeft.collider.tag);
+                this.interactPress = false;
+
+                if (grabCheckLeft.collider != null)
+                {
+                    this.GrabSex(grabCheckLeft, boxHolderLeft, grabCheckLeft.collider.tag);
+                }
+                else if (grabCheckRight.collider != null)
+                {
+                    this.GrabSex(grabCheckRight, boxHolderRight, grabCheckRight.collider.tag);
+                }
+                else if (grabCheckUp.collider != null)
+                {
+                    this.GrabSex(grabCheckUp, boxHolderUp, grabCheckUp.collider.tag);
+                }
+                else if (grabCheckDown.collider != null)
+                {
+                    this.GrabSex(grabCheckDown, boxHolderDown, grabCheckDown.collider.tag);
+                }
             }
-
-            if (grabCheckRight.collider != null)
+            else
             {
-                //runSpeedY = 0; && grabCheckRight.collider.tag == "Box"
-                this.GrabSex(grabCheckRight, boxHolderRight, grabCheckRight.collider.tag);
-            }
-
-            if (grabCheckUp.collider != null)
-            {
-                // runSpeedX = 0; && grabCheckUp.collider.tag == "Box"
-                this.GrabSex(grabCheckUp, boxHolderUp, grabCheckUp.collider.tag);
-            }
-
-            if (grabCheckDown.collider != null)
-            {
-                // runSpeedX = 0; && grabCheckDown.collider.tag == "Box"
-                this.GrabSex(grabCheckDown, boxHolderDown, grabCheckDown.collider.tag);
+                runSpeedX = 5f;
+                runSpeedY = 5f;
+                this.interactPress = true;
+                boxTemp.transform.SetParent(null);
+                boxTemp = null;
+                boxHolderTemp = null;
             }
         }
     }
 
     private void GrabSex(RaycastHit2D grabCheck, Transform boxHolder, string tag)
     {
-        //Debug.Log(interactPress);
-
-        if (this.interactPress)
-        {
             switch (tag)
             {
                 case "GreenBox": 
-                    runSpeedX = 3f;
-                    runSpeedY = 3f;
+                    runSpeedX = 6f;
+                    runSpeedY = 6f;
                     break;
                 case "YellowBox":
-                    runSpeedX = 4f;
-                    runSpeedY = 4f;
+                    runSpeedX = 6f;
+                    runSpeedY = 6f;
                     break;
                 case "IceBox":
-                    runSpeedX = 3f;
-                    runSpeedY = 3f; 
+                    runSpeedX = 6f;
+                    runSpeedY = 6f; 
                     break;
                 case "FireBox":
-                    runSpeedX = 3f;
-                    runSpeedY = 3f;
+                    runSpeedX = 6f;
+                    runSpeedY = 6f;
                     break;
             }
-            this.interactPress = false;
-            grabCheck.collider.gameObject.transform.parent = boxHolder;
-            grabCheck.collider.gameObject.transform.position = boxHolder.position;
-        }
-        else
-        {
-            runSpeedX = 5f;
-            runSpeedY = 5f;
-            this.interactPress = true;
-            grabCheck.collider.gameObject.transform.parent = null;
-        }
+        //Временные переменные
+        boxTemp = grabCheck.collider.gameObject;
+        boxHolderTemp = boxHolder;
+        //Собсна хват коробки и смена её позиции
+        boxTemp.transform.position = boxHolderTemp.position;
+        boxTemp.transform.SetParent(boxHolderTemp);
     }
 
 
     private void HandleMovement()
     {
-
         Vector2 moveDirection = InputManager.GetInstance().GetMoveDirection();
-        //Debug.Log(moveDirection);
         rb.velocity = new Vector2(moveDirection.x * runSpeedX, moveDirection.y * runSpeedY);
+
     }
+
 }
