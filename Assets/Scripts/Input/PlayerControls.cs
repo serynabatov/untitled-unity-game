@@ -27,10 +27,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-<<<<<<< HEAD
-                    ""name"": ""Attack"",
-                    ""type"": ""Value"",
-=======
                     ""name"": ""MoveAxis"",
                     ""type"": ""Button"",
                     ""id"": ""e117df34-6671-4f6f-a873-a7e34f591602"",
@@ -41,15 +37,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Attack"",
                     ""type"": ""Button"",
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
                     ""id"": ""afad137e-2881-426f-9825-3a4df8391109"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-<<<<<<< HEAD
-=======
                     ""name"": ""Parry"",
                     ""type"": ""Button"",
                     ""id"": ""e0fd3c24-f989-475d-8242-740cf07ee6f2"",
@@ -58,7 +51,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""634da9fc-0f17-45d7-b270-512b27826239"",
@@ -99,11 +91,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-<<<<<<< HEAD
-                    ""name"": ""Parry"",
-                    ""type"": ""Button"",
-                    ""id"": ""e0fd3c24-f989-475d-8242-740cf07ee6f2"",
-=======
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""a29fa0f9-6ff4-432d-acc0-6bda932b9761"",
@@ -131,7 +118,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": ""Dodge"",
                     ""type"": ""Button"",
                     ""id"": ""5bef2ac8-9025-4fd8-8cd0-e738cde19d20"",
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -250,20 +236,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-<<<<<<< HEAD
-                    ""id"": ""2566ed9e-cd3b-4c35-bd05-ee6803360239"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-=======
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
                     ""id"": ""3bf0d5d9-3dad-4cae-8933-f986b15d3e50"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
@@ -319,8 +291,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-<<<<<<< HEAD
-=======
                     ""id"": ""2129d23c-ba18-4995-a50e-b85e8a12605c"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -332,7 +302,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
                     ""id"": ""9de7f9b0-2018-4256-ad36-39600310082c"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
@@ -341,8 +310,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Parry"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-<<<<<<< HEAD
-=======
                 },
                 {
                     ""name"": ""Button With One Modifier"",
@@ -464,7 +431,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
                 }
             ]
         }
@@ -474,26 +440,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-<<<<<<< HEAD
-        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
-=======
         m_Player_MoveAxis = m_Player.FindAction("MoveAxis", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Parry = m_Player.FindAction("Parry", throwIfNotFound: true);
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_OpenMenu = m_Player.FindAction("OpenMenu", throwIfNotFound: true);
         m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
         m_Player_SubmitDialogue = m_Player.FindAction("SubmitDialogue", throwIfNotFound: true);
         m_Player_Skill = m_Player.FindAction("Skill", throwIfNotFound: true);
-<<<<<<< HEAD
-        m_Player_Parry = m_Player.FindAction("Parry", throwIfNotFound: true);
-=======
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_UpAttack = m_Player.FindAction("UpAttack", throwIfNotFound: true);
         m_Player_AttackAirSlam = m_Player.FindAction("AttackAirSlam", throwIfNotFound: true);
         m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
     }
 
     public void Dispose()
@@ -544,51 +502,35 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
-<<<<<<< HEAD
-    private readonly InputAction m_Player_Attack;
-=======
     private readonly InputAction m_Player_MoveAxis;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Parry;
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_OpenMenu;
     private readonly InputAction m_Player_OpenInventory;
     private readonly InputAction m_Player_SubmitDialogue;
     private readonly InputAction m_Player_Skill;
-<<<<<<< HEAD
-    private readonly InputAction m_Player_Parry;
-=======
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_UpAttack;
     private readonly InputAction m_Player_AttackAirSlam;
     private readonly InputAction m_Player_Dodge;
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
-<<<<<<< HEAD
-        public InputAction @Attack => m_Wrapper.m_Player_Attack;
-=======
         public InputAction @MoveAxis => m_Wrapper.m_Player_MoveAxis;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Parry => m_Wrapper.m_Player_Parry;
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @OpenMenu => m_Wrapper.m_Player_OpenMenu;
         public InputAction @OpenInventory => m_Wrapper.m_Player_OpenInventory;
         public InputAction @SubmitDialogue => m_Wrapper.m_Player_SubmitDialogue;
         public InputAction @Skill => m_Wrapper.m_Player_Skill;
-<<<<<<< HEAD
-        public InputAction @Parry => m_Wrapper.m_Player_Parry;
-=======
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @UpAttack => m_Wrapper.m_Player_UpAttack;
         public InputAction @AttackAirSlam => m_Wrapper.m_Player_AttackAirSlam;
         public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -601,11 +543,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-<<<<<<< HEAD
-                @Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
-                @Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
-                @Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
-=======
                 @MoveAxis.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAxis;
                 @MoveAxis.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAxis;
                 @MoveAxis.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAxis;
@@ -615,7 +552,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Parry.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
                 @Parry.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
                 @Parry.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
@@ -631,11 +567,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Skill.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill;
                 @Skill.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill;
                 @Skill.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill;
-<<<<<<< HEAD
-                @Parry.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
-                @Parry.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
-                @Parry.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
-=======
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
@@ -648,7 +579,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Dodge.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
                 @Dodge.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
                 @Dodge.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -656,11 +586,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-<<<<<<< HEAD
-                @Attack.started += instance.OnAttack;
-                @Attack.performed += instance.OnAttack;
-                @Attack.canceled += instance.OnAttack;
-=======
                 @MoveAxis.started += instance.OnMoveAxis;
                 @MoveAxis.performed += instance.OnMoveAxis;
                 @MoveAxis.canceled += instance.OnMoveAxis;
@@ -670,7 +595,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Parry.started += instance.OnParry;
                 @Parry.performed += instance.OnParry;
                 @Parry.canceled += instance.OnParry;
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -686,11 +610,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Skill.started += instance.OnSkill;
                 @Skill.performed += instance.OnSkill;
                 @Skill.canceled += instance.OnSkill;
-<<<<<<< HEAD
-                @Parry.started += instance.OnParry;
-                @Parry.performed += instance.OnParry;
-                @Parry.canceled += instance.OnParry;
-=======
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
@@ -703,7 +622,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Dodge.started += instance.OnDodge;
                 @Dodge.performed += instance.OnDodge;
                 @Dodge.canceled += instance.OnDodge;
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
             }
         }
     }
@@ -711,25 +629,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
-<<<<<<< HEAD
-        void OnAttack(InputAction.CallbackContext context);
-=======
         void OnMoveAxis(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnParry(InputAction.CallbackContext context);
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
         void OnInteract(InputAction.CallbackContext context);
         void OnOpenMenu(InputAction.CallbackContext context);
         void OnOpenInventory(InputAction.CallbackContext context);
         void OnSubmitDialogue(InputAction.CallbackContext context);
         void OnSkill(InputAction.CallbackContext context);
-<<<<<<< HEAD
-        void OnParry(InputAction.CallbackContext context);
-=======
         void OnJump(InputAction.CallbackContext context);
         void OnUpAttack(InputAction.CallbackContext context);
         void OnAttackAirSlam(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
->>>>>>> 343d89c41a1992554ffbe5270ff3abc06046d65e
     }
 }
