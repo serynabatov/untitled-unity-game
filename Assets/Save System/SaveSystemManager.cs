@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -27,7 +27,7 @@ public class SaveSystemManager
         }
         else
         {
-            // TODO: Нужно узнать хардкод JSON в С#
+            // TODO: РќСѓР¶РЅРѕ СѓР·РЅР°С‚СЊ С…Р°СЂРґРєРѕРґ JSON РІ РЎ#
             return null;
         }
     }

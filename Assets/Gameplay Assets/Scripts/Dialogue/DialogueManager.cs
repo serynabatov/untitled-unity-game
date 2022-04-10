@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -85,8 +85,8 @@ public class DialogueManager : MonoBehaviour
 
     }
 
-    //TODO: Переместить этот метод в другой класс
-    //Мы передаём это абстрактному НПС, чтоыб каждый НПС мог имплементировать метод
+    //TODO: РџРµСЂРµРјРµСЃС‚РёС‚СЊ СЌС‚РѕС‚ РјРµС‚РѕРґ РІ РґСЂСѓРіРѕР№ РєР»Р°СЃСЃ
+    //РњС‹ РїРµСЂРµРґР°РµРј СЌС‚Рѕ Р°Р±СЃС‚СЂР°РєС‚РЅРѕРјСѓ РќРџРЎ, С‡С‚РѕС‹Р± РєР°Р¶РґС‹Р№ РќРџРЎ РјРѕРі РёРјРїР»РµРјРµРЅС‚РёСЂРѕРІР°С‚СЊ РјРµС‚РѕРґ
     public void EnterDialogueMode(TextAsset inkJSON, AbstractNPC abstractNPC)
     {
         

@@ -14,7 +14,7 @@ public class ObjectActivator : MonoBehaviour
                 obj.SetActive(true);
         }
     }
-
+    
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (deactivateOnExit && collision.CompareTag(activatorTag))

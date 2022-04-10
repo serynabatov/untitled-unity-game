@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -31,12 +31,19 @@ public class FirstNPC : AbstractNPC
 
     public override List<string> ObservedVariablesList()
     {
-        //� ���� ������ ����� ��������� �������� ���������� �� �������� �� ������.
-        //�������� ��� � List
+        //В этом методе будут храниться названия переменных за которыми мы следим.
+        //Хранятся они в List 
         List<string> variablesList = new List<string>();
         return variablesList;
     }
 
+    /// <summary>
+    /// Эта функция предназначена для того, чтобы НПЦ считал данные из любого поля JSON файла
+    /// </summary>
+    /// <param name="name"> Имя атрибута</param>
+    /// <param name="npc"> У какого нпц читаем атрибут</param>
+    /// <returns></returns>
+    
     public override object LookUpInTheState(string name, AbstractNPC npc)
     {
         var npcDataModel = npc.GetNPCDataModel();
@@ -55,6 +62,7 @@ public class FirstNPC : AbstractNPC
                 .Invoke(null, new object[] { jsonLoad});
             //AbstractNPCDataModel  = JsonUtility.FromJson<AbstractNPCDataModel>(jsonLoad);
             return abstractNPCData.GetType().GetProperty(name).GetValue(abstractNPCData, null);
+            
         }
 
         return null;
