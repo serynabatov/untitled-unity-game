@@ -27,9 +27,25 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""MoveAxis"",
+                    ""type"": ""Button"",
+                    ""id"": ""e117df34-6671-4f6f-a873-a7e34f591602"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Attack"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""afad137e-2881-426f-9825-3a4df8391109"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Parry"",
+                    ""type"": ""Button"",
+                    ""id"": ""e0fd3c24-f989-475d-8242-740cf07ee6f2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -75,9 +91,33 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Parry"",
+                    ""name"": ""Jump"",
                     ""type"": ""Button"",
-                    ""id"": ""e0fd3c24-f989-475d-8242-740cf07ee6f2"",
+                    ""id"": ""a29fa0f9-6ff4-432d-acc0-6bda932b9761"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""UpAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""90da3e47-785a-49da-be2d-1af9650547cf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""AttackAirSlam"",
+                    ""type"": ""Button"",
+                    ""id"": ""ea49c410-5c7a-4a34-9e87-f4084a1ae70f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dodge"",
+                    ""type"": ""Button"",
+                    ""id"": ""5bef2ac8-9025-4fd8-8cd0-e738cde19d20"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -262,12 +302,144 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""2129d23c-ba18-4995-a50e-b85e8a12605c"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""9de7f9b0-2018-4256-ad36-39600310082c"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Parry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Button With One Modifier"",
+                    ""id"": ""a58769f6-3f1c-45b9-b345-12b2886ec5ad"",
+                    ""path"": ""ButtonWithOneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UpAttack"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""ef7f1b81-b069-417a-a57c-ccacbb36ea72"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UpAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""button"",
+                    ""id"": ""ad35c377-13ef-4d6f-9139-5c4273a70226"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UpAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Button With One Modifier"",
+                    ""id"": ""046b6eaa-16d6-4876-9701-0d2557b99e54"",
+                    ""path"": ""ButtonWithOneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackAirSlam"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""ea2d7d58-ab08-49ab-a58f-6cef6c107de9"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackAirSlam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""button"",
+                    ""id"": ""9063b0a0-0e06-4e63-af64-9215f75c9fee"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackAirSlam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""24c9e3f5-6f84-44ce-ab81-bf31fd318fc2"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dodge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""e3fb8c20-8d41-4bc6-80e4-85f748bea212"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveAxis"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""9e0de602-f2e7-4f68-bd31-693b11ec98ab"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""55560864-3e18-4c3f-bcd2-ee652775a27d"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2566ed9e-cd3b-4c35-bd05-ee6803360239"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -279,13 +451,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_MoveAxis = m_Player.FindAction("MoveAxis", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
+        m_Player_Parry = m_Player.FindAction("Parry", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_OpenMenu = m_Player.FindAction("OpenMenu", throwIfNotFound: true);
         m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
         m_Player_SubmitDialogue = m_Player.FindAction("SubmitDialogue", throwIfNotFound: true);
         m_Player_Skill = m_Player.FindAction("Skill", throwIfNotFound: true);
-        m_Player_Parry = m_Player.FindAction("Parry", throwIfNotFound: true);
+        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_UpAttack = m_Player.FindAction("UpAttack", throwIfNotFound: true);
+        m_Player_AttackAirSlam = m_Player.FindAction("AttackAirSlam", throwIfNotFound: true);
+        m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -336,25 +513,35 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_MoveAxis;
     private readonly InputAction m_Player_Attack;
+    private readonly InputAction m_Player_Parry;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_OpenMenu;
     private readonly InputAction m_Player_OpenInventory;
     private readonly InputAction m_Player_SubmitDialogue;
     private readonly InputAction m_Player_Skill;
-    private readonly InputAction m_Player_Parry;
+    private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_UpAttack;
+    private readonly InputAction m_Player_AttackAirSlam;
+    private readonly InputAction m_Player_Dodge;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @MoveAxis => m_Wrapper.m_Player_MoveAxis;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
+        public InputAction @Parry => m_Wrapper.m_Player_Parry;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @OpenMenu => m_Wrapper.m_Player_OpenMenu;
         public InputAction @OpenInventory => m_Wrapper.m_Player_OpenInventory;
         public InputAction @SubmitDialogue => m_Wrapper.m_Player_SubmitDialogue;
         public InputAction @Skill => m_Wrapper.m_Player_Skill;
-        public InputAction @Parry => m_Wrapper.m_Player_Parry;
+        public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @UpAttack => m_Wrapper.m_Player_UpAttack;
+        public InputAction @AttackAirSlam => m_Wrapper.m_Player_AttackAirSlam;
+        public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -367,9 +554,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @MoveAxis.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAxis;
+                @MoveAxis.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAxis;
+                @MoveAxis.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAxis;
                 @Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
+                @Parry.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
+                @Parry.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
+                @Parry.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
@@ -385,9 +578,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Skill.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill;
                 @Skill.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill;
                 @Skill.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill;
-                @Parry.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
-                @Parry.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
-                @Parry.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
+                @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @UpAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpAttack;
+                @UpAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpAttack;
+                @UpAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpAttack;
+                @AttackAirSlam.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackAirSlam;
+                @AttackAirSlam.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackAirSlam;
+                @AttackAirSlam.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackAirSlam;
+                @Dodge.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
+                @Dodge.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
+                @Dodge.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -395,9 +597,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @MoveAxis.started += instance.OnMoveAxis;
+                @MoveAxis.performed += instance.OnMoveAxis;
+                @MoveAxis.canceled += instance.OnMoveAxis;
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @Parry.started += instance.OnParry;
+                @Parry.performed += instance.OnParry;
+                @Parry.canceled += instance.OnParry;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -413,9 +621,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Skill.started += instance.OnSkill;
                 @Skill.performed += instance.OnSkill;
                 @Skill.canceled += instance.OnSkill;
-                @Parry.started += instance.OnParry;
-                @Parry.performed += instance.OnParry;
-                @Parry.canceled += instance.OnParry;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
+                @UpAttack.started += instance.OnUpAttack;
+                @UpAttack.performed += instance.OnUpAttack;
+                @UpAttack.canceled += instance.OnUpAttack;
+                @AttackAirSlam.started += instance.OnAttackAirSlam;
+                @AttackAirSlam.performed += instance.OnAttackAirSlam;
+                @AttackAirSlam.canceled += instance.OnAttackAirSlam;
+                @Dodge.started += instance.OnDodge;
+                @Dodge.performed += instance.OnDodge;
+                @Dodge.canceled += instance.OnDodge;
             }
         }
     }
@@ -423,12 +640,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnMoveAxis(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnParry(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnOpenMenu(InputAction.CallbackContext context);
         void OnOpenInventory(InputAction.CallbackContext context);
         void OnSubmitDialogue(InputAction.CallbackContext context);
         void OnSkill(InputAction.CallbackContext context);
-        void OnParry(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
+        void OnUpAttack(InputAction.CallbackContext context);
+        void OnAttackAirSlam(InputAction.CallbackContext context);
+        void OnDodge(InputAction.CallbackContext context);
     }
 }

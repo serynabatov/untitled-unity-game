@@ -24,46 +24,56 @@ public class FirstLevelManager : MonoBehaviour
             Debug.LogWarning("Found more than one First Level Manager in the scene");
         }
         instance = this;
-    }
 
+    }
     public static FirstLevelManager GetInstance()
     {
         return instance;
     }
 
-    public void BaseBox(bool triggerStat, GameObject triggerGO)
+    public void BaseBox(bool triggerStat, GameObject triggerGO, Animator boxAnimator )
     {
-        //Debug.Log("triggreGO = " + triggerGO.name);
         switch (triggerGO.name)
         {
             case "FinalGateTrigger":
                 Debug.Log("Поздравляю первый урвоень пройден");
                 topGate.SetActive(!triggerStat);
+                triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+                boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
                 break;
             case "BaseBoxTriggerIce":
                 iceTrigger = triggerStat;
                 this.CheckGates(iceGateActiv, iceGate, iceTrigger);
+                triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+                boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
                 break;
             case "BaseBoxTriggerFire":
                 fireTrigger = triggerStat;
                 this.CheckGates(fireGateActiv, fireGate, fireTrigger);
+                triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+                boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
                 break;
+
         }
     }
 
-    public void IceBox(bool triggerStat, GameObject triggerGO)
+    public void IceBox(bool triggerStat, GameObject triggerGO, Animator boxAnimator)
     {
         if (triggerGO.name == "IceTrigger")
         {
+            triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+            boxAnimator.Play(triggerStat ? "IceActive" : "IceDeactive");
             iceGateActiv = triggerStat;
             this.CheckGates(iceGateActiv, iceGate, iceTrigger);
         }
     }
 
-    public void FireBox(bool triggerStat, GameObject triggerGO)
+    public void FireBox(bool triggerStat, GameObject triggerGO, Animator boxAnimator)
     {
         if (triggerGO.name == "FireTrigger")
         {
+            triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+            boxAnimator.Play(triggerStat ? "FireActive" : "FireDeactive");
             fireGateActiv = triggerStat;
             this.CheckGates(fireGateActiv, fireGate, fireTrigger);
         }
@@ -72,13 +82,6 @@ public class FirstLevelManager : MonoBehaviour
     private void CheckGates(bool gateActiv, GameObject gate, bool gateTrigger)
     {
         //Debug.Log(string.Format("active Gate = {0} , gate name = {1}", gateActiv, gate.name));
-        if (gateActiv && gateTrigger)
-        {
-            gate.SetActive(false);
-        }
-        else
-        {
-            gate.SetActive(true);
-        }
+        gate.SetActive((gateActiv && gateTrigger) ? false : true);
     }
 }

@@ -23,9 +23,17 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     private Vector2 moveDirection = Vector2.zero;
+    private float moveAxis = 0f;
     private bool jumpPressed = false;
     private bool interactPressed = false;
     private bool submitPressed = false;
+    private bool attackPressed = false;
+    private bool airAttackPressed = false;
+    private bool parryPressed = false;
+    private bool dodgePressed = false;
+    private bool upAttackPressed = false;
+    private bool airUpAttackPressed = false;
+    private bool airSlamPressed = false;
 
     private static InputManager instance;
 
@@ -45,14 +53,12 @@ public class InputManager : MonoBehaviour
 
     public void MovePressed(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            moveDirection = context.ReadValue<Vector2>();
-        }
-        else if (context.canceled)
-        {
-            moveDirection = context.ReadValue<Vector2>();
-        }
+        moveDirection = context.ReadValue<Vector2>();
+    }
+
+    public void MoveAxisPressed(InputAction.CallbackContext context)
+    {
+        moveAxis = context.ReadValue<float>();
     }
 
     public void JumpPressed(InputAction.CallbackContext context)
@@ -91,9 +97,82 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public void Attack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            attackPressed = true;
+            airAttackPressed = true;
+        }
+        else if (context.canceled)
+        {
+            attackPressed = false;
+            airAttackPressed = false;
+        }
+    }
+
+    public void ParryPressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            parryPressed = true;
+        }
+        else if (context.canceled)
+        {
+            parryPressed = false;
+        }
+    }
+
+    public void DodgePressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            dodgePressed = true;
+        }
+        else if (context.canceled)
+        {
+            dodgePressed = false;
+        }
+    }
+
+    public void UpAttackPressed(InputAction.CallbackContext context)
+    {
+        /*if (context.started)
+        {
+            airUpAttackPressed = true;
+        } */
+        if (context.performed)
+        {
+            airUpAttackPressed = true;
+            upAttackPressed = true;
+        }
+        else if (context.canceled)
+        {
+            upAttackPressed = false;
+            airUpAttackPressed = false;
+        }
+    }
+
+    public void AirSlamPressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            airSlamPressed = true;
+        }
+        else if (context.canceled)
+        {
+            airSlamPressed = false;
+        }
+    }
+
     public Vector2 GetMoveDirection()
     {
         return moveDirection;
+    }
+
+    public float GetMoveAxis()
+    {
+        return moveAxis;
     }
 
     // for any of the below 'Get' methods, if we're getting it then we're also using it,
@@ -121,4 +200,53 @@ public class InputManager : MonoBehaviour
         return result;
     }
 
+    public bool GetAttackPressed()
+    {
+        bool result = attackPressed;
+        attackPressed = false;
+        return result;
+    }
+
+    public bool GetParryPressed()
+    {
+        bool result = parryPressed;
+        parryPressed = false;
+        return result;
+    }
+
+    public bool GetDodgePressed()
+    {
+        bool result = dodgePressed;
+        dodgePressed = false;
+        return result;
+    }
+
+
+    public bool GetUpAttackPressed()
+    {
+        bool result = upAttackPressed;
+        upAttackPressed = false;
+        return result;
+    }
+
+    public bool GetAirUpAttackPressed()
+    {
+        bool result = airUpAttackPressed;
+        airUpAttackPressed = false;
+        return result;
+    }
+
+    public bool GetAirAttackPressed()
+    {
+        bool result = airAttackPressed;
+        airAttackPressed = false;
+        return result;
+    }
+
+    public bool GetAirSlamPressed()
+    {
+        bool result = airSlamPressed;
+        airSlamPressed = false;
+        return result;
+    }
 }
