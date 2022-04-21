@@ -7,9 +7,15 @@ using UnityEngine.EventSystems;
 
 public class DialogueManager : MonoBehaviour
 {
+    [Header("Params")]
+    [SerializeField] private float typingSpeed = 0.04f;
+
+    [Header("Load Globals JSON")]
+    [SerializeField] private TextAsset loadGlobalsJSON;
 
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private GameObject continueIcon;
 
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI displayNameText;
@@ -23,14 +29,19 @@ public class DialogueManager : MonoBehaviour
 
     private Story currentStory;
 
-    GameObject dialogueObject;
     public bool dialogueIsPlaying { get; private set; }
+
+    private bool canContinueToNextLine = false;
+
+    private Coroutine displayLineCoroutine;
 
     private static DialogueManager instance;
 
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
     private const string LAYOUT_TAG = "layout";
+
+    private DialogueVariables dialogueVariables;
 
     private void Awake()
     {
@@ -40,6 +51,8 @@ public class DialogueManager : MonoBehaviour
         }
         instance = this;
         SaveSystemManager.Init();
+
+        dialogueVariables = new DialogueVariables(loadGlobalsJSON);
     }
 
     public static DialogueManager GetInstance()
@@ -74,30 +87,23 @@ public class DialogueManager : MonoBehaviour
         }
 
         // handle continuing to the next line in the dialogue when submit is pressed
-        if (InputManager.GetInstance().GetSubmitPressed())
+        // NOTE: The 'currentStory.currentChoiecs.Count == 0' part was to fix a bug after the Youtube video was made
+        if (canContinueToNextLine
+            && this.currentStory.currentChoices.Count == 0 
+            && InputManager.GetInstance().GetSubmitPressed())
         {
             ContinueStory();
         }
     }
 
-
-    public void EnterDialogueMode()
+    public void EnterDialogueMode(TextAsset inkJSON)
     {
-
-    }
-
-    //TODO: Переместить этот метод в другой класс
-    //Мы передаем это абстрактному НПС, чтоыб каждый НПС мог имплементировать метод
-
-    public void EnterDialogueMode(TextAsset inkJSON, AbstractNPC abstractNPC)
-    {
-        
-        abstractNPC.EnterDialogueMode(inkJSON);
-        this.currentStory = abstractNPC.currentStory;
-        this.currentStory.ObserveVariables(abstractNPC.ObservedVariablesList(), abstractNPC.NPCDialogueFunction);
+        this.currentStory = new Story(inkJSON.text);
 
         this.dialogueIsPlaying = true;
         this.dialoguePanel.SetActive(true);
+
+        dialogueVariables.StartListening(this.currentStory);
 
         // reset portrait, layout and speaker
         this.displayNameText.text = "???";
@@ -112,6 +118,8 @@ public class DialogueManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
 
+        dialogueVariables.StopListening(this.currentStory);
+
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
@@ -124,15 +132,72 @@ public class DialogueManager : MonoBehaviour
         {
 
             // set text for the current dialogue line
-            dialogueText.text = this.currentStory.Continue();
-            // display choices, if any, for this dialogue line
-            DisplayChoices();
+            if (displayLineCoroutine != null)
+            {
+                StopCoroutine(displayLineCoroutine);
+            }
+            displayLineCoroutine = StartCoroutine(DisplayLine(this.currentStory.Continue()));
+
             //handle tags
             HandleTags(this.currentStory.currentTags);
         }
         else
         {
             StartCoroutine(ExitDialogueMode());
+        }
+    }
+
+    private IEnumerator DisplayLine(string line)
+    {
+        // set the text to the full line, but set the visible characters to 0
+        dialogueText.text = line;
+        dialogueText.maxVisibleCharacters = 0;
+        // hide items while text is typing
+        continueIcon.SetActive(false);
+        HideChoices();
+
+        canContinueToNextLine = false;
+
+        bool isAddingRichTextTag = false;
+        // display each letter one at a time
+        foreach (char letter in line.ToCharArray())
+        {
+            // if the submit button is pressed, sinish up displaying the line right away
+            if (InputManager.GetInstance().GetSubmitPressed())
+            {
+                dialogueText.maxVisibleCharacters = line.Length;
+                break;
+            }
+            //check for rich text tag, if found, add it without waiting
+            if (letter == '<' || isAddingRichTextTag)
+            {
+                isAddingRichTextTag = true;
+
+                if (letter == '>')
+                {
+                    isAddingRichTextTag = false;
+                }
+            }
+            // if not rich text, add the next letter and wait a small time
+            else
+            {
+                dialogueText.maxVisibleCharacters++;
+                yield return new WaitForSeconds(typingSpeed);
+            }
+        }
+        // actions to take after the entire line has finished displaying
+        continueIcon.SetActive(true);
+        // display choices, if any, for this dialogue line
+        DisplayChoices();
+
+        canContinueToNextLine = true;
+    }
+
+    private void HideChoices()
+    {
+        foreach( GameObject choiceButton in choices)
+        {
+            choiceButton.SetActive(false);
         }
     }
 
@@ -208,8 +273,33 @@ public class DialogueManager : MonoBehaviour
 
     public void MakeChoice(int choiceIndex)
     {
-        currentStory.ChooseChoiceIndex(choiceIndex);
+        if (canContinueToNextLine)
+        {
+            this.currentStory.ChooseChoiceIndex(choiceIndex);
+            // NOTE: The below two lines were added to fix a bug after the Youtube video was made
+            InputManager.GetInstance().RegisterSubmitPressed(); // this is specific to my InputManager script
+            ContinueStory();
+        }
     }
 
+    public Ink.Runtime.Object GetVariableState(string variableName)
+    {
+        Ink.Runtime.Object variableValue = null;
+        dialogueVariables.variables.TryGetValue(variableName, out variableValue);
+        if (variableValue == null)
+        {
+            Debug.LogWarning("Ink Variable was found to be null: " + variableName);
+        }
+        return variableValue;
+    }
 
+    // This method will get called anytime the application exists.
+    // Depending on your game, you may want to save variable state in other places
+    public void OnApplicationQuit()
+    {
+        if (dialogueVariables != null)
+        {
+            dialogueVariables.SaveVariables();
+        }
+    }
 }

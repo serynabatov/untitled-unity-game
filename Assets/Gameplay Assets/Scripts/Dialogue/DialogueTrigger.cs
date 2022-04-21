@@ -10,8 +10,6 @@ public class DialogueTrigger : MonoBehaviour
     [Header("Ink JSON start")]
     [SerializeField] private TextAsset inkJSONStart;
 
-    [Header("NPC Object")]
-    [SerializeField] private FirstNPC firstNPC;
 
     private bool playerInRange;
     private string varName;
@@ -30,7 +28,7 @@ public class DialogueTrigger : MonoBehaviour
             visualCue.SetActive(true);
             if (InputManager.GetInstance().GetInteractPressed())
             {
-                DialogueManager.GetInstance().EnterDialogueMode(inkJSONStart, this.firstNPC);
+                DialogueManager.GetInstance().EnterDialogueMode(inkJSONStart);
             }
         }
         else
@@ -38,6 +36,26 @@ public class DialogueTrigger : MonoBehaviour
             visualCue.SetActive(false);
         }
     }
+
+   /* public List<string> ObservedVariablesList()
+    {
+        //¬ этом методе будут хранитьс€ названи€ переменных за которыми мы следим.
+        //’ран€тс€ они в List 
+        List<string> variablesList = new List<string>();
+        variablesList.Add("mainVarCage");
+        variablesList.Add("certificate");
+        variablesList.Add("keyCount");
+        return variablesList;
+    }
+
+    public void ChangeVariableDialogueFunction(string variableName, object variableState)
+    {
+        // ¬ывести в консоль переменную котора€ изменила значение
+        Debug.Log(string.Format("Var NAME = {0}, Var STATE = {1}", variableName, variableState));
+
+        //Ќужен метод, который бы записывал в файл новое значение переменной по еЄ названию в переменной variableName
+        // и значению в переменной variableState
+    }*/
 
     private void OnTriggerEnter2D(Collider2D collider)
     {

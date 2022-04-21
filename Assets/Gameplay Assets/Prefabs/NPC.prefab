@@ -72,7 +72,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualCue: {fileID: 7110541812557718512}
   inkJSONStart: {fileID: 4900000, guid: 0d243153d55c59048881902a7c8ab864, type: 3}
-  firstNPC: {fileID: 7110541812557718509}
 --- !u!1 &7110541811292617513
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +197,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7110541812557718515}
   - component: {fileID: 7110541812557718508}
-  - component: {fileID: 7110541812557718509}
   m_Layer: 0
   m_Name: VisualCue
   m_TagString: Untagged
@@ -271,15 +269,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7110541812557718509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7110541812557718512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 347af709764a5a046b6ffe0ceb8a75f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

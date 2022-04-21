@@ -54,6 +54,7 @@ public class PrototypeHero : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+
         //Debug.Log("Grounded is = " + m_grounded);
         
         // Decrease death respawn timer 
@@ -78,7 +79,11 @@ public class PrototypeHero : MonoBehaviour {
         {
             return;
         }
-            
+
+        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            return;
+        }
 
         //Check if character just landed on the ground
         if (!m_grounded && m_groundSensor.State())
@@ -347,7 +352,7 @@ public class PrototypeHero : MonoBehaviour {
         }
 
         //Jump
-        else if (InputManager.GetInstance().GetJumpPressed() && (m_grounded || m_wallSlide) && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && m_disableMovementTimer < 0.0f)
+       else if (InputManager.GetInstance().GetJumpPressed() && (m_grounded || m_wallSlide) && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && m_disableMovementTimer < 0.0f)
         {
             // Check if it's a normal jump or a wall jump
             if (!m_wallSlide)

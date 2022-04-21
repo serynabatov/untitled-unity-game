@@ -200,6 +200,11 @@ public class InputManager : MonoBehaviour
         return result;
     }
 
+    public void RegisterSubmitPressed()
+    {
+        submitPressed = false;
+    }
+
     public bool GetAttackPressed()
     {
         bool result = attackPressed;
