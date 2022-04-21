@@ -50,7 +50,6 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning("Found more than one Dialogue Manager in the scene");
         }
         instance = this;
-        SaveSystemManager.Init();
 
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
     }
