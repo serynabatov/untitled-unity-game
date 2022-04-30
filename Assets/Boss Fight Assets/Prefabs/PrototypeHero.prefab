@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1254912165905175345}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.613, z: 0}
+  m_LocalPosition: {x: 0, y: -0.651, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7216317338779392757}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 7216317338779392757}
   - component: {fileID: 5779919143759674799}
   - component: {fileID: 7853426713638563735}
-  - component: {fileID: 7953872935334828980}
+  - component: {fileID: 638306170}
   m_Layer: 0
   m_Name: PrototypeHero
   m_TagString: Player
@@ -158,7 +158,7 @@ Transform:
   m_GameObject: {fileID: 5126507520524490402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 5621027181052171597}
   - {fileID: 4096299932219503466}
@@ -181,8 +181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60f39d280f172e44ab73cb24a06b940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxSpeed: 4.5
-  m_jumpForce: 7.5
+  a: 0
+  m_maxSpeed: 10
+  m_jumpForce: 5
   m_dodgeForce: 8
   m_parryKnockbackForce: 4
   m_noBlood: 0
@@ -202,14 +203,14 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0.5
   m_AngularDrag: 0.05
-  m_GravityScale: 1.25
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &7953872935334828980
-BoxCollider2D:
+--- !u!70 &638306170
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -221,19 +222,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.125, y: 2.5}
-    newSize: {x: 3.125, y: 2.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 1.28125}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: -0.0027459464}
+  m_Size: {x: 0.5, y: 1.3679619}
+  m_Direction: 0
 --- !u!1 &5291056838949151292
 GameObject:
   m_ObjectHideFlags: 0
