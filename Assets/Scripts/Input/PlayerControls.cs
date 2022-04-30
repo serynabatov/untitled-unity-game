@@ -236,17 +236,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2566ed9e-cd3b-4c35-bd05-ee6803360239"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""3bf0d5d9-3dad-4cae-8933-f986b15d3e50"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
