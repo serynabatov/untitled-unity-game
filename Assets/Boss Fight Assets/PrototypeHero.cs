@@ -10,6 +10,7 @@ public class PrototypeHero : MonoBehaviour
     public float m_parryKnockbackForce = 4.0f;
     public bool m_noBlood = false;
     public bool m_hideSword = false;
+    public bool _endedJumpEarly;
 
     private Animator m_animator;
     private Rigidbody2D m_body2d;
@@ -55,6 +56,15 @@ public class PrototypeHero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!m_grounded && InputManager.GetInstance().GetJumpReleased() && !_endedJumpEarly && m_body2d.velocity.y > 0)
+        {
+            // _currentVerticalSpeed = 0;
+            _endedJumpEarly = true;
+        }
+        if (_endedJumpEarly && m_body2d.velocity.y > 0)
+        {
+            m_body2d.velocity = new Vector2(m_body2d.velocity.x, -5.0f);
+        }
 
         //Debug.Log("Grounded is = " + m_grounded);
 
@@ -354,6 +364,7 @@ public class PrototypeHero : MonoBehaviour
         //Jump
         else if (InputManager.GetInstance().GetJumpPressed() && (m_grounded || m_wallSlide) && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && m_disableMovementTimer < 0.0f)
         {
+            _endedJumpEarly = false;
             // Check if it's a normal jump or a wall jump
             if (!m_wallSlide)
             {
@@ -473,6 +484,11 @@ public class PrototypeHero : MonoBehaviour
         {
             s.y = m_body2d.velocity.y + Physics.gravity.y * timeJump;
             timeJump += Time.deltaTime;
+        }
+        else
+        {
+            if (m_body2d.velocity.y <= 0)
+                s.y = -3;
         }
         m_body2d.velocity = s;
     }

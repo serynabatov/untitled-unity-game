@@ -25,6 +25,7 @@ public class InputManager : MonoBehaviour
     private Vector2 moveDirection = Vector2.zero;
     private float moveAxis = 0f;
     private bool jumpPressed = false;
+    private bool jumpReleased = false;
     private bool interactPressed = false;
     private bool submitPressed = false;
     private bool attackPressed = false;
@@ -66,10 +67,12 @@ public class InputManager : MonoBehaviour
         if (context.performed)
         {
             jumpPressed = true;
+            jumpReleased = false;
         }
         else if (context.canceled)
         {
             jumpPressed = false;
+            jumpReleased = true;
         }
     }
 
@@ -183,6 +186,12 @@ public class InputManager : MonoBehaviour
     {
         bool result = jumpPressed;
         jumpPressed = false;
+        return result;
+    }
+    public bool GetJumpReleased()
+    {
+        bool result = jumpReleased;
+        jumpReleased = false;
         return result;
     }
 
