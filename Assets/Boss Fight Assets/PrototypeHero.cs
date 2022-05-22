@@ -37,6 +37,8 @@ public class PrototypeHero : MonoBehaviour
     private int m_currentAttack = 0;
     private float m_timeSinceAttack = 0.0f;
     private float m_gravity;
+    [SerializeField] private Vector2 grav;
+    [SerializeField] private float buffer;
 
     // Use this for initialization
     void Start()
@@ -56,16 +58,18 @@ public class PrototypeHero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!m_grounded)
+        {
+            grav.y = m_body2d.velocity.y + Physics.gravity.y * buffer;
+            buffer += Time.deltaTime;
+        }
         if (!m_grounded && InputManager.GetInstance().GetJumpReleased() && !_endedJumpEarly && m_body2d.velocity.y > 0)
         {
             // _currentVerticalSpeed = 0;
             _endedJumpEarly = true;
         }
         if (_endedJumpEarly && m_body2d.velocity.y > 0)
-        {
-            m_body2d.velocity = new Vector2(m_body2d.velocity.x, -5.0f);
-        }
-
+            m_body2d.velocity = new Vector2(m_body2d.velocity.x, grav.y);
         //Debug.Log("Grounded is = " + m_grounded);
 
         // Decrease death respawn timer 
@@ -149,7 +153,7 @@ public class PrototypeHero : MonoBehaviour
 
         // SlowDownSpeed helps decelerate the characters when stopping
         // Set movement
-        if (!m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && m_parryTimer < 0.0f)
+        if (!m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && m_parryTimer < 0.0f && m_disableMovementTimer < 0.0f)
         {
             Move();
         }
@@ -301,7 +305,7 @@ public class PrototypeHero : MonoBehaviour
             m_animator.SetTrigger("Attack" + m_currentAttack);
 
             // Disable movement 
-            m_disableMovementTimer = 0.35f;
+            m_disableMovementTimer = 0.7f;
         }
 
         //Air Slam Attack
@@ -368,6 +372,8 @@ public class PrototypeHero : MonoBehaviour
             // Check if it's a normal jump or a wall jump
             if (!m_wallSlide)
             {
+                grav.y = 0;
+                buffer = 0;
                 m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
             }
             else
@@ -482,7 +488,7 @@ public class PrototypeHero : MonoBehaviour
         Vector2 s = new Vector2(inputX * m_maxSpeed * SlowDownSpeed, m_body2d.velocity.x * Mathf.Sin(a));
         if (!m_grounded)
         {
-            s.y = m_body2d.velocity.y + Physics.gravity.y * timeJump;
+            s.y = m_body2d.velocity.y + Physics.gravity.y * timeJump * 2;
             timeJump += Time.deltaTime;
         }
         else
