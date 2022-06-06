@@ -603,6 +603,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5779919143759674799, guid: e481822248898d04e9808a3d3ca78e5a,
         type: 3}
+      propertyPath: mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5779919143759674799, guid: e481822248898d04e9808a3d3ca78e5a,
+        type: 3}
       propertyPath: m_maxSpeed
       value: 6
       objectReference: {fileID: 0}
