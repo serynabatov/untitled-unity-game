@@ -35,6 +35,7 @@ public class InputManager : MonoBehaviour
     private bool upAttackPressed = false;
     private bool airUpAttackPressed = false;
     private bool airSlamPressed = false;
+    private bool escapePressed = false;
 
     private static InputManager instance;
 
@@ -168,6 +169,18 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public void EscPressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            escapePressed = true;
+        }
+        else if (context.canceled)
+        {
+            escapePressed = false;
+        }
+    }
+
     public Vector2 GetMoveDirection()
     {
         return moveDirection;
@@ -195,6 +208,12 @@ public class InputManager : MonoBehaviour
         return result;
     }
 
+    public bool GetEscPressed()
+    {
+        bool result = escapePressed;
+        escapePressed = false;
+        return result;
+    }
     public bool GetInteractPressed()
     {
         bool result = interactPressed;

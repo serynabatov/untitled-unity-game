@@ -1,6 +1,6 @@
 .buttonStyle {
     height: 100px;
-    width: 300px;
+    width: 375px;
     font-size: 48px;
     -unity-text-outline-width: 0;
     border-top-left-radius: 20px;
@@ -14,13 +14,15 @@
     background-color: rgb(0, 0, 0);
     margin-top: 10px;
     margin-bottom: 10px;
-    color: rgba(255, 255, 255, 255);
+    color: rgb(255, 255, 255);
     overflow: hidden;
+    -unity-text-align: middle-center;
+    top: auto;
 }
 
 .buttonStyle:hover {
     height: 100px;
-    width: 300px;
+    width: 375px;
     font-size: 48px;
     -unity-text-outline-width: 0;
     border-top-left-radius: 20px;
@@ -35,13 +37,13 @@
     margin-top: 10px;
     margin-bottom: 10px;
     opacity: 1;
-    color: rgba(255, 255, 255, 255);
+    color: rgb(255, 255, 255);
     overflow: hidden;
 }
 
 .buttonStyle:active {
     height: 100px;
-    width: 300px;
+    width: 375px;
     font-size: 48px;
     -unity-text-outline-width: 0;
     border-top-left-radius: 20px;
@@ -59,4 +61,23 @@
     -unity-text-align: middle-center;
     overflow: hidden;
     white-space: nowrap;
+}
+
+.container {
+    flex-shrink: 0;
+    flex-grow: 0;
+    align-items: center;
+    justify-content: center;
+    width: 65%;
+    height: 100%;
+    position: absolute;
+    left: 35%;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.label {
+    color: rgba(255, 255, 255, 255);
+    font-size: 50px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
 }

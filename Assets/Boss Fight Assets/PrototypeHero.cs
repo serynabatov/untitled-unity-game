@@ -58,6 +58,11 @@ public class PrototypeHero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseManager.paused)
+        {
+            return;
+        }
+
         if (!m_grounded)
         {
             grav.y = m_body2d.velocity.y + Physics.gravity.y * buffer;

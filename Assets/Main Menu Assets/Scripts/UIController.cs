@@ -10,6 +10,7 @@ public class UIController : MonoBehaviour
     public Button optionsButton;
     public Button creditsButton;
     public Button exitButton;
+    public Label label;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +20,11 @@ public class UIController : MonoBehaviour
         optionsButton = root.Q<Button>("optionsButton");
         creditsButton = root.Q<Button>("creditsButton");
         exitButton = root.Q<Button>("exitButton");
+        label = root.Q<Label>("label");
 
         startButton.clicked += StartButtonPressed;
         exitButton.clicked += ExitButtonPressed;
+        optionsButton.clicked += OptionsButtonPressed;
     }
 
     private void StartButtonPressed()
@@ -32,5 +35,11 @@ public class UIController : MonoBehaviour
     private void ExitButtonPressed()
     {
         Application.Quit();
+    }
+
+    private void OptionsButtonPressed()
+    {
+        label.text = "SSSSSSSS";
+        label.style.display = DisplayStyle.None;
     }
 }
