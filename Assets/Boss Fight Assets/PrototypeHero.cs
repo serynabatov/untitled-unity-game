@@ -496,5 +496,4 @@ public class PrototypeHero : MonoBehaviour
         }
         m_body2d.velocity = s;
     }
-
 }

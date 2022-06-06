@@ -188,7 +188,6 @@ public class InputManager : MonoBehaviour
         jumpPressed = false;
         return result;
     }
-
     public bool GetJumpReleased()
     {
         bool result = jumpReleased;
