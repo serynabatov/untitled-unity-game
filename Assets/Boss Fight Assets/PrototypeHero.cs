@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PrototypeHero : MonoBehaviour
+public class PrototypeHero : MonoBehaviour, IDataPersistence
 {
     public float m_maxSpeed = 4.5f;
     public float m_jumpForce = 7.5f;
@@ -495,5 +495,15 @@ public class PrototypeHero : MonoBehaviour
                 s.y = -3;
         }
         m_body2d.velocity = s;
+    }
+
+    public void LoadData(PlayerData data)
+    {
+        transform.position = data.playerPosition;
+    }
+
+    public void SaveData(ref PlayerData data)
+    {
+        data.playerPosition = transform.position;
     }
 }
