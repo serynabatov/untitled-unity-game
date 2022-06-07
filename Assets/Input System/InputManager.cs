@@ -11,7 +11,7 @@ using UnityEngine.InputSystem;
 1. Move "AD"
 2. Jump "Space"
 3. Attack "Left mouse click"
-4. Interact dialogue/interaction(взаимодействие) "E"
+4. Interact dialogue/interaction(пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ) "E"
 5. Interact menu "ESC"
 6. Interact inventory "I"
 7. Guard/Parry "Right mouse click"

@@ -7,9 +7,8 @@ using UnityEngine.UIElements;
 public class PauseManager : MonoBehaviour
 {
     public static bool paused;
-    [SerializeField] GameObject pauseMenu;
+    //[SerializeField] GameObject pauseMenu;
 
-    public PauseUIController pauseUI;
     private static PauseManager instance;
     private void Awake()
     {
@@ -27,7 +26,7 @@ public class PauseManager : MonoBehaviour
 
     private void Start()
     {
-        pauseUI = pauseMenu.GetComponent<PauseUIController>();
+        //pauseUI = pauseMenu.GetComponent<PauseUIController>();
         ResumeGame();
     }
 
@@ -51,14 +50,14 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 0;
         //AudioListener.pause = true;
         paused = true;
-        pauseUI.pauseBackground.style.display = DisplayStyle.Flex;
+        //pauseUI.pauseBackground.style.display = DisplayStyle.Flex;
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
         //AudioListener.pause = false;
-        pauseUI.pauseBackground.style.display = DisplayStyle.None;
+       // pauseUI.pauseBackground.style.display = DisplayStyle.None;
         paused = false;
     }
 }

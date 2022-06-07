@@ -16,7 +16,7 @@ public class PauseUIController : MonoBehaviour
     public DropdownMenu dropdownMenu;
 
     private void Awake()
-    {
+    { /*
         root = GetComponent<UIDocument>().rootVisualElement;
 
         continueButton = root.Q<Button>("continueButton");
@@ -25,13 +25,13 @@ public class PauseUIController : MonoBehaviour
         exitToMainmenuButton = root.Q<Button>("exitToMainmenuButton");
         pauseBackground = root.Q<VisualElement>("BackGround");
 
-        
+        */
     }
     // Start is called before the first frame update
     void Start()
     {
-        continueButton.clickable.clicked += Continue;
-        exitToMainmenuButton.clickable.clicked += ExitToMainMenu;
+       // continueButton.clickable.clicked += Continue;
+        //exitToMainmenuButton.clickable.clicked += ExitToMainMenu;
     }
 
     private void Continue()

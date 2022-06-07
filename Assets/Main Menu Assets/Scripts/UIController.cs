@@ -14,7 +14,7 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var root = GetComponent<UIDocument>().rootVisualElement;
+        /* var root = GetComponent<UIDocument>().rootVisualElement;
 
         startButton = root.Q<Button>("startButton");
         optionsButton = root.Q<Button>("optionsButton");
@@ -25,6 +25,7 @@ public class UIController : MonoBehaviour
         startButton.clicked += StartButtonPressed;
         exitButton.clicked += ExitButtonPressed;
         optionsButton.clicked += OptionsButtonPressed;
+        */
     }
 
     private void StartButtonPressed()
