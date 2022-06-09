@@ -11,7 +11,8 @@
                     "id": "fa0a6506-a3ef-48c5-8e17-d1a2296c8da1",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "MoveAxis",
@@ -19,7 +20,8 @@
                     "id": "e117df34-6671-4f6f-a873-a7e34f591602",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Attack",
@@ -27,7 +29,8 @@
                     "id": "afad137e-2881-426f-9825-3a4df8391109",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Parry",
@@ -35,7 +38,8 @@
                     "id": "e0fd3c24-f989-475d-8242-740cf07ee6f2",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Interact",
@@ -43,7 +47,8 @@
                     "id": "634da9fc-0f17-45d7-b270-512b27826239",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "OpenMenu",
@@ -51,7 +56,8 @@
                     "id": "fe417eb8-6ffb-43d9-96fd-e62a4552b79f",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "OpenInventory",
@@ -59,7 +65,8 @@
                     "id": "19ab56cd-6785-4881-a1be-dbc3100c1456",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "SubmitDialogue",
@@ -67,7 +74,8 @@
                     "id": "a60a69c3-d1ab-43ef-86bc-7de6dc3c76c5",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Skill",
@@ -75,7 +83,8 @@
                     "id": "33fd3b2c-89c3-4d0a-a851-58b6b1454f4c",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Jump",
@@ -83,7 +92,8 @@
                     "id": "a29fa0f9-6ff4-432d-acc0-6bda932b9761",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "UpAttack",
@@ -91,7 +101,8 @@
                     "id": "90da3e47-785a-49da-be2d-1af9650547cf",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "AttackAirSlam",
@@ -99,7 +110,8 @@
                     "id": "ea49c410-5c7a-4a34-9e87-f4084a1ae70f",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Dodge",
@@ -107,7 +119,8 @@
                     "id": "5bef2ac8-9025-4fd8-8cd0-e738cde19d20",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -420,7 +433,83 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "f0981869-5d24-4bba-a925-d8026cf32bcf",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "f1468001-c030-4ed1-b57b-790253bee500",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Point",
+                    "type": "PassThrough",
+                    "id": "7d2c59a0-3283-44b9-80fd-a6cbeddbc5c5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8e39527e-c761-4c9f-92ea-1cd189e6f878",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a35265f6-8429-4e7c-b9a2-91f4d08a4a18",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "588f5acc-fe2e-43c5-aff1-caf248ccfd21",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Keyboard&Mouse",
+            "bindingGroup": "Keyboard&Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }

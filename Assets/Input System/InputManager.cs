@@ -37,7 +37,6 @@ public class InputManager : MonoBehaviour
     private bool airSlamPressed = false;
     private bool escapePressed = false;
     private static InputManager instance;
-
     private void Awake()
     {
         if (instance != null)

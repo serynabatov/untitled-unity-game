@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 public class PauseManager : MonoBehaviour
 {
     public static bool paused;
-    //[SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject pauseBackground;
+    private GameObject optionsMenu;
 
     private static PauseManager instance;
     private void Awake()
@@ -22,12 +24,11 @@ public class PauseManager : MonoBehaviour
     public static PauseManager GetInstance()
     {
         return instance;
-    } 
+    }
 
     private void Start()
     {
-        //pauseUI = pauseMenu.GetComponent<PauseUIController>();
-        ResumeGame();
+        optionsMenu = pauseBackground.transform.GetChild(1).gameObject;
     }
 
     private void Update()
@@ -50,14 +51,33 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 0;
         //AudioListener.pause = true;
         paused = true;
-        //pauseUI.pauseBackground.style.display = DisplayStyle.Flex;
+        pauseBackground.SetActive(true);
+        optionsMenu.SetActive(false);
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
         //AudioListener.pause = false;
-       // pauseUI.pauseBackground.style.display = DisplayStyle.None;
         paused = false;
+        pauseBackground.SetActive(false);
+
+    }
+
+    /// <summary>
+    /// TODO: Настроить кнопку опшионс
+    /// </summary>
+    public void Options()
+    {
+        optionsMenu.SetActive(optionsMenu.activeSelf == true ? false : true);
+    }
+
+    /// <summary>
+    /// *Запуск стандартной меин меню сцены
+    /// TODO: Изменить параметры запуска в будущем
+    /// </summary>
+    public void ExitToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

@@ -134,6 +134,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -143,8 +145,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -165,9 +167,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
@@ -900,6 +905,40 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Dust_31: 21300070
+      Dust_25: 21300058
+      Dust_30: 21300068
+      Dust_8: 21300024
+      Dust_17: 21300042
+      Dust_4: 21300016
+      Dust_7: 21300022
+      Dust_20: 21300048
+      Dust_19: 21300046
+      Dust_23: 21300054
+      Dust_1: 21300010
+      Dust_27: 21300062
+      Dust_24: 21300056
+      Dust_6: 21300020
+      Dust_16: 21300040
+      Dust_29: 21300066
+      Dust_28: 21300064
+      Dust_3: 21300014
+      Dust_9: 21300026
+      Dust_10: 21300028
+      Dust_26: 21300060
+      Dust_22: 21300052
+      Dust_13: 21300034
+      Dust_14: 21300036
+      Dust_12: 21300032
+      Dust_21: 21300050
+      Dust_15: 21300038
+      Dust_32: 21300072
+      Dust_0: 21300008
+      Dust_2: 21300012
+      Dust_11: 21300030
+      Dust_5: 21300018
+      Dust_18: 21300044
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
