@@ -1,43 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-public class PauseManager : MonoBehaviour
+public class MainMenuManager : MonoBehaviour
 {
-    public static bool paused;
+    [SerializeField] GameObject optionsMenu;
     List<int> widths = new List<int>() { 1920, 1280, 960 };
     List<int> heights = new List<int>() { 1080, 800, 540 };
-    [SerializeField] GameObject pauseBackground;
     [Header("Graphics")]
     [SerializeField] Toggle fullscreenToogle;
     [SerializeField] TMP_Dropdown resolutionDropdown;
     [Header("Sounds")]
     [SerializeField] Slider musicVolumeSlider;
-    private GameObject optionsMenu;
+    /* private static MainMenuManager instance;
+     private void Awake()
+     {
+         if (instance != null)
+         {
+             Debug.LogError("Found more than one Main Menu Manager in the scene.");
+         }
+         instance = this;
+     }
 
-    private static PauseManager instance;
-    private void Awake()
+     public static MainMenuManager GetInstance()
+     {
+         return instance;
+     } */
+    void Start()
     {
-        if (instance != null)
-        {
-            Debug.LogError("Found more than one Pause Manager in the scene.");
-        }
-        instance = this;
-        ResumeGame();
-    }
-
-    public static PauseManager GetInstance()
-    {
-        return instance;
-    }
-
-    private void Start()
-    {
-        optionsMenu = pauseBackground.transform.GetChild(1).gameObject;
         //* Разрешение экрана дефолтное изменённое запускаем и фуллскрин или в окне
         if (PlayerPrefs.HasKey("defaultIndexResolution"))
         {
@@ -55,42 +49,16 @@ public class PauseManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        if (InputManager.GetInstance().GetEscPressed())
-        {
-            if (paused)
-            {
-                ResumeGame();
-            }
-            else
-            {
-                PauseGame();
-            }
-        }
-    }
-
-    public void PauseGame()
-    {
-        Time.timeScale = 0;
-        //AudioListener.pause = true;
-        paused = true;
-        pauseBackground.SetActive(true);
-        optionsMenu.SetActive(false);
-    }
-
-    public void ResumeGame()
-    {
-        Time.timeScale = 1;
-        //AudioListener.pause = false;
-        paused = false;
-        pauseBackground.SetActive(false);
 
     }
 
-    /// <summary>
-    /// TODO: Настроить кнопку опшионс
-    /// </summary>
+    public void ContinueGame()
+    {
+        SceneManager.LoadScene("Gameplay");
+    }
     public void Options()
     {
         optionsMenu.SetActive(optionsMenu.activeSelf == true ? false : true);
@@ -100,9 +68,9 @@ public class PauseManager : MonoBehaviour
     /// *Запуск стандартной меин меню сцены
     /// TODO: Изменить параметры запуска в будущем
     /// </summary>
-    public void ExitToMenu()
+    public void ExitGame()
     {
-        SceneManager.LoadScene("MainMenu");
+        Application.Quit();
     }
 
     /// <summary>
