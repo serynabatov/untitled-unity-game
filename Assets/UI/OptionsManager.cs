@@ -6,30 +6,28 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class MainMenuManager : MonoBehaviour
+public class OptionsManager : MonoBehaviour
 {
     [SerializeField] GameObject optionsMenu;
-    List<int> widths = new List<int>() { 1920, 1280, 960 };
-    List<int> heights = new List<int>() { 1080, 800, 540 };
     [Header("Graphics")]
     [SerializeField] Toggle fullscreenToogle;
     [SerializeField] TMP_Dropdown resolutionDropdown;
     [Header("Sounds")]
     [SerializeField] Slider musicVolumeSlider;
-    /* private static MainMenuManager instance;
-     private void Awake()
-     {
-         if (instance != null)
-         {
-             Debug.LogError("Found more than one Main Menu Manager in the scene.");
-         }
-         instance = this;
-     }
+    private static OptionsManager instance;
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError("Found more than one Options Manager in the scene.");
+        }
+        instance = this;
+    }
 
-     public static MainMenuManager GetInstance()
-     {
-         return instance;
-     } */
+    public static OptionsManager GetInstance()
+    {
+        return instance;
+    }
     void Start()
     {
         //* Разрешение экрана дефолтное изменённое запускаем и фуллскрин или в окне
@@ -55,38 +53,19 @@ public class MainMenuManager : MonoBehaviour
 
     }
 
-    public void ContinueGame()
-    {
-        SceneManager.LoadScene("Gameplay");
-    }
-    public void Options()
-    {
-        optionsMenu.SetActive(optionsMenu.activeSelf == true ? false : true);
-    }
+
+
 
     /// <summary>
-    /// *Запуск стандартной меин меню сцены
-    /// TODO: Изменить параметры запуска в будущем
-    /// </summary>
-    public void ExitGame()
-    {
-        Application.Quit();
-    }
-
-    /// <summary>
-    //  *Sets resolution
+    ///  *Sets resolution
     /// </summary>
     /// <param name="index"></param>
     public void SetResolution(int index)
     {
-        bool fullscreen = Screen.fullScreen;
-        int width = widths[index];
-        int height = heights[index];
-        Screen.SetResolution(width, height, fullscreen);
+        string[] resolution = resolutionDropdown.options[index].text.Split('x');
+        Screen.SetResolution(int.Parse(resolution[0]), int.Parse(resolution[1]), Screen.fullScreen);
         PlayerPrefs.SetInt("defaultIndexResolution", index);
-
         resolutionDropdown.value = index;
-
     }
     /// <summary>
     /// *Sets fullscreen status
