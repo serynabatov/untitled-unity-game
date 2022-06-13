@@ -47,15 +47,6 @@ public class OptionsManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
-
-
     /// <summary>
     ///  *Sets resolution
     /// </summary>
@@ -67,6 +58,7 @@ public class OptionsManager : MonoBehaviour
         PlayerPrefs.SetInt("defaultIndexResolution", index);
         resolutionDropdown.value = index;
     }
+
     /// <summary>
     /// *Sets fullscreen status
     /// </summary>
