@@ -12,8 +12,6 @@ public class DialogueTrigger : MonoBehaviour
 
 
     private bool playerInRange;
-    private string varName;
-    private bool varState = false;
 
     private void Awake()
     {
@@ -37,25 +35,25 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-   /* public List<string> ObservedVariablesList()
-    {
-        //В этом методе будут храниться названия переменных за которыми мы следим.
-        //Хранятся они в List 
-        List<string> variablesList = new List<string>();
-        variablesList.Add("mainVarCage");
-        variablesList.Add("certificate");
-        variablesList.Add("keyCount");
-        return variablesList;
-    }
+    /* public List<string> ObservedVariablesList()
+     {
+         //пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
+         //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ List 
+         List<string> variablesList = new List<string>();
+         variablesList.Add("mainVarCage");
+         variablesList.Add("certificate");
+         variablesList.Add("keyCount");
+         return variablesList;
+     }
 
-    public void ChangeVariableDialogueFunction(string variableName, object variableState)
-    {
-        // Вывести в консоль переменную которая изменила значение
-        Debug.Log(string.Format("Var NAME = {0}, Var STATE = {1}", variableName, variableState));
+     public void ChangeVariableDialogueFunction(string variableName, object variableState)
+     {
+         // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+         Debug.Log(string.Format("Var NAME = {0}, Var STATE = {1}", variableName, variableState));
 
-        //Нужен метод, который бы записывал в файл новое значение переменной по её названию в переменной variableName
-        // и значению в переменной variableState
-    }*/
+         //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ variableName
+         // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ variableState
+     }*/
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
