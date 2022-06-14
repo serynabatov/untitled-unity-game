@@ -13,6 +13,7 @@ public class DataPersistenceManager : MonoBehaviour
     [Header("File Storage Configuration")]
     [SerializeField] private string fileName;
     [SerializeField] private bool useEncryption;
+    [SerializeField] private bool useDebug;
 
     /// <summary>
     /// The player data to track.
@@ -38,7 +39,10 @@ public class DataPersistenceManager : MonoBehaviour
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-        LoadGame();
+        if (useDebug)
+        {
+            LoadGame();
+        }
     }
 
     /// <summary>
