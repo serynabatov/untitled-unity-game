@@ -9,6 +9,7 @@ using UnityEngine;
 public class PlayerData
 {
     public Vector3 playerPosition;
+
     public SerializableDictionary<string, bool> keysCollected;
 
     /// <summary>
@@ -16,8 +17,8 @@ public class PlayerData
     /// </summary>
     public PlayerData()
     {
-        this.playerPosition = Vector3.zero;
         this.keysCollected = new SerializableDictionary<string, bool>();
+        this.playerPosition = new Vector3(-100, 18, 0);
     }
 
     /*
