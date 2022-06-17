@@ -6,59 +6,62 @@ using System.Collections.Generic;
 /// <summary>
 /// Audio manager.
 /// </summary>
-public class AudioManager : MonoBehavior
+public class AudioManager : MonoBehaviour
 {
     public const string preferenceAudioMute = "preferenceAudioMute";
 
-    [SerializeField] 
-    private Dictionary<AudioClipName, Sound> sounds;
+    [SerializeField]
+    private Dictionary<AudioClipName, BasicSound> sounds;
 
     [SerializeField]
     private AudioMixerGroup musicMixerGroup;
 
     [SerializeField]
     private AudioMixerGroup soundEffectMixerGroup;
+    public static AudioManager Instance;
 
     private void Awake()
     {
+        Instance = this;
+
         if (PlayerPrefs.HasKey(preferenceAudioMute))
         {
             AudioListener.volume = PlayerPrefs.GetFloat(preferenceAudioMute);
         }
 
 
-        foreach (KeyValuePair<AudioClipName, Sound> entry in sounds)
+        foreach (KeyValuePair<AudioClipName, BasicSound> entry in sounds)
         {
-            Sound s = entry.Value;
+            BasicSound s = entry.Value;
 
-            s.source = gameObject.AddComponent<AudioSource>();
+            s.audioSource = gameObject.AddComponent<AudioSource>();
 
-            s.source.clip = s.audioClip;
-            s.source.loop = s.isLoop;
-            s.source.playOnAwake = s.playOnAwake;
-            s.source.volume = s.volume;
+            s.audioSource.clip = s.audioClip;
+            s.audioSource.loop = s.isLoop;
+            s.audioSource.playOnAwake = s.playOnAwake;
+            s.audioSource.volume = s.volume;
 
             switch (s.audioType)
             {
                 case AudioType.SoundEffect:
-                    s.source.outputAudioMixerGroup = soundEffectMixerGroup;
+                    s.audioSource.outputAudioMixerGroup = soundEffectMixerGroup;
                     break;
 
                 case AudioType.MainMusic:
-                    s.source.outputAudioMixerGroup = musicMixerGroup;
+                    s.audioSource.outputAudioMixerGroup = musicMixerGroup;
                     break;
             }
 
             if (s.playOnAwake)
             {
-                s.source.Play();
+                s.audioSource.Play();
             }
         }
     }
 
-    private Sound GetSound(AudioClipName audioClipName)
+    private BasicSound GetSound(AudioClipName audioClipName)
     {
-        Sound sound;
+        BasicSound sound;
         if (!sounds.TryGetValue(audioClipName, out sound))
         {
             // nothing here
@@ -73,7 +76,7 @@ public class AudioManager : MonoBehavior
     /// <param name="audioClipName">Audio clip name.</param>
     public void Play(AudioClipName audioClipName)
     {
-        Sound s = GetSound(audioClipName);
+        BasicSound s = GetSound(audioClipName);
         if (s != null)
         {
             s.audioSource.Play();
@@ -86,7 +89,7 @@ public class AudioManager : MonoBehavior
     /// <param name="audioClipName">Audio clip name.</param>
     public void Stop(AudioClipName audioClipName)
     {
-        Sound s = GetSound(audioClipName);
+        BasicSound s = GetSound(audioClipName);
         if (s != null)
         {
             s.audioSource.Stop();

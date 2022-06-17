@@ -21,12 +21,12 @@ public class AudioOptionsManager : MonoBehaviour
         {
             case AudioType.SoundEffect:
                 soundsEffectVolume = value;
-                soundEffectSliderText.value = castedValue;
+                soundEffectSliderText.text = castedValue;
                 break;
 
             case AudioType.MainMusic:
                 musicVolume = value;
-                musicSliderText.value = castedValue;
+                musicSliderText.text = castedValue;
                 break;
         }
 

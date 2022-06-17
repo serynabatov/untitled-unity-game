@@ -1,16 +1,16 @@
-using EntityEngine;
+using UnityEngine;
 
 
 /// <summary>
 /// This class keeps the information about the mp3/wav file
 /// </summary>
 [System.Serializable]
-public class Sound
+public class BasicSound
 {
     /// <summary>
     /// The audio source.
     /// </summary>
-    [HideInInspector] 
+    [HideInInspector]
     public AudioSource audioSource;
 
     public AudioType audioType;
@@ -28,6 +28,6 @@ public class Sound
     public bool isLoop;
     public bool playOnAwake;
 
-    [Range(0, 1)] 
+    [Range(0, 1)]
     public float volume = 0.5f;
 }
