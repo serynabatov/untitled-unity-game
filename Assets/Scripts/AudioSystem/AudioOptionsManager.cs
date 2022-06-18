@@ -13,23 +13,24 @@ public class AudioOptionsManager : MonoBehaviour
     private TextMeshProUGUI soundEffectSliderText;
 
 
-    public void OnSliderValueChanged(float value, AudioType audioType)
+    public void OnMusicSliderValueChanged(float value)
     {
         string castedValue = ((int)(value * 100)).ToString();
 
-        switch (audioType)
-        {
-            case AudioType.SoundEffect:
-                soundsEffectVolume = value;
-                soundEffectSliderText.text = castedValue;
-                break;
-
-            case AudioType.MainMusic:
-                musicVolume = value;
-                musicSliderText.text = castedValue;
-                break;
-        }
+        musicVolume = value;
+        musicSliderText.text = castedValue;
 
         AudioManager.Instance.UpdateMixerVolume();
     }
+
+    public void OnEffectSliderValueChanged(float value)
+    {
+        string castedValue = ((int)(value * 100)).ToString();
+
+        soundsEffectVolume = value;
+        soundEffectSliderText.text = castedValue;
+
+        AudioManager.Instance.UpdateMixerVolume();
+    }
+
 }
