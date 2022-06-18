@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-[Serializable]
+[System.Serializable]
 public class CustomMap<TKey, TValue>
 {
 
