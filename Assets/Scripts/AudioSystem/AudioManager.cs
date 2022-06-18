@@ -11,13 +11,12 @@ public class AudioManager : MonoBehaviour
     public const string preferenceAudioMute = "preferenceAudioMute";
 
     [SerializeField]
-    private CustomMap<AudioClipName, BasicSound> sounds;
-
-    [SerializeField]
     private AudioMixerGroup musicMixerGroup;
-
     [SerializeField]
     private AudioMixerGroup soundEffectMixerGroup;
+    [SerializeField]
+    private CustomMap<AudioClipName, BasicSound> sounds;
+
     public static AudioManager Instance;
 
     private void Awake()
