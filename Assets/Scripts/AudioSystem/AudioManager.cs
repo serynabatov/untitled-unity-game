@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     public const string preferenceAudioMute = "preferenceAudioMute";
 
     [SerializeField]
-    private Dictionary<AudioClipName, BasicSound> sounds;
+    private CustomMap<AudioClipName, BasicSound> sounds;
 
     [SerializeField]
     private AudioMixerGroup musicMixerGroup;
@@ -30,7 +30,7 @@ public class AudioManager : MonoBehaviour
         }
 
 
-        foreach (KeyValuePair<AudioClipName, BasicSound> entry in sounds)
+        foreach (KeyValuePair<AudioClipName, BasicSound> entry in sounds.DictionaryData)
         {
             BasicSound s = entry.Value;
 
@@ -62,7 +62,7 @@ public class AudioManager : MonoBehaviour
     private BasicSound GetSound(AudioClipName audioClipName)
     {
         BasicSound sound;
-        if (!sounds.TryGetValue(audioClipName, out sound))
+        if (!sounds.DictionaryData.TryGetValue(audioClipName, out sound))
         {
             // nothing here
             return null;
