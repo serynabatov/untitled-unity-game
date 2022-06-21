@@ -9,6 +9,7 @@ using UnityEngine.EventSystems;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] GameObject optionsMenu;
+    [SerializeField] GameObject saveLoadMenu;
     private static MenuManager instance;
     private void Awake()
     {
@@ -22,16 +23,6 @@ public class MenuManager : MonoBehaviour
     public static MenuManager GetInstance()
     {
         return instance;
-    }
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     /// <summary>
@@ -73,6 +64,8 @@ public class MenuManager : MonoBehaviour
     public void SaveGame()
     {
         // TODO: Чтобы реально сохранял игру
+        optionsMenu.SetActive(false);
+        saveLoadMenu.SetActive(saveLoadMenu.activeSelf == true ? false : true);
     }
 
     /// <summary>
@@ -80,6 +73,7 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     public void Options()
     {
+        saveLoadMenu.SetActive(false);
         optionsMenu.SetActive(optionsMenu.activeSelf == true ? false : true);
     }
 
