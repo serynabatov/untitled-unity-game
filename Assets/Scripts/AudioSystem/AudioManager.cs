@@ -28,6 +28,16 @@ public class AudioManager : MonoBehaviour
             AudioListener.volume = PlayerPrefs.GetFloat(preferenceAudioMute);
         }
 
+        if (PlayerPrefs.HasKey(Constants.preferenceAudioVolume))
+        {
+            musicMixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat(Constants.preferenceAudioVolume) * 20);
+        }
+
+        if (PlayerPrefs.HasKey(Constants.preferenceSoundEffectsVolume))
+        {
+            soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log10(PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume) * 20);
+        }
+
 
         foreach (KeyValuePair<AudioClipName, BasicSound> entry in sounds.DictionaryData)
         {
