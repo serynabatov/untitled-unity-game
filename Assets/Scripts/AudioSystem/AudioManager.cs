@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections.Generic;
+using UnityEngine.UI;
+
 
 /// <summary>
 /// Audio manager.
@@ -12,8 +14,16 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField]
     private AudioMixerGroup musicMixerGroup;
+
+    [SerializeField]
+    Slider musicVolumeSlider;
+
     [SerializeField]
     private AudioMixerGroup soundEffectMixerGroup;
+
+    [SerializeField]
+    Slider soundEffectSlider;
+
     [SerializeField]
     private CustomMap<AudioClipName, BasicSound> sounds;
 
@@ -30,12 +40,14 @@ public class AudioManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey(Constants.preferenceAudioVolume))
         {
-            musicMixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat(Constants.preferenceAudioVolume) * 20);
+            musicMixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat(Constants.preferenceAudioVolume) * 20));
+            musicVolumeSlider.value = PlayerPrefs.GetFloat(Constants.preferenceAudioVolume);
         }
 
         if (PlayerPrefs.HasKey(Constants.preferenceSoundEffectsVolume))
         {
-            soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log10(PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume) * 20);
+            soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log10(PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume) * 20));
+            soundEffectSlider.value = PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume);
         }
 
 
@@ -50,13 +62,13 @@ public class AudioManager : MonoBehaviour
             s.audioSource.playOnAwake = s.playOnAwake;
             s.audioSource.volume = s.volume;
 
-            switch (s.audioType)
+            switch (entry.Key)
             {
-                case AudioType.SoundEffect:
+                case AudioClipName.SoundEffect:
                     s.audioSource.outputAudioMixerGroup = soundEffectMixerGroup;
                     break;
 
-                case AudioType.MainMusic:
+                case AudioClipName.MusicEffect:
                     s.audioSource.outputAudioMixerGroup = musicMixerGroup;
                     break;
             }

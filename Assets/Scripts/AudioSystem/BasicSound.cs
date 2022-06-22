@@ -13,17 +13,10 @@ public class BasicSound
     [HideInInspector]
     public AudioSource audioSource;
 
-    public AudioType audioType;
-
     /// <summary>
     /// The mp3, wav file
     /// </summary>
     public AudioClip audioClip;
-
-    /// <summary>
-    /// We have enums for clipNames
-    /// </summary>
-    public AudioClipName clipName;
 
     public bool isLoop;
     public bool playOnAwake;

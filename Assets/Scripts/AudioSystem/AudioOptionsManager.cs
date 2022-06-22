@@ -12,7 +12,6 @@ public class AudioOptionsManager : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI soundEffectSliderText;
-
     private void Awake()
     {
         if (PlayerPrefs.HasKey(Constants.preferenceAudioVolumeText))
