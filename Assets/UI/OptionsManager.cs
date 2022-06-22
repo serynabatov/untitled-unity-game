@@ -12,8 +12,6 @@ public class OptionsManager : MonoBehaviour
     [Header("Graphics")]
     [SerializeField] Toggle fullscreenToogle;
     [SerializeField] TMP_Dropdown resolutionDropdown;
-    [Header("Sounds")]
-    [SerializeField] Slider musicVolumeSlider;
     private static OptionsManager instance;
     private void Awake()
     {
@@ -39,12 +37,6 @@ public class OptionsManager : MonoBehaviour
         {
             SetFullscreen(PlayerPrefs.GetInt("fullscreenStatus", 1) == 1 ? true : false);
         }
-        //* Громкость музыки настройка
-        if (PlayerPrefs.HasKey("MusicVolume"))
-        {
-            SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume", 1.0f));
-            musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
-        }
     }
 
     /// <summary>
@@ -68,16 +60,5 @@ public class OptionsManager : MonoBehaviour
         Screen.fullScreen = _fullscreen;
         fullscreenToogle.isOn = _fullscreen;
         PlayerPrefs.SetInt("fullscreenStatus", _fullscreen == true ? 1 : 0);
-    }
-
-    /// <summary>
-    /// !Sets only musics volume
-    /// TODO: Добавить ещё отдельный код для слайдерный звук эффектов
-    /// </summary>
-    /// <param name="volume"></param>
-    public void SetMusicVolume(float volume)
-    {
-        AudioListener.volume = volume;
-        PlayerPrefs.SetFloat("MusicVolume", volume);
     }
 }
