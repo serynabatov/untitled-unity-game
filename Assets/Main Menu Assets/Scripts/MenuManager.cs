@@ -8,8 +8,12 @@ using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] GameObject optionsMenu;
-    [SerializeField] GameObject saveLoadMenu;
+    [SerializeField]
+    private GameObject optionsMenu;
+
+    [SerializeField]
+    private GameObject exitConfirmationWindow;
+
     private static MenuManager instance;
     private void Awake()
     {
@@ -31,14 +35,21 @@ public class MenuManager : MonoBehaviour
     public void ContinueGameCheckpoint()
     {
         // TODO: Загружал чтоб по последнему сайву
-        SceneManager.LoadScene("Gameplay");
+        if (!exitConfirmationWindow.activeSelf)
+        {
+            SceneManager.LoadScene("Gameplay");
+        }
     }
+
     /// <summary>
     /// ! Убрать паузу в текущей игре
     /// </summary>
     public void ContinueGame()
     {
-        PauseManager.GetInstance().ResumeGame();
+        if (!exitConfirmationWindow.activeSelf)
+        {
+            PauseManager.GetInstance().ResumeGame();
+        }
     }
 
     /// <summary>
@@ -47,25 +58,10 @@ public class MenuManager : MonoBehaviour
     public void NewGame()
     {
         // TODO: Запускал новую игру с нового сейв файла
-        SceneManager.LoadScene("Gameplay");
-    }
-
-    /// <summary>
-    /// ! Загрузить игру с выбранного сейва
-    /// </summary>
-    public void LoadGame()
-    {
-
-    }
-
-    /// <summary>
-    /// ! Сохраняет игру
-    /// </summary>
-    public void SaveGame()
-    {
-        // TODO: Чтобы реально сохранял игру
-        optionsMenu.SetActive(false);
-        saveLoadMenu.SetActive(saveLoadMenu.activeSelf == true ? false : true);
+        if (!exitConfirmationWindow.activeSelf)
+        {
+            SceneManager.LoadScene("Gameplay");
+        }
     }
 
     /// <summary>
@@ -73,8 +69,11 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     public void Options()
     {
-        saveLoadMenu.SetActive(false);
-        optionsMenu.SetActive(optionsMenu.activeSelf == true ? false : true);
+        if (!exitConfirmationWindow.activeSelf)
+        {
+            optionsMenu.SetActive(optionsMenu.activeSelf == true ? false : true);
+        }
+
     }
 
     /// <summary>
@@ -83,7 +82,27 @@ public class MenuManager : MonoBehaviour
     public void ExitGame()
     {
         // TODO: Изменить параметры запуска в будущем
+        if (!exitConfirmationWindow.activeSelf)
+        {
+            exitConfirmationWindow.SetActive(true);
+        }
+    }
+
+    /// <summary>
+    /// Окно подтверждения выхода из игры
+    /// </summary>
+    public void ConfirmateExitGame()
+    {
+        exitConfirmationWindow.SetActive(false);
         Application.Quit();
+    }
+
+    /// <summary>
+    /// Окно отказа от выхода из игры
+    /// </summary>
+    public void DismissExitGame()
+    {
+        exitConfirmationWindow.SetActive(false);
     }
 
     /// <summary>
@@ -92,6 +111,26 @@ public class MenuManager : MonoBehaviour
     public void ExitToMainMenu()
     {
         // TODO: Изменить параметры запуска в будущем
+        if (!exitConfirmationWindow.activeSelf)
+        {
+            exitConfirmationWindow.SetActive(true);
+        }
+    }
+
+    /// <summary>
+    /// Окно подтверждения выхода в главное меню
+    /// </summary>
+    public void ConfirmateExitToMainMenu()
+    {
+        exitConfirmationWindow.SetActive(false);
         SceneManager.LoadScene("MainMenu");
+    }
+
+    /// <summary>
+    /// Окно отказа от выхода в главное меню
+    /// </summary>
+    public void DismissExitToMainMenu()
+    {
+        exitConfirmationWindow.SetActive(false);
     }
 }
