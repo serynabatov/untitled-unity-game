@@ -198,6 +198,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1823319635, guid: e517d7f0eca8ed0439b2074f4dd71164, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1845814273, guid: e517d7f0eca8ed0439b2074f4dd71164, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2980,6 +2984,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 31767567}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1280532864 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 577646459, guid: e517d7f0eca8ed0439b2074f4dd71164,
+    type: 3}
+  m_PrefabInstance: {fileID: 31767567}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1290568170
 GameObject:
   m_ObjectHideFlags: 0
@@ -3938,6 +3954,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1694160327 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1231327309, guid: e517d7f0eca8ed0439b2074f4dd71164,
+    type: 3}
+  m_PrefabInstance: {fileID: 31767567}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1723681201 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2343558290673130998, guid: e517d7f0eca8ed0439b2074f4dd71164,
@@ -4712,6 +4740,96 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1995001981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1995001982}
+  - component: {fileID: 1995001984}
+  - component: {fileID: 1995001983}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1995001982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995001981}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 154972436}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1995001983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995001981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 398c4a8cb238fbf4fa15e567979c9ced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicMixerGroup: {fileID: 3048156138097130965, guid: 030fcc5a3341ff047b0ed5a4d030ee30,
+    type: 2}
+  musicVolumeSlider: {fileID: 942529649}
+  soundEffectMixerGroup: {fileID: -8353838665330540605, guid: 030fcc5a3341ff047b0ed5a4d030ee30,
+    type: 2}
+  soundEffectSlider: {fileID: 1694160327}
+  sounds:
+    keysList: 0000000001000000
+    valuesList:
+    - audioSource: {fileID: 0}
+      audioClip: {fileID: 0}
+      isLoop: 0
+      playOnAwake: 0
+      volume: 0
+    - audioSource: {fileID: 0}
+      audioClip: {fileID: 0}
+      isLoop: 0
+      playOnAwake: 0
+      volume: 0
+--- !u!114 &1995001984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995001981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26bcbd5b52918df4da36671710a28187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSliderText: {fileID: 1280532864}
+  soundEffectSliderText: {fileID: 2046026652}
+--- !u!114 &2046026652 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 533947126, guid: e517d7f0eca8ed0439b2074f4dd71164,
+    type: 3}
+  m_PrefabInstance: {fileID: 31767567}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!850595691 &2070682477
 LightingSettings:
   m_ObjectHideFlags: 0
