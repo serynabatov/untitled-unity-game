@@ -1,5 +1,6 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 public class ResetAllBindings : MonoBehaviour
@@ -14,5 +15,6 @@ public class ResetAllBindings : MonoBehaviour
             map.RemoveAllBindingOverrides();
         }
         PlayerPrefs.DeleteKey("rebinds");
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }

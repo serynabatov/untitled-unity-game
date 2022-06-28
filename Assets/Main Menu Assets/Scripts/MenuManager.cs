@@ -12,6 +12,9 @@ public class MenuManager : MonoBehaviour
     private GameObject optionsMenu;
 
     [SerializeField]
+    private GameObject loadGameMenu;
+
+    [SerializeField]
     private GameObject exitConfirmationWindow;
 
     private static MenuManager instance;
@@ -65,12 +68,27 @@ public class MenuManager : MonoBehaviour
     }
 
     /// <summary>
+    /// !Загрузить игру с сейва
+    /// </summary>
+    public void LoadGame()
+    {
+
+        if (!exitConfirmationWindow.activeSelf)
+        {
+            // TODO: Запускал игру с сейв файла
+            optionsMenu.SetActive(false);
+            loadGameMenu.SetActive(loadGameMenu.activeSelf == true ? false : true);
+        }
+    }
+
+    /// <summary>
     /// !Включает/выключает плашку options
     /// </summary>
     public void Options()
     {
         if (!exitConfirmationWindow.activeSelf)
         {
+            loadGameMenu.SetActive(false);
             optionsMenu.SetActive(optionsMenu.activeSelf == true ? false : true);
         }
 

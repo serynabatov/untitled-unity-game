@@ -11,16 +11,17 @@ public class RebindingControls : MonoBehaviour
 
     [SerializeField]
     private TMP_Text buttonText;
+
     [SerializeField]
     private InputActionReference actionReference;
 
     [SerializeField]
     private int bindingIndex;
+
     private InputActionRebindingExtensions.RebindingOperation rebindingOperation;
 
-    private void OnEnable()
+    private void Update()
     {
-
         buttonText.text = InputControlPath.ToHumanReadableString(actionReference.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
     }
 
@@ -30,14 +31,9 @@ public class RebindingControls : MonoBehaviour
 
         buttonText.text = "PRESS NEW BINDING";
 
-
         PerformRebind(actionReference.action, bindingIndex);
 
         actionReference.action.Enable();
-
-
-
-
     }
 
     private void PerformRebind(InputAction action, int bindingIndex)
