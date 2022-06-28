@@ -11,6 +11,7 @@ public class PauseManager : MonoBehaviour
     public static bool paused;
     [SerializeField] GameObject pauseBackground;
     [SerializeField] GameObject optionsMenu;
+    [SerializeField] GameObject loadGameMenu;
     private static PauseManager instance;
     private void Awake()
     {
@@ -54,6 +55,7 @@ public class PauseManager : MonoBehaviour
         paused = true;
         pauseBackground.SetActive(true);
         optionsMenu.SetActive(false);
+        loadGameMenu.SetActive(false);
     }
 
     public void ResumeGame()
