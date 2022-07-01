@@ -7,7 +7,7 @@ using UnityEngine;
 /// Pause and unpause game. Listens OnClick events
 /// for the pause menu buttons
 /// </summary>
-public class PauseMenu : MonoBehaviour
+public class pauseBackground : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

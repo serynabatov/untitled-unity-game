@@ -11,7 +11,7 @@ using UnityEngine.InputSystem;
 1. Move "AD"
 2. Jump "Space"
 3. Attack "Left mouse click"
-4. Interact dialogue/interaction(взаимодействие) "E"
+4. Interact dialogue/interaction(пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ) "E"
 5. Interact menu "ESC"
 6. Interact inventory "I"
 7. Guard/Parry "Right mouse click"
@@ -36,9 +36,8 @@ public class InputManager : MonoBehaviour
     private bool upAttackPressed = false;
     private bool airUpAttackPressed = false;
     private bool airSlamPressed = false;
-
+    private bool escapePressed = false;
     private static InputManager instance;
-
     private void Awake()
     {
         if (instance != null)
@@ -170,6 +169,18 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public void EscPressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            escapePressed = true;
+        }
+        else if (context.canceled)
+        {
+            escapePressed = false;
+        }
+    }
+
     public Vector2 GetMoveDirection()
     {
         return moveDirection;
@@ -197,6 +208,12 @@ public class InputManager : MonoBehaviour
         return result;
     }
 
+    public bool GetEscPressed()
+    {
+        bool result = escapePressed;
+        escapePressed = false;
+        return result;
+    }
     public bool GetInteractPressed()
     {
         bool result = interactPressed;
