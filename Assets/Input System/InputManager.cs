@@ -22,6 +22,7 @@ using UnityEngine.InputSystem;
 //[RequireComponent(typeof(PlayerInput))]
 public class InputManager : MonoBehaviour
 {
+    public PlayerInput playerInput;
     private Vector2 moveDirection = Vector2.zero;
     private float moveAxis = 0f;
     private bool jumpPressed = false;
@@ -45,6 +46,7 @@ public class InputManager : MonoBehaviour
             Debug.LogError("Found more than one Input Manager in the scene.");
         }
         instance = this;
+        playerInput = gameObject.GetComponent<PlayerInput>();
     }
 
     public static InputManager GetInstance()
