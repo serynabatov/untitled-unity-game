@@ -1,0 +1,1 @@
+public delegate void ButtonTextHandler(bool flag);

@@ -20,11 +20,25 @@ public class RebindingControls : MonoBehaviour
     [SerializeField]
     private int bindingIndex;
 
+    public static event ButtonTextHandler ButtonTextHandler;
+
     private InputActionRebindingExtensions.RebindingOperation rebindingOperation;
+
+    public static void UpdateButtonText(bool flag)
+    {
+        if (flag)
+        {
+            buttonText.text = InputControlPath.ToHumanReadableString(actionReference.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
+        }
+        else
+        {
+            return;
+        }
+    }
 
     private void Update()
     {
-        buttonText.text = InputControlPath.ToHumanReadableString(actionReference.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
+        //buttonText.text = InputControlPath.ToHumanReadableString(actionReference.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
     }
 
     public void StartRebiding()
@@ -87,6 +101,7 @@ public class RebindingControls : MonoBehaviour
         }
         return false;
     }
+
 
 
 }

@@ -16,5 +16,6 @@ public class ResetAllBindings : MonoBehaviour
         }
         PlayerPrefs.DeleteKey("rebinds");
 
+        RebindingControls.ButtonTextHandler += new ButtonTextHandler(RebidingControls.UpdateButtonText);
     }
 }
