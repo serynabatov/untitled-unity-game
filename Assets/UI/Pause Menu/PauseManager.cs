@@ -8,6 +8,10 @@ using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject firstButton;
+
+    
     public static bool paused;
     [SerializeField] GameObject pauseBackground;
     [SerializeField] GameObject optionsMenu;
@@ -28,10 +32,6 @@ public class PauseManager : MonoBehaviour
         return instance;
     }
 
-    private void Start()
-    {
-
-    }
 
     private void Update()
     {
@@ -56,6 +56,9 @@ public class PauseManager : MonoBehaviour
         pauseBackground.SetActive(true);
         optionsMenu.SetActive(false);
         loadGameMenu.SetActive(false);
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(firstButton);
     }
 
     public void ResumeGame()

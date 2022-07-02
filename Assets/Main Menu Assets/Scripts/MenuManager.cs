@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
+
     [SerializeField]
     private GameObject optionsMenu;
 
@@ -16,6 +17,20 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField]
     private GameObject exitConfirmationWindow;
+
+
+    [SerializeField]
+    private Button resumeButton;
+    [SerializeField]
+    private Button exitButton;
+    [SerializeField]
+    private Button loadButton;
+    [SerializeField]
+    private Button loadFirstButton;
+    [SerializeField]
+    private Button optionsButton;
+    [SerializeField]
+    private Button optionsFirstButton;
 
     private static MenuManager instance;
     private void Awake()
@@ -78,6 +93,22 @@ public class MenuManager : MonoBehaviour
             // TODO: Запускал игру с сейв файла
             optionsMenu.SetActive(false);
             loadGameMenu.SetActive(loadGameMenu.activeSelf == true ? false : true);
+
+            Navigation navigation = loadButton.navigation;
+            navigation.selectOnRight = loadFirstButton;
+            loadButton.navigation = navigation;
+
+            navigation = resumeButton.navigation;
+            navigation.selectOnRight = loadFirstButton;
+            resumeButton.navigation = navigation;
+
+            navigation = optionsButton.navigation;
+            navigation.selectOnRight = loadFirstButton;
+            optionsButton.navigation = navigation;
+
+            navigation = exitButton.navigation;
+            navigation.selectOnRight = loadFirstButton;
+            exitButton.navigation = navigation;
         }
     }
 
@@ -90,6 +121,22 @@ public class MenuManager : MonoBehaviour
         {
             loadGameMenu.SetActive(false);
             optionsMenu.SetActive(optionsMenu.activeSelf == true ? false : true);
+
+            Navigation navigation = optionsButton.navigation;
+            navigation.selectOnRight = optionsFirstButton;
+            optionsButton.navigation = navigation;
+
+            navigation = loadButton.navigation;
+            navigation.selectOnRight = optionsFirstButton;
+            loadButton.navigation = navigation;
+
+            navigation = resumeButton.navigation;
+            navigation.selectOnRight = optionsFirstButton;
+            resumeButton.navigation = navigation;
+
+            navigation = exitButton.navigation;
+            navigation.selectOnRight = optionsFirstButton;
+            exitButton.navigation = navigation;
         }
 
     }

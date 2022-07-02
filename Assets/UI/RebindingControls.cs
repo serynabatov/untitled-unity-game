@@ -8,6 +8,8 @@ using TMPro;
 
 public class RebindingControls : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject selectedButton;
 
     [SerializeField]
     private TMP_Text buttonText;
@@ -62,7 +64,7 @@ public class RebindingControls : MonoBehaviour
                              buttonText.text = InputControlPath.ToHumanReadableString(action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
 
                              rebindingOperation.Dispose();
-
+                             EventSystem.current.SetSelectedGameObject(selectedButton);
                          }
                      )
                      .Start();
