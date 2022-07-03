@@ -16,6 +16,10 @@ public class ResetAllBindings : MonoBehaviour
         }
         PlayerPrefs.DeleteKey("rebinds");
 
+        UIDelegateHandler uIDelegateHandler = new UIDelegateHandler();
+
+        uIDelegateHandler.callResetRebinding(true);
+
         RebindingControls.ButtonTextHandler += new ButtonTextHandler(RebidingControls.UpdateButtonText);
     }
 }
