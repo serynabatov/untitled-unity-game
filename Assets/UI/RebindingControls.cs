@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -20,13 +21,19 @@ public class RebindingControls : MonoBehaviour
     [SerializeField]
     private int bindingIndex;
 
+    MessageBrokerImpl broker = MessageBrokerImpl.Instance;
+
     public static event ButtonTextHandler ButtonTextHandler;
 
     private InputActionRebindingExtensions.RebindingOperation rebindingOperation;
 
-    public static void UpdateButtonText(bool flag)
+    private void Awake()
     {
-        if (flag)
+        UpdateButtonText();
+    }
+    private void EventHandlerButtonText(MessagePayload<bool> flag)
+    {
+        if (flag.payload)
         {
             buttonText.text = InputControlPath.ToHumanReadableString(actionReference.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
         }
@@ -36,9 +43,10 @@ public class RebindingControls : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void UpdateButtonText()
     {
-        //buttonText.text = InputControlPath.ToHumanReadableString(actionReference.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
+        Action<MessagePayload<bool>> actionUpdateButtonText = EventHandlerButtonText;
+        broker.Subscribe<bool>(actionUpdateButtonText);
     }
 
     public void StartRebiding()
