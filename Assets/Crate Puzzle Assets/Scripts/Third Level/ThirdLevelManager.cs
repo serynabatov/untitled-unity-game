@@ -39,22 +39,22 @@ public class ThirdLevelManager : MonoBehaviour
         switch (triggerGO.name)
         {
             case "FinalGateTrigger":
-                Debug.Log("Поздравляю последний урвоень пройден");
+                Debug.Log("РџРѕР·РґСЂР°РІР»СЏСЋ РїРѕСЃР»РµРґРЅРёР№ СѓСЂРѕРІРµРЅСЊ РїСЂРѕР№РґРµРЅ");
                 topGate.SetActive(!triggerStat);
                 triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
                 boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
                 break;
             case "BaseBoxTriggerIce":
                 iceTrigger = triggerStat;
-                blueGate.SetActive(!triggerStat); // Включает или выключает голубые ворота
+                blueGate.SetActive(!triggerStat); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
                 this.CheckGates(iceGateActiv, iceGate, iceTrigger);
                 triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
                 boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
                 break;
             case "BaseBoxTriggerFire":
                 fireTrigger = triggerStat;
-                orangeGate.SetActive(!triggerStat); // Включает или выключает оранжевые ворота
-                this.CheckGates(fireGateActiv, fireGate, fireTrigger); 
+                orangeGate.SetActive(!triggerStat); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+                this.CheckGates(fireGateActiv, fireGate, fireTrigger);
                 triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
                 boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
                 break;
@@ -89,7 +89,7 @@ public class ThirdLevelManager : MonoBehaviour
         }
     }
 
-    private void CheckGates(bool gateActiv, GameObject gate, bool gateTrigger) // Проверка всех ворот, после переключение какого-либо триггера
+    private void CheckGates(bool gateActiv, GameObject gate, bool gateTrigger) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     {
         //Debug.Log(string.Format("active Gate = {0} , gate name = {1}", gateActiv, gate.name));
         gate.SetActive((gateActiv && gateTrigger) ? false : true);

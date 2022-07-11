@@ -31,12 +31,12 @@ public class FirstLevelManager : MonoBehaviour
         return instance;
     }
 
-    public void BaseBox(bool triggerStat, GameObject triggerGO, Animator boxAnimator )
+    public void BaseBox(bool triggerStat, GameObject triggerGO, Animator boxAnimator)
     {
         switch (triggerGO.name)
         {
             case "FinalGateTrigger":
-                Debug.Log("Поздравляю первый урвоень пройден");
+                Debug.Log("РџРѕР·РґСЂР°РІР»СЏСЋ РїРµСЂРІС‹Р№ СѓСЂРѕРІРµРЅСЊ РїСЂРѕР№РґРµРЅ");
                 topGate.SetActive(!triggerStat);
                 triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
                 boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");

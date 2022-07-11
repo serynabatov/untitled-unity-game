@@ -84,29 +84,29 @@ public class MovementCrate : MonoBehaviour
 
     private void GrabSex(RaycastHit2D grabCheck, Transform boxHolder, string tag)
     {
-            switch (tag)
-            {
-                case "GreenBox": 
-                    runSpeedX = 6f;
-                    runSpeedY = 6f;
-                    break;
-                case "YellowBox":
-                    runSpeedX = 6f;
-                    runSpeedY = 6f;
-                    break;
-                case "IceBox":
-                    runSpeedX = 6f;
-                    runSpeedY = 6f; 
-                    break;
-                case "FireBox":
-                    runSpeedX = 6f;
-                    runSpeedY = 6f;
-                    break;
-            }
-        //Временные переменные
+        switch (tag)
+        {
+            case "GreenBox":
+                runSpeedX = 6f;
+                runSpeedY = 6f;
+                break;
+            case "YellowBox":
+                runSpeedX = 6f;
+                runSpeedY = 6f;
+                break;
+            case "IceBox":
+                runSpeedX = 6f;
+                runSpeedY = 6f;
+                break;
+            case "FireBox":
+                runSpeedX = 6f;
+                runSpeedY = 6f;
+                break;
+        }
+
         boxTemp = grabCheck.collider.gameObject;
         boxHolderTemp = boxHolder;
-        //Собсна хват коробки и смена её позиции
+
         boxTemp.transform.position = boxHolderTemp.position;
         boxTemp.transform.SetParent(boxHolderTemp);
     }

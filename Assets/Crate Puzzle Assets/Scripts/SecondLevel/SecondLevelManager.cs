@@ -37,7 +37,7 @@ public class SecondLevelManager : MonoBehaviour
         switch (triggerGO.name)
         {
             case "FinalGateTrigger":
-                Debug.Log("Поздравляю второй урвоень пройден");
+                Debug.Log("РџРѕР·РґСЂР°РІР»СЏСЋ РІС‚РѕСЂРѕР№ СѓСЂРѕРІРµРЅСЊ РїСЂРѕР№РґРµРЅ");
                 topGate.SetActive(!triggerStat);
                 triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
                 boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
