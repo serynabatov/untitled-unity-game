@@ -69,18 +69,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Jump",
+                    "name": "SubmitDialogue",
                     "type": "Button",
-                    "id": "f3217c85-4129-4cde-a4b0-712d70bf069e",
+                    "id": "9b5517a7-1a72-4e3a-9f26-91a2d3f14e38",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SubmitDialogue",
+                    "name": "Jump",
                     "type": "Button",
-                    "id": "9b5517a7-1a72-4e3a-9f26-91a2d3f14e38",
+                    "id": "f3217c85-4129-4cde-a4b0-712d70bf069e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -313,17 +313,6 @@
                 },
                 {
                     "name": "",
-                    "id": "52b382db-64e1-4f16-80c0-ff73aadf2159",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "SubmitDialogue",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "63a1861a-4b6c-4a24-a380-1e78b4fde3ff",
                     "path": "<Keyboard>/q",
                     "interactions": "",
@@ -418,6 +407,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52b382db-64e1-4f16-80c0-ff73aadf2159",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "SubmitDialogue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -786,6 +786,17 @@
                 {
                     "name": "",
                     "id": "9e92bb26-7e3b-4ec4-b06b-3c8f8e498ddc",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5ead0aaa-97f5-4eb2-999e-e29880a3bfe2",
                     "path": "*/{Submit}",
                     "interactions": "",
                     "processors": "",
