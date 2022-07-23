@@ -1,4 +1,4 @@
-using System;
+
 using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections.Generic;
@@ -141,5 +141,14 @@ public class AudioManager : MonoBehaviour
     {
         musicMixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(AudioOptionsManager.musicVolume) * 20);
         soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log10(AudioOptionsManager.soundsEffectVolume) * 20);
+    }
+
+    /// <summary>
+    /// If the user touches the object
+    /// </summary>
+    /// <param name="other">Other.</param>
+    public void OnTriggerEnter(Collider other)
+    {
+        // TODO: play the sound on collision
     }
 }
