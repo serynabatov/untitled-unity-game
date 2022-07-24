@@ -7,6 +7,6 @@ using UnityEngine;
 /// </summary>
 public enum AudioClipName
 {
-    SoundEffect,
-    MusicEffect
+    SoundEffect = 0,
+    MusicEffect = 1
 }

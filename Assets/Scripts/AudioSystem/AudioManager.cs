@@ -49,10 +49,11 @@ public class AudioManager : MonoBehaviour
             soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log10(PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume) * 20));
             soundEffectSlider.value = PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume);
         }
-
+        sounds.Awake();
 
         foreach (KeyValuePair<AudioClipName, BasicSound> entry in sounds.DictionaryData)
         {
+
             BasicSound s = entry.Value;
 
             s.audioSource = gameObject.AddComponent<AudioSource>();
@@ -95,9 +96,9 @@ public class AudioManager : MonoBehaviour
     /// Plays the specified audioClip.
     /// </summary>
     /// <param name="audioClipName">Audio clip name.</param>
-    public void Play(AudioClipName audioClipName)
+    public void Play(int audioClipName)
     {
-        BasicSound s = GetSound(audioClipName);
+        BasicSound s = GetSound((AudioClipName)audioClipName);
         if (s != null)
         {
             s.audioSource.Play();
