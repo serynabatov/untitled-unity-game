@@ -41,6 +41,8 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
     [SerializeField] private Vector2 grav;
     [SerializeField] private float buffer;
 
+    [SerializeField] public float takingDamageBuffer = 2;
+
     // Use this for initialization
     void Start()
     {
@@ -74,7 +76,9 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
             _endedJumpEarly = true;
         }
         if (_endedJumpEarly && m_body2d.velocity.y > 0)
+        {
             m_body2d.velocity = new Vector2(m_body2d.velocity.x, grav.y);
+        }
 
         // Decrease death respawn timer 
         m_respawnTimer -= Time.deltaTime;
@@ -512,5 +516,21 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
     public void SaveData(ref PlayerData data)
     {
         data.playerPosition = transform.position;
+    }
+
+    public void TakingDamage()
+    {
+        if (takingDamageBuffer > 2)
+        {
+            m_animator.SetTrigger("Hurt");
+            // Disable movement 
+            m_disableMovementTimer = 0.1f;
+            DisableWallSensors();
+            takingDamageBuffer = 0;
+        }
+        else
+        {
+            takingDamageBuffer += Time.deltaTime;
+        }
     }
 }

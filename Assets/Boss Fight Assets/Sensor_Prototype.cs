@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Sensor_Prototype : MonoBehaviour {
+public class Sensor_Prototype : MonoBehaviour
+{
 
     private int m_ColCount = 0;
 
@@ -21,12 +22,18 @@ public class Sensor_Prototype : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        m_ColCount++;
+        if (other.CompareTag("Ground"))
+        {
+            m_ColCount++;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        m_ColCount--;
+        if (other.CompareTag("Ground"))
+        {
+            m_ColCount--;
+        }
     }
 
     void Update()

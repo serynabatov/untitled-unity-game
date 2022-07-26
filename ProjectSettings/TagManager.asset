@@ -10,6 +10,7 @@ TagManager:
   - YellowBox
   - IceBox
   - FireBox
+  - Ground
   layers:
   - Default
   - TransparentFX
