@@ -88,7 +88,7 @@ public class DialogueManager : MonoBehaviour
         // handle continuing to the next line in the dialogue when submit is pressed
         // NOTE: The 'currentStory.currentChoiecs.Count == 0' part was to fix a bug after the Youtube video was made
         if (canContinueToNextLine
-            && this.currentStory.currentChoices.Count == 0 
+            && this.currentStory.currentChoices.Count == 0
             && InputManager.GetInstance().GetSubmitPressed())
         {
             ContinueStory();
@@ -98,6 +98,8 @@ public class DialogueManager : MonoBehaviour
     public void EnterDialogueMode(TextAsset inkJSON)
     {
         this.currentStory = new Story(inkJSON.text);
+
+        Debug.Log("ЗВУК диалога");
 
         this.dialogueIsPlaying = true;
         this.dialoguePanel.SetActive(true);
@@ -124,7 +126,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
     }
 
-    
+
     private void ContinueStory()
     {
         if (this.currentStory.canContinue)
@@ -194,7 +196,7 @@ public class DialogueManager : MonoBehaviour
 
     private void HideChoices()
     {
-        foreach( GameObject choiceButton in choices)
+        foreach (GameObject choiceButton in choices)
         {
             choiceButton.SetActive(false);
         }
