@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections.Generic;
@@ -26,6 +25,8 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField]
     private CustomMap<AudioClipName, BasicSound> sounds;
+
+    MessageBrokerImpl broker MessageBrokerImpl.Instance;
 
     public static AudioManager Instance;
 
@@ -151,5 +152,27 @@ public class AudioManager : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         // TODO: play the sound on collision
+    }
+
+    /// <summary>
+    /// Plays the specified sound.
+    /// </summary>
+    /// <param name="sound">Sound.</param>
+    public void PlayTheSpecifiedSound()
+    {
+        Action<MessagePayload<int>> actionPlayTheSpecifiedSound = EventHandlerPlayTheSpecifiedSound;
+        broker.Subscribe<int>(actionPlayTheSpecifiedSound);
+    }
+
+    private void EventHandlerPlayTheSpecifiedSound(MessagePayload<int> audio)
+    {
+        if (audio.payload)
+        {
+            Play(audio);
+        }
+        else
+        {
+            return;
+        }
     }
 }
