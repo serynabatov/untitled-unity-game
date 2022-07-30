@@ -14029,7 +14029,7 @@ MonoBehaviour:
     type: 2}
   soundEffectSlider: {fileID: 1216359490}
   sounds:
-    keysList: 0000000001000000
+    keysList: 000000000100000002000000
     valuesList:
     - audioSource: {fileID: 0}
       audioClip: {fileID: 8300000, guid: 6b389dd16d9c9f5459605a843fe520e6, type: 3}
@@ -14040,7 +14040,12 @@ MonoBehaviour:
       audioClip: {fileID: 8300000, guid: d1349a5c619cdb341a6d6f945f68795c, type: 3}
       isLoop: 0
       playOnAwake: 0
-      volume: 0
+      volume: 1
+    - audioSource: {fileID: 0}
+      audioClip: {fileID: 8300000, guid: ba0edbbceb732a343aab5e1470e1e5a2, type: 3}
+      isLoop: 0
+      playOnAwake: 0
+      volume: 1
 --- !u!114 &1995001984
 MonoBehaviour:
   m_ObjectHideFlags: 0

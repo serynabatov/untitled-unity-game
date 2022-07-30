@@ -26,6 +26,9 @@ public class DialogueTrigger : MonoBehaviour
             visualCue.SetActive(true);
             if (InputManager.GetInstance().GetInteractPressed())
             {
+                MessageBrokerImpl broker = MessageBrokerImpl.Instance;
+                broker.Publish<int>((int)AudioClipName.DialogueTriggerEffect);
+
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSONStart);
             }
         }

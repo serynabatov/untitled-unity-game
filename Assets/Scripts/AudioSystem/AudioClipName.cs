@@ -8,5 +8,6 @@ using UnityEngine;
 public enum AudioClipName
 {
     SoundEffect = 0,
-    MusicEffect = 1
+    MusicEffect = 1,
+    DialogueTriggerEffect = 2
 }

@@ -1,6 +1,8 @@
+using System.Collections;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-using System.Collections.Generic;
 using UnityEngine.UI;
 
 
@@ -26,7 +28,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private CustomMap<AudioClipName, BasicSound> sounds;
 
-    MessageBrokerImpl broker MessageBrokerImpl.Instance;
+    MessageBrokerImpl broker = MessageBrokerImpl.Instance;
 
     public static AudioManager Instance;
 
@@ -73,6 +75,10 @@ public class AudioManager : MonoBehaviour
                 case AudioClipName.MusicEffect:
                     s.audioSource.outputAudioMixerGroup = musicMixerGroup;
                     break;
+
+                case AudioClipName.DialogueTriggerEffect:
+                    s.audioSource.outputAudioMixerGroup = soundEffectMixerGroup;
+                    break;
             }
 
             if (s.playOnAwake)
@@ -80,6 +86,8 @@ public class AudioManager : MonoBehaviour
                 s.audioSource.Play();
             }
         }
+
+        PlayTheSpecifiedSound();
     }
 
     private BasicSound GetSound(AudioClipName audioClipName)
@@ -160,15 +168,17 @@ public class AudioManager : MonoBehaviour
     /// <param name="sound">Sound.</param>
     public void PlayTheSpecifiedSound()
     {
+        Debug.Log("PlaySpecSound");
         Action<MessagePayload<int>> actionPlayTheSpecifiedSound = EventHandlerPlayTheSpecifiedSound;
         broker.Subscribe<int>(actionPlayTheSpecifiedSound);
     }
 
     private void EventHandlerPlayTheSpecifiedSound(MessagePayload<int> audio)
     {
-        if (audio.payload)
+        Debug.Log("HERE eVent");
+        if (audio.payload >= 0)
         {
-            Play(audio);
+            Play(audio.payload);
         }
         else
         {
