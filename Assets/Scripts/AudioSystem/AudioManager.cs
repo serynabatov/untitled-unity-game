@@ -56,7 +56,6 @@ public class AudioManager : MonoBehaviour
 
         foreach (KeyValuePair<AudioClipName, BasicSound> entry in sounds.DictionaryData)
         {
-
             BasicSound s = entry.Value;
 
             s.audioSource = gameObject.AddComponent<AudioSource>();
@@ -66,19 +65,13 @@ public class AudioManager : MonoBehaviour
             s.audioSource.playOnAwake = s.playOnAwake;
             s.audioSource.volume = s.volume;
 
-            switch (entry.Key)
+            if ((int)s.mixerGroup == 0)
             {
-                case AudioClipName.SoundEffect:
-                    s.audioSource.outputAudioMixerGroup = soundEffectMixerGroup;
-                    break;
-
-                case AudioClipName.MusicEffect:
-                    s.audioSource.outputAudioMixerGroup = musicMixerGroup;
-                    break;
-
-                case AudioClipName.DialogueTriggerEffect:
-                    s.audioSource.outputAudioMixerGroup = soundEffectMixerGroup;
-                    break;
+                s.audioSource.outputAudioMixerGroup = musicMixerGroup;
+            }
+            else if ((int)s.mixerGroup == 1)
+            {
+                s.audioSource.outputAudioMixerGroup = soundEffectMixerGroup;
             }
 
             if (s.playOnAwake)
@@ -168,14 +161,12 @@ public class AudioManager : MonoBehaviour
     /// <param name="sound">Sound.</param>
     public void PlayTheSpecifiedSound()
     {
-        Debug.Log("PlaySpecSound");
         Action<MessagePayload<int>> actionPlayTheSpecifiedSound = EventHandlerPlayTheSpecifiedSound;
         broker.Subscribe<int>(actionPlayTheSpecifiedSound);
     }
 
     private void EventHandlerPlayTheSpecifiedSound(MessagePayload<int> audio)
     {
-        Debug.Log("HERE eVent");
         if (audio.payload >= 0)
         {
             Play(audio.payload);

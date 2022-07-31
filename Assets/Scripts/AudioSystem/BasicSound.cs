@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.Audio;
 
 /// <summary>
 /// This class keeps the information about the mp3/wav file
@@ -21,6 +21,7 @@ public class BasicSound
     public bool isLoop;
     public bool playOnAwake;
 
+    public AudioMixerGroupEnum mixerGroup;
     [Range(0, 1)]
     public float volume = 0.5f;
 }
