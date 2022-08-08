@@ -36,6 +36,8 @@ public class AudioManager : MonoBehaviour
     {
         Instance = this;
 
+        //AudioOptionsManager.Initialize();
+
         if (PlayerPrefs.HasKey(preferenceAudioMute))
         {
             AudioListener.volume = PlayerPrefs.GetFloat(preferenceAudioMute);
@@ -140,10 +142,14 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Updates the mixer volume.
     /// </summary>
-    public void UpdateMixerVolume()
+    public void UpdateSoundsEffectMixerVolume()
+    {
+        soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log(AudioOptionsManager.soundsEffectVolume) * 20);
+    }
+
+    public void UpdateMusicMixerVolume()
     {
         musicMixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(AudioOptionsManager.musicVolume) * 20);
-        soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log10(AudioOptionsManager.soundsEffectVolume) * 20);
     }
 
     /// <summary>

@@ -26,8 +26,24 @@ public class AudioOptionsManager : MonoBehaviour
 
     }
 
+    /*
+        public static void Initialize()
+        {
+            if (PlayerPrefs.HasKey(Constants.preferenceAudioVolumeText))
+            {
+                musicVolume = PlayerPrefs.GetFloat(Constants.preferenceAudioVolume);
+            }
+
+            if (PlayerPrefs.HasKey(Constants.preferenceSoundEffectsVolume))
+            {
+                soundsEffectVolume = PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume);
+            }
+        } */
+
     public void OnMusicSliderValueChanged(float value)
     {
+        // Initialize();
+
         string castedValue = ((int)(value * 100)).ToString();
 
         musicVolume = value;
@@ -36,12 +52,13 @@ public class AudioOptionsManager : MonoBehaviour
         musicSliderText.text = castedValue;
         PlayerPrefs.SetString(Constants.preferenceAudioVolumeText, castedValue);
 
-
-        AudioManager.Instance.UpdateMixerVolume();
+        AudioManager.Instance.UpdateMusicMixerVolume();
     }
 
     public void OnEffectSliderValueChanged(float value)
     {
+        // Initialize();
+
         string castedValue = ((int)(value * 100)).ToString();
 
         soundsEffectVolume = value;
@@ -50,7 +67,7 @@ public class AudioOptionsManager : MonoBehaviour
         soundEffectSliderText.text = castedValue;
         PlayerPrefs.SetString(Constants.preferenceSoundEffectsVolumeText, castedValue);
 
-        AudioManager.Instance.UpdateMixerVolume();
+        AudioManager.Instance.UpdateSoundsEffectMixerVolume();
     }
 
 }
