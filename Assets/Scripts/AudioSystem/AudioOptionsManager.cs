@@ -14,7 +14,7 @@ public class AudioOptionsManager : MonoBehaviour
     private TextMeshProUGUI soundEffectSliderText;
     private void Awake()
     {
-        if (PlayerPrefs.HasKey(Constants.preferenceAudioVolumeText))
+        if (PlayerPrefs.HasKey(Constants.preferenceAudioVolume))
         {
             musicSliderText.text = PlayerPrefs.GetString(Constants.preferenceAudioVolumeText);
         }
@@ -26,24 +26,8 @@ public class AudioOptionsManager : MonoBehaviour
 
     }
 
-    /*
-        public static void Initialize()
-        {
-            if (PlayerPrefs.HasKey(Constants.preferenceAudioVolumeText))
-            {
-                musicVolume = PlayerPrefs.GetFloat(Constants.preferenceAudioVolume);
-            }
-
-            if (PlayerPrefs.HasKey(Constants.preferenceSoundEffectsVolume))
-            {
-                soundsEffectVolume = PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume);
-            }
-        } */
-
     public void OnMusicSliderValueChanged(float value)
     {
-        // Initialize();
-
         string castedValue = ((int)(value * 100)).ToString();
 
         musicVolume = value;
@@ -52,13 +36,11 @@ public class AudioOptionsManager : MonoBehaviour
         musicSliderText.text = castedValue;
         PlayerPrefs.SetString(Constants.preferenceAudioVolumeText, castedValue);
 
-        AudioManager.Instance.UpdateMusicMixerVolume();
+        AudioManager.Instance.UpdateMixerVolume();
     }
 
     public void OnEffectSliderValueChanged(float value)
     {
-        // Initialize();
-
         string castedValue = ((int)(value * 100)).ToString();
 
         soundsEffectVolume = value;
@@ -67,7 +49,18 @@ public class AudioOptionsManager : MonoBehaviour
         soundEffectSliderText.text = castedValue;
         PlayerPrefs.SetString(Constants.preferenceSoundEffectsVolumeText, castedValue);
 
-        AudioManager.Instance.UpdateSoundsEffectMixerVolume();
+        AudioManager.Instance.UpdateMixerVolume();
+    }
+
+    public void ResetOptions()
+    {
+        PlayerPrefs.DeleteKey(Constants.preferenceAudioVolume);
+        OnMusicSliderValueChanged(1f);
+
+        PlayerPrefs.DeleteKey(Constants.preferenceSoundEffectsVolume);
+        OnEffectSliderValueChanged(1f);
+
+        AudioManager.Instance.ResetSliders();
     }
 
 }

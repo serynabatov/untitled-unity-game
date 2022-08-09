@@ -36,8 +36,6 @@ public class AudioManager : MonoBehaviour
     {
         Instance = this;
 
-        //AudioOptionsManager.Initialize();
-
         if (PlayerPrefs.HasKey(preferenceAudioMute))
         {
             AudioListener.volume = PlayerPrefs.GetFloat(preferenceAudioMute);
@@ -83,6 +81,12 @@ public class AudioManager : MonoBehaviour
         }
 
         PlayTheSpecifiedSound();
+    }
+
+    public void ResetSliders()
+    {
+        musicVolumeSlider.value = PlayerPrefs.GetFloat(Constants.preferenceAudioVolume);
+        soundEffectSlider.value = PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume);
     }
 
     private BasicSound GetSound(AudioClipName audioClipName)
@@ -142,13 +146,9 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Updates the mixer volume.
     /// </summary>
-    public void UpdateSoundsEffectMixerVolume()
+    public void UpdateMixerVolume()
     {
-        soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log(AudioOptionsManager.soundsEffectVolume) * 20);
-    }
-
-    public void UpdateMusicMixerVolume()
-    {
+        soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log10(AudioOptionsManager.soundsEffectVolume) * 20);
         musicMixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(AudioOptionsManager.musicVolume) * 20);
     }
 
