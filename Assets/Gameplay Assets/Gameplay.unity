@@ -7239,6 +7239,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4699199415772779553, guid: 8256f17f1004efd40b46f598cabec2ea,
+        type: 3}
+      propertyPath: m_sounds.Array.data[0].m_name
+      value: RunStop
+      objectReference: {fileID: 0}
+    - target: {fileID: 4699199415772779553, guid: 8256f17f1004efd40b46f598cabec2ea,
+        type: 3}
+      propertyPath: m_sounds.Array.data[1].m_name
+      value: Footstep
+      objectReference: {fileID: 0}
+    - target: {fileID: 4699199415772779553, guid: 8256f17f1004efd40b46f598cabec2ea,
+        type: 3}
+      propertyPath: m_sounds.Array.data[0].m_clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4699199415772779553, guid: 8256f17f1004efd40b46f598cabec2ea,
+        type: 3}
+      propertyPath: m_sounds.Array.data[1].m_clips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4699199415772779553, guid: 8256f17f1004efd40b46f598cabec2ea,
+        type: 3}
+      propertyPath: m_sounds.Array.data[0].m_randomPitchRange.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4699199415772779553, guid: 8256f17f1004efd40b46f598cabec2ea,
+        type: 3}
+      propertyPath: m_sounds.Array.data[0].m_randomPitchRange.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4699199415772779553, guid: 8256f17f1004efd40b46f598cabec2ea,
+        type: 3}
+      propertyPath: m_sounds.Array.data[1].m_randomPitchRange.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4699199415772779553, guid: 8256f17f1004efd40b46f598cabec2ea,
+        type: 3}
+      propertyPath: m_sounds.Array.data[1].m_randomPitchRange.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4699199415772779553, guid: 8256f17f1004efd40b46f598cabec2ea,
+        type: 3}
+      propertyPath: m_sounds.Array.data[0].m_randomVolumeRange.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4699199415772779553, guid: 8256f17f1004efd40b46f598cabec2ea,
+        type: 3}
+      propertyPath: m_sounds.Array.data[1].m_clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: ee00faf8b8432ff40a6e008c84d5ae59, type: 3}
+    - target: {fileID: 4699199415772779553, guid: 8256f17f1004efd40b46f598cabec2ea,
+        type: 3}
+      propertyPath: m_sounds.Array.data[1].m_clips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9b0833c02b71a294faba6438278d937a, type: 3}
+    - target: {fileID: 4699199415772779553, guid: 8256f17f1004efd40b46f598cabec2ea,
+        type: 3}
+      propertyPath: m_sounds.Array.data[1].m_randomVolumeRange.x
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4699199415772779554, guid: 8256f17f1004efd40b46f598cabec2ea,
         type: 3}
       propertyPath: m_Name
@@ -14193,7 +14253,7 @@ MonoBehaviour:
     type: 2}
   soundEffectSlider: {fileID: 1216359490}
   sounds:
-    keysList: 000000000100000002000000
+    keysList: 00000000010000000200000003000000
     valuesList:
     - audioSource: {fileID: 0}
       audioClip: {fileID: 8300000, guid: 6b389dd16d9c9f5459605a843fe520e6, type: 3}
@@ -14209,6 +14269,12 @@ MonoBehaviour:
       volume: 1
     - audioSource: {fileID: 0}
       audioClip: {fileID: 8300000, guid: ba0edbbceb732a343aab5e1470e1e5a2, type: 3}
+      isLoop: 0
+      playOnAwake: 0
+      mixerGroup: 1
+      volume: 1
+    - audioSource: {fileID: 0}
+      audioClip: {fileID: 8300000, guid: cc0a09af0c0ff0e45843d8ebcf4bf2e0, type: 3}
       isLoop: 0
       playOnAwake: 0
       mixerGroup: 1
