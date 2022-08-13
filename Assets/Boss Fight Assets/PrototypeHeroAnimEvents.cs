@@ -51,7 +51,7 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
 
     void AE_footstep()
     {
-        m_audioManager.PlaySound("Footstep");
+        broker.Publish<int>((int)AudioClipName.FootstepEffect);
     }
 
     void AE_Jump()
@@ -126,7 +126,6 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
     void AE_Dodge()
     {
         broker.Publish<int>((int)AudioClipName.DodgeEffect);
-        //m_audioManager.PlaySound("Dodge");
         float dustYOffset = 0.078125f;
         m_player.SpawnDustEffect(m_DodgeDust, 0.0f, dustYOffset);
     }

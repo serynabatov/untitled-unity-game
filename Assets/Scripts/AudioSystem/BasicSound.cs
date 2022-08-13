@@ -16,7 +16,7 @@ public class BasicSound
     /// <summary>
     /// The mp3, wav file
     /// </summary>
-    public AudioClip audioClip;
+    public AudioClip[] audioClip;
 
     public bool isLoop;
     public bool playOnAwake;

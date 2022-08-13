@@ -60,7 +60,16 @@ public class AudioManager : MonoBehaviour
 
             s.audioSource = gameObject.AddComponent<AudioSource>();
 
-            s.audioSource.clip = s.audioClip;
+            if (s.audioClip.Length > 1)
+            {
+                int randomClip = UnityEngine.Random.Range(0, s.audioClip.Length - 1);
+                s.audioSource.clip = s.audioClip[randomClip];
+            }
+            else
+            {
+                s.audioSource.clip = s.audioClip[0];
+            }
+
             s.audioSource.loop = s.isLoop;
             s.audioSource.playOnAwake = s.playOnAwake;
             s.audioSource.volume = s.volume;
@@ -109,6 +118,11 @@ public class AudioManager : MonoBehaviour
         BasicSound s = GetSound((AudioClipName)audioClipName);
         if (s != null)
         {
+            if (s.audioClip.Length > 1)
+            {
+                int randomClip = UnityEngine.Random.Range(0, s.audioClip.Length - 1);
+                s.audioSource.clip = s.audioClip[randomClip];
+            }
             s.audioSource.Play();
         }
     }

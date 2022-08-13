@@ -10,6 +10,7 @@ public enum AudioClipName
     SoundEffect = 0,
     MusicEffect = 1,
     DialogueTriggerEffect = 2,
-    DodgeEffect = 3
+    DodgeEffect = 3,
+    FootstepEffect = 4
 
 }
