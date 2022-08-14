@@ -75,4 +75,9 @@ public class CustomMap<TKey, TValue>
         keysList.Clear();
         valuesList.Clear();
     }
+
+    public bool IsEmpty()
+    {
+        return keysList.Count == 0;
+    }
 }

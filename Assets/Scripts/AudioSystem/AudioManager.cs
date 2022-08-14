@@ -56,42 +56,6 @@ public class AudioManager : MonoBehaviour
 
         AddMusicToManage(sounds);
 
-        /*foreach (KeyValuePair<AudioClipName, BasicSound> entry in sounds.DictionaryData)
-        {
-            BasicSound s = entry.Value;
-
-            s.audioSource = gameObject.AddComponent<AudioSource>();
-
-            if (s.audioClip.Length > 1)
-            {
-                int randomClip = UnityEngine.Random.Range(0, s.audioClip.Length - 1);
-                s.audioSource.clip = s.audioClip[randomClip];
-            }
-            else
-            {
-                s.audioSource.clip = s.audioClip[0];
-            }
-
-            s.audioSource.loop = s.isLoop;
-            s.audioSource.playOnAwake = s.playOnAwake;
-            s.audioSource.volume = s.volume;
-
-            if ((int)s.mixerGroup == 0)
-            {
-                s.audioSource.outputAudioMixerGroup = musicMixerGroup;
-            }
-            else if ((int)s.mixerGroup == 1)
-            {
-                s.audioSource.outputAudioMixerGroup = soundEffectMixerGroup;
-            }
-
-            if (s.playOnAwake)
-            {
-                s.audioSource.Play();
-            }
-        }
-
-        PlayTheSpecifiedSound();*/
     }
 
     public void ResetSliders()

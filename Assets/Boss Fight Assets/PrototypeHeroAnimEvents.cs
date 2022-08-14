@@ -23,7 +23,7 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
     void Start()
     {
         m_player = GetComponentInParent<PrototypeHero>();
-        m_audioManager = AudioManager_PrototypeHero.instance;
+        //m_audioManager = AudioManager_PrototypeHero.instance;
     }
 
     // Animation Events
@@ -43,7 +43,8 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
 
     void AE_runStop()
     {
-        m_audioManager.PlaySound("RunStop");
+        broker.Publish<int>((int)AudioClipName.RunStop);
+        //m_audioManager.PlaySound("RunStop");
         float dustXOffset = 0.6f;
         float dustYOffset = 0.078125f;
         m_player.SpawnDustEffect(m_RunStopDust, dustXOffset, dustYOffset);
@@ -56,7 +57,8 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
 
     void AE_Jump()
     {
-        m_audioManager.PlaySound("Jump");
+        broker.Publish<int>((int)AudioClipName.Jump);
+        // m_audioManager.PlaySound("Jump");
 
         if (!m_player.IsWallSliding())
         {
@@ -71,14 +73,16 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
 
     void AE_Landing()
     {
-        m_audioManager.PlaySound("Landing");
+        broker.Publish<int>((int)AudioClipName.Landing);
+        //m_audioManager.PlaySound("Landing");
         float dustYOffset = 0.078125f;
         m_player.SpawnDustEffect(m_LandingDust, 0.0f, dustYOffset);
     }
 
     void AE_Parry()
     {
-        m_audioManager.PlaySound("Parry");
+        broker.Publish<int>((int)AudioClipName.Parry);
+        //m_audioManager.PlaySound("Parry");
         float xOffset = 0.1875f;
         float yOffset = 0.25f;
         m_player.SpawnDustEffect(m_ParryEffect, xOffset, yOffset);
@@ -87,17 +91,20 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
 
     void AE_ParryStance()
     {
-        m_audioManager.PlaySound("DrawSword");
+        broker.Publish<int>((int)AudioClipName.DrawSword);
+        // m_audioManager.PlaySound("DrawSword");
     }
 
     void AE_AttackAirSlam()
     {
-        m_audioManager.PlaySound("DrawSword");
+        broker.Publish<int>((int)AudioClipName.DrawSword);
+        //m_audioManager.PlaySound("DrawSword");
     }
 
     void AE_AttackAirLanding()
     {
-        m_audioManager.PlaySound("AirSlamLanding");
+        broker.Publish<int>((int)AudioClipName.AirSlamLanding);
+        //m_audioManager.PlaySound("AirSlamLanding");
         float dustYOffset = 0.078125f;
         m_player.SpawnDustEffect(m_AirSlamDust, 0.0f, dustYOffset);
         m_player.DisableMovement(0.5f);
@@ -105,22 +112,26 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
 
     void AE_Hurt()
     {
-        m_audioManager.PlaySound("Hurt");
+        broker.Publish<int>((int)AudioClipName.Hurt);
+        //m_audioManager.PlaySound("Hurt");
     }
 
     void AE_Death()
     {
-        m_audioManager.PlaySound("Death");
+        broker.Publish<int>((int)AudioClipName.Death);
+        //m_audioManager.PlaySound("Death");
     }
 
     void AE_SwordAttack()
     {
-        m_audioManager.PlaySound("SwordAttack");
+        broker.Publish<int>((int)AudioClipName.SwordAttack);
+        //m_audioManager.PlaySound("SwordAttack");
     }
 
     void AE_SheathSword()
     {
-        m_audioManager.PlaySound("SheathSword");
+        broker.Publish<int>((int)AudioClipName.SheathSword);
+        //m_audioManager.PlaySound("SheathSword");
     }
 
     void AE_Dodge()
@@ -134,7 +145,9 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
     {
         //m_audioManager.GetComponent<AudioSource>().loop = true;
         if (!m_audioManager.IsPlaying("WallSlide"))
+        {
             m_audioManager.PlaySound("WallSlide");
+        }
         float dustXOffset = 0.25f;
         float dustYOffset = 0.25f;
         m_player.SpawnDustEffect(m_WallSlideDust, dustXOffset, dustYOffset);
@@ -142,11 +155,13 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
 
     void AE_LedgeGrab()
     {
-        m_audioManager.PlaySound("LedgeGrab");
+        broker.Publish<int>((int)AudioClipName.LedgeGrab);
+        //m_audioManager.PlaySound("LedgeGrab");
     }
 
     void AE_LedgeClimb()
     {
-        m_audioManager.PlaySound("RunStop");
+        broker.Publish<int>((int)AudioClipName.RunStop);
+        //m_audioManager.PlaySound("RunStop");
     }
 }

@@ -40,9 +40,20 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
     private float m_gravity;
     [SerializeField] private Vector2 grav;
     [SerializeField] private float buffer;
-
     [SerializeField] public float takingDamageBuffer = 2;
 
+    [SerializeField]
+    private CustomMap<AudioClipName, BasicSound> sounds;
+
+
+    private void Awake()
+    {
+        AudioManager audioManager = AudioManager.Instance;
+        if (!sounds.IsEmpty())
+        {
+            audioManager.AddMusicToManage(sounds);
+        }
+    }
     // Use this for initialization
     void Start()
     {
@@ -251,7 +262,7 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
             DisableWallSensors();
             m_dead = true;
         } 
-        
+
         //Hurt
         else if (Input.GetKeyDown("q") && !m_dodging)
         {
