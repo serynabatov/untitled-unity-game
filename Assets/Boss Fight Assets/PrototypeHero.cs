@@ -45,8 +45,7 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
     [SerializeField]
     private CustomMap<AudioClipName, BasicSound> sounds;
 
-
-    private void Awake()
+    private void OnEnable()
     {
         AudioManager audioManager = AudioManager.Instance;
         if (!sounds.IsEmpty())
@@ -54,6 +53,7 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
             audioManager.AddMusicToManage(sounds);
         }
     }
+
     // Use this for initialization
     void Start()
     {
