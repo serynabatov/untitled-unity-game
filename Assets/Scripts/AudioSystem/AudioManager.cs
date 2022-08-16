@@ -56,6 +56,7 @@ public class AudioManager : MonoBehaviour
 
         AddMusicToManage(sounds);
 
+        broker.Publish<InitializedEvent>(InitializedEvent.Initialized);
     }
 
     public void ResetSliders()

@@ -45,15 +45,6 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
     [SerializeField]
     private CustomMap<AudioClipName, BasicSound> sounds;
 
-    private void OnEnable()
-    {
-        AudioManager audioManager = AudioManager.Instance;
-        if (!sounds.IsEmpty())
-        {
-            audioManager.AddMusicToManage(sounds);
-        }
-    }
-
     // Use this for initialization
     void Start()
     {
@@ -72,6 +63,10 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
     // Update is called once per frame
     void Update()
     {
+
+        Action<MessagePayload<InitializedEvent>> addTheSound = InitializeSound;
+        broker.Subscribe<InitializedEvent>(addTheSound);
+
         if (PauseManager.paused)
         {
             return;
@@ -544,4 +539,22 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
             takingDamageBuffer += Time.deltaTime;
         }
     }
+
+    private void InitializeSound(MessagePayload<InitializedEvent> event)
+    {
+        if (event.payload == InitializedEvent.Initialized)
+        {
+            AudioManager audioManager = AudioManager.Instance;
+            if (!sounds.IsEmpty())
+            {
+                audioManager.AddMusicToManage(sounds);
+            }
+
+        }
+        else
+        {
+            return;
+        }
+    }
+
 }
