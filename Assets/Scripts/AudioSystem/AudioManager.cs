@@ -28,6 +28,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private CustomMap<AudioClipName, BasicSound> sounds;
 
+    private ConcurrentDictionaryImpl concurrentSounds = ConcurrentDictionaryImpl.Instance;
+
     MessageBrokerImpl broker = MessageBrokerImpl.Instance;
 
     public static AudioManager Instance;
@@ -68,7 +70,8 @@ public class AudioManager : MonoBehaviour
     private BasicSound GetSound(AudioClipName audioClipName)
     {
         BasicSound sound;
-        if (!sounds.DictionaryData.TryGetValue(audioClipName, out sound))
+        //if (!sounds.DictionaryData.TryGetValue(audioClipName, out sound))
+        if (!concurrentSounds.sounds.TryGetValue(audioClipName, out sound))
         {
             // nothing here
             return null;
@@ -169,6 +172,8 @@ public class AudioManager : MonoBehaviour
     {
         foreach (KeyValuePair<AudioClipName, BasicSound> entry in soundsToAdd.DictionaryData)
         {
+            concurrentSounds[entry.Key] = entry.Value;
+
             BasicSound s = entry.Value;
 
             s.audioSource = gameObject.AddComponent<AudioSource>();
