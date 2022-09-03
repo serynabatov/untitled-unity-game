@@ -57,8 +57,6 @@ public class AudioManager : MonoBehaviour
         sounds.Awake();
 
         AddMusicToManage(sounds);
-
-        broker.Publish<InitializedEvent>(InitializedEvent.Initialized);
     }
 
     public void ResetSliders()
@@ -167,44 +165,56 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void SetupMusic(KeyValuePair<AudioClipName, BasicSound> entry)
+    {
+        BasicSound s = entry.Value;
+
+        s.audioSource = gameObject.AddComponent<AudioSource>();
+
+        if (s.audioClip.Length > 1)
+        {
+            int randomClip = UnityEngine.Random.Range(0, s.audioClip.Length - 1);
+            s.audioSource.clip = s.audioClip[randomClip];
+        }
+        else
+        {
+            s.audioSource.clip = s.audioClip[0];
+        }
+
+        s.audioSource.loop = s.isLoop;
+        s.audioSource.playOnAwake = s.playOnAwake;
+        s.audioSource.volume = s.volume;
+
+        if ((int)s.mixerGroup == 0)
+        {
+            s.audioSource.outputAudioMixerGroup = musicMixerGroup;
+        }
+        else if ((int)s.mixerGroup == 1)
+        {
+            s.audioSource.outputAudioMixerGroup = soundEffectMixerGroup;
+        }
+
+        if (s.playOnAwake)
+        {
+            s.audioSource.Play();
+        }
+    }
+
     // TODO: make the automatic key generation 
     public void AddMusicToManage(CustomMap<AudioClipName, BasicSound> soundsToAdd)
     {
+        if (!concurrentSounds.sounds.IsEmpty)
+        {
+            foreach (KeyValuePair<AudioClipName, BasicSound> entry in concurrentSounds.sounds)
+            {
+                SetupMusic(entry);
+            }
+        }
         foreach (KeyValuePair<AudioClipName, BasicSound> entry in soundsToAdd.DictionaryData)
         {
-            concurrentSounds[entry.Key] = entry.Value;
+            concurrentSounds.sounds[entry.Key] = entry.Value;
 
-            BasicSound s = entry.Value;
-
-            s.audioSource = gameObject.AddComponent<AudioSource>();
-
-            if (s.audioClip.Length > 1)
-            {
-                int randomClip = UnityEngine.Random.Range(0, s.audioClip.Length - 1);
-                s.audioSource.clip = s.audioClip[randomClip];
-            }
-            else
-            {
-                s.audioSource.clip = s.audioClip[0];
-            }
-
-            s.audioSource.loop = s.isLoop;
-            s.audioSource.playOnAwake = s.playOnAwake;
-            s.audioSource.volume = s.volume;
-
-            if ((int)s.mixerGroup == 0)
-            {
-                s.audioSource.outputAudioMixerGroup = musicMixerGroup;
-            }
-            else if ((int)s.mixerGroup == 1)
-            {
-                s.audioSource.outputAudioMixerGroup = soundEffectMixerGroup;
-            }
-
-            if (s.playOnAwake)
-            {
-                s.audioSource.Play();
-            }
+            SetupMusic(entry);
         }
 
         PlayTheSpecifiedSound();

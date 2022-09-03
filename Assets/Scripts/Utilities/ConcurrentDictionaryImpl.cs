@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using System.Threading.Tasks;
 
-public class ConcurrentDictionaryImpl   
+public class ConcurrentDictionaryImpl
 {
     private static ConcurrentDictionaryImpl _instance;
 
@@ -25,7 +25,7 @@ public class ConcurrentDictionaryImpl
 
     public ConcurrentDictionaryImpl()
     {
-        sounds = new Dictionary<Type, List<Delegate>>();
+        sounds = new ConcurrentDictionary<AudioClipName, BasicSound>();
     }
 }
 

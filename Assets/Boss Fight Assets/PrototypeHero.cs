@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using System;
 
@@ -45,6 +46,7 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
     [SerializeField]
     private CustomMap<AudioClipName, BasicSound> sounds;
 
+    private ConcurrentDictionaryImpl concurrentDictionaryImpl = ConcurrentDictionaryImpl.Instance;
     // Use this for initialization
     void Start()
     {
@@ -58,6 +60,24 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
         m_wallSensorR2 = transform.Find("WallSensor_R2").GetComponent<Sensor_Prototype>();
         m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_Prototype>();
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_Prototype>();
+
+        sounds.Awake();
+
+        if (AudioManager.Instance == null)
+        {
+            foreach (KeyValuePair<AudioClipName, BasicSound> entry in sounds.DictionaryData)
+            {
+                concurrentDictionaryImpl.sounds[entry.Key] = entry.Value;
+            }
+        }
+        else
+        {
+            foreach (KeyValuePair<AudioClipName, BasicSound> entry in sounds.DictionaryData)
+            {
+                concurrentDictionaryImpl.sounds[entry.Key] = entry.Value;
+                AudioManager.Instance.SetupMusic(entry);
+            }
+        }
     }
 
     // Update is called once per frame
