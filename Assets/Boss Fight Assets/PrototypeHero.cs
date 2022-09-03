@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
-
+using System;
 
 public class PrototypeHero : MonoBehaviour, IDataPersistence
 {
@@ -63,10 +63,6 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
     // Update is called once per frame
     void Update()
     {
-
-        Action<MessagePayload<InitializedEvent>> addTheSound = InitializeSound;
-        broker.Subscribe<InitializedEvent>(addTheSound);
-
         if (PauseManager.paused)
         {
             return;
@@ -539,22 +535,4 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
             takingDamageBuffer += Time.deltaTime;
         }
     }
-
-    private void InitializeSound(MessagePayload<InitializedEvent> event)
-    {
-        if (event.payload == InitializedEvent.Initialized)
-        {
-            AudioManager audioManager = AudioManager.Instance;
-            if (!sounds.IsEmpty())
-            {
-                audioManager.AddMusicToManage(sounds);
-            }
-
-        }
-        else
-        {
-            return;
-        }
-    }
-
 }
