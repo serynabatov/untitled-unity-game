@@ -1,0 +1,5 @@
+id;en;ru
+pause_1;Continue;Продолжить
+pause_2;Load game;Загрузить сохранение
+pause_3;Options;Настройки
+pause_4;Exit to menu;Выйти в окно

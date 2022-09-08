@@ -823,6 +823,7 @@ GameObject:
   - component: {fileID: 88068807}
   - component: {fileID: 88068805}
   - component: {fileID: 88068806}
+  - component: {fileID: 88068809}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -830,6 +831,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &88068809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88068808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282b7654fc7b69144a7aaf22f6f6d4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iD: pause_2
 --- !u!1001 &109532776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2387,6 +2401,7 @@ GameObject:
   - component: {fileID: 202615220}
   - component: {fileID: 202615218}
   - component: {fileID: 202615219}
+  - component: {fileID: 202615222}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2394,6 +2409,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &202615222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202615221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282b7654fc7b69144a7aaf22f6f6d4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iD: pause_4
 --- !u!1 &220262673
 GameObject:
   m_ObjectHideFlags: 0
@@ -8842,7 +8870,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Russian
+  m_text: English
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9952,6 +9980,7 @@ GameObject:
   - component: {fileID: 1264204846}
   - component: {fileID: 1264204844}
   - component: {fileID: 1264204845}
+  - component: {fileID: 1264204848}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -9959,6 +9988,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1264204848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264204847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282b7654fc7b69144a7aaf22f6f6d4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iD: pause_3
 --- !u!222 &1289911257
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12015,6 +12057,7 @@ GameObject:
   - component: {fileID: 1695697307}
   - component: {fileID: 1695697305}
   - component: {fileID: 1695697306}
+  - component: {fileID: 1695697309}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -12022,6 +12065,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1695697309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695697308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282b7654fc7b69144a7aaf22f6f6d4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iD: pause_1
 --- !u!1 &1739606514
 GameObject:
   m_ObjectHideFlags: 3
@@ -12202,7 +12258,7 @@ MonoBehaviour:
   m_Placeholder: {fileID: 0}
   m_ItemText: {fileID: 335613209}
   m_ItemImage: {fileID: 0}
-  m_Value: 0
+  m_Value: 1
   m_Options:
     m_Options:
     - m_Text: Russian
@@ -12260,6 +12316,7 @@ GameObject:
   - component: {fileID: 1753487752}
   - component: {fileID: 1753487753}
   - component: {fileID: 1753487754}
+  - component: {fileID: 1753487757}
   m_Layer: 5
   m_Name: LanguageDropdown
   m_TagString: Untagged
@@ -12267,6 +12324,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1753487757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753487756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d038c8c647359124eac83005239478dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 1753487754}
 --- !u!222 &1766467074
 CanvasRenderer:
   m_ObjectHideFlags: 0
