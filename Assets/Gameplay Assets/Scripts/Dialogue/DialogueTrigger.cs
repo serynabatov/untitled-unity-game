@@ -7,8 +7,9 @@ public class DialogueTrigger : MonoBehaviour
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
-    [Header("Ink JSON start")]
-    [SerializeField] private TextAsset inkJSONStart;
+    [Header("Ink JSON NPC Cage")]
+    [SerializeField] private TextAsset inkNPCCageEN;
+    [SerializeField] private TextAsset inkNPCCageRU;
 
 
     private bool playerInRange;
@@ -28,8 +29,15 @@ public class DialogueTrigger : MonoBehaviour
             {
                 MessageBrokerImpl broker = MessageBrokerImpl.Instance;
                 broker.Publish<int>((int)AudioClipName.DialogueTriggerEffect);
-
-                DialogueManager.GetInstance().EnterDialogueMode(inkJSONStart);
+                switch (PlayerPrefs.GetString("GameLanguage"))
+                {
+                    case "EN":
+                        DialogueManager.GetInstance().EnterDialogueMode(inkNPCCageEN);
+                        break;
+                    case "RU":
+                        DialogueManager.GetInstance().EnterDialogueMode(inkNPCCageRU);
+                        break;
+                }
             }
         }
         else

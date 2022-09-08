@@ -7012,6 +7012,21 @@ PrefabInstance:
       propertyPath: firstNPC
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7110541810656861630, guid: e8f3ddb24cb04514d855908be310d9c1,
+        type: 3}
+      propertyPath: inkJSONStart
+      value: 
+      objectReference: {fileID: 4900000, guid: 81337ada84cbd5a45bd3b4a2493005bd, type: 3}
+    - target: {fileID: 7110541810656861630, guid: e8f3ddb24cb04514d855908be310d9c1,
+        type: 3}
+      propertyPath: inkNPCCageEN
+      value: 
+      objectReference: {fileID: 4900000, guid: 81337ada84cbd5a45bd3b4a2493005bd, type: 3}
+    - target: {fileID: 7110541810656861630, guid: e8f3ddb24cb04514d855908be310d9c1,
+        type: 3}
+      propertyPath: inkNPCCageRU
+      value: 
+      objectReference: {fileID: 4900000, guid: b8e463ff837b2594e8e894d06c679e2b, type: 3}
     - target: {fileID: 7110541811292617512, guid: e8f3ddb24cb04514d855908be310d9c1,
         type: 3}
       propertyPath: m_LocalScale.x
