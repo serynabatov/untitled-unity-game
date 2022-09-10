@@ -38,6 +38,23 @@ public class CustomMap<TKey, TValue>
             {
                 dictionaryData.Add(keysList[i], valuesList[i]);
             }
+
+            if (AudioManager.Instance == null)
+            {
+                foreach (KeyValuePair<AudioClipName, BasicSound> entry in sounds.DictionaryData)
+                {
+                    concurrentDictionaryImpl.sounds[entry.Key] = entry.Value;
+                }
+            }
+            else
+            {
+                foreach (KeyValuePair<AudioClipName, BasicSound> entry in sounds.DictionaryData)
+                {
+                    concurrentDictionaryImpl.sounds[entry.Key] = entry.Value;
+                    AudioManager.Instance.SetupMusic(entry);
+                }
+            }
+
         }
         catch (Exception)
         {

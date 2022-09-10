@@ -58,26 +58,9 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_Prototype>();
         m_wallSensorR1 = transform.Find("WallSensor_R1").GetComponent<Sensor_Prototype>();
         m_wallSensorR2 = transform.Find("WallSensor_R2").GetComponent<Sensor_Prototype>();
-        m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_Prototype>();
-        m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_Prototype>();
+        m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_Prototype>();        m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_Prototype>();
 
         sounds.Awake();
-
-        if (AudioManager.Instance == null)
-        {
-            foreach (KeyValuePair<AudioClipName, BasicSound> entry in sounds.DictionaryData)
-            {
-                concurrentDictionaryImpl.sounds[entry.Key] = entry.Value;
-            }
-        }
-        else
-        {
-            foreach (KeyValuePair<AudioClipName, BasicSound> entry in sounds.DictionaryData)
-            {
-                concurrentDictionaryImpl.sounds[entry.Key] = entry.Value;
-                AudioManager.Instance.SetupMusic(entry);
-            }
-        }
     }
 
     // Update is called once per frame
