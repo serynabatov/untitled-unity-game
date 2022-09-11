@@ -54,7 +54,7 @@ public class AudioManager : MonoBehaviour
             soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log10(PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume) * 20));
             soundEffectSlider.value = PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume);
         }
-        sounds.Awake();
+        //sounds.Awake();
 
         AddMusicToManage(sounds);
     }
@@ -165,9 +165,9 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void SetupMusic(KeyValuePair<AudioClipName, BasicSound> entry)
+    public void SetupMusic(BasicSound> value)
     {
-        BasicSound s = entry.Value;
+        BasicSound s = value;
 
         s.audioSource = gameObject.AddComponent<AudioSource>();
 
@@ -207,15 +207,22 @@ public class AudioManager : MonoBehaviour
         {
             foreach (KeyValuePair<AudioClipName, BasicSound> entry in concurrentSounds.sounds)
             {
-                SetupMusic(entry);
+                SetupMusic(entry).Value;
             }
         }
-        foreach (KeyValuePair<AudioClipName, BasicSound> entry in soundsToAdd.DictionaryData)
+        /*foreach (KeyValuePair<AudioClipName, BasicSound> entry in soundsToAdd.DictionaryData)
         {
             concurrentSounds.sounds[entry.Key] = entry.Value;
 
             SetupMusic(entry);
+        }*/
+
+        for (int i = 0; i < soundsToAdd.KeysList.Count; i++)
+        {
+            concurrentDictionaryImpl.sounds[keys[i]] = values[i];
+            AudioManager.Instance.SetupMusic(values[i]);
         }
+
 
         PlayTheSpecifiedSound();
 

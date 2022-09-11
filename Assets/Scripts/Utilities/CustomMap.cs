@@ -38,8 +38,6 @@ public class CustomMap<TKey, TValue>
             {
                 dictionaryData.Add(keysList[i], valuesList[i]);
             }
-
-
         }
         catch (Exception)
         {

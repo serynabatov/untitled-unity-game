@@ -62,7 +62,9 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_Prototype>();
 
         sounds.Awake();
-        if (AudioManager.Instance == null)
+
+        concurrentDictionaryImpl.FillSounds(sounds.KeysList, sounds.ValuesList);
+        /*if (AudioManager.Instance == null)
         {
             foreach (KeyValuePair<AudioClipName, BasicSound> entry in sounds.DictionaryData)
             {
@@ -76,7 +78,7 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
                 concurrentDictionaryImpl.sounds[entry.Key] = entry.Value;
                 AudioManager.Instance.SetupMusic(entry);
             }
-        }
+        }*/
     }
 
     // Update is called once per frame
