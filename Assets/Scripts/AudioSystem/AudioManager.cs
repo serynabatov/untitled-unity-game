@@ -54,7 +54,6 @@ public class AudioManager : MonoBehaviour
             soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log10(PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume) * 20));
             soundEffectSlider.value = PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume);
         }
-        //sounds.Awake();
 
         AddMusicToManage(sounds);
     }
@@ -68,7 +67,6 @@ public class AudioManager : MonoBehaviour
     private BasicSound GetSound(AudioClipName audioClipName)
     {
         BasicSound sound;
-        //if (!sounds.DictionaryData.TryGetValue(audioClipName, out sound))
         if (!concurrentSounds.sounds.TryGetValue(audioClipName, out sound))
         {
             // nothing here
@@ -165,7 +163,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void SetupMusic(BasicSound> value)
+    public void SetupMusic(BasicSound value)
     {
         BasicSound s = value;
 
@@ -207,20 +205,14 @@ public class AudioManager : MonoBehaviour
         {
             foreach (KeyValuePair<AudioClipName, BasicSound> entry in concurrentSounds.sounds)
             {
-                SetupMusic(entry).Value;
+                SetupMusic(entry.Value);
             }
         }
-        /*foreach (KeyValuePair<AudioClipName, BasicSound> entry in soundsToAdd.DictionaryData)
-        {
-            concurrentSounds.sounds[entry.Key] = entry.Value;
-
-            SetupMusic(entry);
-        }*/
 
         for (int i = 0; i < soundsToAdd.KeysList.Count; i++)
         {
-            concurrentDictionaryImpl.sounds[keys[i]] = values[i];
-            AudioManager.Instance.SetupMusic(values[i]);
+            concurrentSounds.sounds[soundsToAdd.KeysList[i]] = soundsToAdd.ValuesList[i];
+            AudioManager.Instance.SetupMusic(soundsToAdd.ValuesList[i]);
         }
 
 

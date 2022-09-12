@@ -99,8 +99,6 @@ public class DialogueManager : MonoBehaviour
     {
         this.currentStory = new Story(inkJSON.text);
 
-        Debug.Log("ЗВУК диалога");
-
         this.dialogueIsPlaying = true;
         this.dialoguePanel.SetActive(true);
 
