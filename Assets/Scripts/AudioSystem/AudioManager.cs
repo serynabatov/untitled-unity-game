@@ -26,7 +26,7 @@ public class AudioManager : MonoBehaviour
     Slider soundEffectSlider;
 
     [SerializeField]
-    private CustomMap<AudioClipName, BasicSound> sounds;
+    private List<BasicSound> sounds;
 
     private ConcurrentDictionaryImpl concurrentSounds = ConcurrentDictionaryImpl.Instance;
 
@@ -198,8 +198,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    // TODO: make the automatic key generation 
-    public void AddMusicToManage(CustomMap<AudioClipName, BasicSound> soundsToAdd)
+    public void AddMusicToManage(List<BasicSound> soundsToAdd)
     {
         if (!concurrentSounds.sounds.IsEmpty)
         {
@@ -209,10 +208,10 @@ public class AudioManager : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < soundsToAdd.KeysList.Count; i++)
+        for (int i = 0; i < soundsToAdd.Count; i++)
         {
-            concurrentSounds.sounds[soundsToAdd.KeysList[i]] = soundsToAdd.ValuesList[i];
-            AudioManager.Instance.SetupMusic(soundsToAdd.ValuesList[i]);
+            concurrentSounds.sounds[soundsToAdd[i].audioClipName] = soundsToAdd[i];
+            AudioManager.Instance.SetupMusic(soundsToAdd[i]);
         }
 
 

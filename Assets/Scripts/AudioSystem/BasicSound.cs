@@ -13,6 +13,8 @@ public class BasicSound
     [HideInInspector]
     public AudioSource audioSource;
 
+    public AudioClipName audioClipName;
+
     /// <summary>
     /// The mp3, wav file
     /// </summary>
