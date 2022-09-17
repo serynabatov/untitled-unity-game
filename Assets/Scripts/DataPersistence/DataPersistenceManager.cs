@@ -62,7 +62,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void LoadGame()
     {
         this.playerData = dataHandler.Load();
-        this.metaData = dataHandler.Load();
+        // this.metaData = dataHandler.Load();
         // if no data can be loaded, initialize a new game
         if (this.playerData == null)
         {
@@ -89,7 +89,7 @@ public class DataPersistenceManager : MonoBehaviour
         }
 
         this.dataHandler.Save(playerData);
-        this.dataHandler.Save(metaData);
+        // this.dataHandler.Save(metaData);
     }
 
     public void OnApplicationQuit()

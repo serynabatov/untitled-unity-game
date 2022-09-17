@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ public class MetaData
     public string locationName;
     public string timeStamp;
 
-    
+
     /// <summary>
     /// The values defined for test purpose only
     /// </summary>
@@ -21,9 +22,10 @@ public class MetaData
         this.saveName = "";
         this.locationName = "";
         this.timeStamp = GetTimestamp(DateTime.Now);
+
     }
 
-    private String GetTimestamp(DateTime value)
+    private string GetTimestamp(DateTime value)
     {
         return value.ToString("yyyy:MM:dd:HH:mm:ss:ffff");
     }
