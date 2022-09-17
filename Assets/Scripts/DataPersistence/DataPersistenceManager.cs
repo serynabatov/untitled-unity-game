@@ -20,6 +20,8 @@ public class DataPersistenceManager : MonoBehaviour
     /// </summary>
     private PlayerData playerData;
 
+    private MetaData metaData;
+
     private List<IDataPersistence> dataPersistenceObjects;
 
     private FileDataHandler dataHandler;
@@ -51,6 +53,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void NewGame()
     {
         this.playerData = new PlayerData();
+        this.metaData = new MetaData();
     }
 
     /// <summary>
@@ -59,6 +62,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void LoadGame()
     {
         this.playerData = dataHandler.Load();
+        this.metaData = dataHandler.Load();
         // if no data can be loaded, initialize a new game
         if (this.playerData == null)
         {
@@ -85,6 +89,7 @@ public class DataPersistenceManager : MonoBehaviour
         }
 
         this.dataHandler.Save(playerData);
+        this.dataHandler.Save(metaData);
     }
 
     public void OnApplicationQuit()
