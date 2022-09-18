@@ -82,15 +82,20 @@ public class FileDataHandler
         }
     }
 
-    public void Delete(string dataFileName)
+    public void Delete(string timestamp)
     {
+
         string[] files = Directory.GetFiles(dataDirPath);
 
         foreach (string file in files)
         {
+            if (file.EndsWith("meta"))
+            {
+                continue;
+            }
             FileData fileData = Load(file);
 
-            if (fileData.metaData.timestamp == timestamp)
+            if (fileData.metaData.timeStamp == timestamp)
             {
                 string fullPath = Path.Combine(dataDirPath, file);
 
@@ -112,8 +117,6 @@ public class FileDataHandler
 
             }
         }
-
-        Debug.LogError("No such file with this timestamp");
     }
 
 
@@ -122,11 +125,15 @@ public class FileDataHandler
     {
         string[] files = Directory.GetFiles(dataDirPath);
 
-        foreach(string file in files)
+        foreach (string file in files)
         {
+            if (file.EndsWith("meta"))
+            {
+                continue;
+            }
             FileData fileData = Load(file);
 
-            if (fileData.metaData.timestamp == timestamp)
+            if (fileData.metaData.timeStamp == timestamp)
             {
                 return fileData;
             }
