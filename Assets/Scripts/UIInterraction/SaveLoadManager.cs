@@ -13,13 +13,13 @@ public class SaveLoadManager : MonoBehaviour
         deleteButton.onClick.AddListener(() => DeleteOnClick(timeText.text));
     }
 
-    void LoadOnClick(string fileName)
+    void LoadOnClick(string timestamp)
     {
-        DataPersistenceManager.Instance.LoadGame(fileName);
+        DataPersistenceManager.Instance.LoadGame(timestamp);
     }
 
-    void DeleteOnClick(string fileName)
+    void DeleteOnClick(string timestamp)
     {
-        DataPersistenceManager.Instance.DeleteGame(fileName);
+        DataPersistenceManager.Instance.DeleteGame(timestamp);
     }
 }

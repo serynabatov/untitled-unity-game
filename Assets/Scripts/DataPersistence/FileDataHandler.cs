@@ -84,23 +84,56 @@ public class FileDataHandler
 
     public void Delete(string dataFileName)
     {
-        string fullPath = Path.Combine(dataDirPath, dataFileName);
+        string[] files = Directory.GetFiles(dataDirPath);
 
-        try
+        foreach (string file in files)
         {
-            if (File.Exists(fullPath))
+            FileData fileData = Load(file);
+
+            if (fileData.metaData.timestamp == timestamp)
             {
-                File.Delete(fullPath);
-            }
-            else
-            {
-                Debug.LogError("Error there is no such a file " + fullPath);
+                string fullPath = Path.Combine(dataDirPath, file);
+
+                try
+                {
+                    if (File.Exists(fullPath))
+                    {
+                        File.Delete(fullPath);
+                    }
+                    else
+                    {
+                        Debug.LogError("Error there is no such a file " + fullPath);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("Error in opening the file " + fullPath);
+                }
+
             }
         }
-        catch (Exception e)
+
+        Debug.LogError("No such file with this timestamp");
+    }
+
+
+
+    public FileData SearchForFileName(string timestamp)
+    {
+        string[] files = Directory.GetFiles(dataDirPath);
+
+        foreach(string file in files)
         {
-            Debug.LogError("Error in opening the file " + fullPath);
+            FileData fileData = Load(file);
+
+            if (fileData.metaData.timestamp == timestamp)
+            {
+                return fileData;
+            }
         }
+
+        Debug.LogError("No such file with this timestamp");
+        return null;
     }
 
     private string EncryptDecrypt(string data)
