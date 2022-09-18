@@ -8,18 +8,16 @@ using System.IO;
 public class FileDataHandler
 {
     private string dataDirPath = "";
-    private string dataFileName = "";
     private bool useEncryption = false;
     private readonly string keyCodeWord = "Mechrodzh";
 
-    public FileDataHandler(string dataDirPath, string dataFileName, bool useEncryption)
+    public FileDataHandler(string dataDirPath, bool useEncryption)
     {
         this.dataDirPath = dataDirPath;
-        this.dataFileName = dataFileName;
         this.useEncryption = useEncryption;
     }
 
-    public FileData Load()
+    public FileData Load(string dataFileName)
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         FileData loadedData = null;
@@ -53,7 +51,7 @@ public class FileDataHandler
         return loadedData;
     }
 
-    public void Save(FileData data)
+    public void Save(FileData data, string dataFileName)
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
 
@@ -81,6 +79,27 @@ public class FileDataHandler
         catch (Exception e)
         {
             Debug.LogError("Error created while creating file " + fullPath);
+        }
+    }
+
+    public void Delete(string dataFileName)
+    {
+        string fullPath = Path.Combine(dataDirPath, dataFileName);
+
+        try
+        {
+            if (File.Exists(fullPath))
+            {
+                File.Delete(fullPath);
+            }
+            else
+            {
+                Debug.LogError("Error there is no such a file " + fullPath);
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error in opening the file " + fullPath);
         }
     }
 

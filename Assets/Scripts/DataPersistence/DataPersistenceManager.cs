@@ -11,7 +11,6 @@ public class DataPersistenceManager : MonoBehaviour
 {
 
     [Header("File Storage Configuration")]
-    [SerializeField] private string fileName;
     [SerializeField] private bool useEncryption;
     [SerializeField] private bool useDebug;
 
@@ -34,7 +33,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void Start()
     {
-        this.dataHandler = new FileDataHandler(Application.dataPath, fileName, useEncryption);
+        this.dataHandler = new FileDataHandler(Application.dataPath, useEncryption);
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         if (useDebug)
         {
@@ -53,9 +52,9 @@ public class DataPersistenceManager : MonoBehaviour
     /// <summary>
     /// Loads the game.
     /// </summary>
-    public void LoadGame()
+    public void LoadGame(string fileName)
     {
-        this.fileData = this.dataHandler.Load();
+        this.fileData = this.dataHandler.Load(fileName);
         // if no data can be loaded, initialize a new game
         if (this.fileData == null)
         {
@@ -75,13 +74,20 @@ public class DataPersistenceManager : MonoBehaviour
     /// </summary>
     public void SaveGame()
     {
+        // TODO: there could be a problem here since it is not the json
+        string fileName = System.Guid.NewGuid().ToString();
         // save the data
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.SaveData(ref this.fileData.playerData);
         }
 
-        this.dataHandler.Save(fileData);
+        this.dataHandler.Save(fileData, fileName);
+    }
+
+    public void DeleteGame(string fileName)
+    {
+        this.dataHandler.Delete(fileName);
     }
 
     public void OnApplicationQuit()
