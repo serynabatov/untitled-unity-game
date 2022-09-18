@@ -18,5 +18,7 @@ public class ResetAllBindings : MonoBehaviour
 
         MessageBrokerImpl broker = MessageBrokerImpl.Instance;
         broker.Publish<bool>(true);
+
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }

@@ -1,5 +1,23 @@
 id;en;ru
+pause_title;PAUSE;ПАУЗА
 pause_1;Continue;Продолжить
 pause_2;Load game;Загрузить сохранение
 pause_3;Options;Настройки
 pause_4;Exit to menu;Выйти в окно
+option_Graphic;Graphics;Графика
+option_Graphic_1;Resolution:;Разрешение:
+option_Graphic_2;Fullscreen;Полноэкранный
+option_Sound;Sounds;Звуки
+option_Sound_1;Music Volume;Громкость музыки
+option_Sound_2;Effects Volume;Громкость эффектов
+option_Language;Language;Язык
+option_Control;Controls;Управления
+option_Control_1;Jump;Прыжок
+option_Control_2;Move Left;Двигаться влево
+option_Control_3;Move Right;Двигаться вправо
+option_Control_4;Interact;Взаимодействовать
+option_Control_5;Submit;Представить
+option_Control_6;Skill;Способность
+option_Control_7;Attack;Атака
+option_Control_8;Dodge;Уклонение
+option_Control_9;Reset All;Сброс

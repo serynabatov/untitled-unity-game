@@ -86,7 +86,7 @@ public class RebindingControls : MonoBehaviour
                              buttonText.text = InputControlPath.ToHumanReadableString(action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
 
                              rebindingOperation.Dispose();
-                             EventSystem.current.SetSelectedGameObject(selectedButton);
+                             EventSystem.current.SetSelectedGameObject(null);
                          }
                      )
                      .Start();

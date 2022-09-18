@@ -13,6 +13,8 @@ public class OptionsManager : MonoBehaviour
     [SerializeField] Toggle fullscreenToogle;
     [SerializeField] TMP_Dropdown resolutionDropdown;
     private static OptionsManager instance;
+
+    private bool unselect;
     private void Awake()
     {
         if (instance != null)
@@ -20,6 +22,15 @@ public class OptionsManager : MonoBehaviour
             Debug.LogError("Found more than one Options Manager in the scene.");
         }
         instance = this;
+    }
+
+    private void Update()
+    {
+        if (unselect)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            unselect = false;
+        }
     }
 
     public static OptionsManager GetInstance()
@@ -49,6 +60,7 @@ public class OptionsManager : MonoBehaviour
         Screen.SetResolution(int.Parse(resolution[0]), int.Parse(resolution[1]), Screen.fullScreen);
         PlayerPrefs.SetInt("defaultIndexResolution", index);
         resolutionDropdown.value = index;
+        unselect = true;
     }
 
     /// <summary>
@@ -60,5 +72,6 @@ public class OptionsManager : MonoBehaviour
         Screen.fullScreen = _fullscreen;
         fullscreenToogle.isOn = _fullscreen;
         PlayerPrefs.SetInt("fullscreenStatus", _fullscreen == true ? 1 : 0);
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }
