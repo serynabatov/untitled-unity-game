@@ -22,7 +22,7 @@ public class FileDataHandler
     public FileData Load()
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
-        PlayerData loadedData = null;
+        FileData loadedData = null;
 
         if (File.Exists(fullPath))
         {
@@ -42,7 +42,7 @@ public class FileDataHandler
                     dataToLoad = EncryptDecrypt(dataToLoad);
                 }
 
-                loadedData = JsonUtility.FromJson<PlayerData>(dataToLoad);
+                loadedData = JsonUtility.FromJson<FileData>(dataToLoad);
             }
             catch (Exception e)
             {
@@ -77,7 +77,8 @@ public class FileDataHandler
                     writer.Write(dataToStore);
                 }
             }
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             Debug.LogError("Error created while creating file " + fullPath);
         }

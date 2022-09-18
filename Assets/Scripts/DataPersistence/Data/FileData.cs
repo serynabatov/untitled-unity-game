@@ -15,9 +15,18 @@ public class FileData
     /// <summary>
     /// The values defined for test purpose only
     /// </summary>
-    public MetaData()
+    public FileData()
     {
         this.metaData = new MetaData();
+        this.playerData = new PlayerData();
+    }
+
+    /// <summary>
+    /// The values defined for test purpose only
+    /// </summary>
+    public FileData(string locationName)
+    {
+        this.metaData = new MetaData(locationName);
         this.playerData = new PlayerData();
     }
 }

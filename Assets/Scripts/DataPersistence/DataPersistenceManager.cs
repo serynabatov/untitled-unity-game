@@ -34,7 +34,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void Start()
     {
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
+        this.dataHandler = new FileDataHandler(Application.dataPath, fileName, useEncryption);
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         if (useDebug)
         {
@@ -86,7 +86,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void OnApplicationQuit()
     {
-        //SaveGame();
+        SaveGame();
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
