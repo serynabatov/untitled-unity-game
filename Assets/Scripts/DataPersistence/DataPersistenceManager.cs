@@ -20,25 +20,21 @@ public class DataPersistenceManager : MonoBehaviour
 
     private FileDataHandler dataHandler;
 
-    public static DataPersistenceManager instance { get; private set; }
+    public static DataPersistenceManager Instance { get; private set; }
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Debug.LogError("Found more than one!");
         }
-        instance = this;
+        Instance = this;
     }
 
     public void Start()
     {
         this.dataHandler = new FileDataHandler(Application.dataPath, useEncryption);
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-        if (useDebug)
-        {
-            LoadGame();
-        }
     }
 
     /// <summary>

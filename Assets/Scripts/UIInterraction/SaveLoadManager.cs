@@ -1,14 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SaveLoadManager : MonoBehaviour
 {
     public Button loadButton, deleteButton;
+    public TextMeshProUGUI timeText;
 
     void Start()
     {
-        loadButton.onClick.AddListener(() => LoadOnClick());
-        deleteButton.onClick.AddListener(() => DeleteOnClick());
+        loadButton.onClick.AddListener(() => LoadOnClick(timeText.text));
+        deleteButton.onClick.AddListener(() => DeleteOnClick(timeText.text));
     }
 
     void LoadOnClick(string fileName)
@@ -18,7 +20,6 @@ public class SaveLoadManager : MonoBehaviour
 
     void DeleteOnClick(string fileName)
     {
-        // TODO: make the deletion
         DataPersistenceManager.Instance.DeleteGame(fileName);
     }
 }
