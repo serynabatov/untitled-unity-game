@@ -9,7 +9,6 @@ using UnityEngine;
 [System.Serializable]
 public class MetaData
 {
-    public string saveName;
     public string locationName;
     public string timeStamp;
 
@@ -19,10 +18,14 @@ public class MetaData
     /// </summary>
     public MetaData()
     {
-        this.saveName = "";
         this.locationName = "";
         this.timeStamp = GetTimestamp(DateTime.Now);
+    }
 
+    public MetaData(string locationName)
+    {
+        this.locationName = locationName;
+        this.timeStamp = GetTimestamp(DateTime.Now);
     }
 
     private string GetTimestamp(DateTime value)

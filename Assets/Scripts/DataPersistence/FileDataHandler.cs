@@ -19,7 +19,7 @@ public class FileDataHandler
         this.useEncryption = useEncryption;
     }
 
-    public PlayerData Load()
+    public FileData Load()
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         PlayerData loadedData = null;
@@ -53,7 +53,7 @@ public class FileDataHandler
         return loadedData;
     }
 
-    public void Save(PlayerData data)
+    public void Save(FileData data)
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
 

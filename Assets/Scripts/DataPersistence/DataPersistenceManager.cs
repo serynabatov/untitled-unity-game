@@ -15,12 +15,7 @@ public class DataPersistenceManager : MonoBehaviour
     [SerializeField] private bool useEncryption;
     [SerializeField] private bool useDebug;
 
-    /// <summary>
-    /// The player data to track.
-    /// </summary>
-    private PlayerData playerData;
-
-    private MetaData metaData;
+    private FileData fileData;
 
     private List<IDataPersistence> dataPersistenceObjects;
 
@@ -52,8 +47,7 @@ public class DataPersistenceManager : MonoBehaviour
     /// </summary>
     public void NewGame()
     {
-        this.playerData = new PlayerData();
-        this.metaData = new MetaData();
+        this.fileData = new FileData();
     }
 
     /// <summary>
@@ -61,10 +55,9 @@ public class DataPersistenceManager : MonoBehaviour
     /// </summary>
     public void LoadGame()
     {
-        this.playerData = dataHandler.Load();
-        // this.metaData = dataHandler.Load();
+        this.fileData = this.dataHandler.Load();
         // if no data can be loaded, initialize a new game
-        if (this.playerData == null)
+        if (this.fileData == null)
         {
             Debug.Log("No Data was found");
             NewGame();
@@ -73,7 +66,7 @@ public class DataPersistenceManager : MonoBehaviour
         // load the data
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
-            dataPersistenceObj.LoadData(this.playerData);
+            dataPersistenceObj.LoadData(this.fileData.playerData);
         }
     }
 
@@ -85,11 +78,10 @@ public class DataPersistenceManager : MonoBehaviour
         // save the data
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
-            dataPersistenceObj.SaveData(ref this.playerData);
+            dataPersistenceObj.SaveData(ref this.fileData.playerData);
         }
 
-        this.dataHandler.Save(playerData);
-        // this.dataHandler.Save(metaData);
+        this.dataHandler.Save(fileData);
     }
 
     public void OnApplicationQuit()
