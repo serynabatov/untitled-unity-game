@@ -120,7 +120,7 @@ public class FileDataHandler
     }
 
 
-
+    /* TODO: remove it
     public FileData SearchForFileName(string timestamp)
     {
         string[] files = Directory.GetFiles(dataDirPath);
@@ -141,7 +141,7 @@ public class FileDataHandler
 
         Debug.LogError("No such file with this timestamp");
         return null;
-    }
+    }*/
 
     private string EncryptDecrypt(string data)
     {

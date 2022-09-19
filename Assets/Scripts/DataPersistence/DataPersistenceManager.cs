@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,7 +55,7 @@ public class DataPersistenceManager : MonoBehaviour
     /// </summary>
     public void LoadGame(string timestamp)
     {
-        this.fileData = this.dataHandler.SearchForFileName(timestamp);
+        this.fileData = this.dataHandler.Load(timestamp);
         // if no data can be loaded, initialize a new game
         if (this.fileData == null)
         {
@@ -74,8 +75,7 @@ public class DataPersistenceManager : MonoBehaviour
     /// </summary>
     public void SaveGame()
     {
-        // TODO: there could be a problem here since it is not the json
-        string fileName = System.Guid.NewGuid().ToString();
+        string fileName = Utilities.GetTimestamp(DateTime.Now);
         // save the data
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
@@ -102,4 +102,5 @@ public class DataPersistenceManager : MonoBehaviour
 
         return new List<IDataPersistence>(dataPersitenceObjectsLocal);
     }
+
 }

@@ -19,7 +19,7 @@ public class MetaData
     public MetaData()
     {
         this.locationName = "";
-        this.timeStamp = GetTimestamp(DateTime.Now);
+        this.timeStamp = Utilities.GetTimestamp(DateTime.Now);
     }
 
     public MetaData(string locationName)
@@ -27,10 +27,4 @@ public class MetaData
         this.locationName = locationName;
         this.timeStamp = GetTimestamp(DateTime.Now);
     }
-
-    private string GetTimestamp(DateTime value)
-    {
-        return value.ToString("yyyy:MM:dd:HH:mm:ss:ffff");
-    }
-
 }
