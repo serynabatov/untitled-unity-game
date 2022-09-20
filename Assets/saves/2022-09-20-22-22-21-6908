@@ -1,12 +1,12 @@
 {
     "metaData": {
         "locationName": "",
-        "timeStamp": "2022:09:18:23:51:04:1010"
+        "timeStamp": "2022-09-20-22-20-40-5380"
     },
     "playerData": {
         "playerPosition": {
-            "x": -100.0,
-            "y": 18.0,
+            "x": -84.77034759521485,
+            "y": 7.422855377197266,
             "z": 0.0
         },
         "keysCollected": {
