@@ -6355,7 +6355,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2022-09-20-22-20-43-3791
+  m_text: 2022-09-24-22-29-32-3864
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6866,7 +6866,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1995001984}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioOptionsManager, Assembly-CSharp
         m_MethodName: OnMusicSliderValueChanged
         m_Mode: 0
@@ -10405,7 +10405,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1995001984}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioOptionsManager, Assembly-CSharp
         m_MethodName: OnEffectSliderValueChanged
         m_Mode: 0
@@ -15570,7 +15570,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1995001982}
-  - component: {fileID: 1995001984}
   - component: {fileID: 1995001983}
   m_Layer: 0
   m_Name: AudioManager
@@ -15637,19 +15636,6 @@ MonoBehaviour:
     playOnAwake: 0
     mixerGroup: 1
     volume: 1
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1995001981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26bcbd5b52918df4da36671710a28187, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicSliderText: {fileID: 312319929}
-  soundEffectSliderText: {fileID: 224789330}
 --- !u!114 &1997545605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16026,7 +16012,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1995001984}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioOptionsManager, Assembly-CSharp
         m_MethodName: ResetOptions
         m_Mode: 1
