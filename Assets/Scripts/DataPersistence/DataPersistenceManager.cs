@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,37 +12,33 @@ public class DataPersistenceManager : MonoBehaviour
 {
 
     [Header("File Storage Configuration")]
-    [SerializeField] private string fileName;
     [SerializeField] private bool useEncryption;
     [SerializeField] private bool useDebug;
 
-    /// <summary>
-    /// The player data to track.
-    /// </summary>
-    private PlayerData playerData;
+    private FileData fileData;
 
     private List<IDataPersistence> dataPersistenceObjects;
 
     private FileDataHandler dataHandler;
 
-    public static DataPersistenceManager instance { get; private set; }
+    public static DataPersistenceManager Instance { get; private set; }
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Debug.LogError("Found more than one!");
         }
-        instance = this;
+        Instance = this;
     }
 
     public void Start()
     {
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
+        this.dataHandler = new FileDataHandler(Application.dataPath + "/saves", useEncryption);
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         if (useDebug)
         {
-            LoadGame();
+            NewGame();
         }
     }
 
@@ -50,17 +47,17 @@ public class DataPersistenceManager : MonoBehaviour
     /// </summary>
     public void NewGame()
     {
-        this.playerData = new PlayerData();
+        this.fileData = new FileData();
     }
 
     /// <summary>
     /// Loads the game.
     /// </summary>
-    public void LoadGame()
+    public void LoadGame(string timestamp)
     {
-        this.playerData = dataHandler.Load();
+        this.fileData = this.dataHandler.Load(timestamp);
         // if no data can be loaded, initialize a new game
-        if (this.playerData == null)
+        if (this.fileData == null)
         {
             Debug.Log("No Data was found");
             NewGame();
@@ -69,7 +66,7 @@ public class DataPersistenceManager : MonoBehaviour
         // load the data
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
-            dataPersistenceObj.LoadData(this.playerData);
+            dataPersistenceObj.LoadData(this.fileData.playerData);
         }
     }
 
@@ -78,18 +75,24 @@ public class DataPersistenceManager : MonoBehaviour
     /// </summary>
     public void SaveGame()
     {
+        string fileName = Utilities.GetTimestamp(DateTime.Now);
         // save the data
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
-            dataPersistenceObj.SaveData(ref this.playerData);
+            dataPersistenceObj.SaveData(ref this.fileData.playerData);
         }
 
-        this.dataHandler.Save(playerData);
+        this.dataHandler.Save(fileData, fileName);
+    }
+
+    public void DeleteGame(string fileName)
+    {
+        this.dataHandler.Delete(fileName);
     }
 
     public void OnApplicationQuit()
     {
-        //SaveGame();
+        SaveGame();
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
@@ -99,4 +102,5 @@ public class DataPersistenceManager : MonoBehaviour
 
         return new List<IDataPersistence>(dataPersitenceObjectsLocal);
     }
+
 }
