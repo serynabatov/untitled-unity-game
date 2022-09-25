@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneManager : MonoBehaviour
+public class LoadSceneManager : MonoBehaviour
 {
     // Prefab
     [SerializeField]
@@ -11,25 +11,27 @@ public class SceneManager : MonoBehaviour
     [SerializeField]
     private GameObject loadGameMenu;
 
-    public bool executed = false;
+    private bool executed = false;
 
     private int saveFiles;
-    
+
     public void Update()
     {
-       LoadPrefabs();
+        LoadPrefabs();
     }
 
     private void LoadPrefabs()
     {
-        if (loadGameMenu.activeSelf() && executed == false)
+        if (loadGameMenu.activeSelf && executed == false)
         {
+            Debug.Log("HERE");
             List<FileData> filesData = DataPersistenceManager.Instance.GetFiles();
 
             executed = true;
         }
-        else if (!loadGameMenu.activeSelf())
+        else if (!loadGameMenu.activeSelf)
         {
+            Debug.Log("DASAA");
             executed = false;
         }
     }

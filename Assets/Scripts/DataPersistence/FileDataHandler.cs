@@ -104,15 +104,18 @@ public class FileDataHandler
         }
     }
 
-    private List<FileData> GetFiles()
+    public List<FileData> GetFiles()
     {
         List<FileData> fileDatas = new List<FileData>();
 
-        string[] files = Directory.GetFiles(dataDirPath, SearchOption.AllDirectories);
+        string[] files = Directory.GetFiles(dataDirPath);
 
         foreach (string file in files)
         {
-            fileDatas.Add(Load(file));
+            if (!file.EndsWith(".meta"))
+            {
+                fileDatas.Add(Load(file));
+            }
         }
 
         return fileDatas;

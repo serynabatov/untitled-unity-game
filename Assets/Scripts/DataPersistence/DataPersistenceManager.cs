@@ -103,7 +103,7 @@ public class DataPersistenceManager : MonoBehaviour
         return new List<IDataPersistence>(dataPersitenceObjectsLocal);
     }
 
-    private List<FileData> GetFiles()
+    public List<FileData> GetFiles()
     {
         return this.dataHandler.GetFiles();
     }
