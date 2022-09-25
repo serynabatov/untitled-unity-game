@@ -104,29 +104,19 @@ public class FileDataHandler
         }
     }
 
-
-    /* TODO: remove it
-    public FileData SearchForFileName(string timestamp)
+    private List<FileData> GetFiles()
     {
-        string[] files = Directory.GetFiles(dataDirPath);
+        List<FileData> fileDatas = new List<FileData>();
+
+        string[] files = Directory.GetFiles(dataDirPath, SearchOption.AllDirectories);
 
         foreach (string file in files)
         {
-            if (file.EndsWith("meta"))
-            {
-                continue;
-            }
-            FileData fileData = Load(file);
-
-            if (fileData.metaData.timeStamp == timestamp)
-            {
-                return fileData;
-            }
+            fileDatas.Add(Load(file));
         }
 
-        Debug.LogError("No such file with this timestamp");
-        return null;
-    }*/
+        return fileDatas;
+    }
 
     private string EncryptDecrypt(string data)
     {
