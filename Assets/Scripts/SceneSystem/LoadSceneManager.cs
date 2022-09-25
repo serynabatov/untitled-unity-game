@@ -29,10 +29,10 @@ public class LoadSceneManager : MonoBehaviour
         {
             List<FileData> filesData = DataPersistenceManager.Instance.GetFiles();
 
-            for (FileData fileData : filesData)
+            foreach (FileData fileData in filesData)
             {
-                GameObject tile = Instantiate(loadPrefab, new Vector2(1, 1, 1), Quaternon.Identity);
-                tile.transform.position = parent.transform;
+                GameObject tile = Instantiate(loadPrefab, new Vector3(1, 1, 1), Quaternion.identity);
+                tile.transform.parent = parent.transform;
             }
 
             executed = true;
