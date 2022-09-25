@@ -9,7 +9,10 @@ public class LoadSceneManager : MonoBehaviour
     public GameObject loadPrefab;
 
     [SerializeField]
-    private GameObject loadGameMenu;
+    public GameObject loadGameMenu;
+
+    [SerializeField]
+    public GameObject parent;
 
     private bool executed = false;
 
@@ -24,14 +27,18 @@ public class LoadSceneManager : MonoBehaviour
     {
         if (loadGameMenu.activeSelf && executed == false)
         {
-            Debug.Log("HERE");
             List<FileData> filesData = DataPersistenceManager.Instance.GetFiles();
+
+            for (FileData fileData : filesData)
+            {
+                GameObject tile = Instantiate(loadPrefab, new Vector2(1, 1, 1), Quaternon.Identity);
+                tile.transform.position = parent.transform;
+            }
 
             executed = true;
         }
         else if (!loadGameMenu.activeSelf)
         {
-            Debug.Log("DASAA");
             executed = false;
         }
     }
