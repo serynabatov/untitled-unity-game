@@ -19,6 +19,8 @@ public class LoadSceneManager : MonoBehaviour
     public Button loadButton, deleteButton;
     public TextMeshProUGUI timeText;
 
+    [SerializeField]
+    public GameObject menu;
 
     private bool executed = false;
 
@@ -33,15 +35,15 @@ public class LoadSceneManager : MonoBehaviour
     void LoadOnClick(string timestamp)
     {
         DataPersistenceManager.Instance.LoadGame(timestamp);
-
-        loadGameMenu.setActive(false);
+        //TODO: сделать confirmation Window
+        menu.SetActive(false);
+        PauseManager.GetInstance().ResumeGame();
     }
 
     void DeleteOnClick(string timestamp)
     {
         DataPersistenceManager.Instance.DeleteGame(timestamp);
 
-        // TODO: This fix could break everything
         executed = false;
     }
 
@@ -61,8 +63,8 @@ public class LoadSceneManager : MonoBehaviour
                 GameObject tile = Instantiate(loadPrefab, new Vector3(1, 1, 1), Quaternion.identity);
                 tile.transform.parent = parent.transform;
 
-                // TODO: here we need to fill the tile by the values
-
+                //timeText.text = fileData.metaData.timeStamp;
+                //tile.gameObject.GetComponent<TextMeshProUGUI>().text
             }
 
             executed = true;

@@ -23,6 +23,10 @@ public class DataPersistenceManager : MonoBehaviour
 
     public static DataPersistenceManager Instance { get; private set; }
 
+    private const string patternTimeStamp = "dddd, dd MMMM yyyy HH:mm:ss";
+    private const string patternFileName = "yyyy-MM-dd-HH-mm-ss-ffff";
+
+
     private void Awake()
     {
         if (Instance != null)
@@ -55,7 +59,7 @@ public class DataPersistenceManager : MonoBehaviour
     /// </summary>
     public void LoadGame(string timestamp)
     {
-        this.fileData = this.dataHandler.Load(timestamp);
+        this.fileData = this.dataHandler.Load(Utilities.NamingFile(timestamp, patternTimeStamp, patternFileName));
         // if no data can be loaded, initialize a new game
         if (this.fileData == null)
         {
@@ -75,7 +79,7 @@ public class DataPersistenceManager : MonoBehaviour
     /// </summary>
     public void SaveGame()
     {
-        string fileName = fileData.metaData.timeStamp;
+        string fileName = Utilities.NamingFile(fileData.metaData.timeStamp, patternTimeStamp, patternFileName);
         // save the data
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
@@ -87,7 +91,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void DeleteGame(string fileName)
     {
-        this.dataHandler.Delete(fileName);
+        this.dataHandler.Delete(Utilities.NamingFile(fileName, patternTimeStamp, patternFileName));
     }
 
     public void OnApplicationQuit()
