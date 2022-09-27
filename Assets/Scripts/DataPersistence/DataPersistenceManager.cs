@@ -75,7 +75,7 @@ public class DataPersistenceManager : MonoBehaviour
     /// </summary>
     public void SaveGame()
     {
-        string fileName = Utilities.GetTimestamp(DateTime.Now);
+        string fileName = fileData.metaData.timeStamp;
         // save the data
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
