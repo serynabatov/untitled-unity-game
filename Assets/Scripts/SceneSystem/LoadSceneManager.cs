@@ -47,14 +47,9 @@ public class LoadSceneManager : MonoBehaviour
     {
         if (loadGameMenu.activeSelf && executed == false)
         {
-            //TODO: Надо найти способ чтобы очистить content перед заполнением его сейвами, чтобы не было дубликатов
-            Button[] buttonList = content.GetComponentsInChildren<Button>();
-            if (buttonList.Length != 0)
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("LoadButtonPrefab"))
             {
-                foreach (Button button in buttonList)
-                {
-                    Destroy(button);
-                }
+                Destroy(go);
             }
 
             List<FileData> filesData = DataPersistenceManager.Instance.GetFiles();
