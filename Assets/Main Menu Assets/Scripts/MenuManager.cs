@@ -16,10 +16,6 @@ public class MenuManager : MonoBehaviour
     private GameObject loadGameMenu;
 
     [SerializeField]
-    private GameObject exitConfirmationWindow;
-
-
-    [SerializeField]
     private Button resumeButton;
     [SerializeField]
     private Button exitButton;
@@ -53,7 +49,7 @@ public class MenuManager : MonoBehaviour
     public void ContinueGameCheckpoint()
     {
         // TODO: Загружал чтоб по последнему сайву
-        if (!exitConfirmationWindow.activeSelf)
+        if (!ExitConfirmationManager.GetInstance().ActiveSelf())
         {
             SceneManager.LoadScene("Gameplay");
         }
@@ -64,7 +60,7 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     public void ContinueGame()
     {
-        if (!exitConfirmationWindow.activeSelf)
+        if (!ExitConfirmationManager.GetInstance().ActiveSelf())
         {
             PauseManager.GetInstance().ResumeGame();
         }
@@ -76,7 +72,7 @@ public class MenuManager : MonoBehaviour
     public void NewGame()
     {
         // TODO: Запускал новую игру с нового сейв файла
-        if (!exitConfirmationWindow.activeSelf)
+        if (!ExitConfirmationManager.GetInstance().ActiveSelf())
         {
             SceneManager.LoadScene("Gameplay");
         }
@@ -88,7 +84,7 @@ public class MenuManager : MonoBehaviour
     public void LoadGame()
     {
 
-        if (!exitConfirmationWindow.activeSelf)
+        if (!ExitConfirmationManager.GetInstance().ActiveSelf())
         {
             // TODO: Запускал игру с сейв файла
             optionsMenu.SetActive(false);
@@ -117,7 +113,7 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     public void Options()
     {
-        if (!exitConfirmationWindow.activeSelf)
+        if (!ExitConfirmationManager.GetInstance().ActiveSelf())
         {
             loadGameMenu.SetActive(false);
             optionsMenu.SetActive(optionsMenu.activeSelf == true ? false : true);
@@ -147,9 +143,9 @@ public class MenuManager : MonoBehaviour
     public void ExitGame()
     {
         // TODO: Изменить параметры запуска в будущем
-        if (!exitConfirmationWindow.activeSelf)
+        if (!ExitConfirmationManager.GetInstance().ActiveSelf())
         {
-            exitConfirmationWindow.SetActive(true);
+            ExitConfirmationManager.GetInstance().SetActive(true);
         }
     }
 
@@ -158,7 +154,7 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     public void ConfirmateExitGame()
     {
-        exitConfirmationWindow.SetActive(false);
+        ExitConfirmationManager.GetInstance().SetActive(false);
         Application.Quit();
     }
 
@@ -167,7 +163,7 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     public void DismissExitGame()
     {
-        exitConfirmationWindow.SetActive(false);
+        ExitConfirmationManager.GetInstance().SetActive(false);
     }
 
     /// <summary>
@@ -176,9 +172,9 @@ public class MenuManager : MonoBehaviour
     public void ExitToMainMenu()
     {
         // TODO: Изменить параметры запуска в будущем
-        if (!exitConfirmationWindow.activeSelf)
+        if (!ExitConfirmationManager.GetInstance().ActiveSelf())
         {
-            exitConfirmationWindow.SetActive(true);
+            ExitConfirmationManager.GetInstance().SetActive(true);
         }
     }
 
@@ -187,7 +183,7 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     public void ConfirmateExitToMainMenu()
     {
-        exitConfirmationWindow.SetActive(false);
+        ExitConfirmationManager.GetInstance().SetActive(false);
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -196,6 +192,6 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     public void DismissExitToMainMenu()
     {
-        exitConfirmationWindow.SetActive(false);
+        ExitConfirmationManager.GetInstance().SetActive(false);
     }
 }
