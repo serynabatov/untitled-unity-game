@@ -1912,6 +1912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 122547086}
   - component: {fileID: 122547087}
+  - component: {fileID: 122547088}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -1948,13 +1949,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionsMenu: {fileID: 472498450}
   loadGameMenu: {fileID: 1260948217}
-  exitConfirmationWindow: {fileID: 691067856}
   resumeButton: {fileID: 1961350387}
   exitButton: {fileID: 779556702}
   loadButton: {fileID: 61527984}
   loadFirstButton: {fileID: 0}
   optionsButton: {fileID: 408091459}
   optionsFirstButton: {fileID: 2059668922}
+--- !u!114 &122547088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122547085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1eb48a993a63a04fae0316d942980b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "\u0441onfirmationWindow": {fileID: 691067856}
 --- !u!1 &126023947
 GameObject:
   m_ObjectHideFlags: 0
@@ -7357,7 +7370,7 @@ GameObject:
   - component: {fileID: 691067885}
   - component: {fileID: 691067886}
   m_Layer: 5
-  m_Name: ExitConfirmationWindow
+  m_Name: ConfirmationWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9915,19 +9928,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1202332017}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 122547087}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: ConfirmateExitToMainMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!224 &1202332019
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10924,19 +10925,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1418486438}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 122547087}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: DismissExitToMainMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!224 &1418486440
 RectTransform:
   m_ObjectHideFlags: 0

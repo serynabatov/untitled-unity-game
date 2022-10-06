@@ -61,8 +61,8 @@ public class LoadSceneManager : MonoBehaviour
                 tile.gameObject.GetComponentInChildren<Button>().gameObject.GetComponentsInChildren<TextMeshProUGUI>()[0].text = fileData.metaData.locationName;
                 tile.gameObject.GetComponentInChildren<Button>().gameObject.GetComponentsInChildren<TextMeshProUGUI>()[1].text = fileData.metaData.timeStamp;
 
-                tile.gameObject.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => LoadOnClick(fileData.metaData.timeStamp));
-                tile.gameObject.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => DeleteOnClick(fileData.metaData.timeStamp));
+                tile.gameObject.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => LoadConfirmationWindow(fileData.metaData.timeStamp));
+                tile.gameObject.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => DeleteConfirmationWindow(fileData.metaData.timeStamp));
             }
 
             executed = true;
@@ -70,6 +70,26 @@ public class LoadSceneManager : MonoBehaviour
         else if (!loadGameMenu.activeSelf)
         {
             executed = false;
+        }
+    }
+
+    private void LoadConfirmationWindow(string fileName)
+    {
+        if (!ConfirmationManager.GetInstance().ActiveSelf())
+        {
+            ConfirmationManager.GetInstance().SetActive(true);
+            //TODO: Add listener to button "YES" and 'Text' in ConfirmationWindow
+            //! tile.gameObject.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => LoadOnClick(fileData.metaData.timeStamp));
+        }
+    }
+
+    private void DeleteConfirmationWindow(string fileName)
+    {
+        if (!ConfirmationManager.GetInstance().ActiveSelf())
+        {
+            ConfirmationManager.GetInstance().SetActive(true);
+            //TODO: Add listener to button "YES" and 'Text' in ConfirmationWindow
+            //! tile.gameObject.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => DeleteConfirmationWindow(fileData.metaData.timeStamp));
         }
     }
 
