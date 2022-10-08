@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class LoadSceneManager : MonoBehaviour
+public class LoadManager : MonoBehaviour
 {
+
+    public enum LoadActions { LOAD, DELETE };
+
     // Prefab
     [SerializeField]
     private GameObject loadTemplatePrefab;
@@ -61,8 +64,8 @@ public class LoadSceneManager : MonoBehaviour
                 tile.gameObject.GetComponentInChildren<Button>().gameObject.GetComponentsInChildren<TextMeshProUGUI>()[0].text = fileData.metaData.locationName;
                 tile.gameObject.GetComponentInChildren<Button>().gameObject.GetComponentsInChildren<TextMeshProUGUI>()[1].text = fileData.metaData.timeStamp;
 
-                tile.gameObject.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => LoadConfirmationWindow(fileData.metaData.timeStamp));
-                tile.gameObject.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => DeleteConfirmationWindow(fileData.metaData.timeStamp));
+                tile.gameObject.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => confirmationWinndow(fileData.metaData.timeStamp, LoadActions.LOAD));
+                tile.gameObject.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => confirmationWinndow(fileData.metaData.timeStamp, LoadActions.DELETE));
             }
 
             executed = true;
@@ -73,24 +76,35 @@ public class LoadSceneManager : MonoBehaviour
         }
     }
 
-    private void LoadConfirmationWindow(string fileName)
+    private void confirmationWinndow(string fileName, LoadActions action)
     {
         if (!ConfirmationManager.GetInstance().ActiveSelf())
         {
-            ConfirmationManager.GetInstance().SetActive(true);
+            switch (action)
+            {
+                case LoadActions.LOAD:
+                    LoadConfirmationWindow(fileName);
+                    break;
+                case LoadActions.DELETE:
+                    DeleteConfirmationWindow(fileName);
+                    break;
+            }
+        }
+    }
+
+    private void LoadConfirmationWindow(string fileName)
+    {
+        ConfirmationManager.GetInstance().SetActive(true);
             //TODO: Add listener to button "YES" and 'Text' in ConfirmationWindow
             //! tile.gameObject.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => LoadOnClick(fileData.metaData.timeStamp));
-        }
     }
 
     private void DeleteConfirmationWindow(string fileName)
     {
-        if (!ConfirmationManager.GetInstance().ActiveSelf())
-        {
-            ConfirmationManager.GetInstance().SetActive(true);
+        ConfirmationManager.GetInstance().SetActive(true);
+
+        //ConfirmationManager.GetInstance().ExecuteYesButton();
             //TODO: Add listener to button "YES" and 'Text' in ConfirmationWindow
             //! tile.gameObject.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => DeleteConfirmationWindow(fileData.metaData.timeStamp));
-        }
     }
-
 }

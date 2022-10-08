@@ -33,4 +33,20 @@ public class ConfirmationManager : MonoBehaviour
     {
         сonfirmationWindow.SetActive(active);
     }
+
+    public void ExecuteNoButton()
+    {
+        сonfirmationWindow.SetActive(false);
+    }
+
+    public void ExecuteYesButton(Func<string, int> myMethodName)
+    {
+        int i = myMethodName("Mymy");
+    }
+
+    public void ChangeTextButton(string text)
+    {
+        // TODO: change button text here
+    }
+
 }
