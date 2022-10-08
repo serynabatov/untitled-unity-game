@@ -29,14 +29,15 @@ public class LoadManager : MonoBehaviour
     void LoadOnClick(string timestamp)
     {
         DataPersistenceManager.Instance.LoadGame(timestamp);
-        //TODO: сделать confirmation Window
         pauseBackground.SetActive(false);
+        ConfirmationManager.GetInstance().SetActive2(false);
         PauseManager.GetInstance().ResumeGame();
     }
 
     void DeleteOnClick(string timestamp)
     {
         DataPersistenceManager.Instance.DeleteGame(timestamp);
+        ConfirmationManager.GetInstance().SetActive2(false);
 
         executed = false;
     }
@@ -78,7 +79,7 @@ public class LoadManager : MonoBehaviour
 
     private void confirmationWinndow(string fileName, LoadActions action)
     {
-        if (!ConfirmationManager.GetInstance().ActiveSelf())
+        if (!ConfirmationManager.GetInstance().ActiveSelf2())
         {
             switch (action)
             {
@@ -94,17 +95,13 @@ public class LoadManager : MonoBehaviour
 
     private void LoadConfirmationWindow(string fileName)
     {
-        ConfirmationManager.GetInstance().SetActive(true);
-            //TODO: Add listener to button "YES" and 'Text' in ConfirmationWindow
-            //! tile.gameObject.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => LoadOnClick(fileData.metaData.timeStamp));
+        ConfirmationManager.GetInstance().SetActive2(true);
+        ConfirmationManager.GetInstance().GetYesButton2().onClick.AddListener(() => LoadOnClick(fileName));
     }
 
     private void DeleteConfirmationWindow(string fileName)
     {
-        ConfirmationManager.GetInstance().SetActive(true);
-
-        //ConfirmationManager.GetInstance().ExecuteYesButton();
-            //TODO: Add listener to button "YES" and 'Text' in ConfirmationWindow
-            //! tile.gameObject.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => DeleteConfirmationWindow(fileData.metaData.timeStamp));
+        ConfirmationManager.GetInstance().SetActive2(true);
+        ConfirmationManager.GetInstance().GetYesButton2().onClick.AddListener(() => DeleteOnClick(fileName));
     }
 }

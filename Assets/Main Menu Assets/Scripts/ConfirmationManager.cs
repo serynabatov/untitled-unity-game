@@ -1,11 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ConfirmationManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject сonfirmationWindow;
+
+    [SerializeField]
+    private GameObject сonfirmationLoadWindow;
 
     private static ConfirmationManager instance;
 
@@ -23,10 +26,14 @@ public class ConfirmationManager : MonoBehaviour
         return сonfirmationWindow.activeSelf;
     }
 
-
     public static ConfirmationManager GetInstance()
     {
         return instance;
+    }
+
+    public Button GetYesButton()
+    {
+        return this.сonfirmationWindow.GetComponentsInChildren<Button>()[0];
     }
 
     public void SetActive(bool active)
@@ -39,14 +46,29 @@ public class ConfirmationManager : MonoBehaviour
         сonfirmationWindow.SetActive(false);
     }
 
-    public void ExecuteYesButton(Func<string, int> myMethodName)
-    {
-        int i = myMethodName("Mymy");
-    }
-
     public void ChangeTextButton(string text)
     {
         // TODO: change button text here
+    }
+
+    public bool ActiveSelf2()
+    {
+        return сonfirmationLoadWindow.activeSelf;
+    }
+
+    public Button GetYesButton2()
+    {
+        return this.сonfirmationLoadWindow.GetComponentsInChildren<Button>()[0];
+    }
+
+    public void SetActive2(bool active)
+    {
+        сonfirmationLoadWindow.SetActive(active);
+    }
+
+    public void ExecuteNoButton2()
+    {
+        сonfirmationLoadWindow.SetActive(false);
     }
 
 }

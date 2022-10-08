@@ -38,6 +38,11 @@ public class MenuManager : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+        ConfirmateExitToMainMenu();
+    }
+
     public static MenuManager GetInstance()
     {
         return instance;
@@ -181,7 +186,13 @@ public class MenuManager : MonoBehaviour
     /// <summary>
     /// Окно подтверждения выхода в главное меню
     /// </summary>
-    public void ConfirmateExitToMainMenu()
+    private void ConfirmateExitToMainMenu()
+    {
+        //ConfirmationManager.GetInstance().GetYesButton().onClick.RemoveAllListeners();
+        ConfirmationManager.GetInstance().GetYesButton().onClick.AddListener(() => ExecuteYesButtonToMainMenu());
+    }
+
+    private void ExecuteYesButtonToMainMenu()
     {
         ConfirmationManager.GetInstance().SetActive(false);
         SceneManager.LoadScene("MainMenu");
