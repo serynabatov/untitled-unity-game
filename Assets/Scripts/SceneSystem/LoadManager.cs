@@ -34,11 +34,11 @@ public class LoadManager : MonoBehaviour
         PauseManager.GetInstance().ResumeGame();
     }
 
-    void DeleteOnClick(string timestamp)
+    void DeleteOnClick(string timestamp, GameObject gameObject)
     {
         DataPersistenceManager.Instance.DeleteGame(timestamp);
         ConfirmationManager.GetInstance().SetActive2(false);
-
+        Destroy(gameObject);
         executed = false;
     }
 
@@ -65,8 +65,8 @@ public class LoadManager : MonoBehaviour
                 tile.gameObject.GetComponentInChildren<Button>().gameObject.GetComponentsInChildren<TextMeshProUGUI>()[0].text = fileData.metaData.locationName;
                 tile.gameObject.GetComponentInChildren<Button>().gameObject.GetComponentsInChildren<TextMeshProUGUI>()[1].text = fileData.metaData.timeStamp;
 
-                tile.gameObject.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => confirmationWinndow(fileData.metaData.timeStamp, LoadActions.LOAD));
-                tile.gameObject.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => confirmationWinndow(fileData.metaData.timeStamp, LoadActions.DELETE));
+                tile.gameObject.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => confirmationWinndow(fileData.metaData.timeStamp, LoadActions.LOAD, null));
+                tile.gameObject.GetComponentsInChildren<Button>()[1].onClick.AddListener(() => confirmationWinndow(fileData.metaData.timeStamp, LoadActions.DELETE, tile.gameObject));
             }
 
             executed = true;
@@ -77,7 +77,7 @@ public class LoadManager : MonoBehaviour
         }
     }
 
-    private void confirmationWinndow(string fileName, LoadActions action)
+    private void confirmationWinndow(string fileName, LoadActions action, GameObject gameObject)
     {
         if (!ConfirmationManager.GetInstance().ActiveSelf2())
         {
@@ -87,7 +87,7 @@ public class LoadManager : MonoBehaviour
                     LoadConfirmationWindow(fileName);
                     break;
                 case LoadActions.DELETE:
-                    DeleteConfirmationWindow(fileName);
+                    DeleteConfirmationWindow(fileName, gameObject);
                     break;
             }
         }
@@ -99,9 +99,9 @@ public class LoadManager : MonoBehaviour
         ConfirmationManager.GetInstance().GetYesButton2().onClick.AddListener(() => LoadOnClick(fileName));
     }
 
-    private void DeleteConfirmationWindow(string fileName)
+    private void DeleteConfirmationWindow(string fileName, GameObject gameObject)
     {
         ConfirmationManager.GetInstance().SetActive2(true);
-        ConfirmationManager.GetInstance().GetYesButton2().onClick.AddListener(() => DeleteOnClick(fileName));
+        ConfirmationManager.GetInstance().GetYesButton2().onClick.AddListener(() => DeleteOnClick(fileName, gameObject));
     }
 }
