@@ -107,4 +107,12 @@ public class LoadManager : MonoBehaviour
         ConfirmationManager.GetInstance().SetActive(сonfirmationLoadWindow, true);
         ConfirmationManager.GetInstance().GetYesButton(сonfirmationLoadWindow).onClick.AddListener(() => DeleteOnClick(fileName, gameObject));
     }
+
+    /// <summary>
+    /// Окно отказа от загрузки сейва
+    /// </summary>
+    public void DismissLoadGame()
+    {
+        ConfirmationManager.GetInstance().ExecuteNoButton(сonfirmationLoadWindow);
+    }
 }

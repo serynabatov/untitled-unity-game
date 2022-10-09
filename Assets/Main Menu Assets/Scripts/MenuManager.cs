@@ -204,6 +204,6 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     public void DismissExitToMainMenu()
     {
-        ConfirmationManager.GetInstance().SetActive(сonfirmationWindow, false);
+        ConfirmationManager.GetInstance().ExecuteNoButton(сonfirmationWindow);
     }
 }

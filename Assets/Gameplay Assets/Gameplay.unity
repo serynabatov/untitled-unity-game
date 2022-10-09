@@ -742,6 +742,7 @@ MonoBehaviour:
   loadGameMenu: {fileID: 1260948217}
   content: {fileID: 1117834995895755742}
   pauseBackground: {fileID: 133721840}
+  "\u0441onfirmationLoadWindow": {fileID: 679646749}
 --- !u!222 &88068805
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1912,7 +1913,6 @@ GameObject:
   m_Component:
   - component: {fileID: 122547086}
   - component: {fileID: 122547087}
-  - component: {fileID: 122547088}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -1955,20 +1955,7 @@ MonoBehaviour:
   loadFirstButton: {fileID: 0}
   optionsButton: {fileID: 408091459}
   optionsFirstButton: {fileID: 2059668922}
---- !u!114 &122547088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122547085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1eb48a993a63a04fae0316d942980b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   "\u0441onfirmationWindow": {fileID: 691067856}
-  "\u0441onfirmationLoadWindow": {fileID: 679646749}
 --- !u!1 &126023947
 GameObject:
   m_ObjectHideFlags: 0
@@ -2268,9 +2255,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 122547088}
-        m_TargetAssemblyTypeName: ConfirmationManager, Assembly-CSharp
-        m_MethodName: ExecuteNoButton2
+      - m_Target: {fileID: 81893003}
+        m_TargetAssemblyTypeName: LoadManager, Assembly-CSharp
+        m_MethodName: DismissLoadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8209,18 +8196,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1995001983}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!224 &779556703
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9334,7 +9309,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Are you sure you want to exit to main menu?
+  m_text: Are you sure you want to <color=#F9DB24><b>exit</b></color> to main menu?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11276,9 +11251,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 122547088}
-        m_TargetAssemblyTypeName: ConfirmationManager, Assembly-CSharp
-        m_MethodName: ExecuteNoButton
+      - m_Target: {fileID: 122547087}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: DismissExitToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15974,7 +15949,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Are you sure you want to exit to main menu?
+  m_text: Are you sure you want to load <color=#F9DB24><b>this</b></color> save ?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
