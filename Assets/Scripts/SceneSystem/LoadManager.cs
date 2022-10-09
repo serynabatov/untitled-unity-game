@@ -26,9 +26,7 @@ public class LoadManager : MonoBehaviour
     private GameObject сonfirmationLoadWindow;
 
     private bool executed = false;
-
-    private int saveFiles;
-
+    
     void LoadOnClick(string timestamp)
     {
         DataPersistenceManager.Instance.LoadGame(timestamp);

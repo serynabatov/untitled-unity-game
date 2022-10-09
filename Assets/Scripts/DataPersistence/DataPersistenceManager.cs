@@ -86,6 +86,8 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceObj.SaveData(ref this.fileData.playerData);
         }
 
+        fileData.metaData.timestamp.ChangeTimestamp();
+
         this.dataHandler.Save(fileData, fileName);
     }
 

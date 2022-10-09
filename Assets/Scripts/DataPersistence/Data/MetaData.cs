@@ -27,4 +27,9 @@ public class MetaData
         this.locationName = locationName;
         this.timeStamp = Utilities.GetTimestamp(DateTime.Now);
     }
+
+    public void ChangeTimestamp()
+    {
+        this.timeStamp = Utilities.GetTimestamp(DateTime.Now);
+    }
 }
