@@ -22,6 +22,9 @@ public class LoadManager : MonoBehaviour
     [SerializeField]
     private GameObject pauseBackground;
 
+    [SerializeField]
+    private GameObject сonfirmationLoadWindow;
+
     private bool executed = false;
 
     private int saveFiles;
@@ -30,14 +33,14 @@ public class LoadManager : MonoBehaviour
     {
         DataPersistenceManager.Instance.LoadGame(timestamp);
         pauseBackground.SetActive(false);
-        ConfirmationManager.GetInstance().SetActive2(false);
+        ConfirmationManager.GetInstance().SetActive(сonfirmationLoadWindow, false);
         PauseManager.GetInstance().ResumeGame();
     }
 
     void DeleteOnClick(string timestamp, GameObject gameObject)
     {
         DataPersistenceManager.Instance.DeleteGame(timestamp);
-        ConfirmationManager.GetInstance().SetActive2(false);
+        ConfirmationManager.GetInstance().SetActive(сonfirmationLoadWindow, false);
         Destroy(gameObject);
         executed = false;
     }
@@ -79,7 +82,7 @@ public class LoadManager : MonoBehaviour
 
     private void confirmationWinndow(string fileName, LoadActions action, GameObject gameObject)
     {
-        if (!ConfirmationManager.GetInstance().ActiveSelf2())
+        if (!ConfirmationManager.GetInstance().ActiveSelf(сonfirmationLoadWindow))
         {
             switch (action)
             {
@@ -95,13 +98,13 @@ public class LoadManager : MonoBehaviour
 
     private void LoadConfirmationWindow(string fileName)
     {
-        ConfirmationManager.GetInstance().SetActive2(true);
-        ConfirmationManager.GetInstance().GetYesButton2().onClick.AddListener(() => LoadOnClick(fileName));
+        ConfirmationManager.GetInstance().SetActive(сonfirmationLoadWindow, true);
+        ConfirmationManager.GetInstance().GetYesButton(сonfirmationLoadWindow).onClick.AddListener(() => LoadOnClick(fileName));
     }
 
     private void DeleteConfirmationWindow(string fileName, GameObject gameObject)
     {
-        ConfirmationManager.GetInstance().SetActive2(true);
-        ConfirmationManager.GetInstance().GetYesButton2().onClick.AddListener(() => DeleteOnClick(fileName, gameObject));
+        ConfirmationManager.GetInstance().SetActive(сonfirmationLoadWindow, true);
+        ConfirmationManager.GetInstance().GetYesButton(сonfirmationLoadWindow).onClick.AddListener(() => DeleteOnClick(fileName, gameObject));
     }
 }
