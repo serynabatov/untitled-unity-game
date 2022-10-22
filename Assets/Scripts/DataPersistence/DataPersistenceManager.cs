@@ -111,6 +111,9 @@ public class DataPersistenceManager : MonoBehaviour
 
     public List<FileData> GetFiles()
     {
-        return this.dataHandler.GetFiles();
+        List<FileData> fileDatas = this.dataHandler.GetFiles();
+        fileDatas.Sort((n1, n2) => n1.metaData.timeStamp.CompareTo(n2.metaData.timeStamp));
+
+        return fileDatas;
     }
 }
