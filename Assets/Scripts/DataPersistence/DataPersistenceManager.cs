@@ -111,6 +111,6 @@ public class DataPersistenceManager : MonoBehaviour
 
     public List<FileData> GetFiles()
     {
-        return this.dataHandler.GetFiles().Reverse();
+        return this.dataHandler.GetFiles();
     }
 }

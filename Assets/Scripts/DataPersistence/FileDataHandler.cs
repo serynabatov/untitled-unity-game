@@ -17,7 +17,7 @@ public class FileDataHandler
         this.useEncryption = useEncryption;
     }
 
-    private FileData LoadBean(string file, string timestamp)
+    private FileData LoadBean(string file)
     {
         FileData loadedData = null;
         string fullPath = Path.Combine(dataDirPath, file);
@@ -44,28 +44,22 @@ public class FileDataHandler
             Debug.LogError("Error created while creating file " + fullPath);
         }
 
-        if (loadedData.metaData.timeStamp == timestamp)
-        {
-            return loadedData;
-        }
-        else
-        {
-            return null;
-        }
+        return loadedData;
     }
 
-    public FileData Load(string dataFileName)
+    public FileData Load(string timestamp)
     {
         string[] files = Directory.GetFiles(dataDirPath);
         FileData loadedData = null;
 
         foreach (string file in files)
         {
-            loadedData = LoadBean(file, dataFileName);
-            if (loadedData != null)
+            loadedData = LoadBean(file);
+            if (loadedData.metaData.timeStamp == timestamp)
             {
-                break;
+                return loadedData;
             }
+            loadedData = null;
         }
 
         return loadedData;
@@ -134,7 +128,7 @@ public class FileDataHandler
         {
             if (!file.EndsWith(".meta"))
             {
-                fileDatas.Add(Load(file));
+                fileDatas.Add(Load(LoadByName));
             }
         }
 
@@ -151,4 +145,14 @@ public class FileDataHandler
 
         return modifiedData;
     }
-}
+
+    private FileData LoadByName(string dataFileName)
+    {
+        FileData loadedData = null;
+
+        if (File.Exists(fullPath))
+        {
+            loadedData = LoadBean(dataFileName);
+        }
+        return loadedData;
+    }
