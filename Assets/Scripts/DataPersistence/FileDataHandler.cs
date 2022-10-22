@@ -54,12 +54,15 @@ public class FileDataHandler
 
         foreach (string file in files)
         {
-            loadedData = LoadBean(file);
-            if (loadedData.metaData.timeStamp == timestamp)
+            if (!file.EndsWith(".meta"))
             {
-                return loadedData;
+                loadedData = LoadBean(file);
+                if (loadedData.metaData.timeStamp == timestamp)
+                {
+                    return loadedData;
+                }
+                loadedData = null;
             }
-            loadedData = null;
         }
 
         return loadedData;
@@ -128,7 +131,7 @@ public class FileDataHandler
         {
             if (!file.EndsWith(".meta"))
             {
-                fileDatas.Add(Load(LoadByName));
+                fileDatas.Add(LoadByName(file));
             }
         }
 
@@ -150,9 +153,10 @@ public class FileDataHandler
     {
         FileData loadedData = null;
 
-        if (File.Exists(fullPath))
+        if (File.Exists(Path.Combine(dataDirPath, dataFileName)))
         {
             loadedData = LoadBean(dataFileName);
         }
         return loadedData;
     }
+}

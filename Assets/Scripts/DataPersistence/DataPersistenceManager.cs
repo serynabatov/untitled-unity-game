@@ -59,7 +59,7 @@ public class DataPersistenceManager : MonoBehaviour
     /// </summary>
     public void LoadGame(string timestamp)
     {
-        this.fileData = this.dataHandler.Load(Utilities.NamingFile(timestamp, patternTimeStamp, patternFileName));
+        this.fileData = this.dataHandler.Load(timestamp);
         // if no data can be loaded, initialize a new game
         if (this.fileData == null)
         {
