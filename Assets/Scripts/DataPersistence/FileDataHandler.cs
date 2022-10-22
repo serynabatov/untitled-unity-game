@@ -17,34 +17,54 @@ public class FileDataHandler
         this.useEncryption = useEncryption;
     }
 
+    private FileData LoadBean(string file, string timestamp)
+    {
+        FileData loadedData = null;
+        string fullPath = Path.Combine(dataDirPath, file);
+        try
+        {
+            string dataToLoad = "";
+            using (FileStream stream = new FileStream(fullPath, FileMode.Open))
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    dataToLoad = reader.ReadToEnd();
+                }
+            }
+
+            if (useEncryption)
+            {
+                dataToLoad = EncryptDecrypt(dataToLoad);
+            }
+
+            loadedData = JsonUtility.FromJson<FileData>(dataToLoad);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error created while creating file " + fullPath);
+        }
+
+        if (loadedData.metaData.timeStamp == timestamp)
+        {
+            return loadedData;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     public FileData Load(string dataFileName)
     {
-        string fullPath = Path.Combine(dataDirPath, dataFileName);
+        string[] files = Directory.GetFiles(dataDirPath);
         FileData loadedData = null;
 
-        if (File.Exists(fullPath))
+        foreach (string file in files)
         {
-            try
+            loadedData = LoadBean(file, dataFileName);
+            if (loadedData != null)
             {
-                string dataToLoad = "";
-                using (FileStream stream = new FileStream(fullPath, FileMode.Open))
-                {
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        dataToLoad = reader.ReadToEnd();
-                    }
-                }
-
-                if (useEncryption)
-                {
-                    dataToLoad = EncryptDecrypt(dataToLoad);
-                }
-
-                loadedData = JsonUtility.FromJson<FileData>(dataToLoad);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError("Error created while creating file " + fullPath);
+                break;
             }
         }
 
