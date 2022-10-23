@@ -17,34 +17,51 @@ public class FileDataHandler
         this.useEncryption = useEncryption;
     }
 
-    public FileData Load(string dataFileName)
+    private FileData LoadBean(string file)
     {
-        string fullPath = Path.Combine(dataDirPath, dataFileName);
+        FileData loadedData = null;
+        string fullPath = Path.Combine(dataDirPath, file);
+        try
+        {
+            string dataToLoad = "";
+            using (FileStream stream = new FileStream(fullPath, FileMode.Open))
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    dataToLoad = reader.ReadToEnd();
+                }
+            }
+
+            if (useEncryption)
+            {
+                dataToLoad = EncryptDecrypt(dataToLoad);
+            }
+
+            loadedData = JsonUtility.FromJson<FileData>(dataToLoad);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error created while creating file " + fullPath);
+        }
+
+        return loadedData;
+    }
+
+    public FileData Load(string timestamp)
+    {
+        string[] files = Directory.GetFiles(dataDirPath);
         FileData loadedData = null;
 
-        if (File.Exists(fullPath))
+        foreach (string file in files)
         {
-            try
+            if (!file.EndsWith(".meta"))
             {
-                string dataToLoad = "";
-                using (FileStream stream = new FileStream(fullPath, FileMode.Open))
+                loadedData = LoadBean(file);
+                if (loadedData.metaData.timeStamp == timestamp)
                 {
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        dataToLoad = reader.ReadToEnd();
-                    }
+                    return loadedData;
                 }
-
-                if (useEncryption)
-                {
-                    dataToLoad = EncryptDecrypt(dataToLoad);
-                }
-
-                loadedData = JsonUtility.FromJson<FileData>(dataToLoad);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError("Error created while creating file " + fullPath);
+                loadedData = null;
             }
         }
 
@@ -104,29 +121,22 @@ public class FileDataHandler
         }
     }
 
-
-    /* TODO: remove it
-    public FileData SearchForFileName(string timestamp)
+    public List<FileData> GetFiles()
     {
+        List<FileData> fileDatas = new List<FileData>();
+
         string[] files = Directory.GetFiles(dataDirPath);
 
         foreach (string file in files)
         {
-            if (file.EndsWith("meta"))
+            if (!file.EndsWith(".meta"))
             {
-                continue;
-            }
-            FileData fileData = Load(file);
-
-            if (fileData.metaData.timeStamp == timestamp)
-            {
-                return fileData;
+                fileDatas.Add(LoadByName(file));
             }
         }
 
-        Debug.LogError("No such file with this timestamp");
-        return null;
-    }*/
+        return fileDatas;
+    }
 
     private string EncryptDecrypt(string data)
     {
@@ -137,5 +147,16 @@ public class FileDataHandler
         }
 
         return modifiedData;
+    }
+
+    private FileData LoadByName(string dataFileName)
+    {
+        FileData loadedData = null;
+
+        if (File.Exists(Path.Combine(dataDirPath, dataFileName)))
+        {
+            loadedData = LoadBean(dataFileName);
+        }
+        return loadedData;
     }
 }

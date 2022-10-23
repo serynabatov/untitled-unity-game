@@ -23,6 +23,10 @@ public class DataPersistenceManager : MonoBehaviour
 
     public static DataPersistenceManager Instance { get; private set; }
 
+    private const string patternTimeStamp = "dddd, dd MMMM yyyy HH:mm:ss";
+    private const string patternFileName = "yyyy-MM-dd-HH-mm-ss-ffff";
+
+
     private void Awake()
     {
         if (Instance != null)
@@ -75,24 +79,26 @@ public class DataPersistenceManager : MonoBehaviour
     /// </summary>
     public void SaveGame()
     {
-        string fileName = Utilities.GetTimestamp(DateTime.Now);
+        string fileName = Utilities.NamingFile(fileData.metaData.timeStamp, patternTimeStamp, patternFileName);
         // save the data
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.SaveData(ref this.fileData.playerData);
         }
 
+        fileData.metaData.ChangeTimestamp();
+
         this.dataHandler.Save(fileData, fileName);
     }
 
     public void DeleteGame(string fileName)
     {
-        this.dataHandler.Delete(fileName);
+        this.dataHandler.Delete(Utilities.NamingFile(fileName, patternTimeStamp, patternFileName));
     }
 
     public void OnApplicationQuit()
     {
-        SaveGame();
+        //SaveGame();
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
@@ -103,4 +109,10 @@ public class DataPersistenceManager : MonoBehaviour
         return new List<IDataPersistence>(dataPersitenceObjectsLocal);
     }
 
+    public List<FileData> GetFiles()
+    {
+        List<FileData> fileDatas = this.dataHandler.GetFiles();
+        fileDatas.Sort((n1, n2) => n2.metaData.timeStamp.CompareTo(n1.metaData.timeStamp));
+        return fileDatas;
+    }
 }
