@@ -44,7 +44,7 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
     [SerializeField] public float takingDamageBuffer = 2;
 
     [SerializeField]
-    private CustomMap<AudioClipName, BasicSound> sounds;
+    private List<BasicSound> sounds;
 
     private ConcurrentDictionaryImpl concurrentDictionaryImpl = ConcurrentDictionaryImpl.Instance;
     // Use this for initialization
@@ -61,7 +61,7 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
         m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_Prototype>();
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_Prototype>();
 
-        concurrentDictionaryImpl.FillSounds(sounds.KeysList, sounds.ValuesList);
+        concurrentDictionaryImpl.FillSounds(sounds);
     }
 
     // Update is called once per frame

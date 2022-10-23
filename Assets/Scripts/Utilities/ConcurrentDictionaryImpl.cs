@@ -28,20 +28,20 @@ public class ConcurrentDictionaryImpl
         sounds = new ConcurrentDictionary<AudioClipName, BasicSound>();
     }
 
-    public void FillSounds(List<AudioClipName> keys, List<BasicSound> values)
+    public void FillSounds(List<BasicSound> values)
     {
         if (AudioManager.Instance == null)
         {
-            for (int i = 0; i < keys.Count; i++)
+            for (int i = 0; i < values.Count; i++)
             {
-                this.sounds[keys[i]] = values[i];
+                this.sounds[values[i].audioClipName] = values[i];
             }
         }
         else
         {
-            for (int i = 0; i < keys.Count; i++)
+            for (int i = 0; i < values.Count; i++)
             {
-                this.sounds[keys[i]] = values[i];
+                this.sounds[values[i].audioClipName] = values[i];
                 AudioManager.Instance.SetupMusic(values[i]);
             }
         }

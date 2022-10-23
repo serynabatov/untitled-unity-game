@@ -11,7 +11,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField]
     private GameObject firstButton;
 
-    
+
     public static bool paused;
     [SerializeField] GameObject pauseBackground;
     [SerializeField] GameObject optionsMenu;
@@ -67,6 +67,9 @@ public class PauseManager : MonoBehaviour
         //AudioListener.pause = false;
         paused = false;
         pauseBackground.SetActive(false);
+
+        optionsMenu.SetActive(false);
+        loadGameMenu.SetActive(false);
 
     }
 }

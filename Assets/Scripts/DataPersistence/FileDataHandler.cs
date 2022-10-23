@@ -8,52 +8,67 @@ using System.IO;
 public class FileDataHandler
 {
     private string dataDirPath = "";
-    private string dataFileName = "";
     private bool useEncryption = false;
     private readonly string keyCodeWord = "Mechrodzh";
 
-    public FileDataHandler(string dataDirPath, string dataFileName, bool useEncryption)
+    public FileDataHandler(string dataDirPath, bool useEncryption)
     {
         this.dataDirPath = dataDirPath;
-        this.dataFileName = dataFileName;
         this.useEncryption = useEncryption;
     }
 
-    public PlayerData Load()
+    private FileData LoadBean(string file)
     {
-        string fullPath = Path.Combine(dataDirPath, dataFileName);
-        PlayerData loadedData = null;
-
-        if (File.Exists(fullPath))
+        FileData loadedData = null;
+        string fullPath = Path.Combine(dataDirPath, file);
+        try
         {
-            try
+            string dataToLoad = "";
+            using (FileStream stream = new FileStream(fullPath, FileMode.Open))
             {
-                string dataToLoad = "";
-                using (FileStream stream = new FileStream(fullPath, FileMode.Open))
+                using (StreamReader reader = new StreamReader(stream))
                 {
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        dataToLoad = reader.ReadToEnd();
-                    }
+                    dataToLoad = reader.ReadToEnd();
                 }
-
-                if (useEncryption)
-                {
-                    dataToLoad = EncryptDecrypt(dataToLoad);
-                }
-
-                loadedData = JsonUtility.FromJson<PlayerData>(dataToLoad);
             }
-            catch (Exception e)
+
+            if (useEncryption)
             {
-                Debug.LogError("Error created while creating file " + fullPath);
+                dataToLoad = EncryptDecrypt(dataToLoad);
+            }
+
+            loadedData = JsonUtility.FromJson<FileData>(dataToLoad);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error created while creating file " + fullPath);
+        }
+
+        return loadedData;
+    }
+
+    public FileData Load(string timestamp)
+    {
+        string[] files = Directory.GetFiles(dataDirPath);
+        FileData loadedData = null;
+
+        foreach (string file in files)
+        {
+            if (!file.EndsWith(".meta"))
+            {
+                loadedData = LoadBean(file);
+                if (loadedData.metaData.timeStamp == timestamp)
+                {
+                    return loadedData;
+                }
+                loadedData = null;
             }
         }
 
         return loadedData;
     }
 
-    public void Save(PlayerData data)
+    public void Save(FileData data, string dataFileName)
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
 
@@ -77,10 +92,50 @@ public class FileDataHandler
                     writer.Write(dataToStore);
                 }
             }
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             Debug.LogError("Error created while creating file " + fullPath);
         }
+    }
+
+    public void Delete(string timestamp)
+    {
+        string fullPath = Path.Combine(dataDirPath, timestamp);
+
+        try
+        {
+            if (File.Exists(fullPath))
+            {
+                File.Delete(fullPath);
+                File.Delete(fullPath + ".meta");
+            }
+            else
+            {
+                Debug.LogError("Error there is no such a file " + fullPath);
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error in opening the file " + fullPath);
+        }
+    }
+
+    public List<FileData> GetFiles()
+    {
+        List<FileData> fileDatas = new List<FileData>();
+
+        string[] files = Directory.GetFiles(dataDirPath);
+
+        foreach (string file in files)
+        {
+            if (!file.EndsWith(".meta"))
+            {
+                fileDatas.Add(LoadByName(file));
+            }
+        }
+
+        return fileDatas;
     }
 
     private string EncryptDecrypt(string data)
@@ -92,5 +147,16 @@ public class FileDataHandler
         }
 
         return modifiedData;
+    }
+
+    private FileData LoadByName(string dataFileName)
+    {
+        FileData loadedData = null;
+
+        if (File.Exists(Path.Combine(dataDirPath, dataFileName)))
+        {
+            loadedData = LoadBean(dataFileName);
+        }
+        return loadedData;
     }
 }
