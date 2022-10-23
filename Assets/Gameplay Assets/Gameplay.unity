@@ -7169,9 +7169,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!114 &655839861
-=======
 --- !u!1 &679646749
 GameObject:
   m_ObjectHideFlags: 0
@@ -7214,21 +7211,11 @@ RectTransform:
   m_SizeDelta: {x: 800, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &679646751
->>>>>>> b2bc0355efb770ffd2e5f355488da7b97f944d0c
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 655839860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 282b7654fc7b69144a7aaf22f6f6d4b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iD: option_Control_2
-=======
   m_GameObject: {fileID: 679646749}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -7261,7 +7248,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679646749}
   m_CullTransparentMesh: 1
->>>>>>> b2bc0355efb770ffd2e5f355488da7b97f944d0c
 --- !u!1 &680670289
 GameObject:
   m_ObjectHideFlags: 0
