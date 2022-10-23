@@ -14,7 +14,7 @@ public class Localizator : MonoBehaviour
             string gameLanguage = PlayerPrefs.GetString("GameLanguage");
             ChangeText(LocalizedText(iD, gameLanguage));
         }
-        else 
+        else
         {
             ChangeText(LocalizedText(iD, "EN"));
         }
