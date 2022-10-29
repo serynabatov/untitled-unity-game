@@ -112,13 +112,14 @@ public class FileDataHandler
                 if (loadedData.metaData.timeStamp == timestamp)
                 {
                     File.Delete(Path.Combine(dataDirPath, file));
+                    File.Delete(Path.Combine(dataDirPath, file + ".meta"));
                     return;
                 }
                 loadedData = null;
             }
         }
 
-        Debug.LogError("Error there is no such a file " + fullPath);
+        Debug.LogError("Error there is no such a file " + timestamp);
     }
 
     public List<FileData> GetFiles()
