@@ -93,7 +93,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void DeleteGame(string fileName)
     {
-        this.dataHandler.Delete(Utilities.NamingFile(fileName, patternTimeStamp, patternFileName));
+        this.dataHandler.Delete(fileName);
     }
 
     public void OnApplicationQuit()

@@ -101,24 +101,25 @@ public class FileDataHandler
 
     public void Delete(string timestamp)
     {
-        string fullPath = Path.Combine(dataDirPath, timestamp);
+        string[] files = Directory.GetFiles(dataDirPath);
+        FileData loadedData = null;
 
-        try
+        foreach (string file in files)
         {
-            if (File.Exists(fullPath))
+            if (!file.EndsWith(".meta"))
             {
-                File.Delete(fullPath);
-                File.Delete(fullPath + ".meta");
-            }
-            else
-            {
-                Debug.LogError("Error there is no such a file " + fullPath);
+                loadedData = LoadBean(file);
+                if (loadedData.metaData.timeStamp == timestamp)
+                {
+                    File.Delete(Path.Combine(dataDirPath, file));
+                    File.Delete(Path.Combine(dataDirPath, file + ".meta"));
+                    return;
+                }
+                loadedData = null;
             }
         }
-        catch (Exception e)
-        {
-            Debug.LogError("Error in opening the file " + fullPath);
-        }
+
+        Debug.LogError("Error there is no such a file " + timestamp);
     }
 
     public List<FileData> GetFiles()
