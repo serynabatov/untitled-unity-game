@@ -3,7 +3,9 @@ from __future__ import print_function
 import io
 import google.auth
 from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaIoBaseDownload
+
 
 def download_file(real_file_id):
     """Downloads a file
@@ -35,6 +37,7 @@ def download_file(real_file_id):
         file = None
 
     return file.getvalue()
+
 
 if __name__ == '__main__':
     download_file(real_file_id='1KuPmvGq8yoYgbfW74OENMCB5H0n_2Jm9')
