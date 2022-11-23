@@ -1,43 +1,62 @@
 from __future__ import print_function
 
 import io
-import google.auth
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaIoBaseDownload
 
+import login
 
-def download_file(real_file_id):
+
+def download_folder(folder_name):
     """Downloads a file
     Args:
-        real_file_id: ID of the file to download
-    Returns : IO object with location.
+        folder_name: name of the folder
+    Returns :
 
     Load pre-authorized user credentials from the environment.
     """
-    creds, _ = google.auth.default()
+    creds = login.login()
 
     try:
-        # create drive api client
         service = build('drive', 'v3', credentials=creds)
+        page_token = None
+        while True:
+            # Call the Drive v3 API
+            results = service.files().list(
+                q="mimeType='application/vnd.google-apps.folder' and name = '{}'".format(folder_name),
+                spaces="drive",
+            ).execute()
 
-        file_id = real_file_id
+            for file in results.get('files', []):
+                file_list = service.files().list(
+                    q="'{}' in parents".format(file.get("id"))
+                ).execute()
+                for f in file_list.get("files"):
+                    # pylint: disable=maybe-no-member
+                    request = service.files().get_media(fileId=f.get("id"))
+                    real_file = io.BytesIO()
+                    downloader = MediaIoBaseDownload(real_file, request)
+                    done = False
+                    while done is False:
+                        status, done = downloader.next_chunk()
+                        print(F'Download {int(status.progress() * 100)}.')
+                        save_file(f.get("name"), real_file.getvalue())
 
-        # pylint: disable=maybe-no-member
-        request = service.files().get_media(fileId=file_id)
-        file = io.BytesIO()
-        downloader = MediaIoBaseDownload(file, request)
-        done = False
-        while done is False:
-            status, done = downloader.next_chunk()
-            print(F'Download {int(status.progress() * 100)}.')
-    
+            page_token = results.get('nextPageToken', None)
+            if page_token is None:
+                break
+
     except HttpError as error:
-        print(F'An error occurred: {error}')
-        file = None
+        # TODO(developer) - Handle errors from drive API
+        print(f'An error occurred: {error}')
 
-    return file.getvalue()
+
+# TODO discuss how the data should be stored here
+def save_file(file_name, file_content):
+    with open(file_name, "w") as file:
+        file.writelines(str(file_content))
 
 
 if __name__ == '__main__':
-    download_file(real_file_id='1KuPmvGq8yoYgbfW74OENMCB5H0n_2Jm9')
+    download_folder("example")
