@@ -4,7 +4,7 @@ import io
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaIoBaseDownload
-
+from pathlib import Path
 import login
 
 
@@ -27,22 +27,22 @@ def download_folder(folder_name):
                 q="mimeType='application/vnd.google-apps.folder' and name = '{}'".format(folder_name),
                 spaces="drive",
             ).execute()
-            print(folder_name)
+            Path("./{}".format(folder_name)).mkdir(parents=True, exist_ok=True)
             for file in results.get('files', []):
                 file_list = service.files().list(
                     q="'{}' in parents".format(file.get("id"))
                 ).execute()
-                print(file_list)
-                # for f in file_list.get("files"):
-                #     # pylint: disable=maybe-no-member
-                #     request = service.files().get_media(fileId=f.get("id"))
-                #     real_file = io.BytesIO()
-                #     downloader = MediaIoBaseDownload(real_file, request)
-                #     done = False
-                #     while done is False:
-                #         status, done = downloader.next_chunk()
-                #         print(F'Download {int(status.progress() * 100)}.')
-                #         save_file(f.get("name"), real_file.getvalue())
+
+                for f in file_list.get("files"):
+                    # pylint: disable=maybe-no-member
+                    request = service.files().get_media(fileId=f.get("id"))
+                    real_file = io.BytesIO()
+                    downloader = MediaIoBaseDownload(real_file, request)
+                    done = False
+                    while done is False:
+                        status, done = downloader.next_chunk()
+                        print(F'Download {int(status.progress() * 100)}.')
+                        save_file(f.get("name"), folder_name, real_file.getvalue())
 
             page_token = results.get('nextPageToken', None)
             if page_token is None:
@@ -54,9 +54,9 @@ def download_folder(folder_name):
 
 
 # TODO discuss how the data should be stored here
-def save_file(file_name, file_content):
-    with open(file_name, "w") as file:
-        file.writelines(str(file_content))
+def save_file(file_name, folder_name, file_content):
+    with open(f"./{folder_name}/{file_name}", "wb") as file:
+        file.write(file_content)
 
 
 if __name__ == '__main__':

@@ -3,6 +3,7 @@ import download_files
 
 memo = []
 
+
 def go_through_subfolders(data, parent_folder):
     if "subfolders" not in data:
         download_files.download_folder(data["folder"])
