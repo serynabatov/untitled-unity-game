@@ -5,14 +5,14 @@ memo = []
 
 def go_through_subfolders(data, parent_folder):
     if "subfolders" not in data:
-        print(data["folder"])
+        download_files.download_folder(data["folder"])
         return
     
     for subfolders in data["subfolders"]:
         if data["folder"] not in memo:
             memo.append(data["folder"])
         go_through_subfolders(subfolders, data["folder"])
-    print(data["folder"])
+    download_files.download_folder(data["folder"])
 
             
 if __name__ == "__main__":
