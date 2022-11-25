@@ -27,21 +27,22 @@ def download_folder(folder_name):
                 q="mimeType='application/vnd.google-apps.folder' and name = '{}'".format(folder_name),
                 spaces="drive",
             ).execute()
-
+            print(folder_name)
             for file in results.get('files', []):
                 file_list = service.files().list(
                     q="'{}' in parents".format(file.get("id"))
                 ).execute()
-                for f in file_list.get("files"):
-                    # pylint: disable=maybe-no-member
-                    request = service.files().get_media(fileId=f.get("id"))
-                    real_file = io.BytesIO()
-                    downloader = MediaIoBaseDownload(real_file, request)
-                    done = False
-                    while done is False:
-                        status, done = downloader.next_chunk()
-                        print(F'Download {int(status.progress() * 100)}.')
-                        save_file(f.get("name"), real_file.getvalue())
+                print(file_list)
+                # for f in file_list.get("files"):
+                #     # pylint: disable=maybe-no-member
+                #     request = service.files().get_media(fileId=f.get("id"))
+                #     real_file = io.BytesIO()
+                #     downloader = MediaIoBaseDownload(real_file, request)
+                #     done = False
+                #     while done is False:
+                #         status, done = downloader.next_chunk()
+                #         print(F'Download {int(status.progress() * 100)}.')
+                #         save_file(f.get("name"), real_file.getvalue())
 
             page_token = results.get('nextPageToken', None)
             if page_token is None:
