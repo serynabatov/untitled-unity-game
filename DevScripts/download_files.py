@@ -8,9 +8,13 @@ from pathlib import Path
 import login
 
 
-def download_folder(folder_name):
+FATHER_FOLDER = "images"
+
+
+def download_folder(folder_name, whole_path=None):
     """Downloads a file
     Args:
+        whole_path:
         folder_name: name of the folder
     Returns :
 
@@ -27,7 +31,7 @@ def download_folder(folder_name):
                 q="mimeType='application/vnd.google-apps.folder' and name = '{}'".format(folder_name),
                 spaces="drive",
             ).execute()
-            Path("./{}".format(folder_name)).mkdir(parents=True, exist_ok=True)
+            Path("./{}".format(whole_path)).mkdir(parents=True, exist_ok=True)
             for file in results.get('files', []):
                 file_list = service.files().list(
                     q="'{}' in parents".format(file.get("id"))
@@ -35,14 +39,15 @@ def download_folder(folder_name):
 
                 for f in file_list.get("files"):
                     # pylint: disable=maybe-no-member
-                    request = service.files().get_media(fileId=f.get("id"))
-                    real_file = io.BytesIO()
-                    downloader = MediaIoBaseDownload(real_file, request)
-                    done = False
-                    while done is False:
-                        status, done = downloader.next_chunk()
-                        print(F'Download {int(status.progress() * 100)}.')
-                        save_file(f.get("name"), folder_name, real_file.getvalue())
+                    if not Path(f"./{FATHER_FOLDER}/{whole_path}/{f}").is_file():
+                        request = service.files().get_media(fileId=f.get("id"))
+                        real_file = io.BytesIO()
+                        downloader = MediaIoBaseDownload(real_file, request)
+                        done = False
+                        while done is False:
+                            status, done = downloader.next_chunk()
+                            print(F'Download {int(status.progress() * 100)}.')
+                            save_file(f.get("name"), whole_path, real_file.getvalue())
 
             page_token = results.get('nextPageToken', None)
             if page_token is None:
