@@ -28,7 +28,8 @@ def download_folder(folder_name, whole_path=None):
         while True:
             # Call the Drive v3 API
             results = service.files().list(
-                q="mimeType='application/vnd.google-apps.folder' and name = '{}'".format(folder_name),
+                q="mimeType='application/vnd.google-apps.folder' and name = '{}'".format(
+                    folder_name),
                 spaces="drive",
             ).execute()
             Path("./{}".format(whole_path)).mkdir(parents=True, exist_ok=True)
@@ -39,7 +40,8 @@ def download_folder(folder_name, whole_path=None):
 
                 for f in file_list.get("files"):
                     # pylint: disable=maybe-no-member
-                    if not Path(f"./{FATHER_FOLDER}/{whole_path}/{f}").is_file():
+                    file_name = f.get("name")
+                    if not Path(f"./{FATHER_FOLDER}/{whole_path}/{file_name}").is_file():
                         request = service.files().get_media(fileId=f.get("id"))
                         real_file = io.BytesIO()
                         downloader = MediaIoBaseDownload(real_file, request)
@@ -47,7 +49,8 @@ def download_folder(folder_name, whole_path=None):
                         while done is False:
                             status, done = downloader.next_chunk()
                             print(F'Download {int(status.progress() * 100)}.')
-                            save_file(f.get("name"), whole_path, real_file.getvalue())
+                            save_file(f.get("name"), whole_path,
+                                      real_file.getvalue())
 
             page_token = results.get('nextPageToken', None)
             if page_token is None:
