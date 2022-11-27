@@ -1,0 +1,77 @@
+{
+    "folder": "UntitledUnityGameImages",
+    "subfolders": [
+        {
+            "folder": "Backgrounds",
+            "subfolders": [
+                {
+                    "folder": "Ver_0.1"
+                },
+                {
+                    "folder": "Ver_0.2"
+                },
+                {
+                    "folder": "Ver_0.3"
+                },
+                {
+                    "folder": "Ver_0.4"
+                },
+                {
+                    "folder": "Ver_0.5"
+                }
+            ]
+        },
+        {
+            "folder": "BaseBox",
+            "subfolders": [
+                {
+                    "folder": "Idle"
+                }
+            ]
+        },
+        {
+            "folder": "Dialogue",
+            "subfolders": [
+                {
+                    "folder": "Portraits",
+                    "subfolders": [
+                        {
+                            "folder": "Default"
+                        },
+                        {
+                            "folder": "DrGreen"
+                        },
+                        {
+                            "folder": "MsYellow"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "folder": "FireBox",
+            "subfolders": [
+                {
+                    "folder": "Idle"
+                }
+            ]
+        },
+        {
+            "folder": "HitParticles"
+        },
+        {
+            "folder": "IceBox",
+            "subfolders": [
+                {
+                    "folder": "Idle"
+                }
+            ]
+        },
+        {
+            "folder": "NPC"
+        },
+        {
+            "folder": "Palletes"
+        }
+    ]
+}
