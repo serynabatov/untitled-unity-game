@@ -73,8 +73,8 @@ crashlytics-build.properties
 [Aa]ssets/[Ss]aves
 
 # Sprites Folder
-[Aa]ssets/[Ss]prites
-[Aa]ssets/[Ss]prites/**
+Assets/Sprites
+Assets/Sprites/**
 
 # Dev Scripts
 DevScripts/__pycache__
