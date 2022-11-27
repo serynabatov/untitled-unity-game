@@ -8,9 +8,6 @@ from pathlib import Path
 import login
 
 
-FATHER_FOLDER = "images"
-
-
 def download_folder(folder_name, whole_path=None):
     """Downloads a file
     Args:
@@ -41,7 +38,8 @@ def download_folder(folder_name, whole_path=None):
                 for f in file_list.get("files"):
                     # pylint: disable=maybe-no-member
                     file_name = f.get("name")
-                    if not Path(f"./{FATHER_FOLDER}/{whole_path}/{file_name}").is_file():
+                    if not Path(f"{whole_path}/{file_name}").is_file():
+                        print(f"{whole_path}/{file_name}")
                         request = service.files().get_media(fileId=f.get("id"))
                         real_file = io.BytesIO()
                         downloader = MediaIoBaseDownload(real_file, request)
@@ -51,6 +49,7 @@ def download_folder(folder_name, whole_path=None):
                             print(F'Download {int(status.progress() * 100)}.')
                             save_file(f.get("name"), whole_path,
                                       real_file.getvalue())
+                    print(f"File {file_name} exists")
 
             page_token = results.get('nextPageToken', None)
             if page_token is None:
