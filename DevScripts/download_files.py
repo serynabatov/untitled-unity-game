@@ -24,11 +24,24 @@ def download_folder(folder_name, whole_path=None):
         page_token = None
         while True:
             # Call the Drive v3 API
-            results = service.files().list(
-                q="mimeType='application/vnd.google-apps.folder' and name = '{}'".format(
-                    folder_name),
-                spaces="drive",
-            ).execute()
+            if whole_path == "../Assets/Sprites/":
+                results = service.files().list(
+                    q="mimeType='application/vnd.google-apps.folder' and name = '{}'".format(
+                        "Sprites"),
+                    spaces="drive",
+                ).execute()
+            else:
+                parent_folder = service.files().list(
+                    q="mimeType='application/vnd.google-apps.folder' and name = '{}'".format(
+                        whole_path.split("/")[-2]),
+                    spaces="drive",
+                ).execute()
+                results = service.files().list(
+                    q="mimeType='application/vnd.google-apps.folder' and name = '{}' and '{}' in parents".format(
+                        folder_name, parent_folder.get('files', [])[0].get('id')),
+                    spaces="drive",
+                ).execute()
+
             Path("./{}".format(whole_path)).mkdir(parents=True, exist_ok=True)
             for file in results.get('files', []):
                 file_list = service.files().list(
@@ -37,19 +50,20 @@ def download_folder(folder_name, whole_path=None):
 
                 for f in file_list.get("files"):
                     # pylint: disable=maybe-no-member
-                    file_name = f.get("name")
-                    if not Path(f"{whole_path}/{file_name}").is_file():
-                        print(f"{whole_path}/{file_name}")
-                        request = service.files().get_media(fileId=f.get("id"))
-                        real_file = io.BytesIO()
-                        downloader = MediaIoBaseDownload(real_file, request)
-                        done = False
-                        while done is False:
-                            status, done = downloader.next_chunk()
-                            print(F'Download {int(status.progress() * 100)}.')
-                            save_file(f.get("name"), whole_path,
-                                      real_file.getvalue())
-                    print(f"File {file_name} exists")
+                    if f.get("mimeType") != "application/vnd.google-apps.folder":
+                        file_name = f.get("name")
+                        if not Path(f"{whole_path}/{file_name}").is_file():
+                            print(f"{whole_path}/{file_name}")
+                            request = service.files().get_media(fileId=f.get("id"))
+                            real_file = io.BytesIO()
+                            downloader = MediaIoBaseDownload(real_file, request)
+                            done = False
+                            while done is False:
+                                status, done = downloader.next_chunk()
+                                print(F'Download {int(status.progress() * 100)}.')
+                                save_file(f.get("name"), whole_path,
+                                          real_file.getvalue())
+                        print(f"File {file_name} exists")
 
             page_token = results.get('nextPageToken', None)
             if page_token is None:
