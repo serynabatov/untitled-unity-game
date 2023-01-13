@@ -8,12 +8,16 @@ INCLUDE globals.ink
 }
 
 === main ===
-#speaker:Dr. Green 
-#portrait:dr_green_neutral 
+#layout:right
+#speaker:Wizard 
+#portrait:wizardFace 
 Кто ты ? Выглядишь как <color=\#F8FF30>чужеземец</color>, полагаю так оно и есть. Я прав ?
 +[Да, наверное]
 +[Не знаю, не уверен]
 
+#layout:left
+#speaker:Lemas 
+#portrait:heroFace 
  - Почему это ты не уверен ?! Ты же <b><color=\#5B81FF>должен</color></b> знать кто ты такой и зачем пришёл. Хотя погоди 
  Кажется я знаю кто ты, ты похож на нашего спасителя. Видимо ты и прибыл по зову принцессы
  Спасти её хочешь?
