@@ -76,4 +76,5 @@ crashlytics-build.properties
 DevScripts/__pycache__
 
 [Aa]ssets/[Ss]prites/**
+![Aa]ssets/[Ss]prites/**/
 ![Aa]ssets/[Ss]prites/**/*.meta
