@@ -4,7 +4,7 @@ INCLUDE globals.ink
 {mainVarCrate: ->main.prePurpose|{certificate: ->main|->main.exit}}
 
 === main ===
-Наконец-то, это вы принц. Я ваш проводник для этого испытания внимательности и усидчивости. Только пройдя его, вы сможете получить от меня заветный ключ
+Наконец-то, это вы принц. Я ваш проводник для этого испытания внимательности и усидчивости. Только пройдя его, вы сможете получить от меня заветный ключ #layout:right #speaker:Lemas #portrait:heroFace 
 ~ mainVarCrate = true
 ->purpose
 
@@ -19,12 +19,10 @@ INCLUDE globals.ink
 ->purpose
 +[Нет, до свидания]
 ->END
-+[ПРОЙТИ ИСПЫТАНИЕ] #start:waterpuzzle
++[ПРОЙТИ ИСПЫТАНИЕ]
 ->END
 
 = exit
-#layout:left
-#speaker:Lemas 
-#portrait:heroFace 
+#layout:right #speaker:Lemas #portrait:heroFace
 Вы кто ?, я не вижу у вас право проходить у меня испытания для спасения принцессы. Может вам стоит получить этот сертификат у моего брата. Он похож на меня, только у него белая шляпа.
 ->END

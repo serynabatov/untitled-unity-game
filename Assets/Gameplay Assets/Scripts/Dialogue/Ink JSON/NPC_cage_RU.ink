@@ -7,8 +7,9 @@ INCLUDE globals.ink
 -3:-> main.keyCount3
 }
 
+
 === main ===
-Кто ты ? Выглядишь как <color=\#F8FF30>чужеземец</color>, полагаю так оно и есть. Я прав ? #layout:right #speaker:Wizard #portrait:wizardFace 
+Кто ты ? Выглядишь как <color=\#F8FF30>чужеземец</color>, полагаю так оно и есть. Я прав ? #layout:right #speaker:WizardCage #portrait:wizardFace 
 +[Да, наверное]
 +[Не знаю, не уверен]
 
@@ -38,14 +39,14 @@ INCLUDE globals.ink
   ~ mainVarCage = true
   ->purpose
   
-  = purpose 
+  = purpose
   Вы должны раздобыть три ключа в лесу. С помощью клчюей открыть клетку, рядом с которой я нахожусь. А дальше возьмите флягу и идите к святому источнику в этом лесу. Наполните флягу водой и полейте святой водой цветок.
   {certificate: ->END| Держите сертификат, с ним вы имеете право проходить испытания, чтобы спасти принцессу. И первый ключ я вам тоже дарю, но только потому что вы наш спаситель, а то он у меня залежался}
   ~ certificate = true
   -> END
   
   = prePurpose
-Принц, что вы тут делаете ?! Вам напомнить о ваших делах ?
+Принц, что вы тут делаете ?! Вам напомнить о ваших делах ? #layout:right #speaker:WizardCage #portrait:wizardFace 
 + [Да]
 ->purpose
 + [Нет]
