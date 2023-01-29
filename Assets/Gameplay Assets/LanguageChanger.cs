@@ -25,12 +25,23 @@ public class LanguageChanger : MonoBehaviour
         {
             string gameLanguage = PlayerPrefs.GetString("GameLanguage");
             if (gameLanguage == "EN")
+            {
                 dropdown.value = 1;
+            }
             else if (gameLanguage == "RU")
+            {
                 dropdown.value = 0;
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetString("GameLanguage", "EN");
         }
 
-        dropdown.onValueChanged.AddListener(delegate { ChangeLanguageSetting(dropdown); });
+        dropdown.onValueChanged.AddListener(delegate
+        {
+            ChangeLanguageSetting(dropdown);
+        });
     }
 
     void ChangeLanguageSetting(TMPro.TMP_Dropdown change)

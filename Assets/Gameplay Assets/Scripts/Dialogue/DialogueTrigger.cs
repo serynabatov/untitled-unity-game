@@ -31,10 +31,13 @@ public class DialogueTrigger : MonoBehaviour
                 broker.Publish<int>((int)AudioClipName.DialogueTriggerEffect);
                 switch (PlayerPrefs.GetString("GameLanguage"))
                 {
+                    case "RU":
+                        DialogueManager.GetInstance().EnterDialogueMode(inkNPCRU);
+                        break;
                     case "EN":
                         DialogueManager.GetInstance().EnterDialogueMode(inkNPCEN);
                         break;
-                    case "RU":
+                    default:
                         DialogueManager.GetInstance().EnterDialogueMode(inkNPCRU);
                         break;
                 }

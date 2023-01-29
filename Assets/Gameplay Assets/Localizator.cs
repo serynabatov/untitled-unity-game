@@ -18,7 +18,6 @@ public class Localizator : MonoBehaviour
         {
             ChangeText(LocalizedText(iD, "EN"));
         }
-
     }
 
     private void ChangeText(string newText)

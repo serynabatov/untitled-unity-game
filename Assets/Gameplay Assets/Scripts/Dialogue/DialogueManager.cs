@@ -214,6 +214,8 @@ public class DialogueManager : MonoBehaviour
             string tagKey = splitTag[0].Trim();
             string tagValue = splitTag[1].Trim();
 
+            Debug.Log(string.Format("tag key = {0} tag value = {1}", tagKey, tagValue));
+
             //handle the tag
             switch (tagKey)
             {
