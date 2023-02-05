@@ -18,6 +18,9 @@
                 },
                 {
                     "folder": "Ver_0.5"
+                },
+                {
+                    "folder": "Ver_0.6"
                 }
             ]
         },
@@ -28,6 +31,9 @@
                     "folder": "Idle"
                 }
             ]
+        },
+        {
+            "folder": "Grass_yellow_animation"
         },
         {
             "folder": "Dialogue",
