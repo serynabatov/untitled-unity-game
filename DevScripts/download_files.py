@@ -2,6 +2,7 @@ from __future__ import print_function
 
 import io
 import os
+import sys
 
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -93,6 +94,14 @@ def upload_files(folder_name, whole_path=None):
         page_token = None
         while True:
             # Call the Drive v3 API
+            parent_folder = service.files().list(
+                q="mimeType='application/vnd.google-apps.folder' and name = '{}'".format(
+                    whole_path.split("/")[-2]),
+                spaces="drive",
+            ).execute()
+
+            parent_id = parent_folder.get('files', [])[0].get('id')
+
             if whole_path == "../Assets/Sprites/":
                 results = service.files().list(
                     q="mimeType='application/vnd.google-apps.folder' and name = '{}'".format(
@@ -100,24 +109,39 @@ def upload_files(folder_name, whole_path=None):
                     spaces="drive",
                 ).execute()
             else:
-                parent_folder = service.files().list(
-                    q="mimeType='application/vnd.google-apps.folder' and name = '{}'".format(
-                        whole_path.split("/")[-2]),
+                results = service.files().list(
+                    q="mimeType='application/vnd.google-apps.folder' and name = '{}' and '{}' in parents".format(
+                        folder_name, parent_id),
                     spaces="drive",
                 ).execute()
+
+            if not results.get('files', []):
+                print(f"Folder {folder_name} does not exist: Create")
+                folder_file_metadata = {
+                    'name': folder_name,
+                    'parents': [parent_id],
+                    'mimeType': 'application/vnd.google-apps.folder'
+                }
+
+                service.files().create(body=folder_file_metadata, fields='id'
+                                              ).execute()
 
                 results = service.files().list(
                     q="mimeType='application/vnd.google-apps.folder' and name = '{}' and '{}' in parents".format(
-                        folder_name, parent_folder.get('files', [])[0].get('id')),
+                        folder_name, parent_id),
                     spaces="drive",
                 ).execute()
 
+                print(f"Folder id has been created {results.get('files', [])[0].get('id')}")
+
             for file in results.get('files', []):
+
                 file_list = service.files().list(
                     q="'{}' in parents".format(file.get("id"))
                 ).execute()
 
                 google_file_names = [upload_f["name"] for upload_f in file_list.get("files")]
+
                 for file_name in os.listdir(whole_path):
                     if file_name.endswith('meta'):
                         continue
@@ -133,6 +157,10 @@ def upload_files(folder_name, whole_path=None):
                         # pylint: disable=maybe-no-member
                         service.files().create(body=file_metadata, media_body=media, fields='id').execute()
                         print("File " + file_name + " uploaded")
+
+            page_token = results.get('nextPageToken', None)
+            if page_token is None:
+                break
 
     except HttpError as error:
         # TODO(developer) - Handle errors from drive API
