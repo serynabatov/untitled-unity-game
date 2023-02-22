@@ -12,6 +12,14 @@ TagManager:
   - FireBox
   - Ground
   - LoadButtonPrefab
+  - Edge
+  - Light
+  - Pipe
+  - Dark
+  - Turn
+  - Dark Block
+  - Goal
+  - Light Block
   layers:
   - Default
   - TransparentFX
