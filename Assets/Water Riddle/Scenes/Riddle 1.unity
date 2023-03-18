@@ -697,6 +697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 0
   currentState: 0
+  speed: 2
 --- !u!50 &204728365
 Rigidbody2D:
   serializedVersion: 4

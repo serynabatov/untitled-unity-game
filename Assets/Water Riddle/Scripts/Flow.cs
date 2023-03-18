@@ -12,7 +12,8 @@ public class Flow : MonoBehaviour
     public int direction;
     public States currentState;
     private Vector3 direct;
-    private float speed=4;
+    [SerializeField]
+    private float speed = 4;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,7 @@ public class Flow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((!gameManager.gameOver)&&(gameManager.gameRunning)&&(!gameManager.gameClear))
+        if ((!gameManager.gameOver) && (gameManager.gameRunning) && (!gameManager.gameClear))
         {
             transform.Translate(DirectionFinder(direction) * Time.deltaTime * speed);
         }
@@ -57,7 +58,7 @@ public class Flow : MonoBehaviour
         {
             currentState = States.Dark;
         }
-        if (collision.CompareTag("Dark Block")&&(currentState!=States.Dark))
+        if (collision.CompareTag("Dark Block") && (currentState != States.Dark))
         {
             gameManager.gameOver = true;
         }
@@ -151,7 +152,7 @@ public class Flow : MonoBehaviour
                     switch (direction)
                     {
                         case 0:
-                            animator.Play("Down - Right (Water)");
+                            animator.Play("Down - Right (Start)");
                             direction = 1;
                             break;
                         case 3:
