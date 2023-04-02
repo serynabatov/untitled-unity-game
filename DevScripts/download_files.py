@@ -35,16 +35,17 @@ def download_folder(folder_name, whole_path=None):
                     spaces="drive",
                 ).execute()
             else:
-                parent_folder = service.files().list(
-                    q="mimeType='application/vnd.google-apps.folder' and name = '{}'".format(
-                        whole_path.split("/")[-2]),
-                    spaces="drive",
-                ).execute()
                 results = service.files().list(
-                    q="mimeType='application/vnd.google-apps.folder' and name = '{}' and '{}' in parents".format(
-                        folder_name, parent_folder.get('files', [])[0].get('id')),
+                    q="mimeType='application/vnd.google-apps.folder' and name = '{}'".format(
+                        whole_path.split("/")[2]),
                     spaces="drive",
                 ).execute()
+                for parent_path in whole_path.split("/")[3:]:
+                    results = service.files().list(
+                        q="mimeType='application/vnd.google-apps.folder' and name = '{}' and '{}' in parents".format(
+                            parent_path, results.get('files', [])[0].get('id')),
+                        spaces="drive",
+                    ).execute()
 
             Path("./{}".format(whole_path)).mkdir(parents=True, exist_ok=True)
             for file in results.get('files', []):
@@ -96,9 +97,16 @@ def upload_files(folder_name, whole_path=None):
             # Call the Drive v3 API
             parent_folder = service.files().list(
                 q="mimeType='application/vnd.google-apps.folder' and name = '{}'".format(
-                    whole_path.split("/")[-2]),
+                    whole_path.split("/")[2]),
                 spaces="drive",
             ).execute()
+
+            for parent_path in whole_path.split("/")[3:]:
+                parent_folder = service.files().list(
+                    q="mimeType='application/vnd.google-apps.folder' and name = '{}'".format(
+                        parent_path),
+                    spaces="drive",
+                ).execute()
 
             parent_id = parent_folder.get('files', [])[0].get('id')
 
