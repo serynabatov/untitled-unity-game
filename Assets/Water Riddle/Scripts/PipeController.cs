@@ -54,8 +54,6 @@ public class PipeController : MonoBehaviour
                         PipeAnimationsCheck();
                     }
                 }
-                Debug.Log(mousePosition);
-                Debug.Log("Hit");
             }
         }
     }

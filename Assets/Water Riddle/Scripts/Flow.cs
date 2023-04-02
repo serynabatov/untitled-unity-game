@@ -8,12 +8,13 @@ public class Flow : MonoBehaviour
 
     private Animator animator;
 
-
     public int direction;
     public States currentState;
     private Vector3 direct;
+
     [SerializeField]
     private float speed = 4;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +63,11 @@ public class Flow : MonoBehaviour
         {
             gameManager.gameOver = true;
         }
+        /*if (collision.CompareTag("Dark Block") && (currentState == States.Dark))
+        {
+            Transform child = collision.transform.GetChild(0);
+            child.gameObject.SetActive(true);
+        }*/
         if (collision.CompareTag("Light"))
         {
             currentState = States.Light;
@@ -98,11 +104,21 @@ public class Flow : MonoBehaviour
                     switch (direction)
                     {
                         case 1:
-                            animator.Play("Left - Down (Water) ");
+                            if (currentState == States.Dark)
+                                animator.Play("Dark Left - Down (Start)");
+                            if (currentState == States.Clear)
+                                animator.Play("Left - Down (Start)");
+                            if (currentState == States.Light)
+                                animator.Play("Light Left - Down (Start)");
                             direction = 2;
                             break;
                         case 0:
-                            animator.Play("Down - Left (Water)");
+                            if (currentState == States.Dark)
+                                animator.Play("Dark Down - Left (Start)");
+                            if (currentState == States.Clear)
+                                animator.Play("Down - Left (Start)");
+                            if (currentState == States.Light)
+                                animator.Play("Light Down - Left (Start)");
                             direction = 3;
                             break;
                         default:
@@ -116,11 +132,21 @@ public class Flow : MonoBehaviour
                     switch (direction)
                     {
                         case 1:
-                            animator.Play("Left - Up (Water)");
+                            if (currentState == States.Dark)
+                                animator.Play("Dark Left - Up (Start)");
+                            if (currentState == States.Clear)
+                                animator.Play("Left - Up (Start)");
+                            if (currentState == States.Light)
+                                animator.Play("Light Left - Up (Start)");
                             direction = 0;
                             break;
                         case 2:
-                            animator.Play("Up - Left (Water)");
+                            if (currentState == States.Dark)
+                                animator.Play("Dark Up - Left (Start)");
+                            if (currentState == States.Clear)
+                                animator.Play("Up - Left (Start)");
+                            if (currentState == States.Light)
+                                animator.Play("Light Up - Left (Start)");
                             direction = 3;
                             break;
                         default:
@@ -134,11 +160,21 @@ public class Flow : MonoBehaviour
                     switch (direction)
                     {
                         case 2:
-                            animator.Play("Up - Right (Water)");
+                            if (currentState == States.Dark)
+                                animator.Play("Dark Up - Right (Start)");
+                            if (currentState == States.Clear)
+                                animator.Play("Up - Right (Start)");
+                            if (currentState == States.Light)
+                                animator.Play("Light Up - Right (Start)");
                             direction = 1;
                             break;
                         case 3:
-                            animator.Play("Right - Up (Water)");
+                            if (currentState == States.Dark)
+                                animator.Play("Dark Right - Up (Start)");
+                            if (currentState == States.Clear)
+                                animator.Play("Right - Up (Start)");
+                            if (currentState == States.Light)
+                                animator.Play("Light Right - Up (Start)");
                             direction = 0;
                             break;
                         default:
@@ -152,11 +188,21 @@ public class Flow : MonoBehaviour
                     switch (direction)
                     {
                         case 0:
-                            animator.Play("Down - Right (Start)");
+                            if (currentState == States.Dark)
+                                animator.Play("Dark Down - Right (Start)");
+                            if (currentState == States.Clear)
+                                animator.Play("Down - Right (Start)");
+                            if (currentState == States.Light)
+                                animator.Play("Light Down - Right (Start)");
                             direction = 1;
                             break;
                         case 3:
-                            animator.Play("Right - Down (Water)");
+                            if (currentState == States.Dark)
+                                animator.Play("Dark Right - Down (Start)");
+                            if (currentState == States.Clear)
+                                animator.Play("Right - Down (Start)");
+                            if (currentState == States.Light)
+                                animator.Play("Light Right - Down (Start)");
                             direction = 2;
                             break;
                         default:
@@ -179,10 +225,20 @@ public class Flow : MonoBehaviour
                     switch (direction)
                     {
                         case 1:
-                            animator.Play("Left - Right");
+                            if (currentState == States.Dark)
+                                animator.Play("Dark Left - Right (Start)");
+                            if (currentState == States.Clear)
+                                animator.Play("Left - Right (Start)");
+                            if (currentState == States.Light)
+                                animator.Play("Light Left - Right (Start)");
                             break;
                         case 3:
-                            animator.Play("Right - Left");
+                            if (currentState == States.Dark)
+                                animator.Play("Dark Right - Left (Start)");
+                            if (currentState == States.Clear)
+                                animator.Play("Right - Left (Start)");
+                            if (currentState == States.Light)
+                                animator.Play("Light Right - Left (Start)");
                             break;
                         default:
                             gameManager.gameOver = true;
@@ -195,10 +251,20 @@ public class Flow : MonoBehaviour
                     switch (direction)
                     {
                         case 0:
-                            animator.Play("Down - Up");
+                            if (currentState == States.Dark)
+                                animator.Play("Dark Down - Up (Start)");
+                            if (currentState == States.Clear)
+                                animator.Play("Down - Up (Start)");
+                            if (currentState == States.Light)
+                                animator.Play("Light Down - Up (Start)");
                             break;
                         case 2:
-                            animator.Play("Up - Down");
+                            if (currentState == States.Dark)
+                                animator.Play("Dark Up - Down (Start)");
+                            if (currentState == States.Clear)
+                                animator.Play("Up - Down (Start)");
+                            if (currentState == States.Light)
+                                animator.Play("Light Up - Down (Start)");
                             break;
                         default:
                             gameManager.gameOver = true;
@@ -207,5 +273,11 @@ public class Flow : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    public void BlockerAnimation(Collider2D blocker)
+    {
+        animator = blocker.GetComponent<Animator>();
+        animator.Play("Passed");
     }
 }
