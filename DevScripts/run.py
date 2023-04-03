@@ -19,9 +19,9 @@ def go_through_subfolders(data, parent_folder, upload=False):
             memo.append(data["folder"])
         value = data["folder"]
         if value == "":
-            go_through_subfolders(subfolders, parent_folder)
+            go_through_subfolders(subfolders, parent_folder, upload)
         else:
-            go_through_subfolders(subfolders, parent_folder + "/" + value)
+            go_through_subfolders(subfolders, parent_folder + "/" + value, upload)
     if upload == "False":
         download_files.download_folder(data["folder"], parent_folder + "/" + data["folder"])
     else:
