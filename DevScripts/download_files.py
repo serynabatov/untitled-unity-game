@@ -50,7 +50,8 @@ def download_folder(folder_name, whole_path=None):
             Path("./{}".format(whole_path)).mkdir(parents=True, exist_ok=True)
             for file in results.get('files', []):
                 file_list = service.files().list(
-                    q="'{}' in parents".format(file.get("id"))
+                    q="'{}' in parents".format(file.get("id")),
+                    pageSize=1000
                 ).execute()
 
                 for f in file_list.get("files"):
