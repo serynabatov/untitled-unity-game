@@ -41,6 +41,7 @@ public class FileDataHandler
         }
         catch (Exception e)
         {
+            Debug.LogError(e.Message);
             Debug.LogError("Error created while creating file " + fullPath);
         }
 
@@ -95,6 +96,7 @@ public class FileDataHandler
         }
         catch (Exception e)
         {
+            Debug.LogError(e.Message);
             Debug.LogError("Error created while creating file " + fullPath);
         }
     }
