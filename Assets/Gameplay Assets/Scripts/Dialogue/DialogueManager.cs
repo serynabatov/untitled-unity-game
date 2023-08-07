@@ -121,6 +121,17 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
+
+        DataPersistenceManager dpManager = FindObjectsOfType<DataPersistenceManager>()[0];
+
+        if (dpManager != null)
+        {
+            dpManager.SaveGame();
+        } 
+        else
+        {
+            Debug.LogError("DataPersistenceManager is not instantiated");
+        }
     }
 
 
