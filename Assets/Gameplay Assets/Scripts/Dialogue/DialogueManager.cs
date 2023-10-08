@@ -5,7 +5,7 @@ using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : MonoBehaviour, IDataPersistence
 {
     [Header("Params")]
     [SerializeField] private float typingSpeed = 0.04f;
@@ -50,7 +50,6 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning("Found more than one Dialogue Manager in the scene");
         }
         instance = this;
-
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
     }
 
@@ -61,8 +60,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        dialogueIsPlaying = false;
-        dialoguePanel.SetActive(false);
+        DeactivateDialoguePanel();
 
         // get the layout animator
         layoutAnimator = dialoguePanel.GetComponent<Animator>();
@@ -119,9 +117,19 @@ public class DialogueManager : MonoBehaviour
 
         dialogueVariables.StopListening(this.currentStory);
 
-        dialogueIsPlaying = false;
-        dialoguePanel.SetActive(false);
+        DeactivateDialoguePanel();
         dialogueText.text = "";
+
+        DataPersistenceManager dpManager = FindObjectsOfType<DataPersistenceManager>()[0];
+
+        if (dpManager != null)
+        {
+            dpManager.SaveGame();
+        } 
+        else
+        {
+            Debug.LogError("DataPersistenceManager is not instantiated");
+        }
     }
 
 
@@ -302,5 +310,21 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueVariables.SaveVariables();
         }
+    }
+
+    public void LoadData(PlayerData data)
+    {
+        this.dialogueVariables.LoadData(data);
+    }
+
+    public void SaveData(ref PlayerData data)
+    {
+        this.dialogueVariables.SaveData(ref data);
+    }
+
+    public void DeactivateDialoguePanel() 
+    {
+        dialogueIsPlaying = false;
+        dialoguePanel.SetActive(false);
     }
 }

@@ -67,6 +67,13 @@ public class DataPersistenceManager : MonoBehaviour
             NewGame();
         }
 
+        DialogueManager dialogueManagerInstance = DialogueManager.GetInstance();
+
+        if (dialogueManagerInstance != null && dialogueManagerInstance.dialogueIsPlaying) 
+        {
+            dialogueManagerInstance.DeactivateDialoguePanel();
+        }
+
         // load the data
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {

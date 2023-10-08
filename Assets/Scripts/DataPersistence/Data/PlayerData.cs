@@ -10,14 +10,14 @@ public class PlayerData
 {
     public Vector3 playerPosition;
 
-    public SerializableDictionary<string, bool> keysCollected;
+    public string dialogVariables;
 
     /// <summary>
     /// The values defined for test purpose only
     /// </summary>
     public PlayerData()
     {
-        this.keysCollected = new SerializableDictionary<string, bool>();
+        this.dialogVariables = null;
         this.playerPosition = new Vector3(-100, 18, 0);
     }
 
