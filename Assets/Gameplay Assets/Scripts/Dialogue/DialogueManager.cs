@@ -60,8 +60,7 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
-        dialogueIsPlaying = false;
-        dialoguePanel.SetActive(false);
+        DeactivateDialoguePanel();
 
         // get the layout animator
         layoutAnimator = dialoguePanel.GetComponent<Animator>();
@@ -118,8 +117,7 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
 
         dialogueVariables.StopListening(this.currentStory);
 
-        dialogueIsPlaying = false;
-        dialoguePanel.SetActive(false);
+        DeactivateDialoguePanel();
         dialogueText.text = "";
 
         DataPersistenceManager dpManager = FindObjectsOfType<DataPersistenceManager>()[0];
@@ -322,5 +320,11 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
     public void SaveData(ref PlayerData data)
     {
         this.dialogueVariables.SaveData(ref data);
+    }
+
+    public void DeactivateDialoguePanel() 
+    {
+        dialogueIsPlaying = false;
+        dialoguePanel.SetActive(false);
     }
 }
