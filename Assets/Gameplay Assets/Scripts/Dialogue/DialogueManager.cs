@@ -117,6 +117,8 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
 
         dialogueVariables.StopListening(this.currentStory);
 
+        SceneSystem.GetInstance().CheckSceneToStart();
+
         DeactivateDialoguePanel();
         dialogueText.text = "";
 
@@ -125,7 +127,7 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
         if (dpManager != null)
         {
             dpManager.SaveGame();
-        } 
+        }
         else
         {
             Debug.LogError("DataPersistenceManager is not instantiated");
@@ -222,7 +224,7 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
             string tagKey = splitTag[0].Trim();
             string tagValue = splitTag[1].Trim();
 
-            Debug.Log(string.Format("tag key = {0} tag value = {1}", tagKey, tagValue));
+            //Debug.Log(string.Format("tag key = {0} tag value = {1}", tagKey, tagValue));
 
             //handle the tag
             switch (tagKey)
@@ -322,7 +324,7 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
         this.dialogueVariables.SaveData(ref data);
     }
 
-    public void DeactivateDialoguePanel() 
+    public void DeactivateDialoguePanel()
     {
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);

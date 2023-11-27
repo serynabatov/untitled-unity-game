@@ -13,7 +13,7 @@ public class DialogueVariables
     public DialogueVariables(TextAsset loadGlobalsJSON)
     {
         // create the story
-         globalVariablesStory = new Story(loadGlobalsJSON.text);
+        globalVariablesStory = new Story(loadGlobalsJSON.text);
         // if we have saved data, load it
         //if (PlayerPrefs.HasKey(saveVariablesKey))
         //{
@@ -36,11 +36,11 @@ public class DialogueVariables
     {
         //if (globalVariablesStory != null)
         //{
-            // Load the current state of all of our variables to the globals story
-            //VariablesToStory(globalVariablesStory);
-            // NOTE: eventually, you'd want to replace this with an actual save/load method
-            // rather than using PlayerPrefs
-            //PlayerPrefs.SetString(saveVariablesKey, globalVariablesStory.state.ToJson());
+        // Load the current state of all of our variables to the globals story
+        //VariablesToStory(globalVariablesStory);
+        // NOTE: eventually, you'd want to replace this with an actual save/load method
+        // rather than using PlayerPrefs
+        //PlayerPrefs.SetString(saveVariablesKey, globalVariablesStory.state.ToJson());
         //}
     }
 
