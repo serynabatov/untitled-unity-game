@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneSystem : MonoBehaviour
 {
     private static SceneSystem instance;
+
     private void Awake()
     {
         if (instance != null)
@@ -20,29 +21,10 @@ public class SceneSystem : MonoBehaviour
         return instance;
     }
 
-    void Update()
-    {
-        if (InputManager.GetInstance().GetParryPressed())
-        {
-            //LoadThisLevel("Crate Puzzle");
-        }
-    }
-
     public void LoadThisLevel(string levelName)
     {
+        //Debug.Log("PUZZLE START" + levelName);
         StartCoroutine(LoadLevel(levelName));
-    }
-
-    public void CheckSceneToStart()
-    {
-        if (DialogueManager.GetInstance().GetVariableState("mainVarCrate")) //! Написать здесь нужно название переменной по условию которой нужно запускать сцену
-        {
-            Debug.Log("CRATE PUZZLE START");
-        }
-        if (DialogueManager.GetInstance().GetVariableState("mainVarWate")) //! Написать здесь нужно название переменной по условию которой нужно запускать сцену
-        {
-            Debug.Log("WATER PUZZLE START");
-        }
     }
 
     IEnumerator LoadLevel(string levelName)

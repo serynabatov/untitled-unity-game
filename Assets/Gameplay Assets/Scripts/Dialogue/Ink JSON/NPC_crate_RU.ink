@@ -4,13 +4,12 @@ INCLUDE globals.ink
 {mainVarCrate: ->main.prePurpose|{certificate: ->main|->main.exit}}
 
 === main ===
-Наконец-то, это вы принц. Я ваш проводник для этого испытания внимательности и усидчивости. Только пройдя его, вы сможете получить от меня заветный ключ #layout:left #speaker:Crate #portrait:heroFace
+Наконец-то, это вы принц. Я ваш проводник для этого испытания терпения. Только пройдя его, вы сможете получить от меня заветный ключ #layout:left #speaker:Crate #portrait:heroFace
 ~ mainVarCrate = true
 ->purpose
 
 = purpose
-Чтобы пройти испытание, вы должны направить русло воды. Источник воды в лесу обмелел, нужно направить поток воды и восстановить течение. #layout:left #speaker:Crate #portrait:heroFace
-Нажимайте на кнопки воды, чтобы повернуть их, таким образом вы должны в правильную сторону повернуть все ячейки и направить русло воды до конечной точки.
+Чтобы пройти испытание, вы должны передвигать ящики. #layout:left #speaker:Crate #portrait:heroFace
 ->END
 
 = prePurpose
@@ -19,9 +18,9 @@ INCLUDE globals.ink
 ->purpose
 +[Нет, до свидания]
 ->END
-+[ПРОЙТИ ИСПЫТАНИЕ]
-->END
++[ПРОЙТИ ИСПЫТАНИЕ]->END #start:Crate Puzzle 
 
 = exit
 Вы кто ?, я не вижу у вас право проходить у меня испытания для спасения принцессы. Может вам стоит получить этот сертификат у моего брата. Он похож на меня, только у него белая шляпа. #layout:left #speaker:Crate #portrait:heroFace
+~ mainVarCrate = true
 ->END

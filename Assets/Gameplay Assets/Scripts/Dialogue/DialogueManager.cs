@@ -40,7 +40,7 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
     private const string LAYOUT_TAG = "layout";
-
+    private const string START_SCENE_TAG = "start";
     private DialogueVariables dialogueVariables;
 
     private void Awake()
@@ -116,8 +116,6 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(0.2f);
 
         dialogueVariables.StopListening(this.currentStory);
-
-        SceneSystem.GetInstance().CheckSceneToStart();
 
         DeactivateDialoguePanel();
         dialogueText.text = "";
@@ -237,6 +235,10 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
                     break;
                 case LAYOUT_TAG:
                     layoutAnimator.Play(tagValue);
+                    break;
+                case START_SCENE_TAG:
+                    StartCoroutine(ExitDialogueMode());
+                    SceneSystem.GetInstance().LoadThisLevel(tagValue);
                     break;
                 default:
                     Debug.LogWarning("Tag came in but is not currently beign handled: " + tag);

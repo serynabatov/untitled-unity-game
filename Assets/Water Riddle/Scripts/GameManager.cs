@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     public void GameRestart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneSystem.GetInstance().LoadThisLevel(SceneManager.GetActiveScene().name);
         //edge.gameObject.SetActive(true);
     }
     public void GameStart()
@@ -51,8 +51,22 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(index + 1);
     }
 
-    public void EndGame()
+    public void ToNextScene()
     {
-        Application.Quit();
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "Riddle 1":
+                SceneSystem.GetInstance().LoadThisLevel("Riddle 2");
+                break;
+            case "Riddle 2":
+                SceneSystem.GetInstance().LoadThisLevel("Riddle 3");
+                break;
+            case "Riddle 3":
+                SceneSystem.GetInstance().LoadThisLevel("Gameplay");
+                break;
+            default:
+                Debug.LogWarning("Something gone wrong with water riddle scene names " + SceneManager.GetActiveScene().name);
+                break;
+        }
     }
 }
