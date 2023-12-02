@@ -1,7 +1,7 @@
 //Этот диалог предназначен для НПС головоломки с водой. С ним игрок встречается уже после того, как поговорил с основным НПС.
 INCLUDE globals.ink
  //Эта переменная извне должна стать true в тот моент, когда игрок погвоорит с основным НПС.
-{mainVarWater: ->main.prePurpose|{certificate: ->main|->main.exit}}
+{mainVarWaterFinished: ->main.finishedPuzzle|{mainVarWater: ->main.prePurpose|{certificate: ->main|->main.exit}}}
 
 === main ===
 Наконец-то, это вы принц. Я ваш проводник для этого испытания внимательности и усидчивости. Только пройдя его, вы сможете получить от меня заветный ключ #layout:right #speaker:Wizard #portrait:wizardFace 
@@ -23,6 +23,10 @@ INCLUDE globals.ink
 ->END
 
 = exit
-Вы кто ?, я не вижу у вас право проходить у меня испытания для спасения принцессы. Может вам стоит получить этот сертификат у моего брата. Он похож на меня, только у него белая шляпа. #layout:right #speaker:Water #portrait:wizardFace
 ~ mainVarWater = true
+Вы кто ?, я не вижу у вас право проходить у меня испытания для спасения принцессы. Может вам стоит получить этот сертификат у моего брата. Он похож на меня, только у него белая шляпа. #layout:right #speaker:Water #portrait:wizardFace
+->END
+
+= finishedPuzzle
+Я величайший и прошёл загадку с водой #layout:right #speaker:Water #portrait:wizardFace
 ->END

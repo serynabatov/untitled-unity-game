@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using Ink.Runtime;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,13 +11,18 @@ public class GameManager : MonoBehaviour
     public GameObject startButton;
     public GameObject clearText;
     public GameObject flow;
-
+    [Header("Load Globals JSON")]
+    [SerializeField] private TextAsset loadGlobalsJSON;
+    private DialogueVariables dialogueVariables;
     public bool gameRunning;
     public bool gameOver;
     public bool gameClear;
 
 
-
+    private void Awake()
+    {
+        dialogueVariables = new DialogueVariables(loadGlobalsJSON);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -56,7 +62,8 @@ public class GameManager : MonoBehaviour
         switch (SceneManager.GetActiveScene().name)
         {
             case "Riddle 1":
-                SceneSystem.GetInstance().LoadThisLevel("Riddle 2");
+                WaterPuzzleSolved();
+                SceneSystem.GetInstance().LoadThisLevel("Gameplay"); // Должно быть Riddle 2
                 break;
             case "Riddle 2":
                 SceneSystem.GetInstance().LoadThisLevel("Riddle 3");
@@ -67,6 +74,15 @@ public class GameManager : MonoBehaviour
             default:
                 Debug.LogWarning("Something gone wrong with water riddle scene names " + SceneManager.GetActiveScene().name);
                 break;
+        }
+    }
+
+    private void WaterPuzzleSolved()
+    {
+        if (dialogueVariables.variables.ContainsKey("mainVarWaterFinished"))
+        {
+            dialogueVariables.variables["mainVarWaterFinished"] = dialogueVariables.variables["mainVarWater"];
+            //dialogueVariables.variables.Add("mainVarWaterFinished", true);
         }
     }
 }

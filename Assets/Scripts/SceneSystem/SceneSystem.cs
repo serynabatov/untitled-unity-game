@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 public class SceneSystem : MonoBehaviour
 {
     private static SceneSystem instance;
+    public Animator transition;
+    public float transitionTime = 1f;
 
     private void Awake()
     {
         if (instance != null)
         {
-            Debug.LogWarning("Found more than one Dialogue Manager in the scene");
+            Debug.LogWarning("Found more than one Scene System in the scene");
         }
         instance = this;
     }
@@ -29,7 +31,8 @@ public class SceneSystem : MonoBehaviour
 
     IEnumerator LoadLevel(string levelName)
     {
-        yield return new WaitForSeconds(1f);
+        transition.SetTrigger("Crossfade_Start");
+        yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(levelName);
     }
 }
