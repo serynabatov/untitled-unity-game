@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using Ink.Runtime;
+using Ink.Parsed;
 
 public class GameManager : MonoBehaviour
 {
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
                 SceneSystem.GetInstance().LoadThisLevel("Riddle 3");
                 break;
             case "Riddle 3":
+                //WaterPuzzleSolved();
                 SceneSystem.GetInstance().LoadThisLevel("Gameplay");
                 break;
             default:
@@ -81,7 +83,8 @@ public class GameManager : MonoBehaviour
     {
         if (dialogueVariables.variables.ContainsKey("mainVarWaterFinished"))
         {
-            dialogueVariables.variables["mainVarWaterFinished"] = dialogueVariables.variables["mainVarWater"];
+            dialogueVariables.variables["mainVarWaterFinished"] = Ink.Runtime.BoolValue.Create(true);
+            dialogueVariables.SaveVariables();
             //dialogueVariables.variables.Add("mainVarWaterFinished", true);
         }
     }

@@ -25,7 +25,6 @@ public class SceneSystem : MonoBehaviour
 
     public void LoadThisLevel(string levelName)
     {
-        //Debug.Log("PUZZLE START" + levelName);
         StartCoroutine(LoadLevel(levelName));
     }
 

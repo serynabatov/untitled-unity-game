@@ -62,6 +62,8 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_Prototype>();
 
         concurrentDictionaryImpl.FillSounds(sounds);
+
+        transform.position = SaveSystem.GetInstance().LoadPosition();
     }
 
     // Update is called once per frame
@@ -522,6 +524,11 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
     public void SaveData(ref PlayerData data)
     {
         data.playerPosition = transform.position;
+    }
+
+    public void OnApplicationQuit()
+    {
+        SaveSystem.GetInstance().SavePosition(transform.position);
     }
 
     public void TakingDamage()

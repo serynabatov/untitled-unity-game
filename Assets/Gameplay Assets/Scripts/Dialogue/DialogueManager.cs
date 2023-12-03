@@ -5,7 +5,7 @@ using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
 
-public class DialogueManager : MonoBehaviour, IDataPersistence
+public class DialogueManager : MonoBehaviour//, IDataPersistence
 {
     [Header("Params")]
     [SerializeField] private float typingSpeed = 0.04f;
@@ -41,6 +41,7 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
     private const string PORTRAIT_TAG = "portrait";
     private const string LAYOUT_TAG = "layout";
     private const string START_SCENE_TAG = "start";
+    private const string EXIT_DIALOGUE_TAG = "exit";
     private DialogueVariables dialogueVariables;
 
     private void Awake()
@@ -85,9 +86,7 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
 
         // handle continuing to the next line in the dialogue when submit is pressed
         // NOTE: The 'currentStory.currentChoiecs.Count == 0' part was to fix a bug after the Youtube video was made
-        if (canContinueToNextLine
-            && this.currentStory.currentChoices.Count == 0
-            && InputManager.GetInstance().GetSubmitPressed())
+        if (canContinueToNextLine && this.currentStory.currentChoices.Count == 0 && InputManager.GetInstance().GetSubmitPressed())
         {
             ContinueStory();
         }
@@ -110,26 +109,29 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
         this.ContinueStory();
     }
 
-    private IEnumerator ExitDialogueMode()
+    private IEnumerator ExitDialogueMode(float delayExit = 0.2f)
     {
-
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(delayExit);
 
         dialogueVariables.StopListening(this.currentStory);
 
         DeactivateDialoguePanel();
         dialogueText.text = "";
 
-        DataPersistenceManager dpManager = FindObjectsOfType<DataPersistenceManager>()[0];
+        if (dialogueVariables != null)
+        {
+            dialogueVariables.SaveVariables();
+        }
+        //DataPersistenceManager dpManager = FindObjectsOfType<DataPersistenceManager>()[0];
 
-        if (dpManager != null)
-        {
-            dpManager.SaveGame();
-        }
-        else
-        {
-            Debug.LogError("DataPersistenceManager is not instantiated");
-        }
+        //if (dpManager != null)
+        //{
+        //    dpManager.SaveGame();
+        //}
+        //else
+        //{
+        //    Debug.LogError("DataPersistenceManager is not instantiated");
+        //}
     }
 
 
@@ -237,8 +239,10 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
                     layoutAnimator.Play(tagValue);
                     break;
                 case START_SCENE_TAG:
-                    StartCoroutine(ExitDialogueMode());
                     SceneSystem.GetInstance().LoadThisLevel(tagValue);
+                    break;
+                case EXIT_DIALOGUE_TAG:
+                    StartCoroutine(ExitDialogueMode(float.Parse(tagValue)));
                     break;
                 default:
                     Debug.LogWarning("Tag came in but is not currently beign handled: " + tag);
@@ -316,7 +320,7 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
         }
     }
 
-    public void LoadData(PlayerData data)
+    /*public void LoadData(PlayerData data)
     {
         this.dialogueVariables.LoadData(data);
     }
@@ -324,7 +328,7 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
     public void SaveData(ref PlayerData data)
     {
         this.dialogueVariables.SaveData(ref data);
-    }
+    } */
 
     public void DeactivateDialoguePanel()
     {

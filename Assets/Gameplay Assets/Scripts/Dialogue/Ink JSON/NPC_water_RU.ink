@@ -17,9 +17,9 @@ INCLUDE globals.ink
 Принц, я вижу вы ещё не прошли испытание. Вам напомнить о его деталях ? #layout:right #speaker:Wizard #portrait:wizardFace 
 +[Нужна подсказка]
 ->purpose
-+[Нет, до свидания]
++[Нет, до свидания] #exit:0
 ->END
-+[ПРОЙТИ ИСПЫТАНИЕ] #start:Riddle 1
++[ПРОЙТИ ИСПЫТАНИЕ] #start:Riddle 1 #exit:0
 ->END
 
 = exit
