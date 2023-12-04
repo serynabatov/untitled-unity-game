@@ -42,10 +42,13 @@ public class FirstLevelManager : MonoBehaviour
                 boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
                 break;
             case "BaseBoxTriggerIce":
-                iceTrigger = triggerStat;
-                this.CheckGates(iceGateActiv, iceGate, iceTrigger);
-                triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
-                boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
+                if (triggerStat != iceTrigger)
+                {
+                    iceTrigger = triggerStat;
+                    this.CheckGates(iceGateActiv, iceGate, iceTrigger);
+                    triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+                    boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
+                }
                 break;
             case "BaseBoxTriggerFire":
                 fireTrigger = triggerStat;
@@ -59,7 +62,7 @@ public class FirstLevelManager : MonoBehaviour
 
     public void IceBox(bool triggerStat, GameObject triggerGO, Animator boxAnimator)
     {
-        if (triggerGO.name == "IceTrigger")
+        if (triggerGO.name == "IceTrigger" && triggerStat != iceGateActiv)
         {
             triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
             boxAnimator.Play(triggerStat ? "IceActive" : "IceDeactive");
