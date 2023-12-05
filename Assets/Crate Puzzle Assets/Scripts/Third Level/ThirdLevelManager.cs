@@ -17,7 +17,8 @@ public class ThirdLevelManager : MonoBehaviour
 
     private bool fireTrigger;
     private bool iceTrigger;
-
+    private bool finalGateTrigger;
+    private bool greenTrigger;
     private static ThirdLevelManager instance;
 
     private void Awake()
@@ -39,37 +40,48 @@ public class ThirdLevelManager : MonoBehaviour
         switch (triggerGO.name)
         {
             case "FinalGateTrigger":
-                Debug.Log("Поздравляю последний уровень пройден");
-                topGate.SetActive(!triggerStat);
-                triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
-                boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
+                if (triggerStat != finalGateTrigger)
+                {
+                    Debug.Log("Поздравляю второй уровень пройден");
+                    finalGateTrigger = triggerStat;
+                    topGate.SetActive(!triggerStat);
+                    triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+                    boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
+                }
                 break;
             case "BaseBoxTriggerIce":
-                iceTrigger = triggerStat;
-                blueGate.SetActive(!triggerStat); // �������� ��� ��������� ������� ������
-                this.CheckGates(iceGateActiv, iceGate, iceTrigger);
-                triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
-                boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
+                if (triggerStat != iceTrigger)
+                {
+                    iceTrigger = triggerStat;
+                    this.CheckGates(iceGateActiv, iceGate, iceTrigger);
+                    triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+                    boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
+                }
                 break;
             case "BaseBoxTriggerFire":
-                fireTrigger = triggerStat;
-                orangeGate.SetActive(!triggerStat); // �������� ��� ��������� ��������� ������
-                this.CheckGates(fireGateActiv, fireGate, fireTrigger);
-                triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
-                boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
+                if (triggerStat != fireTrigger)
+                {
+                    fireTrigger = triggerStat;
+                    this.CheckGates(fireGateActiv, fireGate, fireTrigger);
+                    triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+                    boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
+                }
                 break;
             case "BaseBoxTriggerGate":
-                greenGate.SetActive(!triggerStat);
-                triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
-                boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
+                if (triggerStat != greenTrigger)
+                {
+                    greenTrigger = triggerStat;
+                    greenGate.SetActive(!triggerStat);
+                    triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+                    boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
+                }
                 break;
-
         }
     }
 
     public void IceBox(bool triggerStat, GameObject triggerGO, Animator boxAnimator)
     {
-        if (triggerGO.name == "IceTrigger")
+        if (triggerGO.name == "IceTrigger" && triggerStat != iceGateActiv)
         {
             triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
             boxAnimator.Play(triggerStat ? "IceActive" : "IceDeactive");
@@ -80,7 +92,7 @@ public class ThirdLevelManager : MonoBehaviour
 
     public void FireBox(bool triggerStat, GameObject triggerGO, Animator boxAnimator)
     {
-        if (triggerGO.name == "FireTrigger")
+        if (triggerGO.name == "FireTrigger" && triggerStat != fireGateActiv)
         {
             triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
             boxAnimator.Play(triggerStat ? "FireActive" : "FireDeactive");
