@@ -35,11 +35,18 @@ public class MovementCrate : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-
+    private void Start()
+    {
+        //SaveSystem.GetInstance().SavePosition(transform.position);
+        transform.position = SaveSystem.GetInstance().LoadPosition();
+    }
+    public void OnApplicationQuit()
+    {
+        SaveSystem.GetInstance().SavePosition(transform.position);
+    }
     private void FixedUpdate()
     {
         HandleMovement();
-
 
         RaycastHit2D grabCheckLeft = Physics2D.Raycast(grabDetect.position, Vector2.left, rayDist, grabAble);
         RaycastHit2D grabCheckRight = Physics2D.Raycast(grabDetect.position, Vector2.right, rayDist, grabAble);

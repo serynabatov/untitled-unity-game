@@ -1091,6 +1091,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 3182230026254438812, guid: 0b2042b45b48dad469d0affa4854edc8,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2042b45b48dad469d0affa4854edc8, type: 3}
 --- !u!1 &299856109

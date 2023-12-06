@@ -21,8 +21,9 @@ public class TriggerManagerThird : MonoBehaviour
             case "Player":
                 if (this.name == "Third")
                 {
-                    Application.Quit();
-                    Debug.Log("Quit Scene");
+                    Debug.Log("Crate Puzzle finished");
+                    ThirdLevelManager.GetInstance().CratePuzzleSolved();
+                    SceneSystem.GetInstance().LoadThisLevel("Gameplay");
                 }
                 break;
         }
@@ -46,4 +47,5 @@ public class TriggerManagerThird : MonoBehaviour
                 break;
         }
     }
+
 }
