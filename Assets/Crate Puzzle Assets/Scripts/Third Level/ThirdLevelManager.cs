@@ -111,6 +111,8 @@ public class ThirdLevelManager : MonoBehaviour
     }
     public void CratePuzzleSolved()
     {
+        PlayerPrefs.DeleteKey("PlayerPosXCrate");
+        PlayerPrefs.DeleteKey("PlayerPosYCrate");
         if (dialogueVariables.variables.ContainsKey("mainVarCrateFinished"))
         {
             dialogueVariables.variables["mainVarCrateFinished"] = Ink.Runtime.BoolValue.Create(true);

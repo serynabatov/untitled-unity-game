@@ -26,4 +26,4 @@ INCLUDE globals.ink
 
 = finishedPuzzle
 Я величайший и прошёл загадку с ЯЩИКАМИ #layout:right #speaker:Water #portrait:wizardFace
-->END
++[ПРОЙТИ ИСПЫТАНИЕ]->END #start:Crate Puzzle #exit:0
