@@ -20,6 +20,9 @@ public class ThirdLevelManager : MonoBehaviour
     private bool finalGateTrigger;
     private bool greenTrigger;
     private static ThirdLevelManager instance;
+    [Header("Load Globals JSON")]
+    [SerializeField] private TextAsset loadGlobalsJSON;
+    private DialogueVariables dialogueVariables;
 
     private void Awake()
     {
@@ -28,7 +31,7 @@ public class ThirdLevelManager : MonoBehaviour
             Debug.LogWarning("Found more than one Third Level Manager in the scene");
         }
         instance = this;
-
+        dialogueVariables = new DialogueVariables(loadGlobalsJSON);
     }
     public static ThirdLevelManager GetInstance()
     {
@@ -42,7 +45,7 @@ public class ThirdLevelManager : MonoBehaviour
             case "FinalGateTrigger":
                 if (triggerStat != finalGateTrigger)
                 {
-                    Debug.Log("Поздравляю второй уровень пройден");
+                    Debug.Log("Поздравляю третий уровень пройден");
                     finalGateTrigger = triggerStat;
                     topGate.SetActive(!triggerStat);
                     triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
@@ -105,5 +108,16 @@ public class ThirdLevelManager : MonoBehaviour
     {
         //Debug.Log(string.Format("active Gate = {0} , gate name = {1}", gateActiv, gate.name));
         gate.SetActive((gateActiv && gateTrigger) ? false : true);
+    }
+    public void CratePuzzleSolved()
+    {
+        PlayerPrefs.DeleteKey("PlayerPosXCrate");
+        PlayerPrefs.DeleteKey("PlayerPosYCrate");
+        if (dialogueVariables.variables.ContainsKey("mainVarCrateFinished"))
+        {
+            dialogueVariables.variables["mainVarCrateFinished"] = Ink.Runtime.BoolValue.Create(true);
+            dialogueVariables.SaveVariables();
+            //dialogueVariables.variables.Add("mainVarWaterFinished", true);
+        }
     }
 }
