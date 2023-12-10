@@ -79,6 +79,10 @@ public class PlayerController2D : MonoBehaviour
 
     private void CheckInput()
     {
+        if (DialogueManager.GetInstance().dialogueIsPlaying || PauseManager.paused)
+        {
+            return;
+        }
         xInput = InputManager.GetInstance().GetMoveAxis();
         animator.SetFloat("VelocityX", Math.Abs(xInput));
         if (xInput == 1 && facingDirection == -1)
@@ -266,6 +270,10 @@ public class PlayerController2D : MonoBehaviour
             // Turn dust in correct X direction
             newDust.transform.localScale = newDust.transform.localScale.x * new Vector3(facingDirection, 1, 1);
         }
+    }
+    public void OnApplicationQuit()
+    {
+        SaveSystem.GetInstance().SavePosition(transform.position);
     }
     private void OnDrawGizmos()
     {

@@ -39,7 +39,7 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
 
     void AE_footstep()
     {
-        Debug.Log("AE_footstep");
+        //Debug.Log("AE_footstep");
         broker.Publish<int>((int)AudioClipName.FootstepEffect);
     }
 
@@ -47,7 +47,7 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
     {
         broker.Publish<int>((int)AudioClipName.Jump);
         // m_audioManager.PlaySound("Jump");
-        Debug.Log("AE_Jump");
+        //Debug.Log("AE_Jump");
         float dustYOffset = 0.078125f;
         m_player.SpawnDustEffect(m_JumpDust, 0.0f, dustYOffset);
     }
@@ -55,7 +55,7 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
     void AE_Landing()
     {
         broker.Publish<int>((int)AudioClipName.Landing);
-        Debug.Log("AE_Landing");
+        //Debug.Log("AE_Landing");
         //m_audioManager.PlaySound("Landing");
         float dustYOffset = 0.078125f;
         m_player.SpawnDustEffect(m_LandingDust, 0.0f, dustYOffset);
