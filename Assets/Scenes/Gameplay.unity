@@ -3090,11 +3090,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82bb0c034de18214594ad120eb859214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 6
-  groundCheckRadius: 0.38
+  movementSpeed: 7
+  airborneMovementSpeed: 8
+  groundCheckRadius: 0.4
   jumpForce: 25
   slopeCheckDistance: 2
-  maxSlopeAngle: 60
+  maxSlopeAngle: 45
+  checkDistance: 4
   groundCheck: {fileID: 109532777}
   whatIsGround:
     serializedVersion: 2
@@ -3259,7 +3261,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7839851, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
