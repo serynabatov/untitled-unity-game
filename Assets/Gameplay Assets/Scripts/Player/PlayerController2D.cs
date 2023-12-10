@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,7 @@ public class PlayerController2D : MonoBehaviour
     [SerializeField]
     private PhysicsMaterial2D fullFriction;
     private SpriteRenderer playerSprite;
+    private Animator animator;
 
     private float xInput;
     private float slopeDownAngle;
@@ -54,6 +56,7 @@ public class PlayerController2D : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         cc = GetComponent<CapsuleCollider2D>();
         playerSprite = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponentInChildren<Animator>();
         capsuleColliderSize = cc.size;
     }
 
@@ -72,7 +75,7 @@ public class PlayerController2D : MonoBehaviour
     private void CheckInput()
     {
         xInput = InputManager.GetInstance().GetMoveAxis();
-
+        animator.SetFloat("VelocityX", Math.Abs(xInput));
         if (xInput == 1 && facingDirection == -1)
         {
             Flip();
@@ -90,7 +93,8 @@ public class PlayerController2D : MonoBehaviour
     private void CheckGround()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
-
+        animator.SetBool("Grounded", isGrounded);
+        animator.SetFloat("VelocityY", rb.velocity.y);
         if (rb.velocity.y <= 0.0f)
         {
             isJumping = false;
@@ -168,7 +172,7 @@ public class PlayerController2D : MonoBehaviour
         {
             canWalkOnSlope = true;
         }
-        if (isOnSlope && canWalkOnSlope && xInput == 0.0f)
+        if (isGrounded && xInput == 0.0f) //раньше было (isOnSlope && canWalkOnSlope && xInput == 0.0f)
         {
             rb.sharedMaterial = fullFriction;
         }
@@ -182,6 +186,7 @@ public class PlayerController2D : MonoBehaviour
     {
         if (canJump)
         {
+            animator.SetTrigger("Jump");
             canJump = false;
             isJumping = true;
             newVelocity.Set(0.0f, 0.0f);

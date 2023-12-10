@@ -1169,7 +1169,7 @@ PrefabInstance:
     - target: {fileID: 7216317338779392757, guid: e481822248898d04e9808a3d3ca78e5a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.73
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 7216317338779392757, guid: e481822248898d04e9808a3d3ca78e5a,
         type: 3}
@@ -1250,7 +1250,7 @@ PrefabInstance:
     - target: {fileID: 7853426713638563735, guid: e481822248898d04e9808a3d3ca78e5a,
         type: 3}
       propertyPath: m_GravityScale
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9075544260384689556, guid: e481822248898d04e9808a3d3ca78e5a,
         type: 3}
@@ -1262,7 +1262,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4210655474100147033, guid: e481822248898d04e9808a3d3ca78e5a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e481822248898d04e9808a3d3ca78e5a, type: 3}
 --- !u!4 &109532777 stripped
 Transform:
@@ -3091,7 +3092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 6
   groundCheckRadius: 0.38
-  jumpForce: 20
+  jumpForce: 25
   slopeCheckDistance: 2
   maxSlopeAngle: 60
   groundCheck: {fileID: 109532777}
@@ -3587,7 +3588,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864448953}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -92.73, y: 13.73, z: -10}
+  m_LocalPosition: {x: -92.73, y: 29, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
