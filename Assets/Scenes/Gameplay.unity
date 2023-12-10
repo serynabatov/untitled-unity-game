@@ -3261,7 +3261,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7839851, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4860,6 +4860,11 @@ PrefabInstance:
       propertyPath: sounds.Array.data[2].audioClip.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: a11f19d414cd2e443b1f50e60edbb610, type: 3}
+    - target: {fileID: 8666346267586219299, guid: bf12042f79f4c0347a3d931155abe35e,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1118503949}
     - target: {fileID: 8666346267586219299, guid: bf12042f79f4c0347a3d931155abe35e,
         type: 3}
       propertyPath: continueIcon

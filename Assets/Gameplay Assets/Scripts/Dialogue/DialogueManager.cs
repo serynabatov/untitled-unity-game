@@ -7,9 +7,6 @@ using UnityEngine.EventSystems;
 
 public class DialogueManager : MonoBehaviour//, IDataPersistence
 {
-
-    [SerializeField]
-    private GameObject player;
     [Header("Params")]
     [SerializeField] private float typingSpeed = 0.04f;
 
@@ -97,8 +94,7 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
 
     public void EnterDialogueMode(TextAsset inkJSON)
     {
-        Vector3 savingPosition = player.transform.position;
-        SaveSystem.SavePosition(savingPosition);
+        SaveSystem.SavePosition(GameObject.FindGameObjectWithTag("Player").transform.position);
         this.currentStory = new Story(inkJSON.text);
 
         this.dialogueIsPlaying = true;

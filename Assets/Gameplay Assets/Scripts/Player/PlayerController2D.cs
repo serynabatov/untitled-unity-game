@@ -275,7 +275,7 @@ public class PlayerController2D : MonoBehaviour
     }
     public void OnApplicationQuit()
     {
-        SaveSystem.GetInstance().SavePosition(transform.position);
+        SaveSystem.SavePosition(transform.position);
     }
     private void OnDrawGizmos()
     {
