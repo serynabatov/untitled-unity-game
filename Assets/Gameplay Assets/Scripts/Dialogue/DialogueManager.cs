@@ -7,6 +7,9 @@ using UnityEngine.EventSystems;
 
 public class DialogueManager : MonoBehaviour//, IDataPersistence
 {
+
+    [SerializeField]
+    private GameObject player;
     [Header("Params")]
     [SerializeField] private float typingSpeed = 0.04f;
 
@@ -94,6 +97,8 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
 
     public void EnterDialogueMode(TextAsset inkJSON)
     {
+        Vector3 savingPosition = player.transform.position;
+        SaveSystem.SavePosition(savingPosition);
         this.currentStory = new Story(inkJSON.text);
 
         this.dialogueIsPlaying = true;
@@ -122,6 +127,7 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
         {
             dialogueVariables.SaveVariables();
         }
+
         //DataPersistenceManager dpManager = FindObjectsOfType<DataPersistenceManager>()[0];
 
         //if (dpManager != null)

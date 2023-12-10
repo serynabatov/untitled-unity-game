@@ -63,7 +63,7 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
 
         concurrentDictionaryImpl.FillSounds(sounds);
 
-        transform.position = SaveSystem.GetInstance().LoadPosition();
+        transform.position = SaveSystem.LoadPosition();
     }
 
     // Update is called once per frame
@@ -528,7 +528,7 @@ public class PrototypeHero : MonoBehaviour, IDataPersistence
 
     public void OnApplicationQuit()
     {
-        SaveSystem.GetInstance().SavePosition(transform.position);
+        SaveSystem.SavePosition(transform.position);
     }
 
     public void TakingDamage()
