@@ -19,6 +19,8 @@ public class PlayerController2D : MonoBehaviour
     [SerializeField]
     private float maxSlopeAngle;
     [SerializeField]
+    private float checkDistance;
+    [SerializeField]
     private Transform groundCheck;
     [SerializeField]
     private LayerMask whatIsGround;
@@ -34,8 +36,6 @@ public class PlayerController2D : MonoBehaviour
     private float slopeDownAngle;
     private float slopeSideAngle;
     private float lastSlopeAngle;
-    [SerializeField]
-    private float checkDistance;
 
     private int facingDirection = 1;
 
@@ -66,12 +66,12 @@ public class PlayerController2D : MonoBehaviour
 
     private void Update()
     {
-        BufferedJump();
         CheckInput();
     }
 
     private void FixedUpdate()
     {
+        BufferedJump();
         CheckGround();
         SlopeCheck();
         ApplyMovement();
@@ -256,6 +256,17 @@ public class PlayerController2D : MonoBehaviour
         playerSprite.flipX = !playerSprite.flipX;
     }
 
+    public void SpawnDustEffect(GameObject dust, float dustXOffset = 0, float dustYOffset = 0)
+    {
+        if (dust != null)
+        {
+            // Set dust spawn position
+            Vector3 dustSpawnPosition = transform.position + new Vector3(dustXOffset * facingDirection, dustYOffset, 0.0f);
+            GameObject newDust = Instantiate(dust, dustSpawnPosition, Quaternion.identity) as GameObject;
+            // Turn dust in correct X direction
+            newDust.transform.localScale = newDust.transform.localScale.x * new Vector3(facingDirection, 1, 1);
+        }
+    }
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
