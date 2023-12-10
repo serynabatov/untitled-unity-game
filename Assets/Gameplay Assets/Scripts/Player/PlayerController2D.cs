@@ -8,6 +8,8 @@ public class PlayerController2D : MonoBehaviour
     [SerializeField]
     private float movementSpeed;
     [SerializeField]
+    private float airborneMovementSpeed;
+    [SerializeField]
     private float groundCheckRadius;
     [SerializeField]
     private float jumpForce;
@@ -25,11 +27,13 @@ public class PlayerController2D : MonoBehaviour
     private PhysicsMaterial2D fullFriction;
     private SpriteRenderer playerSprite;
 
+
     private float xInput;
     private float slopeDownAngle;
     private float slopeSideAngle;
     private float lastSlopeAngle;
-    private float jumpBuffer = 0.4f;
+    [SerializeField]
+    private float checkDistance;
 
     private int facingDirection = 1;
 
@@ -59,6 +63,7 @@ public class PlayerController2D : MonoBehaviour
 
     private void Update()
     {
+        BufferedJump();
         CheckInput();
     }
 
@@ -83,6 +88,7 @@ public class PlayerController2D : MonoBehaviour
         }
         if (InputManager.GetInstance().GetJumpPressed())
         {
+            BufferedJumpCheck();
             Jump();
         }
 
@@ -100,7 +106,6 @@ public class PlayerController2D : MonoBehaviour
         {
             canJump = true;
         }
-
     }
 
     private void SlopeCheck()
@@ -188,6 +193,35 @@ public class PlayerController2D : MonoBehaviour
             rb.velocity = newVelocity;
             newForce.Set(0.0f, jumpForce);
             rb.AddForce(newForce, ForceMode2D.Impulse);
+            jumpIsBuffered = false;
+        }
+    }
+
+    private void BufferedJump()
+    {
+        if (jumpIsBuffered)
+        {
+            Jump();
+        }
+    }
+
+    private void BufferedJumpCheck()
+    {
+        float rayLength;
+        if (Mathf.Sign(rb.velocity.y) == -1)
+        {
+            rayLength = checkDistance;
+        }
+        else
+        {
+            rayLength = 0.0f;
+        }
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.down, rayLength, whatIsGround);
+
+        if (!isGrounded && hit)
+        {
+            jumpIsBuffered = true;
+            Debug.DrawLine(new Vector3(transform.position.x, transform.position.y, 0), new Vector3(transform.position.x, transform.position.y - rayLength, 0), Color.red);
         }
     }
 
@@ -205,7 +239,7 @@ public class PlayerController2D : MonoBehaviour
         }
         else if (!isGrounded) //If in air
         {
-            newVelocity.Set(movementSpeed * xInput, rb.velocity.y);
+            newVelocity.Set(airborneMovementSpeed * xInput, rb.velocity.y);
             rb.velocity = newVelocity;
         }
 
