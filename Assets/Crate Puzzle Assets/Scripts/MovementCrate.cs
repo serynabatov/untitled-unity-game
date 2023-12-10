@@ -38,11 +38,11 @@ public class MovementCrate : MonoBehaviour
     private void Start()
     {
         //SaveSystem.GetInstance().SavePosition(transform.position);
-        transform.position = SaveSystem.GetInstance().LoadPosition();
+        transform.position = SaveSystem.LoadPosition();
     }
     public void OnApplicationQuit()
     {
-        SaveSystem.GetInstance().SavePosition(transform.position);
+        SaveSystem.SavePosition(transform.position);
     }
     private void FixedUpdate()
     {

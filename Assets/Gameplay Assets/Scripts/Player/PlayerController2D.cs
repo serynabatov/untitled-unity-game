@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController2D : MonoBehaviour
@@ -57,6 +55,7 @@ public class PlayerController2D : MonoBehaviour
 
     private void Start()
     {
+        transform.position = SaveSystem.LoadPosition();
         rb = GetComponent<Rigidbody2D>();
         cc = GetComponent<CapsuleCollider2D>();
         playerSprite = GetComponentInChildren<SpriteRenderer>();
@@ -240,16 +239,19 @@ public class PlayerController2D : MonoBehaviour
         {
             newVelocity.Set(movementSpeed * xInput, 0.0f);
             rb.velocity = newVelocity;
+            print("not on Slope");
         }
         else if (isGrounded && isOnSlope && canWalkOnSlope && !isJumping) //If on slope
         {
             newVelocity.Set(movementSpeed * slopeNormalPerp.x * -xInput, movementSpeed * slopeNormalPerp.y * -xInput);
             rb.velocity = newVelocity;
+            print("on Slope");
         }
         else if (!isGrounded) //If in air
         {
             newVelocity.Set(airborneMovementSpeed * xInput, rb.velocity.y);
             rb.velocity = newVelocity;
+            print("in air");
         }
 
     }

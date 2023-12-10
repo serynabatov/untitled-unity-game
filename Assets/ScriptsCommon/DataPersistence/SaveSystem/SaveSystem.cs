@@ -22,7 +22,7 @@ public class SaveSystem : MonoBehaviour
         return instance;
     }
 
-    public void SavePosition(Vector3 position)
+    public static void SavePosition(Vector3 position)
     {
         Debug.Log("PlayerPosition = " + position);
         Debug.Log($"Current scene = {SceneManager.GetActiveScene().name}");
@@ -42,7 +42,7 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
-    public Vector3 LoadPosition()
+    public static Vector3 LoadPosition()
     {
         Vector3 position = new Vector3();
         switch (SceneManager.GetActiveScene().name)
