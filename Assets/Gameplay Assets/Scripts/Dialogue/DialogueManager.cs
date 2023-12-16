@@ -136,7 +136,6 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
         //}
     }
 
-
     private void ContinueStory()
     {
         if (this.currentStory.canContinue)

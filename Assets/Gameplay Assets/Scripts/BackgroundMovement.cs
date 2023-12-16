@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BackgroundMovement : MonoBehaviour
 {
-    [SerializeField]
     private GameObject player;
     [SerializeField]
     private float startPoint;
@@ -15,7 +14,7 @@ public class BackgroundMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("PrototypeHero");
+        player = GameObject.Find("Cameras");
         startPoint = -player.transform.position.x;
     }
 
