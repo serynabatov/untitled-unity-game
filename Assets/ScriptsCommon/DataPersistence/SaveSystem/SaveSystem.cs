@@ -7,21 +7,6 @@ using UnityEngine.UI;
 public class SaveSystem : MonoBehaviour
 {
 
-    private static SaveSystem instance;
-    private void Awake()
-    {
-        if (instance != null)
-        {
-            Debug.LogWarning("Found more than one SaveSystem in the scene");
-        }
-        instance = this;
-    }
-
-    public static SaveSystem GetInstance()
-    {
-        return instance;
-    }
-
     public static void SavePosition(Vector3 position)
     {
         Debug.Log("PlayerPosition = " + position);

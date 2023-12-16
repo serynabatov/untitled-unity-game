@@ -42,7 +42,7 @@ public class MovementCrate : MonoBehaviour
     }
     public void OnApplicationQuit()
     {
-        SaveSystem.SavePosition(transform.position);
+        SaveSystem.SavePosition(GameObject.FindGameObjectWithTag("Player").transform.position);
     }
     private void FixedUpdate()
     {

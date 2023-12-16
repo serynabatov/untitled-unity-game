@@ -1153,7 +1153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 1
   currentState: 0
-  speed: 2
+  speed: 2.6
 --- !u!58 &299856112
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4615,6 +4615,11 @@ PrefabInstance:
       propertyPath: restartButton
       value: 
       objectReference: {fileID: 1545955338}
+    - target: {fileID: 9192788152191383499, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
+        type: 3}
+      propertyPath: loadGlobalsJSON
+      value: 
+      objectReference: {fileID: 4900000, guid: 055a091f301938645aafc575cb00f68a, type: 3}
     - target: {fileID: 9192788152191383503, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
         type: 3}
       propertyPath: m_RootOrder
