@@ -39,6 +39,7 @@ public class PlayerController2D : MonoBehaviour
 
     private bool isGrounded;
     private bool isOnSlope;
+    private bool slopeOnSide;
     private bool isJumping;
     private bool canWalkOnSlope;
     private bool canJump;
@@ -55,7 +56,7 @@ public class PlayerController2D : MonoBehaviour
 
     private void Start()
     {
-        transform.position = SaveSystem.LoadPosition();
+        //transform.position = SaveSystem.LoadPosition();
         rb = GetComponent<Rigidbody2D>();
         cc = GetComponent<CapsuleCollider2D>();
         playerSprite = GetComponentInChildren<SpriteRenderer>();
@@ -104,6 +105,10 @@ public class PlayerController2D : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
         animator.SetBool("Grounded", isGrounded);
         animator.SetFloat("VelocityY", rb.velocity.y);
+        if (isGrounded)
+        {
+            print("on ground");
+        }
         if (rb.velocity.y <= 0.0f)
         {
             isJumping = false;
@@ -128,23 +133,31 @@ public class PlayerController2D : MonoBehaviour
         RaycastHit2D slopeHitFront = Physics2D.Raycast(checkPos, transform.right, slopeCheckDistance, whatIsGround);
         RaycastHit2D slopeHitBack = Physics2D.Raycast(checkPos, -transform.right, slopeCheckDistance, whatIsGround);
 
+        Debug.DrawLine(checkPos, new Vector3(checkPos.x + slopeCheckDistance, checkPos.y), Color.red);
+        Debug.DrawLine(checkPos, new Vector3(checkPos.x - slopeCheckDistance, checkPos.y), Color.red);
+
         if (slopeHitFront)
         {
-            isOnSlope = true;
+            slopeOnSide = true;
 
             slopeSideAngle = Vector2.Angle(slopeHitFront.normal, Vector2.up);
-
+            print(slopeSideAngle);
+            print("Slope is on the right");
         }
         else if (slopeHitBack)
         {
-            isOnSlope = true;
+            slopeOnSide = true;
 
             slopeSideAngle = Vector2.Angle(slopeHitBack.normal, Vector2.up);
+            print(slopeSideAngle);
+            print("Slope is on the left");
         }
         else
         {
             slopeSideAngle = 0.0f;
+            slopeOnSide = false;
             isOnSlope = false;
+            print("No slope");
         }
 
     }
@@ -152,6 +165,17 @@ public class PlayerController2D : MonoBehaviour
     private void SlopeCheckVertical(Vector2 checkPos)
     {
         RaycastHit2D hit = Physics2D.Raycast(checkPos, Vector2.down, slopeCheckDistance, whatIsGround);
+
+        Debug.DrawLine(checkPos, new Vector3(checkPos.x, checkPos.y - slopeCheckDistance), Color.green);
+
+        if (Vector2.Angle(hit.normal,Vector2.up)<=10)
+        {
+            isOnSlope = false;
+        }
+        else if (slopeOnSide)
+        {
+            isOnSlope = true;
+        }
 
         if (hit)
         {
@@ -163,6 +187,8 @@ public class PlayerController2D : MonoBehaviour
             if (slopeDownAngle != lastSlopeAngle)
             {
                 isOnSlope = true;
+                print(slopeDownAngle);
+                print("On Slope");
             }
 
             lastSlopeAngle = slopeDownAngle;
@@ -229,7 +255,6 @@ public class PlayerController2D : MonoBehaviour
         if (!isGrounded && hit)
         {
             jumpIsBuffered = true;
-            Debug.DrawLine(new Vector3(transform.position.x, transform.position.y, 0), new Vector3(transform.position.x, transform.position.y - rayLength, 0), Color.red);
         }
     }
 
@@ -239,19 +264,19 @@ public class PlayerController2D : MonoBehaviour
         {
             newVelocity.Set(movementSpeed * xInput, 0.0f);
             rb.velocity = newVelocity;
-            print("not on Slope");
+            print("not on Slope movement");
         }
         else if (isGrounded && isOnSlope && canWalkOnSlope && !isJumping) //If on slope
         {
             newVelocity.Set(movementSpeed * slopeNormalPerp.x * -xInput, movementSpeed * slopeNormalPerp.y * -xInput);
             rb.velocity = newVelocity;
-            print("on Slope");
+            print("on Slope movement");
         }
         else if (!isGrounded) //If in air
         {
             newVelocity.Set(airborneMovementSpeed * xInput, rb.velocity.y);
             rb.velocity = newVelocity;
-            print("in air");
+            print("in air movement");
         }
 
     }
@@ -275,7 +300,7 @@ public class PlayerController2D : MonoBehaviour
     }
     public void OnApplicationQuit()
     {
-        SaveSystem.GetInstance().SavePosition(transform.position);
+        SaveSystem.SavePosition(transform.position);
     }
     private void OnDrawGizmos()
     {

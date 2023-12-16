@@ -55,6 +55,8 @@ public class Flow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        transform.position = collision.transform.position;
+
         if (collision.CompareTag("Dark"))
         {
             currentState = States.Dark;
@@ -63,11 +65,6 @@ public class Flow : MonoBehaviour
         {
             gameManager.gameOver = true;
         }
-        /*if (collision.CompareTag("Dark Block") && (currentState == States.Dark))
-        {
-            Transform child = collision.transform.GetChild(0);
-            child.gameObject.SetActive(true);
-        }*/
         if (collision.CompareTag("Light"))
         {
             currentState = States.Light;
