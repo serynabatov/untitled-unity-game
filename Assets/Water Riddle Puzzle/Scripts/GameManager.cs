@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour
     public void GameRestart()
     {
         SceneSystem.GetInstance().LoadThisLevel(SceneManager.GetActiveScene().name);
-        //edge.gameObject.SetActive(true);
     }
     public void GameStart()
     {
