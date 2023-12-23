@@ -81,6 +81,8 @@ public class MenuManager : MonoBehaviour
         // TODO: Запускал новую игру с нового сейв файла
         if (!ConfirmationManager.GetInstance().ActiveSelf(сonfirmationWindow))
         {
+            PlayerPrefs.DeleteKey("PlayerPosXGameplay");
+            PlayerPrefs.DeleteKey("PlayerPosYGameplay");
             SceneManager.LoadScene("Gameplay");
         }
     }
@@ -196,6 +198,10 @@ public class MenuManager : MonoBehaviour
     private void ExecuteYesButtonToMainMenu()
     {
         ConfirmationManager.GetInstance().SetActive(сonfirmationWindow, false);
+        if (GameObject.FindWithTag("Player") != null)
+        {
+            SaveSystem.SavePosition(GameObject.FindWithTag("Player").transform.position);
+        }
         SceneManager.LoadScene("MainMenu");
     }
 

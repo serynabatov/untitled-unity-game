@@ -1,9 +1,15 @@
 id;en;ru
-pause_title;PAUSE;ПАУЗА
+pause_Title;PAUSE;ПАУЗА
 pause_1;Continue;Продолжить
 pause_2;Load game;Загрузить сохранение
 pause_3;Options;Настройки
 pause_4;Exit to menu;Выйти в меню
+main_Menu_Title;Main Menu;Главное Меню
+main_Menu_1;Continue;Продолжить
+main_Menu_2;New Game;Новая Игра
+main_Menu_3;Load Game;Загрузить Игру
+main_Menu_4;Options;Настройки
+main_Menu_5;Exit Game;Выйти Из Игры
 option_Graphic;Graphics;Графика
 option_Graphic_1;Resolution:;Разрешение:
 option_Graphic_2;Fullscreen;Полноэкранный

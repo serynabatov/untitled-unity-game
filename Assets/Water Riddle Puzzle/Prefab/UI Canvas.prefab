@@ -5451,7 +5451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282b7654fc7b69144a7aaf22f6f6d4b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iD: pause_title
+  iD: pause_Title
 --- !u!1 &3921126108275003383
 GameObject:
   m_ObjectHideFlags: 0
@@ -8024,7 +8024,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6870281602839912897}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.61538464
+  m_Size: 0.3076922
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
