@@ -56,7 +56,7 @@ public class PlayerController2D : MonoBehaviour
 
     private void Start()
     {
-        transform.position = SaveSystem.LoadPosition();
+        //transform.position = SaveSystem.LoadPosition();
         rb = GetComponent<Rigidbody2D>();
         cc = GetComponent<CapsuleCollider2D>();
         playerSprite = GetComponentInChildren<SpriteRenderer>();
