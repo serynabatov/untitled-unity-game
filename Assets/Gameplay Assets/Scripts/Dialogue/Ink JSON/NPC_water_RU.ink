@@ -17,10 +17,10 @@ INCLUDE globals.ink
 Принц, я вижу вы ещё не прошли испытание. Вам напомнить о его деталях ? #layout:right #speaker:Wizard #portrait:wizardFace 
 +[Нужна подсказка]
 ->purpose
-+[Нет, до свидания] #exit:0
-->END
-+[ПРОЙТИ ИСПЫТАНИЕ] #start:Riddle 1 #exit:0
-->END
++[Нет, до свидания]
+->finishedPuzzle
++[ПРОЙТИ ИСПЫТАНИЕ]
+->startPuzzle
 
 = exit
 ~ mainVarWater = true
@@ -30,3 +30,8 @@ INCLUDE globals.ink
 = finishedPuzzle
 Я величайший и прошёл загадку с водой #layout:right #speaker:Water #portrait:wizardFace
 ->END
+
+= startPuzzle
+Ну чё погнали проходить головоломку с водой
+#start:Riddle 1 #exit:0,2
+->END 
