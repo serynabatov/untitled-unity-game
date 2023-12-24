@@ -1,8 +1,12 @@
 using System;
+using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerController2D : MonoBehaviour
 {
+    private Action Move;
+    private Action Input;
 
     [SerializeField]
     private float movementSpeed;
@@ -26,14 +30,15 @@ public class PlayerController2D : MonoBehaviour
     private PhysicsMaterial2D noFriction;
     [SerializeField]
     private PhysicsMaterial2D fullFriction;
+
     private SpriteRenderer playerSprite;
     private Animator animator;
-
 
     private float xInput;
     private float slopeDownAngle;
     private float slopeSideAngle;
     private float lastSlopeAngle;
+    private float timer = 0.5f;
 
     private int facingDirection = 1;
 
@@ -50,6 +55,7 @@ public class PlayerController2D : MonoBehaviour
     private Vector2 capsuleColliderSize;
 
     private Vector2 slopeNormalPerp;
+    private Vector2 savedPosition;
 
     private Rigidbody2D rb;
     private CapsuleCollider2D cc;
@@ -62,11 +68,14 @@ public class PlayerController2D : MonoBehaviour
         playerSprite = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
         capsuleColliderSize = cc.size;
+        Input += CheckInput;
+        Move += ApplyMovement;
+        StartCoroutine(SavingPosition());
     }
 
     private void Update()
     {
-        CheckInput();
+        Input?.Invoke();
     }
 
     private void FixedUpdate()
@@ -74,7 +83,7 @@ public class PlayerController2D : MonoBehaviour
         BufferedJump();
         CheckGround();
         SlopeCheck();
-        ApplyMovement();
+        Move?.Invoke();
     }
 
     private void CheckInput()
@@ -133,23 +142,18 @@ public class PlayerController2D : MonoBehaviour
             slopeOnSide = true;
 
             slopeSideAngle = Vector2.Angle(slopeHitFront.normal, Vector2.up);
-            //print(slopeSideAngle);
-            //print("Slope is on the right");
         }
         else if (slopeHitBack)
         {
             slopeOnSide = true;
 
             slopeSideAngle = Vector2.Angle(slopeHitBack.normal, Vector2.up);
-            //print(slopeSideAngle);
-            //print("Slope is on the left");
         }
         else
         {
             slopeSideAngle = 0.0f;
             slopeOnSide = false;
             isOnSlope = false;
-            //print("No slope");
         }
 
     }
@@ -179,8 +183,6 @@ public class PlayerController2D : MonoBehaviour
             if (slopeDownAngle != lastSlopeAngle)
             {
                 isOnSlope = true;
-                //print(slopeDownAngle);
-                //print("On Slope");
             }
 
             lastSlopeAngle = slopeDownAngle;
@@ -256,19 +258,16 @@ public class PlayerController2D : MonoBehaviour
         {
             newVelocity.Set(movementSpeed * xInput, 0.0f);
             rb.velocity = newVelocity;
-            //print("not on Slope movement");
         }
         else if (isGrounded && isOnSlope && canWalkOnSlope && !isJumping) //If on slope
         {
             newVelocity.Set(movementSpeed * slopeNormalPerp.x * -xInput, movementSpeed * slopeNormalPerp.y * -xInput);
             rb.velocity = newVelocity;
-            //print("on Slope movement");
         }
         else if (!isGrounded) //If in air
         {
             newVelocity.Set(airborneMovementSpeed * xInput, rb.velocity.y);
             rb.velocity = newVelocity;
-            //print("in air movement");
         }
 
     }
@@ -299,4 +298,45 @@ public class PlayerController2D : MonoBehaviour
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
 
+    private void TakeDamage()
+    {
+        animator.SetTrigger("Damaged");
+        Move -= ApplyMovement;
+        Input -= CheckInput;
+    }
+
+    IEnumerator SavingPosition()
+    {
+        while (SceneManager.GetActiveScene().name == "Gameplay")
+        {
+            savedPosition = transform.position;
+            print(savedPosition);
+            yield return new WaitForSeconds(5f);
+        }
+    }
+
+    private void Respawn()
+    {
+        transform.position = savedPosition;
+        Move += ApplyMovement;
+        Input += CheckInput;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            if (timer > 0)
+            {
+                if (timer == 0.5f)
+                    TakeDamage();
+                timer = timer - Time.deltaTime;
+            }
+            else
+            {
+                Respawn();
+                timer = 0.5f;
+            }
+        }
+    }
 }

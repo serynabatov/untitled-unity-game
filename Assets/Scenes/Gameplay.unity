@@ -1151,12 +1151,12 @@ PrefabInstance:
     - target: {fileID: 7216317338779392757, guid: e481822248898d04e9808a3d3ca78e5a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.27
+      value: -60.84
       objectReference: {fileID: 0}
     - target: {fileID: 7216317338779392757, guid: e481822248898d04e9808a3d3ca78e5a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -37.69
+      value: 6.7
       objectReference: {fileID: 0}
     - target: {fileID: 7216317338779392757, guid: e481822248898d04e9808a3d3ca78e5a,
         type: 3}
@@ -31892,7 +31892,7 @@ GameObject:
   - component: {fileID: 1154960353}
   m_Layer: 0
   m_Name: HazardObject
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42306,7 +42306,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7773654, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -47633,7 +47633,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864448953}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.27, y: -33.69, z: -10}
+  m_LocalPosition: {x: -60.84, y: 10.7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
