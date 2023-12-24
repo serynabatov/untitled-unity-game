@@ -1,4 +1,4 @@
-﻿Shader "VFX/DistortUV"
+﻿Shader "VFX/VFX_DistortUV"
 {
     Properties
     {
@@ -13,11 +13,6 @@
         [Enum(One,1,OneMinusSrcAlpha,10)] _Blend2("Blend2 mode subset", Float) = 1
         [Toggle(_USE_BLENDADD)] _Use_BlendAdd("Use Blend Add",Int) = 0
         _Blend ("Add/Blend", Range(0,1)) = 1
-        //Кулинг
-        [Enum(UnityEngine.Rendering.CullMode)] _Cull("Cull", Float) = 2
-        //Офсет камеры
-        [KeywordEnum(Off, On)] _Use_Camera_Offset("Use Camera offset",Int) = 0
-        _CamOffset("Camera offset", Range(-100,100)) = 0
 
         [Space(15)]
         [Header(Distortion settings)]
@@ -44,69 +39,6 @@
         //Простой множитель
         _Mult("Multiply", Range(0,10)) = 1
 
-        //Обрезка по Y
-        [Header(World Clamp)]
-        [KeywordEnum(Off, On)] _Use_Clamp("Use Clamp Y",Int) = 0
-        _Grad("Gradient", Range(0,100)) = 0
-        [Toggle(_USE_COLOR)] _Use_Color("Color Multiply",Int) = 0
-
-        //Прозрачность
-        [HideInInspector]
-        _Transparent("Transparency Factor", Range(0,1)) = 1
-
-
-
-        // [Enum(One,1,SrcAlpha,5)] _Blend1 ("Blend mode subset", Float) = 1
-        // [Enum(One,1,OneMinusSrcAlpha,10)] _Blend2 ("Blend mode subset", Float) = 1
-
-        // [Toggle(_USE_BLENDADD)] _Use_BlendAdd("Use Blend Add",Int) = 0
-        // _Blend ("Add/Blend", Range(0,1)) = 1
-
-        // _MainTex ("Texture", 2D) = "white" {}
-        // _ScrollX1 ("Scroll X", float) = 0
-        // _ScrollY1 ("Scroll Y", float) = 0
-
-        // [Space(20)]
-        // _FlowMap ("FlowMap or Noise", 2D) = "white" {}
-        // _ScrollX2 ("Scroll X", float) = 0
-        // _ScrollY2 ("Scroll Y", float) = 0
-
-        // [Space(20)]
-        // _Mask ("Mask", 2D) = "white" {}
-
-        // [Space(15)]
-        // [Header(Distortion settings)]
-        // [Space(5)]
-        // [KeywordEnum(Scroll, FlowMap)] _Distortion_Variant("Distortion variant",Int) = 0
-        // _DistortPower ("Distort Power", Float ) = 0
-        // _Speed("Speed", Float) = 1
-
-        // [Space(20)]
-        // [KeywordEnum(Off, On)] _Use_Crop("Use Crop",Int) = 0
-        // _Min("Min", Range(0,1)) = 0
-        // _Max("Max", Range(0,1)) = 1
-
-        // [Space(20)]
-        // [KeywordEnum(Off, Lerp, Glow)] _Use("Use Lerp/Glow",Int) = 0
-        // _Lerp ("Lerp", Range(0,1)) = 1
-
-        // [PowerSlider(3.0)]_Emission ("Emission", Range(0, 15)) = 1
-
-        // [Space(20)]
-        // [KeywordEnum(Off, On)] _Use_Camera_Offset("Use Camera offset",Int) = 0
-        // _CamOffset("Camera offset", Range(-100,100)) = 0
-
-        // [Enum(UnityEngine.Rendering.CullMode)] _Cull("Cull", Int) = 2 //"Back"
-
-
-        // //Обрезка по Y
-        // [Header(World Clamp)]
-        // [KeywordEnum(Off, On)] _Use_Clamp("Use Clamp Y",Int) = 0
-        // _Grad("Gradient", Range(0,100)) = 0
-        // [Toggle(_USE_COLOR)] _Use_Color("Color Multiply",Int) = 0
-
-        // [HideInInspector]
-        // _Transparent("transparency Factor", float) = 1
     }
 
     SubShader
@@ -115,7 +47,7 @@
 
         Blend [_Blend1] [_Blend2]
         ZWrite Off 
-        Cull [_Cull]
+        Cull Off
 
         Pass
         {
@@ -124,13 +56,10 @@
             #pragma fragment frag
             #include "UnityCG.cginc"
 
-            #pragma shader_feature _USE_CAMERA_OFFSET_ON _USE_CAMERA_OFFSET_OFF
             #pragma shader_feature _USE_SMOOTHSTEP_ON _USE_SMOOTHSTEP_OFF
             #pragma shader_feature _USE_OFF _USE_LERP1 _USE_LERP2
             #pragma shader_feature _ _USE_BLENDADD
             #pragma shader_feature _DISTORTION_VARIANT_SCROLL _DISTORTION_VARIANT_FLOWMAP
-            #pragma shader_feature _USE_CLAMP_ON _USE_CLAMP_OFF
-            #pragma shader_feature _ _USE_COLOR
 
 
             struct appdata
@@ -152,30 +81,22 @@
                 float2 uvMask       : TEXCOORD1;
                 fixed4 color2       : TEXCOORD2;
                 float4 preCalc      : TEXCOORD3;
-                //Если используем отсечку по Y
-                #ifdef _USE_CLAMP_ON
-                    float3 worldPos : TEXCOORD4;
-                #endif
+
             };
 
             sampler2D _MainTex, _MainTex2, _Mask;; 
             float4 _MainTex_ST, _MainTex2_ST, _Mask_ST;
-            float _CamOffset, _CustomPos;
+            float _CustomPos;
             fixed4 _Color;
-            half _Mult, _Transparent, _Lerp, _Blend, _Min, _Max, _Grad;
+            half _Mult, _Lerp, _Blend, _Min, _Max, _Grad;
             half _USpeed1, _VSpeed1, _USpeed2, _VSpeed2, _DistortPower, _Speed;
 
             v2f vert (appdata v)
             {
                 v2f o = (v2f)0;
-                //Сдвиг относительно камеры
-                #ifdef _USE_CAMERA_OFFSET_ON
-                    float3 camVtx = UnityObjectToViewPos(v.vertex);
-                    camVtx.xyz -= normalize(camVtx.xyz) * _CamOffset;
-                    o.vertex = mul(UNITY_MATRIX_P, float4(camVtx, 1.0));
-                #else
-                    o.vertex = UnityObjectToClipPos(v.vertex);
-                #endif 
+
+                 o.vertex = UnityObjectToClipPos(v.vertex);
+
 
                 float2 timeShift1 = float2(frac(_Time.y * _USpeed1), frac(_Time.y * _VSpeed1));
                 float2 timeShift2 = float2(frac(_Time.y * _USpeed2), frac(_Time.y * _VSpeed2));
@@ -183,7 +104,7 @@
                 o.uv.xy = TRANSFORM_TEX(v.uv, _MainTex) + (v.customScroll.xy + v.random.xy) * _MainTex_ST.xy + timeShift1;
                 o.uv.zw = TRANSFORM_TEX(v.uv, _MainTex2) + (v.customScroll.zw + v.random.zw) * _MainTex2_ST.xy + timeShift2;
                 o.uvMask = TRANSFORM_TEX(v.uv, _Mask);
-                o.color = v.color * v.tangent.w * _Color * _Transparent;
+                o.color = v.color * v.tangent.w * _Color;
                 o.color2 = v.color2;
 
                 #ifdef _DISTORTION_VARIANT_FLOWMAP
@@ -192,9 +113,6 @@
                     o.preCalc.z = abs((0.5 - o.preCalc.x) / 0.5);
                 #endif 
 
-                #ifdef _USE_CLAMP_ON
-                    o.worldPos = mul(unity_ObjectToWorld, v.vertex);
-                #endif
                 return o;
             }
 
@@ -241,15 +159,6 @@
                     col *= i.color * _Mult;
                 #endif
                 
-                //отсечка по Y
-                #ifdef _USE_CLAMP_ON
-                    float comp = smoothstep(_CustomPos, _CustomPos + _Grad, i.worldPos.y);
-                    #ifdef _USE_COLOR
-                        col *= comp;
-                    #else
-                        col.a *= comp;
-                    #endif
-                #endif
 
                 //домножение цвета на альфу при режиме One OneMinusSrcAlpha
                 //и режиме One One

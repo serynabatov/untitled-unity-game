@@ -1,4 +1,4 @@
-﻿Shader "VFX/Base"
+﻿Shader "VFX/VFX_Base"
 {
 	Properties
 	{
@@ -29,15 +29,7 @@
 		//Для режима BlendAdd
 		
 
-		//Обрезка по Y
-		[Header(World Clamp)]
-		[KeywordEnum(Off, On)] _Use_Clamp("Use Clamp Y",Int) = 0
-		_Grad("Gradient", Range(0,100)) = 0
-		[Toggle(_USE_COLOR)] _Use_Color("Color Multiply",Int) = 0
 
-		//Прозрачность
-		[HideInInspector]
-		_Transparent("Transparency Factor", Range(0,1)) = 1
 	}
 	SubShader
 	{
@@ -55,7 +47,6 @@
 			#pragma shader_feature _USE_CAMERA_OFFSET_ON _USE_CAMERA_OFFSET_OFF
 			#pragma shader_feature _USE_SMOOTHSTEP_ON _USE_SMOOTHSTEP_OFF
 			#pragma shader_feature _USE_OFF _USE_LERP1 _USE_LERP2
-			#pragma shader_feature _USE_CLAMP_ON _USE_CLAMP_OFF
 			#pragma shader_feature _ _USE_COLOR
 			#pragma shader_feature _ _USE_BLENDADD
 
@@ -84,7 +75,7 @@
 
 			sampler2D _MainTex;
 			float4 _MainTex_ST, _Color;
-			half _CamOffset, _Min, _Max, _Lerp, _Mult, _Grad, _CustomPos, _Transparent, _Blend;
+			half _CamOffset, _Min, _Max, _Lerp, _Mult, _Grad, _CustomPos, _Blend;
 
 			v2f vert (appdata v)
 			{
@@ -99,7 +90,7 @@
 				#endif 
 
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-				o.color = v.color * v.tangent.w * _Color * _Transparent;
+				o.color = v.color * v.tangent.w * _Color;
 				o.color2 = v.color2;
 
 				//расчет мировой позиции, для отсечки по Y
@@ -136,15 +127,6 @@
 					col *= i.color * _Mult;
 				#endif
 				
-				//отсечка по Y
-				#ifdef _USE_CLAMP_ON
-					float comp = smoothstep(_CustomPos, _CustomPos + _Grad, i.worldPos.y);
-					#ifdef _USE_COLOR
-						col *= comp;
-					#else
-						col.a *= comp;
-					#endif
-				#endif
 
 				//домножение цвета на альфу при режиме One OneMinusSrcAlpha
 				//и режиме One One
