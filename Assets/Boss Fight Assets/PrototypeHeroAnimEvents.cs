@@ -60,4 +60,15 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
         float dustYOffset = 0.078125f;
         m_player.SpawnDustEffect(m_LandingDust, 0.0f, dustYOffset);
     }
+    void AE_Hurt()
+    {
+        broker.Publish<int>((int)AudioClipName.Hurt);
+        //m_audioManager.PlaySound("Hurt");
+    }
+
+    void AE_Death()
+    {
+        broker.Publish<int>((int)AudioClipName.Death);
+        //m_audioManager.PlaySound("Death");
+    }
 }
