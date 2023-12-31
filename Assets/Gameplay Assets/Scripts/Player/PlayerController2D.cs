@@ -49,6 +49,7 @@ public class PlayerController2D : MonoBehaviour
     private bool canWalkOnSlope;
     private bool canJump;
     private bool jumpIsBuffered;
+    private bool takingDamage;
 
     private Vector2 newVelocity;
     private Vector2 newForce;
@@ -301,6 +302,7 @@ public class PlayerController2D : MonoBehaviour
     private void TakeDamage()
     {
         animator.SetTrigger("Damaged");
+        takingDamage = true;
         Move -= ApplyMovement;
         Input -= CheckInput;
     }
@@ -309,14 +311,18 @@ public class PlayerController2D : MonoBehaviour
     {
         while (SceneManager.GetActiveScene().name == "Gameplay")
         {
-            savedPosition = transform.position;
-            print(savedPosition);
+            if (isGrounded&&!takingDamage)
+            {
+                savedPosition = transform.position;
+                print(savedPosition);
+            }
             yield return new WaitForSeconds(5f);
         }
     }
 
     private void Respawn()
     {
+        takingDamage = false;
         transform.position = savedPosition;
         Move += ApplyMovement;
         Input += CheckInput;
@@ -330,7 +336,7 @@ public class PlayerController2D : MonoBehaviour
             {
                 if (timer == 0.5f)
                     TakeDamage();
-                timer = timer - Time.deltaTime;
+                timer -= Time.deltaTime;
             }
             else
             {
