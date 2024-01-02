@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DialogueTrigger : MonoBehaviour
 {
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
+    [SerializeField] private TMP_Text visualCueText;
 
     [Header("Ink JSON in NPC")]
     [SerializeField] private TextAsset inkNPCEN;
@@ -18,12 +20,14 @@ public class DialogueTrigger : MonoBehaviour
     {
         playerInRange = false;
         visualCue.SetActive(false);
+        //visualCueText = visualCue.GetComponent<TMP_Text>();
     }
 
     private void Update()
     {
         if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
+            CheckTextBindings();
             visualCue.SetActive(true);
             if (InputManager.GetInstance().GetInteractPressed())
             {
@@ -49,25 +53,13 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    /* public List<string> ObservedVariablesList()
-     {
-         //� ���� ������ ����� ��������� �������� ���������� �� �������� �� ������.
-         //�������� ��� � List 
-         List<string> variablesList = new List<string>();
-         variablesList.Add("mainVarCage");
-         variablesList.Add("certificate");
-         variablesList.Add("keyCount");
-         return variablesList;
-     }
-
-     public void ChangeVariableDialogueFunction(string variableName, object variableState)
-     {
-         // ������� � ������� ���������� ������� �������� ��������
-         Debug.Log(string.Format("Var NAME = {0}, Var STATE = {1}", variableName, variableState));
-
-         //����� �����, ������� �� ��������� � ���� ����� �������� ���������� �� � �������� � ���������� variableName
-         // � �������� � ���������� variableState
-     }*/
+    private void CheckTextBindings()
+    {
+        if (visualCue.GetComponent<TMP_Text>().text != visualCueText.text)
+        {
+            visualCue.GetComponent<TMP_Text>().text = visualCueText.text;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
