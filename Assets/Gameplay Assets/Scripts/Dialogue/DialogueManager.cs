@@ -262,7 +262,6 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
             Debug.LogError("More choices were given than the UI can support. Number of choices given: "
                 + currentChoices.Count);
         }
-
         int index = 0;
         // enable and initialize the choices up to the amount of choices for this line of dialogue
         foreach (Choice choice in currentChoices)
@@ -276,7 +275,10 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
         {
             choices[i].gameObject.SetActive(false);
         }
-
+        if (index>1)
+        {
+            continueIcon.SetActive(false);
+        }
         StartCoroutine(SelectFirstChoice());
     }
 

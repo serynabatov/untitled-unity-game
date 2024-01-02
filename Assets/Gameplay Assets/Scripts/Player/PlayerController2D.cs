@@ -91,6 +91,8 @@ public class PlayerController2D : MonoBehaviour
     {
         if (DialogueManager.GetInstance().dialogueIsPlaying || PauseManager.paused)
         {
+            xInput = 0;
+            animator.SetFloat("VelocityX", 0);
             return;
         }
         xInput = InputManager.GetInstance().GetMoveAxis();
@@ -311,7 +313,7 @@ public class PlayerController2D : MonoBehaviour
     {
         while (SceneManager.GetActiveScene().name == "Gameplay")
         {
-            if (isGrounded&&!takingDamage)
+            if (isGrounded && !takingDamage)
             {
                 savedPosition = transform.position;
                 print(savedPosition);
