@@ -9,6 +9,9 @@ public class PlayerController2D : MonoBehaviour
     private Action Input;
 
     [SerializeField]
+    private Timer onTimer;
+
+    [SerializeField]
     private float movementSpeed;
     [SerializeField]
     private float airborneMovementSpeed;
@@ -38,7 +41,8 @@ public class PlayerController2D : MonoBehaviour
     private float slopeDownAngle;
     private float slopeSideAngle;
     private float lastSlopeAngle;
-    private float timer = 0.5f;
+    private float timer;
+    [SerializeField] private float startTimerValue;
 
     private int facingDirection = 1;
 
@@ -64,6 +68,7 @@ public class PlayerController2D : MonoBehaviour
     private void Start()
     {
         //transform.position = SaveSystem.LoadPosition();
+        timer = startTimerValue;
         rb = GetComponent<Rigidbody2D>();
         cc = GetComponent<CapsuleCollider2D>();
         playerSprite = GetComponentInChildren<SpriteRenderer>();
@@ -306,6 +311,7 @@ public class PlayerController2D : MonoBehaviour
         animator.SetTrigger("Damaged");
         takingDamage = true;
         xInput = 0;
+        rb.velocity = new Vector2(0, 0);
         Input -= CheckInput;
     }
 
@@ -324,9 +330,11 @@ public class PlayerController2D : MonoBehaviour
 
     private void Respawn()
     {
+        animator.SetFloat("VelocityX", 0);
         takingDamage = false;
         transform.position = savedPosition;
-        Input += CheckInput;
+        onTimer.SetTimer(10f, () => { Input += CheckInput; });
+        
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -335,15 +343,32 @@ public class PlayerController2D : MonoBehaviour
         {
             if (timer > 0)
             {
-                if (timer == 0.5f)
+                if (timer == startTimerValue)
                     TakeDamage();
                 timer -= Time.deltaTime;
             }
             else
             {
                 Respawn();
-                timer = 0.5f;
+                timer = startTimerValue;
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!isGrounded)
+        {
+            Respawn();
+            timer = startTimerValue;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Boulder"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
