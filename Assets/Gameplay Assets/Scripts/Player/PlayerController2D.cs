@@ -333,8 +333,8 @@ public class PlayerController2D : MonoBehaviour
         animator.SetFloat("VelocityX", 0);
         takingDamage = false;
         transform.position = savedPosition;
-        onTimer.SetTimer(10f, () => { Input += CheckInput; });
-        
+        onTimer.SetTimer(0.5f, () => { Input += CheckInput; });
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
