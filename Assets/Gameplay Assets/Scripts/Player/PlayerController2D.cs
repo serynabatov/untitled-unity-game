@@ -56,7 +56,7 @@ public class PlayerController2D : MonoBehaviour
     private Vector2 capsuleColliderSize;
 
     private Vector2 slopeNormalPerp;
-    private Vector2 savedPosition;
+    [SerializeField] private Vector2 savedPosition;
 
     private Rigidbody2D rb;
     private CapsuleCollider2D cc;
@@ -305,7 +305,7 @@ public class PlayerController2D : MonoBehaviour
     {
         animator.SetTrigger("Damaged");
         takingDamage = true;
-        Move -= ApplyMovement;
+        xInput = 0;
         Input -= CheckInput;
     }
 
@@ -326,7 +326,6 @@ public class PlayerController2D : MonoBehaviour
     {
         takingDamage = false;
         transform.position = savedPosition;
-        Move += ApplyMovement;
         Input += CheckInput;
     }
 
