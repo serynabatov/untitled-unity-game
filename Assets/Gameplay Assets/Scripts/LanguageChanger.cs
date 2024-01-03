@@ -21,9 +21,10 @@ public class LanguageChanger : MonoBehaviour
 
     void Start()
     {
+        string gameLanguage;
         if (PlayerPrefs.HasKey("GameLanguage"))
         {
-            string gameLanguage = PlayerPrefs.GetString("GameLanguage");
+            gameLanguage = PlayerPrefs.GetString("GameLanguage");
             if (gameLanguage == "EN")
             {
                 dropdown.value = 1;
@@ -35,7 +36,27 @@ public class LanguageChanger : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetString("GameLanguage", "EN");
+            switch (Application.systemLanguage)
+            {
+                default:
+                    {
+                        PlayerPrefs.SetString("GameLanguage", "EN");
+                        dropdown.value = 1;
+                        break;
+                    }
+                case SystemLanguage.English:
+                    {
+                        PlayerPrefs.SetString("GameLanguage", "EN");
+                        dropdown.value = 1;
+                        break;
+                    }
+                case SystemLanguage.Russian:
+                    {
+                        PlayerPrefs.SetString("GameLanguage", "RU");
+                        dropdown.value = 0;
+                        break;
+                    }
+            }
         }
 
         dropdown.onValueChanged.AddListener(delegate

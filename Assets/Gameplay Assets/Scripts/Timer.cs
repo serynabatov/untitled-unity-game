@@ -12,7 +12,6 @@ public class Timer : MonoBehaviour
     {
         this.timer = timer;
         this.TimerAction = TimerAction;
-        print("Timer Set");
     }
 
     private void Update()

@@ -337,6 +337,15 @@ public class PlayerController2D : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Revealable"))
+        {
+            IRevealable reveal = collision.gameObject.GetComponent<IRevealable>();
+            reveal.Reveal();
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
@@ -357,6 +366,12 @@ public class PlayerController2D : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Revealable"))
+        {
+            IRevealable reveal = collision.gameObject.GetComponent<IRevealable>();
+            reveal.Conceal();
+        }
+
         if (!isGrounded)
         {
             Respawn();

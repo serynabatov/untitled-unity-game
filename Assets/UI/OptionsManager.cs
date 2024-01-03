@@ -22,6 +22,8 @@ public class OptionsManager : MonoBehaviour
             Debug.LogError("Found more than one Options Manager in the scene.");
         }
         instance = this;
+
+        print(Screen.currentResolution);
     }
 
     private void Update()
@@ -43,6 +45,10 @@ public class OptionsManager : MonoBehaviour
         if (PlayerPrefs.HasKey("defaultIndexResolution"))
         {
             SetResolution(PlayerPrefs.GetInt("defaultIndexResolution", 0));
+        }
+        else
+        {
+            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
         }
         if (PlayerPrefs.HasKey("fullscreenStatus"))
         {

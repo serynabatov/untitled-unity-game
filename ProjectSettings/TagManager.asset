@@ -20,6 +20,8 @@ TagManager:
   - Dark Block
   - Goal
   - Light Block
+  - Boulder
+  - Revealable
   layers:
   - Default
   - TransparentFX
