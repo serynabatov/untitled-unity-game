@@ -22,6 +22,7 @@ TagManager:
   - Light Block
   - Boulder
   - Revealable
+  - Location
   layers:
   - Default
   - TransparentFX

@@ -339,6 +339,12 @@ public class PlayerController2D : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Location"))
+        {
+            LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
+            locationCheck.ChangeLocationName();
+        }
+
         if (collision.gameObject.CompareTag("Revealable"))
         {
             IRevealable reveal = collision.gameObject.GetComponent<IRevealable>();
@@ -372,7 +378,7 @@ public class PlayerController2D : MonoBehaviour
             reveal.Conceal();
         }
 
-        if (!isGrounded)
+        if (!isGrounded&&collision.gameObject.CompareTag("Enemy"))
         {
             Respawn();
             timer = startTimerValue;
