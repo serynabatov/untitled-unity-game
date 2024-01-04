@@ -15,9 +15,10 @@ INCLUDE globals.ink
 Принц, я вижу вы ещё не прошли испытание. Вам напомнить о его деталях ? #layout:left #speaker:Crate #portrait:heroFace
 +[Нужна подсказка]
 ->purpose
-+[Нет, до свидания]
++[Нет, до свидания] #exit:0
 ->END
-+[ПРОЙТИ ИСПЫТАНИЕ]->END #start:Crate Puzzle #exit:0
++[ПРОЙТИ ИСПЫТАНИЕ] #start:Crate Puzzle #exit:0
+->END 
 
 = exit
 Вы кто ?, я не вижу у вас право проходить у меня испытания для спасения принцессы. Может вам стоит получить этот сертификат у моего брата. Он похож на меня, только у него белая шляпа. #layout:left #speaker:Crate #portrait:heroFace

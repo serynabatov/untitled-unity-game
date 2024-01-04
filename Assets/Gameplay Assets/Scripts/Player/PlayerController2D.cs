@@ -80,6 +80,7 @@ public class PlayerController2D : MonoBehaviour
         Input += CheckInput;
         Move += ApplyMovement;
         StartCoroutine(SavingPosition());
+        savedPosition = transform.position;
     }
 
     private void Update()
