@@ -12,7 +12,18 @@ public class RevealForeground : MonoBehaviour, IRevealable
     }
     public void Reveal()
     {
-        sprite.enabled = false;
+        StartCoroutine(DrzjFogReveal());
+    }
+
+    private IEnumerator DrzjFogReveal()
+    {
+        float i = 255;
+        while (i >= 0)
+        {
+            sprite.color = new Color(255, 255, 255, i);
+            i -= 1;
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 
     public void Conceal()
