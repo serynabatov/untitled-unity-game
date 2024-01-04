@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -7,6 +8,10 @@ using UnityEngine.EventSystems;
 
 public class DialogueManager : MonoBehaviour//, IDataPersistence
 {
+    public delegate void DialogueStatus();
+    public static event DialogueStatus DialogueEnded;
+    public static event DialogueStatus DialogueStarted;
+
     [Header("Params")]
     [SerializeField] private float typingSpeed = 0.04f;
 
@@ -94,6 +99,8 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
 
     public void EnterDialogueMode(TextAsset inkJSON)
     {
+        DialogueStarted?.Invoke();
+
         SaveSystem.SavePosition(GameObject.FindGameObjectWithTag("Player").transform.position);
         this.currentStory = new Story(inkJSON.text);
 
@@ -118,6 +125,8 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
 
         DeactivateDialoguePanel();
         dialogueText.text = "";
+
+        DialogueEnded?.Invoke();
 
         if (dialogueVariables != null)
         {

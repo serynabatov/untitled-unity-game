@@ -67,6 +67,9 @@ public class PlayerController2D : MonoBehaviour
 
     private void Start()
     {
+        DialogueManager.DialogueStarted += RemovingControl;
+        DialogueManager.DialogueEnded += ResumingControl;
+
         //transform.position = SaveSystem.LoadPosition();
         timer = startTimerValue;
         rb = GetComponent<Rigidbody2D>();
@@ -312,7 +315,26 @@ public class PlayerController2D : MonoBehaviour
         takingDamage = true;
         xInput = 0;
         rb.velocity = new Vector2(0, 0);
+        RemovingControl();
+    }
+
+    private void Respawn()
+    {
+        animator.SetFloat("VelocityX", 0);
+        takingDamage = false;
+        transform.position = savedPosition;
+        ResumingControl();
+
+    }
+
+    private void RemovingControl()
+    {
         Input -= CheckInput;
+    }
+
+    private void ResumingControl()
+    {
+        onTimer.SetTimer(0.3f, () => { Input += CheckInput; });
     }
 
     IEnumerator SavingPosition()
@@ -326,15 +348,6 @@ public class PlayerController2D : MonoBehaviour
             }
             yield return new WaitForSeconds(5f);
         }
-    }
-
-    private void Respawn()
-    {
-        animator.SetFloat("VelocityX", 0);
-        takingDamage = false;
-        transform.position = savedPosition;
-        onTimer.SetTimer(0.5f, () => { Input += CheckInput; });
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -378,7 +391,7 @@ public class PlayerController2D : MonoBehaviour
             reveal.Conceal();
         }
 
-        if (!isGrounded&&collision.gameObject.CompareTag("Enemy"))
+        if (!isGrounded && collision.gameObject.CompareTag("Enemy"))
         {
             Respawn();
             timer = startTimerValue;
