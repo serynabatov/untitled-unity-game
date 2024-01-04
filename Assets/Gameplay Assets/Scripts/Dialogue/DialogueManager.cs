@@ -19,6 +19,7 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
     [SerializeField] private TextAsset loadGlobalsJSON;
 
     [Header("Dialogue UI")]
+    [SerializeField] private GameObject portrait;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private GameObject continueIcon;
 
@@ -68,8 +69,6 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
     {
         DeactivateDialoguePanel();
 
-        // get the layout animator
-        layoutAnimator = dialoguePanel.GetComponent<Animator>();
 
         // get all of the choices text 
         choicesText = new TextMeshProUGUI[choices.Length];
@@ -106,13 +105,15 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
 
         this.dialogueIsPlaying = true;
         this.dialoguePanel.SetActive(true);
+        portrait.SetActive(true);
+
 
         dialogueVariables.StartListening(this.currentStory);
 
         // reset portrait, layout and speaker
         this.displayNameText.text = "???";
         this.portraitAnimator.Play("default");
-        this.layoutAnimator.Play("right");
+        //this.layoutAnimator.Play("right");
 
         this.ContinueStory();
     }
@@ -245,9 +246,6 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
                 case PORTRAIT_TAG:
                     portraitAnimator.Play(tagValue);
                     break;
-                case LAYOUT_TAG:
-                    layoutAnimator.Play(tagValue);
-                    break;
                 case START_SCENE_TAG:
                     SceneSystem.GetInstance().LoadThisLevel(tagValue);
                     break;
@@ -346,5 +344,6 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
     {
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
+        portrait.SetActive(false);
     }
 }
