@@ -5,24 +5,34 @@ using UnityEngine;
 public class RevealForeground : MonoBehaviour, IRevealable
 {
     private SpriteRenderer sprite;
+    private BoxCollider2D box;
 
     private void Start()
     {
         sprite = GetComponentInParent<SpriteRenderer>();
+        box = GetComponent<BoxCollider2D>();
     }
     public void Reveal()
     {
+        box.enabled = false;
         StartCoroutine(DrzjFogReveal());
     }
 
-    private IEnumerator DrzjFogReveal()
+    IEnumerator DrzjFogReveal()
     {
-        float i = 255;
-        while (i >= 0)
+        Color color = sprite.color;
+        float alpha = 1f;
+        while (alpha >= 0)
         {
-            sprite.color = new Color(255, 255, 255, i);
-            i -= 1;
-            yield return new WaitForSeconds(0.01f);
+            print(alpha);
+            color.a = alpha;
+            sprite.color = color;
+            alpha -= 0.05f;
+            if (alpha <= 0.05)
+            {
+                StopCoroutine(DrzjFogReveal());
+            }
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
