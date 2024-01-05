@@ -19,7 +19,7 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
     [SerializeField] private TextAsset loadGlobalsJSON;
 
     [Header("Dialogue UI")]
-    [SerializeField] private GameObject portrait;
+    //[SerializeField] private GameObject portrait;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private GameObject continueIcon;
 
@@ -45,7 +45,6 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
 
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
-    private const string LAYOUT_TAG = "layout";
     private const string START_SCENE_TAG = "start";
     private const string EXIT_DIALOGUE_TAG = "exit";
     private DialogueVariables dialogueVariables;
@@ -105,7 +104,7 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
 
         this.dialogueIsPlaying = true;
         this.dialoguePanel.SetActive(true);
-        portrait.SetActive(true);
+        //portrait.SetActive(true);
 
 
         dialogueVariables.StartListening(this.currentStory);
@@ -282,7 +281,7 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
         {
             choices[i].gameObject.SetActive(false);
         }
-        if (index>1)
+        if (index > 1)
         {
             continueIcon.SetActive(false);
         }
@@ -344,6 +343,6 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
     {
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
-        portrait.SetActive(false);
+        //portrait.SetActive(false);
     }
 }
