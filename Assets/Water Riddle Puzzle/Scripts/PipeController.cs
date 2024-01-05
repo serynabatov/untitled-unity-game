@@ -19,6 +19,14 @@ public class PipeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (gameObject.CompareTag("Turn"))
+        {
+            AngleState = Random.Range(0, 4);
+        }
+        if (gameObject.CompareTag("Pipe"))
+        {
+            PipeState = Random.Range(0, 2);
+        }
         cam = Camera.main;
         collide = gameObject.GetComponent<CircleCollider2D>();
         gameManager = GameObject.Find("GameManagers").GetComponent<GameManager>();

@@ -23,7 +23,6 @@ public class OptionsManager : MonoBehaviour
         }
         instance = this;
 
-        print(Screen.currentResolution);
     }
 
     private void Update()

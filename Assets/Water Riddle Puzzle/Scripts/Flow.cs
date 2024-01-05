@@ -13,7 +13,7 @@ public class Flow : MonoBehaviour
     private Vector3 direct;
 
     [SerializeField]
-    private float speed = 4;
+    private float speed;
 
     // Start is called before the first frame update
     void Start()

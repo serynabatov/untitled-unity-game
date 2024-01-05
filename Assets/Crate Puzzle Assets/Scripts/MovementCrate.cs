@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MovementCrate : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class MovementCrate : MonoBehaviour
     public Transform boxHolderDown;
 
     public Transform grabDetect;
+
+    private TMP_Text tmp;
+
     public float rayDist;
 
     private bool interactPress = true;
@@ -22,8 +26,6 @@ public class MovementCrate : MonoBehaviour
     private GameObject boxTemp;
     private Transform boxHolderTemp;
 
-    // components attached to player
-    private CircleCollider2D coll;
 
     private Rigidbody2D rb;
 
@@ -31,7 +33,7 @@ public class MovementCrate : MonoBehaviour
 
     private void Awake()
     {
-        coll = GetComponent<CircleCollider2D>();
+        tmp = GetComponentInChildren<TMP_Text>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -47,6 +49,7 @@ public class MovementCrate : MonoBehaviour
     private void FixedUpdate()
     {
         HandleMovement();
+        RevealInteractiveCue();
 
         RaycastHit2D grabCheckLeft = Physics2D.Raycast(grabDetect.position, Vector2.left, rayDist, grabAble);
         RaycastHit2D grabCheckRight = Physics2D.Raycast(grabDetect.position, Vector2.right, rayDist, grabAble);
@@ -58,23 +61,26 @@ public class MovementCrate : MonoBehaviour
             //Debug.Log("Get instance");
             if (this.interactPress)
             {
-                this.interactPress = false;
 
                 if (grabCheckLeft.collider != null)
                 {
                     this.GrabSex(grabCheckLeft, boxHolderLeft, grabCheckLeft.collider.tag);
+                    this.interactPress = false;
                 }
                 else if (grabCheckRight.collider != null)
                 {
                     this.GrabSex(grabCheckRight, boxHolderRight, grabCheckRight.collider.tag);
+                    this.interactPress = false;
                 }
                 else if (grabCheckUp.collider != null)
                 {
                     this.GrabSex(grabCheckUp, boxHolderUp, grabCheckUp.collider.tag);
+                    this.interactPress = false;
                 }
                 else if (grabCheckDown.collider != null)
                 {
                     this.GrabSex(grabCheckDown, boxHolderDown, grabCheckDown.collider.tag);
+                    this.interactPress = false;
                 }
             }
             else
@@ -123,7 +129,22 @@ public class MovementCrate : MonoBehaviour
     {
         Vector2 moveDirection = InputManager.GetInstance().GetMoveDirection();
         rb.velocity = new Vector2(moveDirection.x * runSpeedX, moveDirection.y * runSpeedY);
+    }
+    private void RevealInteractiveCue()
+    {
+        RaycastHit2D grabCheckLeft = Physics2D.Raycast(grabDetect.position, Vector2.left, rayDist, grabAble);
+        RaycastHit2D grabCheckRight = Physics2D.Raycast(grabDetect.position, Vector2.right, rayDist, grabAble);
+        RaycastHit2D grabCheckUp = Physics2D.Raycast(grabDetect.position, Vector2.up, rayDist, grabAble);
+        RaycastHit2D grabCheckDown = Physics2D.Raycast(grabDetect.position, Vector2.down, rayDist, grabAble);
 
+        if ((grabCheckLeft || grabCheckRight || grabCheckUp || grabCheckDown) && (interactPress))
+        {
+            tmp.enabled = true;
+        }
+        else if ((!grabCheckLeft && !grabCheckRight && !grabCheckUp && !grabCheckDown) || (!interactPress))
+        {
+            tmp.enabled = false;
+        }
     }
 
 }
