@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 using UnityEngine;
 using TMPro;
 
@@ -14,6 +15,9 @@ public class MovementCrate : MonoBehaviour
     public Transform boxHolderRight;
     public Transform boxHolderUp;
     public Transform boxHolderDown;
+
+    [SerializeField]
+    private InputActionReference interact;
 
     public Transform grabDetect;
 
@@ -139,6 +143,7 @@ public class MovementCrate : MonoBehaviour
 
         if ((grabCheckLeft || grabCheckRight || grabCheckUp || grabCheckDown) && (interactPress))
         {
+            tmp.text = InputControlPath.ToHumanReadableString(interact.action.bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
             tmp.enabled = true;
         }
         else if ((!grabCheckLeft && !grabCheckRight && !grabCheckUp && !grabCheckDown) || (!interactPress))
