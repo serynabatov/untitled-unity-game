@@ -100,8 +100,6 @@ public class PlayerController2D : MonoBehaviour
     {
         if (DialogueManager.GetInstance().dialogueIsPlaying || PauseManager.paused)
         {
-            xInput = 0;
-            animator.SetFloat("VelocityX", 0);
             return;
         }
         xInput = InputManager.GetInstance().GetMoveAxis();
@@ -312,11 +310,11 @@ public class PlayerController2D : MonoBehaviour
 
     private void TakeDamage()
     {
+        RemovingControl();
         animator.SetTrigger("Damaged");
         takingDamage = true;
         xInput = 0;
         rb.velocity = new Vector2(0, 0);
-        RemovingControl();
     }
 
     private void Respawn()
@@ -330,12 +328,17 @@ public class PlayerController2D : MonoBehaviour
 
     private void RemovingControl()
     {
+        if (animator != null)
+        {
+            animator.SetFloat("VelocityX", 0);
+        }
+        xInput = 0;
         Input -= CheckInput;
     }
 
     private void ResumingControl()
     {
-        onTimer.SetTimer(0.3f, () => { Input += CheckInput; });
+        onTimer.SetTimer(0.4f, () => { Input += CheckInput; });
     }
 
     IEnumerator SavingPosition()
@@ -392,7 +395,7 @@ public class PlayerController2D : MonoBehaviour
             reveal.Conceal();
         }
 
-        if (!isGrounded && collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             Respawn();
             timer = startTimerValue;

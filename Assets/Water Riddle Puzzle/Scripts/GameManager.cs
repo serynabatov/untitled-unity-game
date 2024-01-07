@@ -80,6 +80,8 @@ public class GameManager : MonoBehaviour
 
     private void WaterPuzzleSolved()
     {
+        PlayerPrefs.SetInt("Water level status", 1);
+
         if (dialogueVariables.variables.ContainsKey("mainVarWaterFinished"))
         {
             dialogueVariables.variables["mainVarWaterFinished"] = Ink.Runtime.BoolValue.Create(true);
