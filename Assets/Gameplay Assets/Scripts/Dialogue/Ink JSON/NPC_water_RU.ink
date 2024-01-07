@@ -4,7 +4,7 @@ INCLUDE globals.ink
 {mainVarWaterFinished: ->main.finishedPuzzle|{mainVarWater: ->main.prePurpose|{certificate: ->main|->main.exit}}}
 
 === main ===
-Наконец-то, это вы принц. Я ваш проводник для этого испытания внимательности и усидчивости. Только пройдя его, вы сможете получить от меня заветный ключ #layout:right #speaker:Wizard #portrait:wizardFace 
+Наконец-то, это вы принц. Я ваш проводник для этого испытания внимательности и усидчивости. Только пройдя его, вы сможете получить от меня заветный ключ #speaker:Wizard #portrait:wizardFace 
 ~ mainVarWater = true
 ->purpose
 
@@ -14,24 +14,19 @@ INCLUDE globals.ink
 ->END
 
 = prePurpose
-Принц, я вижу вы ещё не прошли испытание. Вам напомнить о его деталях ? #layout:right #speaker:Wizard #portrait:wizardFace 
+Принц, я вижу вы ещё не прошли испытание. Вам напомнить о его деталях ? #speaker:Wizard #portrait:wizardFace
 +[Нужна подсказка]
 ->purpose
 +[Нет, до свидания]
 ->finishedPuzzle
-+[ПРОЙТИ ИСПЫТАНИЕ]
-->startPuzzle
++[ПРОЙТИ ИСПЫТАНИЕ] #start:Riddle 1 #exit:0
+->END
 
 = exit
 ~ mainVarWater = true
-Вы кто ?, я не вижу у вас право проходить у меня испытания для спасения принцессы. Может вам стоит получить этот сертификат у моего брата. Он похож на меня, только у него белая шляпа. #layout:right #speaker:Water #portrait:wizardFace
+Вы кто ?, я не вижу у вас право проходить у меня испытания для спасения принцессы. Может вам стоит получить этот сертификат у моего брата. Он похож на меня, только у него белая шляпа. #speaker:Water #portrait:wizardFace
 ->END
 
 = finishedPuzzle
-Я величайший и прошёл загадку с водой #layout:right #speaker:Water #portrait:wizardFace
+Я величайший и прошёл загадку с водой #speaker:Water #portrait:wizardFace
 ->END
-
-= startPuzzle
-Ну чё погнали проходить головоломку с водой
-#start:Riddle 1 #exit:0,2
-->END 
