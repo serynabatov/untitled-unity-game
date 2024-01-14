@@ -13,7 +13,6 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private TextAsset inkNPCEN;
     [SerializeField] private TextAsset inkNPCRU;
 
-
     private bool playerInRange;
 
     private void Awake()

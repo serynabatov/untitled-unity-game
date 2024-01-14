@@ -23,7 +23,13 @@ public class BasicSound
     public bool isLoop;
     public bool playOnAwake;
 
+    public AudioRolloffMode AudioRolloffMode;
+
     public AudioMixerGroupEnum mixerGroup;
+    public float minDistance;
+    public float maxDistance;
     [Range(0, 1)]
     public float volume = 0.5f;
+    [Range(0, 1)]
+    public float spatialBlend = 0.0f;
 }

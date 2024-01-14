@@ -65,6 +65,8 @@ public class PlayerController2D : MonoBehaviour
     private Rigidbody2D rb;
     private CapsuleCollider2D cc;
 
+    MessageBrokerImpl broker = MessageBrokerImpl.Instance;
+
     private void Start()
     {
         DialogueManager.DialogueStarted += RemovingControl;
@@ -224,6 +226,8 @@ public class PlayerController2D : MonoBehaviour
     {
         if (canJump)
         {
+            broker.Publish<int>((int)AudioClipName.Jump);
+
             animator.SetTrigger("Jump");
             canJump = false;
             isJumping = true;
@@ -341,13 +345,18 @@ public class PlayerController2D : MonoBehaviour
         onTimer.SetTimer(0.4f, () => { Input += CheckInput; });
     }
 
+    private void PositionSave()
+    {
+        savedPosition = transform.position;
+    }
+
     IEnumerator SavingPosition()
     {
         while (SceneManager.GetActiveScene().name == "Gameplay")
         {
             if (isGrounded && !takingDamage)
             {
-                savedPosition = transform.position;
+                PositionSave();
                 print(savedPosition);
             }
             yield return new WaitForSeconds(5f);

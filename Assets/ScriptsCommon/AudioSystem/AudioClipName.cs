@@ -24,5 +24,4 @@ public enum AudioClipName
     DrawSword = 14,
     AirSlamLanding = 15,
     Parry = 16
-
 }

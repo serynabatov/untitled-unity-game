@@ -27,7 +27,7 @@ public class MessageBrokerImpl : IMessageBroker
         _subscribers = new Dictionary<Type, List<Delegate>>();
     }
 
-    public void Publish<T>(T message)
+    public void Publish<T>(T message,int fade = 0)
     {
         if (message == null)
         {
@@ -46,7 +46,7 @@ public class MessageBrokerImpl : IMessageBroker
             return;
         }
 
-        var payload = new MessagePayload<T>(message);
+        var payload = new MessagePayload<T>(message, fade);
 
         foreach (var handler in delegates.Select(item => item as Action<MessagePayload<T>>))
         {

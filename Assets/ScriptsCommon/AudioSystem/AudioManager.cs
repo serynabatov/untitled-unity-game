@@ -1,9 +1,11 @@
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+
 
 
 /// <summary>
@@ -24,6 +26,9 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField]
     Slider soundEffectSlider;
+
+    [SerializeField]
+    private float fadeDuration;
 
     [SerializeField]
     private List<BasicSound> sounds;
@@ -54,7 +59,6 @@ public class AudioManager : MonoBehaviour
             soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log10(PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume) * 20));
             soundEffectSlider.value = PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume);
         }
-
         AddMusicToManage(sounds);
     }
 
@@ -79,6 +83,24 @@ public class AudioManager : MonoBehaviour
     /// Plays the specified audioClip.
     /// </summary>
     /// <param name="audioClipName">Audio clip name.</param>
+    public void Play(int audioClipName, int fadeDuration = 0)
+    {
+        BasicSound s = GetSound((AudioClipName)audioClipName);
+        if (s != null)
+        {
+            if (s.audioClip.Length > 1)
+            {
+                int randomClip = UnityEngine.Random.Range(0, s.audioClip.Length);
+                s.audioSource.clip = s.audioClip[randomClip];
+            }
+            s.audioSource.Play();
+            if (fadeDuration != 0)
+            {
+                StartCoroutine(MusicFadeIn(s, fadeDuration));
+            }
+        }
+    }
+
     public void Play(int audioClipName)
     {
         BasicSound s = GetSound((AudioClipName)audioClipName);
@@ -86,7 +108,7 @@ public class AudioManager : MonoBehaviour
         {
             if (s.audioClip.Length > 1)
             {
-                int randomClip = UnityEngine.Random.Range(0, s.audioClip.Length - 1);
+                int randomClip = UnityEngine.Random.Range(0, s.audioClip.Length);
                 s.audioSource.clip = s.audioClip[randomClip];
             }
             s.audioSource.Play();
@@ -102,7 +124,7 @@ public class AudioManager : MonoBehaviour
         BasicSound s = GetSound(audioClipName);
         if (s != null)
         {
-            s.audioSource.Stop();
+            StartCoroutine(MusicFadeOut(s, fadeDuration));
         }
     }
 
@@ -132,14 +154,6 @@ public class AudioManager : MonoBehaviour
         musicMixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(AudioOptionsManager.musicVolume) * 20);
     }
 
-    /// <summary>
-    /// If the user touches the object
-    /// </summary>
-    /// <param name="other">Other.</param>
-    public void OnTriggerEnter(Collider other)
-    {
-        // TODO: play the sound on collision
-    }
 
     /// <summary>
     /// Plays the specified sound.
@@ -155,7 +169,7 @@ public class AudioManager : MonoBehaviour
     {
         if (audio.payload >= 0)
         {
-            Play(audio.payload);
+            Play(audio.payload, audio.fade);
         }
         else
         {
@@ -181,7 +195,12 @@ public class AudioManager : MonoBehaviour
 
         s.audioSource.loop = s.isLoop;
         s.audioSource.playOnAwake = s.playOnAwake;
+        s.audioSource.minDistance = s.minDistance;
+        s.audioSource.maxDistance = s.maxDistance;
+        s.audioSource.spatialBlend = s.spatialBlend;
         s.audioSource.volume = s.volume;
+
+        s.audioSource.rolloffMode = s.AudioRolloffMode;
 
         if ((int)s.mixerGroup == 0)
         {
@@ -214,8 +233,42 @@ public class AudioManager : MonoBehaviour
             AudioManager.Instance.SetupMusic(soundsToAdd[i]);
         }
 
-
         PlayTheSpecifiedSound();
 
+    }
+
+    IEnumerator MusicFadeIn(BasicSound audio, float fadeDuration)
+    {
+        float volume = 0f;
+        float timer = 0f;
+        while (volume < 1f)
+        {
+            volume = timer / fadeDuration;
+            timer += Time.deltaTime;
+            audio.audioSource.volume = volume;
+            if (volume > 1f)
+            {
+                audio.audioSource.volume = 1f;
+            }
+            yield return null;
+        }
+    }
+
+    IEnumerator MusicFadeOut(BasicSound audio, float fadeDuration)
+    {
+        float volume = 1f;
+        float timer = 0f;
+        while (volume > 1f)
+        {
+            volume = fadeDuration - timer / fadeDuration;
+            timer += Time.deltaTime;
+            audio.audioSource.volume = volume;
+            if (volume < 0f)
+            {
+                audio.audioSource.volume = 0f;
+                audio.audioSource.Stop();
+            }
+            yield return null;
+        }
     }
 }
