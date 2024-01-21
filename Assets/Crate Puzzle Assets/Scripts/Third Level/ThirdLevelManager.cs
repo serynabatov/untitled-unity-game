@@ -131,7 +131,7 @@ public class ThirdLevelManager : MonoBehaviour
             dialogueVariables.SaveVariables();
             //dialogueVariables.variables.Add("mainVarWaterFinished", true);
         }
-        if (PlayerPrefs.GetInt("Water level status") == PlayerPrefs.GetInt("Crate level status"))
+        if (PlayerPrefs.GetInt("Water level status") == PlayerPrefs.GetInt("Crate level status") == 1)
         {
             dialogueVariables.variables["cantalktoBoss"] = Ink.Runtime.BoolValue.Create(true);
             dialogueVariables.SaveVariables();
