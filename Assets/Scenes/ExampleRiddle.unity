@@ -1340,40 +1340,40 @@ Transform:
   - {fileID: 1749383001}
   - {fileID: 1450180474}
   - {fileID: 257797498}
-  - {fileID: 686822468}
   - {fileID: 1713284677}
   - {fileID: 10999403}
   - {fileID: 820850884}
   - {fileID: 1208231364}
-  - {fileID: 304621987}
   - {fileID: 1516734230}
-  - {fileID: 1288729669}
   - {fileID: 398321038}
-  - {fileID: 704980984}
   - {fileID: 687055176}
-  - {fileID: 1372139581}
   - {fileID: 1110919976}
   - {fileID: 1998592928}
-  - {fileID: 519314454}
   - {fileID: 2078874175}
   - {fileID: 273131153}
   - {fileID: 1965149574}
   - {fileID: 1504080864}
+  - {fileID: 704980984}
   - {fileID: 392135502}
   - {fileID: 1333087944}
   - {fileID: 1826098785}
   - {fileID: 521807293}
+  - {fileID: 304621987}
   - {fileID: 1497380419}
   - {fileID: 785492976}
+  - {fileID: 491633316}
   - {fileID: 846735655}
   - {fileID: 851346499}
+  - {fileID: 686822468}
   - {fileID: 1121363482}
+  - {fileID: 1372139581}
   - {fileID: 2088503608}
+  - {fileID: 519314454}
   - {fileID: 1680645471}
-  - {fileID: 491633316}
-  - {fileID: 226326993}
-  - {fileID: 50294009}
   - {fileID: 459844059}
+  - {fileID: 226326993}
+  - {fileID: 1288729669}
+  - {fileID: 50294009}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1856,6 +1856,31 @@ PrefabInstance:
       propertyPath: soundEffectSlider
       value: 
       objectReference: {fileID: 463734501}
+    - target: {fileID: 9192788150485554852, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
+        type: 3}
+      propertyPath: sounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192788150485554852, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
+        type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192788150485554852, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
+        type: 3}
+      propertyPath: sounds.Array.data[1].mixerGroup
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192788150485554852, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
+        type: 3}
+      propertyPath: sounds.Array.data[1].audioClip.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192788150485554852, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
+        type: 3}
+      propertyPath: sounds.Array.data[1].audioClip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 473cc60c8dd60554089fa5f7e6459ccd, type: 3}
     - target: {fileID: 9192788150485554853, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
         type: 3}
       propertyPath: m_LocalPosition.x

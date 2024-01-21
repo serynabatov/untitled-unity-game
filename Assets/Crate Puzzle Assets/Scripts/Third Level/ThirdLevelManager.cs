@@ -24,6 +24,8 @@ public class ThirdLevelManager : MonoBehaviour
     [SerializeField] private TextAsset loadGlobalsJSON;
     private DialogueVariables dialogueVariables;
 
+    private MessageBrokerImpl broker;
+
     private void Awake()
     {
         if (instance != null)
@@ -36,6 +38,11 @@ public class ThirdLevelManager : MonoBehaviour
     public static ThirdLevelManager GetInstance()
     {
         return instance;
+    }
+
+    private void Start()
+    {
+        broker = MessageBrokerImpl.Instance;
     }
 
     public void BaseBox(bool triggerStat, GameObject triggerGO, Animator boxAnimator)
@@ -56,6 +63,7 @@ public class ThirdLevelManager : MonoBehaviour
                 if (triggerStat != iceTrigger)
                 {
                     iceTrigger = triggerStat;
+                    blueGate.SetActive(!triggerStat);
                     this.CheckGates(iceGateActiv, iceGate, iceTrigger);
                     triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
                     boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
@@ -65,6 +73,7 @@ public class ThirdLevelManager : MonoBehaviour
                 if (triggerStat != fireTrigger)
                 {
                     fireTrigger = triggerStat;
+                    orangeGate.SetActive(!triggerStat);
                     this.CheckGates(fireGateActiv, fireGate, fireTrigger);
                     triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
                     boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
@@ -87,6 +96,7 @@ public class ThirdLevelManager : MonoBehaviour
         if (triggerGO.name == "IceTrigger" && triggerStat != iceGateActiv)
         {
             triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+            broker.Publish<int>(17);
             boxAnimator.Play(triggerStat ? "IceActive" : "IceDeactive");
             iceGateActiv = triggerStat;
             this.CheckGates(iceGateActiv, iceGate, iceTrigger);
@@ -98,13 +108,14 @@ public class ThirdLevelManager : MonoBehaviour
         if (triggerGO.name == "FireTrigger" && triggerStat != fireGateActiv)
         {
             triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+            broker.Publish<int>(18);
             boxAnimator.Play(triggerStat ? "FireActive" : "FireDeactive");
             fireGateActiv = triggerStat;
             this.CheckGates(fireGateActiv, fireGate, fireTrigger);
         }
     }
 
-    private void CheckGates(bool gateActiv, GameObject gate, bool gateTrigger) // �������� ���� �����, ����� ������������ ������-���� ��������
+    private void CheckGates(bool gateActiv, GameObject gate, bool gateTrigger)
     {
         //Debug.Log(string.Format("active Gate = {0} , gate name = {1}", gateActiv, gate.name));
         gate.SetActive((gateActiv && gateTrigger) ? false : true);

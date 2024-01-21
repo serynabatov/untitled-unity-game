@@ -19,6 +19,9 @@ public class MovementCrate : MonoBehaviour
     [SerializeField]
     private InputActionReference interact;
 
+    [SerializeField]
+    private Timer timer;
+
     public Transform grabDetect;
 
     private TMP_Text tmp;
@@ -30,10 +33,12 @@ public class MovementCrate : MonoBehaviour
     private GameObject boxTemp;
     private Transform boxHolderTemp;
 
+    private MessageBrokerImpl broker;
 
     private Rigidbody2D rb;
 
     public LayerMask grabAble;
+
 
     private void Awake()
     {
@@ -45,6 +50,7 @@ public class MovementCrate : MonoBehaviour
     {
         //SaveSystem.GetInstance().SavePosition(transform.position);
         transform.position = SaveSystem.LoadPosition();
+        broker = MessageBrokerImpl.Instance;
     }
     public void OnApplicationQuit()
     {
@@ -52,6 +58,8 @@ public class MovementCrate : MonoBehaviour
     }
     private void FixedUpdate()
     {
+
+        CrateMovementSound();
         HandleMovement();
         RevealInteractiveCue();
 
@@ -120,6 +128,7 @@ public class MovementCrate : MonoBehaviour
                 runSpeedY = 6f;
                 break;
         }
+        broker.Publish(0);
 
         boxTemp = grabCheck.collider.gameObject;
         boxHolderTemp = boxHolder;
@@ -152,4 +161,16 @@ public class MovementCrate : MonoBehaviour
         }
     }
 
+    private void CrateMovementSound()
+    {
+        if (transform.hasChanged && !interactPress)
+        {
+            broker.Publish<int>((int)AudioClipName.Parry);
+            transform.hasChanged = false;
+        }
+        else if (!transform.hasChanged && !interactPress)
+        {
+            broker.Publish<int>((int)AudioClipName.Parry, 0, true);
+        }
+    }
 }

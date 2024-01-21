@@ -13,10 +13,11 @@ public class PipeController : MonoBehaviour
 
     private Camera cam;
 
+    private MessageBrokerImpl broker;
+
     public int AngleState;
     public int PipeState;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (gameObject.CompareTag("Turn"))
@@ -27,11 +28,15 @@ public class PipeController : MonoBehaviour
         {
             PipeState = Random.Range(0, 2);
         }
+
         cam = Camera.main;
         collide = gameObject.GetComponent<CircleCollider2D>();
         gameManager = GameObject.Find("GameManagers").GetComponent<GameManager>();
         animator = gameObject.GetComponent<Animator>();
         sound = gameObject.GetComponent<AudioSource>();
+
+        broker = MessageBrokerImpl.Instance;
+
         if (gameObject.CompareTag("Turn"))
             AngleAnimationsCheck();
         if (gameObject.CompareTag("Pipe"))
@@ -46,7 +51,7 @@ public class PipeController : MonoBehaviour
             Vector3 mousePosition = mouse.position.ReadValue();
             if (collide.OverlapPoint(cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 1))))
             {
-                sound.Play();
+                broker.Publish<int>(0);
                 if (!gameManager.gameRunning)
                 {
                     if (gameObject.CompareTag("Turn"))

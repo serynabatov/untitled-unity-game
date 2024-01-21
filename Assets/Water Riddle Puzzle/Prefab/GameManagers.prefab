@@ -430,31 +430,20 @@ MonoBehaviour:
   soundEffectMixerGroup: {fileID: -8353838665330540605, guid: 030fcc5a3341ff047b0ed5a4d030ee30,
     type: 2}
   soundEffectSlider: {fileID: 0}
+  fadeDuration: 0
   sounds:
-  - audioSource: {fileID: 0}
-    audioClipName: 1
-    audioClip:
-    - {fileID: 8300000, guid: a11f19d414cd2e443b1f50e60edbb610, type: 3}
-    isLoop: 0
-    playOnAwake: 1
-    mixerGroup: 0
-    volume: 1
-  - audioSource: {fileID: 0}
-    audioClipName: 2
-    audioClip:
-    - {fileID: 8300000, guid: ba0edbbceb732a343aab5e1470e1e5a2, type: 3}
-    isLoop: 0
-    playOnAwake: 0
-    mixerGroup: 1
-    volume: 1
   - audioSource: {fileID: 0}
     audioClipName: 0
     audioClip:
-    - {fileID: 8300000, guid: 6b389dd16d9c9f5459605a843fe520e6, type: 3}
+    - {fileID: 8300000, guid: 473cc60c8dd60554089fa5f7e6459ccd, type: 3}
     isLoop: 0
     playOnAwake: 0
+    AudioRolloffMode: 0
     mixerGroup: 1
+    minDistance: 0
+    maxDistance: 0
     volume: 1
+    spatialBlend: 0
 --- !u!1 &9192788151961765114
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +639,7 @@ MonoBehaviour:
   startButton: {fileID: 0}
   clearText: {fileID: 0}
   flow: {fileID: 0}
+  loadGlobalsJSON: {fileID: 0}
   gameRunning: 0
   gameOver: 0
   gameClear: 0

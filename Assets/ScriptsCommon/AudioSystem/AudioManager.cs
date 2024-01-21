@@ -119,12 +119,12 @@ public class AudioManager : MonoBehaviour
     /// Stop the specified audioClipName.
     /// </summary>
     /// <param name="audioClipName">Audio clip name.</param>
-    public void Stop(AudioClipName audioClipName)
+    public void Stop(int audioClipName)
     {
-        BasicSound s = GetSound(audioClipName);
+        BasicSound s = GetSound((AudioClipName)audioClipName);
         if (s != null)
         {
-            StartCoroutine(MusicFadeOut(s, fadeDuration));
+            s.audioSource.Stop();
         }
     }
 
@@ -167,14 +167,28 @@ public class AudioManager : MonoBehaviour
 
     private void EventHandlerPlayTheSpecifiedSound(MessagePayload<int> audio)
     {
-        if (audio.payload >= 0)
+        if (audio.stoping)
         {
-            Play(audio.payload, audio.fade);
+            if (audio.payload >= 0)
+            {
+                Stop(audio.payload);
+            }
+            else
+            {
+                return;
+            }    
         }
         else
         {
-            return;
-        }
+            if (audio.payload >= 0)
+            {
+                Play(audio.payload, audio.fade);
+            }
+            else
+            {
+                return;
+            }
+        }     
     }
 
     public void SetupMusic(BasicSound value)
