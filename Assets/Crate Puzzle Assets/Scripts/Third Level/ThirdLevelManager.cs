@@ -111,6 +111,7 @@ public class ThirdLevelManager : MonoBehaviour
     }
     public void CratePuzzleSolved()
     {
+        PlayerPrefs.SetInt("Crate level status", 1);
         PlayerPrefs.DeleteKey("PlayerPosXCrate");
         PlayerPrefs.DeleteKey("PlayerPosYCrate");
         if (dialogueVariables.variables.ContainsKey("mainVarCrateFinished"))
@@ -118,6 +119,11 @@ public class ThirdLevelManager : MonoBehaviour
             dialogueVariables.variables["mainVarCrateFinished"] = Ink.Runtime.BoolValue.Create(true);
             dialogueVariables.SaveVariables();
             //dialogueVariables.variables.Add("mainVarWaterFinished", true);
+        }
+        if (PlayerPrefs.GetInt("Water level status") == PlayerPrefs.GetInt("Crate level status"))
+        {
+            dialogueVariables.variables["cantalktoBoss"] = Ink.Runtime.BoolValue.Create(true);
+            dialogueVariables.SaveVariables();
         }
     }
 }

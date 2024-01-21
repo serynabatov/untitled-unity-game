@@ -3,7 +3,7 @@ INCLUDE globals.ink
  //Эта переменная извне должна стать true в тот моент, когда игрок погвоорит с основным НПС.
 {mainVarCrateFinished: ->main.finishedPuzzle|{mainVarCrate: ->main.prePurpose|{certificate: ->main|->main.exit}}}
 === main ===
-Наконец-то, это вы принц. Я ваш проводник для этого испытания. Внимательно обращайте внимание на всё #speaker:Crate #portrait:heroFace
+Наконец-то, это вы принц. Я ваш проводник для этого испытания. Испытание проверит вашу внимательность. #speaker:Crate #portrait:heroFace
 ~ mainVarCrate = true
 ->purpose
 
@@ -21,10 +21,10 @@ INCLUDE globals.ink
 ->END 
 
 = exit
-Вы кто ?, я не вижу у вас право проходить у меня испытания. Может вам стоит получить сертификат у моего брата. Он похож на меня, только он... фиолетовый. #speaker:Crate #portrait:heroFace
+Вы кто ?, я не вижу у вас право проходить у меня испытания. Может вам стоит получить сертификат у моего брата. Он похож на меня, только в зелёном плаще. #speaker:Crate #portrait:heroFace
 ~ mainVarCrate = true
 ->END
 
 = finishedPuzzle
-Я величайший и прошёл загадку с ЯЩИКАМИ #layout:right #speaker:Water #portrait:wizardFace
+Поздравляю вас принц вы прошли испытание внимательности. #layout:right #speaker:Water #portrait:wizardFace
 +[ПРОЙТИ ИСПЫТАНИЕ]->END #start:Crate Puzzle #exit:0
