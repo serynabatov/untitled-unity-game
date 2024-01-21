@@ -39,6 +39,11 @@ public class MovementCrate : MonoBehaviour
 
     public LayerMask grabAble;
 
+    [SerializeField]
+    private float counter;
+    [SerializeField]
+    private bool timerCounting;
+
 
     private void Awake()
     {
@@ -165,12 +170,19 @@ public class MovementCrate : MonoBehaviour
     {
         if (transform.hasChanged && !interactPress)
         {
-            broker.Publish<int>((int)AudioClipName.Parry);
+            if (!timerCounting)
+            {
+                broker.Publish<int>((int)AudioClipName.Parry);
+                timerCounting = true;
+                timer.SetTimer(counter, () => { timerCounting = false; });               
+            }
             transform.hasChanged = false;
         }
-        else if (!transform.hasChanged && !interactPress)
+        else
         {
             broker.Publish<int>((int)AudioClipName.Parry, 0, true);
+            timer.ResetTimer();
+            timerCounting = false;
         }
     }
 }
