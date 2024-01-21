@@ -88,5 +88,10 @@ public class GameManager : MonoBehaviour
             dialogueVariables.SaveVariables();
             //dialogueVariables.variables.Add("mainVarWaterFinished", true);
         }
+        if (PlayerPrefs.GetInt("Water level status") == PlayerPrefs.GetInt("Crate level status"))
+        {
+            dialogueVariables.variables["cantalktoBoss"] = Ink.Runtime.BoolValue.Create(true);
+            dialogueVariables.SaveVariables();
+        }
     }
 }
