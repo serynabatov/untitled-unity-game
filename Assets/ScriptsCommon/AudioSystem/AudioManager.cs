@@ -174,7 +174,7 @@ public class AudioManager : MonoBehaviour
             else
             {
                 return;
-            }    
+            }
         }
         else
         {
@@ -186,7 +186,7 @@ public class AudioManager : MonoBehaviour
             {
                 return;
             }
-        }     
+        }
     }
 
     public void SetupMusic(BasicSound value)

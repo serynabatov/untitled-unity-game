@@ -7,26 +7,17 @@ using UnityEngine;
 /// </summary>
 public enum AudioClipName
 {
-    SoundEffect = 0,
+    UIClick = 0,
     MusicEffect = 1,
     DialogueTriggerEffect = 2,
-    DodgeEffect = 3,
-    FootstepEffect = 4,
-    RunStop = 5,
-    Jump = 6,
-    Landing = 7,
-    SwordAttack = 8,
-    Hurt = 9,
-    Death = 10,
-    SheathSword = 11,
-    LedgeGrab = 12,
-    WallSlide = 13,
-    DrawSword = 14,
-    AirSlamLanding = 15,
-    UnveilSound = 16,
-    BoulderHit = 17,
-    Parry = 18,
-    IceBox = 19,
-    FireBox = 20,
-
+    FootstepEffect = 3,
+    RunStop = 4,
+    Jump = 5,
+    Landing = 6,
+    Hurt = 7,
+    UnveilSound = 8,
+    BoulderHit = 9,
+    IceBox = 10,
+    FireBox = 11,
+    CrateMovement = 12
 }

@@ -167,14 +167,14 @@ public class MovementCrate : MonoBehaviour
         {
             if (!_soundPlaying)
             {
-                broker.Publish<int>((int)AudioClipName.Parry);
+                broker.Publish<int>((int)AudioClipName.CrateMovement);
                 _soundPlaying = true;
             }
             transform.hasChanged = false;
         }
         else
         {
-            broker.Publish<int>((int)AudioClipName.Parry, 0, true);
+            broker.Publish<int>((int)AudioClipName.CrateMovement, 0, true);
             _soundPlaying = false;
         }
     }

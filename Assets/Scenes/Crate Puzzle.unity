@@ -1336,7 +1336,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7773654, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -16382,7 +16382,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7773654, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -16596,7 +16596,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7773654, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -18789,7 +18789,7 @@ MonoBehaviour:
   soundEffectSlider: {fileID: 701677044}
   sounds:
   - audioSource: {fileID: 0}
-    audioClipName: 20
+    audioClipName: 11
     audioClip:
     - {fileID: 8300000, guid: 8958954b3d1c8a641a643f91e6d7fc6c, type: 3}
     isLoop: 0
@@ -18801,7 +18801,7 @@ MonoBehaviour:
     volume: 1
     spatialBlend: 0
   - audioSource: {fileID: 0}
-    audioClipName: 19
+    audioClipName: 10
     audioClip:
     - {fileID: 8300000, guid: 487a9b8d97409c442b5355eaf3a1882a, type: 3}
     isLoop: 0
@@ -18813,19 +18813,7 @@ MonoBehaviour:
     volume: 1
     spatialBlend: 0
   - audioSource: {fileID: 0}
-    audioClipName: 0
-    audioClip:
-    - {fileID: 8300000, guid: 786549f15fa441d4a8bc85537d94f771, type: 3}
-    isLoop: 0
-    playOnAwake: 0
-    AudioRolloffMode: 0
-    mixerGroup: 1
-    minDistance: 0
-    maxDistance: 0
-    volume: 1
-    spatialBlend: 0
-  - audioSource: {fileID: 0}
-    audioClipName: 18
+    audioClipName: 12
     audioClip:
     - {fileID: 8300000, guid: 5c04d98493f454544933a11a7c9fa85c, type: 3}
     isLoop: 1
