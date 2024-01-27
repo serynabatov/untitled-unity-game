@@ -27,8 +27,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     Slider soundEffectSlider;
 
-    [SerializeField]
-    private float fadeDuration;
 
     [SerializeField]
     private List<BasicSound> sounds;

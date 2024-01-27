@@ -23,7 +23,10 @@ public enum AudioClipName
     WallSlide = 13,
     DrawSword = 14,
     AirSlamLanding = 15,
-    Parry = 16,
-    IceBox = 17,
-    FireBox = 18
+    UnveilSound = 16,
+    BoulderHit = 17,
+    Parry = 18,
+    IceBox = 19,
+    FireBox = 20,
+
 }

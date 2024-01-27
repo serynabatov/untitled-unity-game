@@ -23,6 +23,7 @@ TagManager:
   - Boulder
   - Revealable
   - Location
+  - Trap
   layers:
   - Default
   - TransparentFX

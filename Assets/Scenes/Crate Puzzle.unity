@@ -18341,7 +18341,6 @@ MonoBehaviour:
   boxHolderDown: {fileID: 1174025497}
   interact: {fileID: -9029212982956001815, guid: fc7ca6169b8e6b94e897290724e176cb,
     type: 3}
-  timer: {fileID: 2128384245}
   grabDetect: {fileID: 732262452}
   rayDist: 0.45
   grabAble:
@@ -18788,12 +18787,11 @@ MonoBehaviour:
   soundEffectMixerGroup: {fileID: -8353838665330540605, guid: 030fcc5a3341ff047b0ed5a4d030ee30,
     type: 2}
   soundEffectSlider: {fileID: 701677044}
-  fadeDuration: 0
   sounds:
   - audioSource: {fileID: 0}
-    audioClipName: 17
+    audioClipName: 20
     audioClip:
-    - {fileID: 8300000, guid: 487a9b8d97409c442b5355eaf3a1882a, type: 3}
+    - {fileID: 8300000, guid: 8958954b3d1c8a641a643f91e6d7fc6c, type: 3}
     isLoop: 0
     playOnAwake: 0
     AudioRolloffMode: 0
@@ -18803,9 +18801,9 @@ MonoBehaviour:
     volume: 1
     spatialBlend: 0
   - audioSource: {fileID: 0}
-    audioClipName: 18
+    audioClipName: 19
     audioClip:
-    - {fileID: 8300000, guid: 8958954b3d1c8a641a643f91e6d7fc6c, type: 3}
+    - {fileID: 8300000, guid: 487a9b8d97409c442b5355eaf3a1882a, type: 3}
     isLoop: 0
     playOnAwake: 0
     AudioRolloffMode: 0
@@ -18827,10 +18825,10 @@ MonoBehaviour:
     volume: 1
     spatialBlend: 0
   - audioSource: {fileID: 0}
-    audioClipName: 16
+    audioClipName: 18
     audioClip:
     - {fileID: 8300000, guid: 5c04d98493f454544933a11a7c9fa85c, type: 3}
-    isLoop: 0
+    isLoop: 1
     playOnAwake: 0
     AudioRolloffMode: 0
     mixerGroup: 1

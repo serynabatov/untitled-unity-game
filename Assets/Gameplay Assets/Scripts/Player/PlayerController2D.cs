@@ -8,6 +8,9 @@ public class PlayerController2D : MonoBehaviour
     private Action Move;
     private Action Input;
 
+    public static event Action OnTrapActivated;
+    public static event Action OnBoulderCollision;
+
     [SerializeField]
     private Timer onTimer;
 
@@ -54,6 +57,7 @@ public class PlayerController2D : MonoBehaviour
     private bool canJump;
     private bool jumpIsBuffered;
     private bool takingDamage;
+    private bool _canSave = true;
 
     private Vector2 newVelocity;
     private Vector2 newForce;
@@ -72,17 +76,34 @@ public class PlayerController2D : MonoBehaviour
         DialogueManager.DialogueStarted += RemovingControl;
         DialogueManager.DialogueEnded += ResumingControl;
 
+        OnTrapActivated += StopSavingPosition;
+
+        OnBoulderCollision += StartSavingPosition;
+
         //transform.position = SaveSystem.LoadPosition();
         timer = startTimerValue;
+
         rb = GetComponent<Rigidbody2D>();
         cc = GetComponent<CapsuleCollider2D>();
         playerSprite = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
+
         capsuleColliderSize = cc.size;
+
         Input += CheckInput;
         Move += ApplyMovement;
         StartCoroutine(SavingPosition());
         savedPosition = transform.position;
+    }
+
+    private void OnDestroy()
+    {
+        DialogueManager.DialogueStarted -= RemovingControl;
+        DialogueManager.DialogueEnded -= ResumingControl;
+
+        OnTrapActivated -= StopSavingPosition;
+
+        OnBoulderCollision -= StartSavingPosition;
     }
 
     private void Update()
@@ -314,6 +335,8 @@ public class PlayerController2D : MonoBehaviour
 
     private void TakeDamage()
     {
+        broker.Publish<int>((int)AudioClipName.Hurt);
+
         RemovingControl();
         animator.SetTrigger("Damaged");
         takingDamage = true;
@@ -354,10 +377,10 @@ public class PlayerController2D : MonoBehaviour
     {
         while (SceneManager.GetActiveScene().name == "Gameplay")
         {
-            if (isGrounded && !takingDamage)
+            if (isGrounded && !takingDamage && _canSave)
             {
+                print("Saved!");
                 PositionSave();
-                print(savedPosition);
             }
             yield return new WaitForSeconds(5f);
         }
@@ -365,6 +388,11 @@ public class PlayerController2D : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Trap"))
+        {
+            OnTrapActivated?.Invoke();
+        }
+
         if (collision.gameObject.CompareTag("Location"))
         {
             LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
@@ -373,6 +401,8 @@ public class PlayerController2D : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Revealable"))
         {
+            broker.Publish<int>((int)AudioClipName.UnveilSound);
+
             IRevealable reveal = collision.gameObject.GetComponent<IRevealable>();
             reveal.Reveal();
         }
@@ -415,7 +445,19 @@ public class PlayerController2D : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Boulder"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            OnBoulderCollision?.Invoke();
+            broker.Publish<int>((int)AudioClipName.BoulderHit);
+            Respawn();
         }
+    }
+
+    private void StartSavingPosition()
+    {
+        _canSave = true;
+    }
+
+    private void StopSavingPosition()
+    {
+        _canSave = false;
     }
 }

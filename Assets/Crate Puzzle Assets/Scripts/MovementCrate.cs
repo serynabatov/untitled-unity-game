@@ -19,8 +19,6 @@ public class MovementCrate : MonoBehaviour
     [SerializeField]
     private InputActionReference interact;
 
-    [SerializeField]
-    private Timer timer;
 
     public Transform grabDetect;
 
@@ -39,10 +37,7 @@ public class MovementCrate : MonoBehaviour
 
     public LayerMask grabAble;
 
-    [SerializeField]
-    private float counter;
-    [SerializeField]
-    private bool timerCounting;
+    private bool _soundPlaying;
 
 
     private void Awake()
@@ -170,19 +165,17 @@ public class MovementCrate : MonoBehaviour
     {
         if (transform.hasChanged && !interactPress)
         {
-            if (!timerCounting)
+            if (!_soundPlaying)
             {
                 broker.Publish<int>((int)AudioClipName.Parry);
-                timerCounting = true;
-                timer.SetTimer(counter, () => { timerCounting = false; });               
+                _soundPlaying = true;
             }
             transform.hasChanged = false;
         }
         else
         {
             broker.Publish<int>((int)AudioClipName.Parry, 0, true);
-            timer.ResetTimer();
-            timerCounting = false;
+            _soundPlaying = false;
         }
     }
 }
