@@ -3,7 +3,7 @@ INCLUDE globals.ink
 {mainVarCage: ->main.prePurpose|->main}
 
 === main ===
-Наконец вы пришли <color=\#F8FF30>принц</color>, я вас уже заждался. Королевство в опасности, принцессу усыпили и она застряла в горящем замке. Спасите её прошу вас  #speaker:WizardCage #portrait:wizardFace 
+Наконец вы пришли <color=\#F8FF30>принц</color>, я вас уже заждался. Королевство в опасности, принцессу усыпили и она застряла в горящем замке. Спасите её прошу вас  #speaker:Вадос #portrait:Green Mage 
 
 До вас было множество претендентов, но ни один из них не смог пройти все испытания. 
  + [...]
@@ -23,7 +23,7 @@ INCLUDE globals.ink
   -> END
   
   = prePurpose
-Принц, что вы тут делаете ?! Вам напомнить о ваших делах ? #speaker:WizardCage #portrait:wizardFace 
+Принц, что вы тут делаете ?! Вам напомнить о ваших делах ? #speaker:Вадос #portrait:Green Mage 
 + [Да]
 ->purpose
 + [Нет]

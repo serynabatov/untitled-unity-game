@@ -4,7 +4,7 @@ INCLUDE globals.ink
 {mainVarWaterFinished: ->main.finishedPuzzle|{mainVarWater: ->main.prePurpose|{certificate: ->main|->main.exit}}}
 
 === main ===
-Наконец-то, это вы принц. Я ваш проводник для этого испытания. Вы должны продемонстрировать ваше умение находить путь из сложных ситуаций. #speaker:Wizard #portrait:wizardFace 
+Наконец-то, это вы принц. Я ваш проводник для этого испытания. Вы должны продемонстрировать ваше умение находить путь из сложных ситуаций. #speaker:Гори #portrait:Orange Mage
 ~ mainVarWater = true
 ->purpose
 
@@ -13,7 +13,7 @@ INCLUDE globals.ink
 ->END
 
 = prePurpose
-Принц, я вижу вы ещё не прошли испытание. Вам напомнить о его деталях? #speaker:Wizard #portrait:wizardFace
+Принц, я вижу вы ещё не прошли испытание. Вам напомнить о его деталях? #speaker:Гори #portrait:Orange Mage
 +[Нужна подсказка]
 ->purpose
 +[Нет, до свидания]
@@ -23,9 +23,9 @@ INCLUDE globals.ink
 
 = exit
 ~ mainVarWater = true
-Вы кто ?, я не вижу у вас право проходить у меня испытания для спасения принцессы. Может вам стоит получить этот сертификат у моего брата. Он похож на меня, только у него зелёная шляпа. #speaker:Water #portrait:wizardFace
+Вы кто ?, я не вижу у вас право проходить у меня испытания для спасения принцессы. Может вам стоит получить этот сертификат у моего брата. Он похож на меня, только у него зелёная шляпа. #speaker:Гори #portrait:Orange Mage
 ->END
 
 = finishedPuzzle
-Так держать принц, вы восстановили русло воды #speaker:Water #portrait:wizardFace
+Так держать принц, вы восстановили русло воды #speaker:Гори #portrait:Orange Mage
 ->END
