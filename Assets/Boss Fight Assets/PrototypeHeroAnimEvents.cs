@@ -65,10 +65,4 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
         broker.Publish<int>((int)AudioClipName.Hurt);
         //m_audioManager.PlaySound("Hurt");
     }
-
-    void AE_Death()
-    {
-        broker.Publish<int>((int)AudioClipName.Death);
-        //m_audioManager.PlaySound("Death");
-    }
 }
