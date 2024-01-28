@@ -10,6 +10,7 @@ public class PlayerController2D : MonoBehaviour
 
     public static event Action OnTrapActivated;
     public static event Action OnBoulderCollision;
+    public static event Action OnRespawn;
 
     [SerializeField]
     private Timer onTimer;
@@ -247,7 +248,6 @@ public class PlayerController2D : MonoBehaviour
     {
         if (canJump)
         {
-            broker.Publish<int>((int)AudioClipName.Jump);
 
             animator.SetTrigger("Jump");
             canJump = false;
@@ -335,7 +335,6 @@ public class PlayerController2D : MonoBehaviour
 
     private void TakeDamage()
     {
-        broker.Publish<int>((int)AudioClipName.Hurt);
 
         RemovingControl();
         animator.SetTrigger("Damaged");
@@ -346,6 +345,7 @@ public class PlayerController2D : MonoBehaviour
 
     private void Respawn()
     {
+        OnRespawn?.Invoke();
         animator.SetFloat("VelocityX", 0);
         takingDamage = false;
         transform.position = savedPosition;
