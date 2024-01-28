@@ -1,11 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Boulder : MonoBehaviour
 {
-    [SerializeField]
-    private float rotationMod;
+    public static event Action OnBoulderEnd;
+
     [SerializeField]
     private float pushForce;
 
@@ -31,6 +32,9 @@ public class Boulder : MonoBehaviour
         PlayerController2D.OnTrapActivated += StartBoulderSound;
         PlayerController2D.OnBoulderCollision += StopBoulderSound;
         PlayerController2D.OnBoulderCollision += ResetPosition;
+
+        OnBoulderEnd += BoulderEnd;
+        OnBoulderEnd += StopBoulderSound;
     }
 
     private void OnDestroy()
@@ -41,6 +45,9 @@ public class Boulder : MonoBehaviour
         PlayerController2D.OnBoulderCollision -= ResetPosition;
         PlayerController2D.OnRespawn -= ResetPosition;
         PlayerController2D.OnRespawn -= StopBoulderSound;
+
+        OnBoulderEnd -= BoulderEnd;
+        OnBoulderEnd -= StopBoulderSound;
     }
 
 
@@ -66,6 +73,14 @@ public class Boulder : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Trap End"))
+        {
+            OnBoulderEnd?.Invoke();
+        }
+    }
+
     private void StartBoulderSound()
     {
         _broker.Publish<int>((int)AudioClipName.MusicEffect);
@@ -74,5 +89,10 @@ public class Boulder : MonoBehaviour
     private void StopBoulderSound()
     {
         _broker.Publish<int>((int)AudioClipName.MusicEffect, 0, true);
+    }
+
+    private void BoulderEnd()
+    {
+        Destroy(gameObject);
     }
 }
