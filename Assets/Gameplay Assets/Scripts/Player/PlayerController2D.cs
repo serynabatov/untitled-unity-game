@@ -78,8 +78,9 @@ public class PlayerController2D : MonoBehaviour
         DialogueManager.DialogueEnded += ResumingControl;
 
         OnTrapActivated += StopSavingPosition;
-
         OnBoulderCollision += StartSavingPosition;
+
+        Boulder.OnBoulderEnd += StartSavingPosition;
 
         //transform.position = SaveSystem.LoadPosition();
         timer = startTimerValue;
@@ -103,8 +104,9 @@ public class PlayerController2D : MonoBehaviour
         DialogueManager.DialogueEnded -= ResumingControl;
 
         OnTrapActivated -= StopSavingPosition;
-
         OnBoulderCollision -= StartSavingPosition;
+
+        Boulder.OnBoulderEnd -= StartSavingPosition;
     }
 
     private void Update()
