@@ -18,6 +18,11 @@ public class Boulder : MonoBehaviour
 
     private CircleCollider2D _circleCollider;
 
+    [SerializeField]
+    private GameObject _boulderShadow;
+
+    private SpriteRenderer _shadowSprite;
+
     private MessageBrokerImpl _broker = MessageBrokerImpl.Instance;
 
     private void Start()
@@ -27,6 +32,8 @@ public class Boulder : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _circleCollider = GetComponent<CircleCollider2D>();
+
+        _shadowSprite = _boulderShadow.GetComponent<SpriteRenderer>();
 
         PlayerController2D.OnTrapActivated += TrapActivation;
         PlayerController2D.OnTrapActivated += StartBoulderSound;
@@ -50,6 +57,10 @@ public class Boulder : MonoBehaviour
         OnBoulderEnd -= StopBoulderSound;
     }
 
+    private void LateUpdate()
+    {
+        ShadowFollow();
+    }
 
     private void TrapActivation()
     {
@@ -58,6 +69,8 @@ public class Boulder : MonoBehaviour
 
         _circleCollider.enabled = true;
         _spriteRenderer.enabled = true;
+        _shadowSprite.enabled = true;
+
         rb.constraints = RigidbodyConstraints2D.None;
         rb.AddForce(Vector2.down * pushForce, ForceMode2D.Impulse);
     }
@@ -69,6 +82,8 @@ public class Boulder : MonoBehaviour
 
         _circleCollider.enabled = false;
         _spriteRenderer.enabled = false;
+        _shadowSprite.enabled = false;
+
         transform.position = _startingPosition;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
@@ -89,6 +104,11 @@ public class Boulder : MonoBehaviour
     private void StopBoulderSound()
     {
         _broker.Publish<int>((int)AudioClipName.MusicEffect, 0, true);
+    }
+
+    private void ShadowFollow()
+    {
+        _boulderShadow.transform.position = transform.position;
     }
 
     private void BoulderEnd()

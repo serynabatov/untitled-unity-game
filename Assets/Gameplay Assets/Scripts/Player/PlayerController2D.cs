@@ -11,6 +11,7 @@ public class PlayerController2D : MonoBehaviour
     public static event Action OnTrapActivated;
     public static event Action OnBoulderCollision;
     public static event Action OnRespawn;
+    public static event Action OnDamaged;
 
     [SerializeField]
     private Timer onTimer;
@@ -337,7 +338,7 @@ public class PlayerController2D : MonoBehaviour
 
     private void TakeDamage()
     {
-
+        OnDamaged?.Invoke();
         RemovingControl();
         animator.SetTrigger("Damaged");
         takingDamage = true;
