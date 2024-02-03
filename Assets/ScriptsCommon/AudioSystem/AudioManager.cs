@@ -77,6 +77,32 @@ public class AudioManager : MonoBehaviour
         return sound;
     }
 
+    public void Play(int audioClipName, int fadeDuration = 0, bool randomize = false, int clip = 0)
+    {
+        BasicSound s = GetSound((AudioClipName)audioClipName);
+        if (s != null)
+        {
+            if (!randomize)
+            {
+                if (clip > 0)
+                {
+                    clip %= s.audioClip.Length;
+                }
+                s.audioSource.clip = s.audioClip[clip];
+                s.audioSource.Play();
+                if (fadeDuration != 0)
+                {
+                    StartCoroutine(MusicFadeIn(s, fadeDuration));
+                }
+
+            }
+            else
+            {
+                Play(audioClipName, fadeDuration);
+            }
+        }
+    }
+
     /// <summary>
     /// Plays the specified audioClip.
     /// </summary>
@@ -113,16 +139,62 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+
+    public void Stop(int audioClipName, int fadeDuration = 0, bool isChanging = false, int clip = 0)
+    {
+        BasicSound s = GetSound((AudioClipName)audioClipName);
+        if (s != null)
+        {
+            if (!isChanging)
+            {
+                Stop(audioClipName, fadeDuration);
+            }
+            else
+            {
+                if (clip > 0)
+                {
+                    clip %= s.audioClip.Length;
+                }
+                if (fadeDuration != 0)
+                {
+                    StartCoroutine(MusicFadeOut(s, fadeDuration, isChanging, clip));
+                }
+                else
+                {
+                    s.audioSource.clip = s.audioClip[clip];
+                    s.audioSource.Play();
+                }
+            }
+        }
+    }
+
     /// <summary>
     /// Stop the specified audioClipName.
     /// </summary>
     /// <param name="audioClipName">Audio clip name.</param>
+    public void Stop(int audioClipName, int fadeDuration = 0)
+    {
+        BasicSound s = GetSound((AudioClipName)audioClipName);
+        if (s != null)
+        {
+            if (fadeDuration != 0)
+            {
+                StartCoroutine(MusicFadeOut(s, fadeDuration));
+            }
+            else
+            {
+                s.audioSource.Stop();
+            }
+        }
+    }
+
     public void Stop(int audioClipName)
     {
         BasicSound s = GetSound((AudioClipName)audioClipName);
         if (s != null)
         {
             s.audioSource.Stop();
+
         }
     }
 
@@ -169,7 +241,7 @@ public class AudioManager : MonoBehaviour
         {
             if (audio.payload >= 0)
             {
-                Stop(audio.payload);
+                Stop(audio.payload, audio.fade, audio.isChanging, audio.clipNumber);
             }
             else
             {
@@ -180,7 +252,7 @@ public class AudioManager : MonoBehaviour
         {
             if (audio.payload >= 0)
             {
-                Play(audio.payload, audio.fade);
+                Play(audio.payload, audio.fade, audio.isChanging, audio.clipNumber);
             }
             else
             {
@@ -261,16 +333,17 @@ public class AudioManager : MonoBehaviour
             if (volume > 1f)
             {
                 audio.audioSource.volume = 1f;
+                StopCoroutine(MusicFadeIn(audio, fadeDuration));
             }
             yield return null;
         }
     }
 
-    IEnumerator MusicFadeOut(BasicSound audio, float fadeDuration)
+    IEnumerator MusicFadeOut(BasicSound audio, float fadeDuration, bool isChanging = false, int clip = 0)
     {
         float volume = 1f;
         float timer = 0f;
-        while (volume > 1f)
+        while (volume > 0f)
         {
             volume = fadeDuration - timer / fadeDuration;
             timer += Time.deltaTime;
@@ -279,8 +352,16 @@ public class AudioManager : MonoBehaviour
             {
                 audio.audioSource.volume = 0f;
                 audio.audioSource.Stop();
+                if (isChanging)
+                {
+                    audio.audioSource.clip = audio.audioClip[clip];
+                    audio.audioSource.Play();
+                    StartCoroutine(MusicFadeIn(audio, fadeDuration));
+                }
+                StopCoroutine(MusicFadeOut(audio, fadeDuration));
             }
             yield return null;
         }
     }
+
 }

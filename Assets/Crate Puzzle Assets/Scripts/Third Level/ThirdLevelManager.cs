@@ -96,7 +96,7 @@ public class ThirdLevelManager : MonoBehaviour
         if (triggerGO.name == "IceTrigger" && triggerStat != iceGateActiv)
         {
             triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
-            broker.Publish<int>(17);
+            broker.Publish<int>((int)AudioClipName.IceBox);
             boxAnimator.Play(triggerStat ? "IceActive" : "IceDeactive");
             iceGateActiv = triggerStat;
             this.CheckGates(iceGateActiv, iceGate, iceTrigger);
@@ -108,7 +108,7 @@ public class ThirdLevelManager : MonoBehaviour
         if (triggerGO.name == "FireTrigger" && triggerStat != fireGateActiv)
         {
             triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
-            broker.Publish<int>(18);
+            broker.Publish<int>((int)AudioClipName.FireBox);
             boxAnimator.Play(triggerStat ? "FireActive" : "FireDeactive");
             fireGateActiv = triggerStat;
             this.CheckGates(fireGateActiv, fireGate, fireTrigger);

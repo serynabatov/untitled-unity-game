@@ -16,7 +16,6 @@ public class WellWater : MonoBehaviour, IAnimationPlayable
     {
         anim = GetComponent<Animator>();
         status = PlayerPrefs.GetInt("Water level status");
-        print(status);
         if (status == 1)
         {
             anim.Play("Well");

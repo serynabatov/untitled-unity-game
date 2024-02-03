@@ -400,6 +400,10 @@ public class PlayerController2D : MonoBehaviour
         {
             LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
             locationCheck.ChangeLocationName();
+            if (locationCheck.CurrentLocation == Locations.Lower)
+            {
+                broker.Publish<int>((int)AudioClipName.MusicEffect, locationCheck.FadeDuration, true, true, (int)Locations.Lower);
+            }
         }
 
         if (collision.gameObject.CompareTag("Revealable"))

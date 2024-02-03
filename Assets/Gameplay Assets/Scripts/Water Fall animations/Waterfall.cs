@@ -19,7 +19,6 @@ public class Waterfall : MonoBehaviour , IAnimationPlayable
         water = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         status = PlayerPrefs.GetInt("Water level status");
-        print(status);
         if (status == 1)
         {
             water.enabled = true;

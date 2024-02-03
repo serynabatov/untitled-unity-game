@@ -19,5 +19,7 @@ public enum AudioClipName
     BoulderHit = 9,
     IceBox = 10,
     FireBox = 11,
-    CrateMovement = 12
+    CrateMovement = 12,
+    LowerMusic = 13,
+    BoulderMove = 20
 }
