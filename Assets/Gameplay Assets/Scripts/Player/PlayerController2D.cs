@@ -322,7 +322,7 @@ public class PlayerController2D : MonoBehaviour
         {
             // Set dust spawn position
             Vector3 dustSpawnPosition = transform.position + new Vector3(dustXOffset * facingDirection, dustYOffset, 0.0f);
-            GameObject newDust = Instantiate(dust, dustSpawnPosition, Quaternion.identity) as GameObject;
+            GameObject newDust = Instantiate(dust, dustSpawnPosition, Quaternion.identity);
             // Turn dust in correct X direction
             newDust.transform.localScale = newDust.transform.localScale.x * new Vector3(facingDirection, 1, 1);
         }
@@ -400,10 +400,7 @@ public class PlayerController2D : MonoBehaviour
         {
             LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
             locationCheck.ChangeLocationName();
-            if (locationCheck.CurrentLocation == Locations.Lower)
-            {
-                broker.Publish<int>((int)AudioClipName.MusicEffect, locationCheck.FadeDuration, true, true, (int)Locations.Lower);
-            }
+            broker.Publish<int>((int)AudioClipName.MusicEffect, locationCheck.FadeDuration, true, true, (int)locationCheck.CurrentLocation);
         }
 
         if (collision.gameObject.CompareTag("Revealable"))
@@ -439,6 +436,12 @@ public class PlayerController2D : MonoBehaviour
         {
             IRevealable reveal = collision.gameObject.GetComponent<IRevealable>();
             reveal.Conceal();
+        }
+
+        if (collision.gameObject.CompareTag("Location"))
+        {
+            LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
+            broker.Publish<int>((int)AudioClipName.MusicEffect, locationCheck.FadeDuration, true);
         }
 
         if (collision.gameObject.CompareTag("Enemy"))

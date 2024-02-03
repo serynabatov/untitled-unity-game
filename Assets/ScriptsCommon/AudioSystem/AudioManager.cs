@@ -325,7 +325,7 @@ public class AudioManager : MonoBehaviour
     {
         float volume = 0f;
         float timer = 0f;
-        while (volume < 1f)
+        while (volume <= 1f)
         {
             volume = timer / fadeDuration;
             timer += Time.deltaTime;
@@ -345,10 +345,10 @@ public class AudioManager : MonoBehaviour
         float timer = 0f;
         while (volume > 0f)
         {
-            volume = fadeDuration - timer / fadeDuration;
+            volume *= (fadeDuration - timer / fadeDuration);
             timer += Time.deltaTime;
             audio.audioSource.volume = volume;
-            if (volume < 0f)
+            if (volume < 0.05f)
             {
                 audio.audioSource.volume = 0f;
                 audio.audioSource.Stop();

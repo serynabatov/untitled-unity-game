@@ -24,7 +24,6 @@ public class RevealForeground : MonoBehaviour, IRevealable
         float alpha = 1f;
         while (alpha >= 0)
         {
-            print(alpha);
             color.a = alpha;
             sprite.color = color;
             alpha -= 0.05f;
