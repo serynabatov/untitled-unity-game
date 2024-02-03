@@ -113,6 +113,7 @@ public class Boulder : MonoBehaviour
 
     private void BoulderEnd()
     {
+        Destroy(_boulderShadow);
         Destroy(gameObject);
     }
 }

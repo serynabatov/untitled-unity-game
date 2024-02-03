@@ -15,6 +15,8 @@ public class CameraBehavior : MonoBehaviour
 
     private void Start()
     {
+        Boulder.OnBoulderEnd += UnsubscribeFromEvent;
+
         PlayerController2D.OnTrapActivated += SetCameraNoise;
         PlayerController2D.OnDamaged += SetCameraNoise;
         PlayerController2D.OnBoulderCollision += StopCameraNoise;
@@ -42,5 +44,14 @@ public class CameraBehavior : MonoBehaviour
         CinemachineBasicMultiChannelPerlin basicMultiChannelPerlin = _camera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         basicMultiChannelPerlin.m_AmplitudeGain = 0.0f;
         basicMultiChannelPerlin.m_FrequencyGain = 0.0f;
+    }
+
+    private void UnsubscribeFromEvent()
+    {
+        PlayerController2D.OnTrapActivated -= SetCameraNoise;
+        PlayerController2D.OnDamaged -= SetCameraNoise;
+        PlayerController2D.OnBoulderCollision -= StopCameraNoise;
+        PlayerController2D.OnRespawn -= StopCameraNoise;
+        Boulder.OnBoulderEnd -= StopCameraNoise;
     }
 }
