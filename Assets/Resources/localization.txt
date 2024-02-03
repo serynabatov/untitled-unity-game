@@ -28,5 +28,6 @@ option_Control_7;Attack;Атака
 option_Control_8;Dodge;Уклонение
 option_Control_9;Reset All;Сброс
 location_Name_1;The Forest of Lemas;Лес Димасовов
-location_Name_2;The Cave of Mehrojivich;Пещера Мехроджовичей
+location_Name_2;The Grotto of Dawn;Грот Восхода
+location_Name_3;The Cave of Mehrojivich;Пещера Мехроджовичей
 help_Text_In_Water_Puzzle;Dimas Mega Progger();Нужно от старта добраться до финиша, построив путь для воды. Вода может двигается только в одном направлении. Для того чтобы сменить направление движения нужно пройти через угловые блоки. А для того чтобы пройти через кристаллы тьмы или света, необходимо изменять полярность воды.
