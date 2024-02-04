@@ -4,13 +4,18 @@ using UnityEngine;
 using Cinemachine;
 
 public class CameraBehavior : MonoBehaviour
-{
-    private CinemachineVirtualCamera _camera;
+{   
+    private Camera _camera;
+
+    private CinemachineVirtualCamera _cameraVirtual;
+
+    private Quaternion _rotationStarting;
 
     // Start is called before the first frame update
     void Awake()
     {
-        _camera = GetComponent<CinemachineVirtualCamera>();
+        _camera = GetComponentInParent<Camera>();
+        _cameraVirtual = GetComponent<CinemachineVirtualCamera>();
     }
 
     private void Start()
@@ -35,13 +40,13 @@ public class CameraBehavior : MonoBehaviour
 
     private void SetCameraNoise()
     {
-        CinemachineBasicMultiChannelPerlin basicMultiChannelPerlin = _camera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        basicMultiChannelPerlin.m_AmplitudeGain = 1.0f;
+        CinemachineBasicMultiChannelPerlin basicMultiChannelPerlin = _cameraVirtual.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        basicMultiChannelPerlin.m_AmplitudeGain = 2.0f;
         basicMultiChannelPerlin.m_FrequencyGain = 2.0f;
     }
 
     private void StopCameraNoise() {
-        CinemachineBasicMultiChannelPerlin basicMultiChannelPerlin = _camera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        CinemachineBasicMultiChannelPerlin basicMultiChannelPerlin = _cameraVirtual.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         basicMultiChannelPerlin.m_AmplitudeGain = 0.0f;
         basicMultiChannelPerlin.m_FrequencyGain = 0.0f;
     }

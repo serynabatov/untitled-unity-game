@@ -14,7 +14,7 @@ public class BackgroundMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Cameras");
+        player = GameObject.Find("PrototypeHero");
         startPoint = -player.transform.position.x;
     }
 
