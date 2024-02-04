@@ -12,6 +12,8 @@ public class Boulder : MonoBehaviour
 
     private Vector2 _startingPosition;
 
+    private Quaternion _startingRotation;
+
     private Rigidbody2D rb;
 
     private SpriteRenderer _spriteRenderer;
@@ -20,6 +22,8 @@ public class Boulder : MonoBehaviour
 
     [SerializeField]
     private GameObject _boulderShadow;
+    [SerializeField]
+    private GameObject _boulderEffect;
 
     private SpriteRenderer _shadowSprite;
 
@@ -29,9 +33,11 @@ public class Boulder : MonoBehaviour
     {
         _startingPosition = transform.position;
 
+        _startingRotation = _boulderShadow.transform.rotation;
+
         rb = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         _circleCollider = GetComponent<CircleCollider2D>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         _shadowSprite = _boulderShadow.GetComponent<SpriteRenderer>();
 
@@ -59,7 +65,7 @@ public class Boulder : MonoBehaviour
 
     private void LateUpdate()
     {
-        ShadowFollow();
+        ShadowRotationBlock();
     }
 
     private void TrapActivation()
@@ -106,14 +112,23 @@ public class Boulder : MonoBehaviour
         _broker.Publish<int>((int)AudioClipName.BoulderMove, 0, true);
     }
 
-    private void ShadowFollow()
+    private void ShadowRotationBlock()
     {
-        _boulderShadow.transform.position = transform.position;
+        _boulderShadow.transform.rotation = _startingRotation;
     }
 
     private void BoulderEnd()
     {
-        Destroy(_boulderShadow);
+        _boulderEffect.SetActive(true);
+        StartCoroutine(BoulderShrink());
+    }
+
+    private IEnumerator BoulderShrink()
+    {
+        while (transform.localScale.x > 0) {
+            transform.localScale = transform.localScale - new Vector3(Time.deltaTime, Time.deltaTime);
+            yield return new WaitForFixedUpdate();
+        }
         Destroy(gameObject);
     }
 }
