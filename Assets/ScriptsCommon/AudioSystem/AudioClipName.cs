@@ -20,6 +20,7 @@ public enum AudioClipName
     IceBox = 10,
     FireBox = 11,
     CrateMovement = 12,
-    LowerMusic = 13,
+    SpikeHurtSound = 13,
+    MushroomHurtSound = 14,
     BoulderMove = 20
 }

@@ -104,11 +104,13 @@ public class Boulder : MonoBehaviour
 
     private void StartBoulderSound()
     {
+        _broker.Publish<int>((int)AudioClipName.MusicEffect, 0, true);
         _broker.Publish<int>((int)AudioClipName.BoulderMove);
     }
 
     private void StopBoulderSound()
     {
+        _broker.Publish<int>((int)AudioClipName.MusicEffect);
         _broker.Publish<int>((int)AudioClipName.BoulderMove, 0, true);
     }
 

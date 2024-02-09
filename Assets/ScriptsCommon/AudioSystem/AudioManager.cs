@@ -77,12 +77,16 @@ public class AudioManager : MonoBehaviour
         return sound;
     }
 
-    public void Play(int audioClipName, int fadeDuration = 0, bool randomize = false, int clip = 0)
+    public void Play(int audioClipName, int fadeDuration = 0, bool isSpecific = false, int clip = 0)
     {
         BasicSound s = GetSound((AudioClipName)audioClipName);
         if (s != null)
         {
-            if (!randomize)
+            if (!isSpecific)
+            {
+                Play(audioClipName, fadeDuration);
+            }
+            else
             {
                 if (clip > 0)
                 {
@@ -94,11 +98,6 @@ public class AudioManager : MonoBehaviour
                 {
                     StartCoroutine(MusicFadeIn(s, fadeDuration));
                 }
-
-            }
-            else
-            {
-                Play(audioClipName, fadeDuration);
             }
         }
     }
@@ -194,7 +193,6 @@ public class AudioManager : MonoBehaviour
         if (s != null)
         {
             s.audioSource.Stop();
-
         }
     }
 

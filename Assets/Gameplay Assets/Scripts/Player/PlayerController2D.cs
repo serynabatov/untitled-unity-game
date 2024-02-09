@@ -391,6 +391,12 @@ public class PlayerController2D : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Enemy"))
+        {
+            HazardBehavior hazard = collision.GetComponent<HazardBehavior>();
+            hazard.PlayHazardSound();
+        }
+
         if (collision.gameObject.CompareTag("Trap"))
         {
             OnTrapActivated?.Invoke();
@@ -414,12 +420,16 @@ public class PlayerController2D : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+
         if (collision.CompareTag("Enemy"))
         {
             if (timer > 0)
             {
                 if (timer == startTimerValue)
+                {
                     TakeDamage();
+                }
+
                 timer -= Time.deltaTime;
             }
             else

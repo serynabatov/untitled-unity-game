@@ -1336,7 +1336,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7773654, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -16382,7 +16382,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7773654, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -16596,7 +16596,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7773654, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -18815,7 +18815,7 @@ MonoBehaviour:
   - audioSource: {fileID: 0}
     audioClipName: 12
     audioClip:
-    - {fileID: 8300000, guid: 5c04d98493f454544933a11a7c9fa85c, type: 3}
+    - {fileID: 8300000, guid: 48efba4df5596d44ca4c9d51e0b48e72, type: 3}
     isLoop: 1
     playOnAwake: 0
     AudioRolloffMode: 0
