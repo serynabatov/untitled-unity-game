@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Yunlin_Spark_Staff2
+  m_Name: Spark
   m_Shader: {fileID: 4800000, guid: 8caf6b9b7d0ec1942ac0f0382b2e5390, type: 3}
   m_ValidKeywords:
   - _MIN_BLENDING
