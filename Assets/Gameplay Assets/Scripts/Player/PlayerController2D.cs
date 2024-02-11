@@ -144,6 +144,7 @@ public class PlayerController2D : MonoBehaviour
     }
     private void CheckGround()
     {
+
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
         animator.SetBool("Grounded", isGrounded);
         animator.SetFloat("VelocityY", rb.velocity.y);
@@ -155,6 +156,12 @@ public class PlayerController2D : MonoBehaviour
         if (isGrounded && !isJumping && slopeDownAngle <= maxSlopeAngle)
         {
             canJump = true;
+            return;
+        }
+
+        if (!isGrounded)
+        {
+            canJump = false;
         }
     }
 

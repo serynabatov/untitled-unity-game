@@ -3,8 +3,12 @@ using UnityEngine.SceneManagement;
 using Ink.Runtime;
 using Ink.Parsed;
 
+
 public class GameManager : MonoBehaviour
 {
+    public const string WaterLevelStatus = "Water level status";
+    public const string LastWaterSceneStatus = "mainVarBossFinished";
+
     public GameObject clearButton;
     public GameObject gameOverNote;
     public GameObject restartButton;
@@ -12,9 +16,11 @@ public class GameManager : MonoBehaviour
     public GameObject startButton;
     public GameObject clearText;
     public GameObject flow;
+
     [Header("Load Globals JSON")]
     [SerializeField] private TextAsset loadGlobalsJSON;
     private DialogueVariables dialogueVariables;
+
     public bool gameRunning;
     public bool gameOver;
     public bool gameClear;
@@ -72,6 +78,10 @@ public class GameManager : MonoBehaviour
                 //WaterPuzzleSolved();
                 SceneSystem.GetInstance().LoadThisLevel("Gameplay");
                 break;
+            case "ExampleRiddle":
+                LastLevelSolved();
+                SceneSystem.GetInstance().LoadThisLevel("Gameplay");
+                break;
             default:
                 Debug.LogWarning("Something gone wrong with water riddle scene names " + SceneManager.GetActiveScene().name);
                 break;
@@ -80,18 +90,29 @@ public class GameManager : MonoBehaviour
 
     private void WaterPuzzleSolved()
     {
-        PlayerPrefs.SetInt("Water level status", 1);
+        PlayerPrefs.SetInt(WaterLevelStatus, 1);
 
         if (dialogueVariables.variables.ContainsKey("mainVarWaterFinished"))
         {
-            dialogueVariables.variables["mainVarWaterFinished"] = Ink.Runtime.BoolValue.Create(true);
+            dialogueVariables.variables["mainVarWaterFinished"] = Value.Create(true);
             dialogueVariables.SaveVariables();
             //dialogueVariables.variables.Add("mainVarWaterFinished", true);
         }
-        if (PlayerPrefs.GetInt("Water level status") == PlayerPrefs.GetInt("Crate level status"))
+        if (PlayerPrefs.GetInt(WaterLevelStatus) == PlayerPrefs.GetInt("Crate level status"))
         {
-            dialogueVariables.variables["cantalktoBoss"] = Ink.Runtime.BoolValue.Create(true);
+            dialogueVariables.variables["cantalktoBoss"] = Value.Create(true);
             dialogueVariables.SaveVariables();
         }
+    }
+
+    private void LastLevelSolved()
+    {
+        PlayerPrefs.SetInt(LastWaterSceneStatus, 1);
+
+        if (dialogueVariables.variables.ContainsKey("mainVarBossFinished"))
+        {
+            dialogueVariables.variables["mainVarBossFinished"] = Value.Create(true);
+            dialogueVariables.SaveVariables();
+        }      
     }
 }
