@@ -50,7 +50,7 @@ Material:
     - _Use: 0
     - _Use_BlendAdd: 0
     - _Use_Smoothstep: 0
-    - _VSpeed1: -0.5
+    - _VSpeed1: -0.2
     - _VSpeed2: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

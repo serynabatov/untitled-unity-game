@@ -47,7 +47,7 @@ Material:
     - _Min: 0
     - _Mult: 1
     - _Speed: 1
-    - _USpeed1: -0.1
+    - _USpeed1: -0.4
     - _USpeed2: 0
     - _Use: 0
     - _Use_BlendAdd: 0
