@@ -413,6 +413,13 @@ public class PlayerController2D : MonoBehaviour
         {
             LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
             locationCheck.ChangeLocationName();
+
+            if (locationCheck.SpriteRenderer != null)
+            {
+                SpriteRenderer locationConceal = locationCheck.SpriteRenderer;
+                locationConceal.enabled = false;
+            }
+
             broker.Publish<int>((int)AudioClipName.MusicEffect, locationCheck.FadeDuration, true, true, (int)locationCheck.CurrentLocation);
         }
 
@@ -459,6 +466,11 @@ public class PlayerController2D : MonoBehaviour
         {
             LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
             broker.Publish<int>((int)AudioClipName.MusicEffect, locationCheck.FadeDuration, true);
+            if (locationCheck.SpriteRenderer != null) 
+            {
+                SpriteRenderer locationConceal = locationCheck.SpriteRenderer;
+                locationConceal.enabled = true;
+            }
         }
 
         if (collision.gameObject.CompareTag("Enemy"))

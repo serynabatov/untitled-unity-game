@@ -17,6 +17,11 @@ public class LocationCheck : MonoBehaviour
     public Locations CurrentLocation { get { return _currentLocation; } }
 
     [SerializeField]
+    private SpriteRenderer _spriteRenderer;
+
+    public SpriteRenderer SpriteRenderer { get { return _spriteRenderer; } }
+
+    [SerializeField]
     private int _fadeDuration;
 
     public int FadeDuration { get { return _fadeDuration; } }
