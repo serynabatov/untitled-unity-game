@@ -167,7 +167,7 @@ public class PlayerController2D : MonoBehaviour
 
     private void SlopeCheck()
     {
-        Vector2 checkPos = transform.position - (Vector3)(new Vector2(0.0f, capsuleColliderSize.y / 2));
+        Vector2 checkPos = groundCheck.position;
 
         SlopeCheckHorizontal(checkPos);
         SlopeCheckVertical(checkPos);
@@ -466,7 +466,7 @@ public class PlayerController2D : MonoBehaviour
         {
             LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
             broker.Publish<int>((int)AudioClipName.MusicEffect, locationCheck.FadeDuration, true);
-            if (locationCheck.SpriteRenderer != null) 
+            if (locationCheck.SpriteRenderer != null)
             {
                 SpriteRenderer locationConceal = locationCheck.SpriteRenderer;
                 locationConceal.enabled = true;
