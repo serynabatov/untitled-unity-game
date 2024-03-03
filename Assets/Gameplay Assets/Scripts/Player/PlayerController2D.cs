@@ -466,6 +466,7 @@ public class PlayerController2D : MonoBehaviour
         {
             LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
             broker.Publish<int>((int)AudioClipName.MusicEffect, locationCheck.FadeDuration, true);
+
             if (locationCheck.SpriteRenderer != null)
             {
                 SpriteRenderer locationConceal = locationCheck.SpriteRenderer;
