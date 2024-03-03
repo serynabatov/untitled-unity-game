@@ -5,8 +5,6 @@ public class PipeController : MonoBehaviour
 {
     private Animator animator;
 
-    private AudioSource sound;
-
     private GameManager gameManager;
 
     private Collider2D collide;
@@ -33,7 +31,6 @@ public class PipeController : MonoBehaviour
         collide = gameObject.GetComponent<CircleCollider2D>();
         gameManager = GameObject.Find("GameManagers").GetComponent<GameManager>();
         animator = gameObject.GetComponent<Animator>();
-        sound = gameObject.GetComponent<AudioSource>();
 
         broker = MessageBrokerImpl.Instance;
 
