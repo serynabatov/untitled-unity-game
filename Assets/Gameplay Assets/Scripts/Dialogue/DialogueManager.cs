@@ -57,6 +57,7 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
         }
         instance = this;
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
+        PlayerPrefs.SetInt("Water level status", 1);
     }
 
     public static DialogueManager GetInstance()
