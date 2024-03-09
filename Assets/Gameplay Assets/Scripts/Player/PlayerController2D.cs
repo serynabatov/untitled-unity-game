@@ -63,7 +63,6 @@ public class PlayerController2D : MonoBehaviour
 
     private Vector2 newVelocity;
     private Vector2 newForce;
-    private Vector2 capsuleColliderSize;
 
     private Vector2 slopeNormalPerp;
     [SerializeField] private Vector2 savedPosition;
@@ -90,8 +89,6 @@ public class PlayerController2D : MonoBehaviour
         cc = GetComponent<CapsuleCollider2D>();
         playerSprite = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
-
-        capsuleColliderSize = cc.size;
 
         Input += CheckInput;
         Move += ApplyMovement;
@@ -465,6 +462,7 @@ public class PlayerController2D : MonoBehaviour
         if (collision.gameObject.CompareTag("Location"))
         {
             LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
+
             broker.Publish<int>((int)AudioClipName.MusicEffect, locationCheck.FadeDuration, true);
 
             if (locationCheck.SpriteRenderer != null)

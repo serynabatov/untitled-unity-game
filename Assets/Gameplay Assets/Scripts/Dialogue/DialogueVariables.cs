@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class DialogueVariables
 
     private Story globalVariablesStory;
     private const string saveVariablesKey = "INK_VARIABLES";
+
 
     public DialogueVariables(TextAsset loadGlobalsJSON)
     {
@@ -74,6 +76,7 @@ public class DialogueVariables
             story.variablesState.SetGlobal(variable.Key, variable.Value);
         }
     }
+
 
     public void LoadData(PlayerData data)
     {
