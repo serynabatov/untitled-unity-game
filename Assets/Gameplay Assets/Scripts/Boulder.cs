@@ -65,6 +65,7 @@ public class Boulder : MonoBehaviour
 
     private void LateUpdate()
     {
+        rb.AddForce(Vector2.right, ForceMode2D.Force);
         ShadowRotationBlock();
     }
 
@@ -104,13 +105,13 @@ public class Boulder : MonoBehaviour
 
     private void StartBoulderSound()
     {
-        _broker.Publish<int>((int)AudioClipName.MusicEffect, 0, true);
+        _broker.Publish<int>((int)AudioClipName.MusicEffect, 0, false, true, 3);
         _broker.Publish<int>((int)AudioClipName.BoulderMove);
     }
 
     private void StopBoulderSound()
     {
-        _broker.Publish<int>((int)AudioClipName.MusicEffect);
+        _broker.Publish<int>((int)AudioClipName.MusicEffect, 0, false, true, 2);
         _broker.Publish<int>((int)AudioClipName.BoulderMove, 0, true);
     }
 

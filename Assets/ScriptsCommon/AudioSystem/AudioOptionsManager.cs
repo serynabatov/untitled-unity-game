@@ -67,7 +67,7 @@ public class AudioOptionsManager : MonoBehaviour
         PlayerPrefs.DeleteKey(Constants.preferenceSoundEffectsVolume);
         OnEffectSliderValueChanged(1f);
 
-        AudioManager.Instance.ResetSliders();
+       // AudioManager.Instance.ResetSliders();
     }
 
 }

@@ -42,12 +42,12 @@ public class PlayerController2D : MonoBehaviour
     private SpriteRenderer playerSprite;
     private Animator animator;
 
+    [SerializeField] private float startTimerValue;
     private float xInput;
     private float slopeDownAngle;
     private float slopeSideAngle;
     private float lastSlopeAngle;
     private float timer;
-    [SerializeField] private float startTimerValue;
 
     private int facingDirection = 1;
 

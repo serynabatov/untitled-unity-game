@@ -213,6 +213,15 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.SetFloat(preferenceAudioMute, AudioListener.volume);
     }
 
+    /// <summary>
+    /// Updates the mixer volume.
+    /// </summary>
+    public void UpdateMixerVolume()
+    {
+        soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log10(AudioOptionsManager.soundsEffectVolume) * 20);
+        musicMixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(AudioOptionsManager.musicVolume) * 20);
+    }
+
 
     /// <summary>
     /// Plays the specified sound.
@@ -322,7 +331,6 @@ public class AudioManager : MonoBehaviour
             if (volume > 1f)
             {
                 audio.audioSource.volume = 1f;
-                StopCoroutine(MusicFadeIn(audio, fadeDuration));
             }
             yield return null;
         }
@@ -347,7 +355,6 @@ public class AudioManager : MonoBehaviour
                     audio.audioSource.Play();
                     StartCoroutine(MusicFadeIn(audio, fadeDuration));
                 }
-                StopCoroutine(MusicFadeOut(audio, fadeDuration));
             }
             yield return null;
         }

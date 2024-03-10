@@ -32,7 +32,6 @@ public class FlowerTrigger : MonoBehaviour
     {
         if (_isInRange&&_inputManager.GetInteractPressed())
         {
-            OnFlowerChange?.Invoke();
             SetFog();
             StartCoroutine(SetDelay(_delay));
         }
@@ -59,10 +58,6 @@ public class FlowerTrigger : MonoBehaviour
         _fogPrefab.SetActive(true);
     }
 
-    private void RemoveFog()
-    {
-        _fogPrefab.SetActive(false);
-    }
 
     private void ChangeSprite()
     {
@@ -73,7 +68,7 @@ public class FlowerTrigger : MonoBehaviour
     private IEnumerator SetDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
+        OnFlowerChange?.Invoke();
         ChangeSprite();
-        RemoveFog();
     }
 }
