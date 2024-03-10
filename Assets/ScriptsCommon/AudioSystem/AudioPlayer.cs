@@ -14,6 +14,11 @@ public class AudioPlayer : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
+    public void ChangeSoundClip(int  clipIndex)
+    {
+        _audioSource.clip = _clipList[clipIndex];
+    }
+
     public void PlaySound()
     {
         if (_audioSource != null)

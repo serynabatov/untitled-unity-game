@@ -4732,26 +4732,6 @@ PrefabInstance:
       propertyPath: soundEffectSlider
       value: 
       objectReference: {fileID: 1971775357359061862}
-    - target: {fileID: 9192788150485554852, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.data[1].mixerGroup
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9192788150485554852, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.data[1].playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9192788150485554852, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.data[1].audioClipName
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9192788150485554852, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.data[1].audioClip.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 473cc60c8dd60554089fa5f7e6459ccd, type: 3}
     - target: {fileID: 9192788152005796579, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
         type: 3}
       propertyPath: musicSliderText
@@ -4817,11 +4797,6 @@ PrefabInstance:
       propertyPath: restartButton
       value: 
       objectReference: {fileID: 2127035465}
-    - target: {fileID: 9192788152191383499, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: loadGlobalsJSON
-      value: 
-      objectReference: {fileID: 4900000, guid: 055a091f301938645aafc575cb00f68a, type: 3}
     - target: {fileID: 9192788152191383503, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
         type: 3}
       propertyPath: m_RootOrder
@@ -4942,39 +4917,8 @@ PrefabInstance:
       propertyPath: "\u0441onfirmationWindow"
       value: 
       objectReference: {fileID: 1971775357359061853}
-    - target: {fileID: 9192788152397615184, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: content
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9192788152397615184, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9192788152397615184, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: loadGameMenu
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9192788152397615184, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: pauseBackground
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9192788152397615184, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: "\u0441onfirmationLoadWindow"
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a31b7cd5a9adde44851e8e0dcd04df6, type: 3}
---- !u!4 &2533497500874371494 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9192788152191383503, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-    type: 3}
-  m_PrefabInstance: {fileID: 2533497500874371493}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2533497500874371495 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9192788150485554852, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
@@ -4987,85 +4931,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 398c4a8cb238fbf4fa15e567979c9ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &3182230025144842163
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2533497500874371494}
-    m_Modifications:
-    - target: {fileID: 3182230025575584572, guid: 0b2042b45b48dad469d0affa4854edc8,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182230025575584572, guid: 0b2042b45b48dad469d0affa4854edc8,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182230025575584572, guid: 0b2042b45b48dad469d0affa4854edc8,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182230025575584572, guid: 0b2042b45b48dad469d0affa4854edc8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182230025575584572, guid: 0b2042b45b48dad469d0affa4854edc8,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182230025575584572, guid: 0b2042b45b48dad469d0affa4854edc8,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182230025575584572, guid: 0b2042b45b48dad469d0affa4854edc8,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182230025575584572, guid: 0b2042b45b48dad469d0affa4854edc8,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182230025575584572, guid: 0b2042b45b48dad469d0affa4854edc8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182230025575584572, guid: 0b2042b45b48dad469d0affa4854edc8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182230025575584572, guid: 0b2042b45b48dad469d0affa4854edc8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182230025575584573, guid: 0b2042b45b48dad469d0affa4854edc8,
-        type: 3}
-      propertyPath: m_Name
-      value: SceneSystem
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182230025575584573, guid: 0b2042b45b48dad469d0affa4854edc8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182230026254438812, guid: 0b2042b45b48dad469d0affa4854edc8,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0b2042b45b48dad469d0affa4854edc8, type: 3}
 --- !u!1001 &3374452991831746992
 PrefabInstance:
   m_ObjectHideFlags: 0

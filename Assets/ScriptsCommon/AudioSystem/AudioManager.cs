@@ -213,15 +213,6 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.SetFloat(preferenceAudioMute, AudioListener.volume);
     }
 
-    /// <summary>
-    /// Updates the mixer volume.
-    /// </summary>
-    public void UpdateMixerVolume()
-    {
-        soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log10(AudioOptionsManager.soundsEffectVolume) * 20);
-        musicMixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(AudioOptionsManager.musicVolume) * 20);
-    }
-
 
     /// <summary>
     /// Plays the specified sound.

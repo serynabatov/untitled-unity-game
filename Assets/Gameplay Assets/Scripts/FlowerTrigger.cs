@@ -10,7 +10,13 @@ public class FlowerTrigger : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
 
     [SerializeField]
+    private GameObject _fogPrefab;
+
+    [SerializeField]
     private Sprite _sprite;
+
+    [SerializeField]
+    private float _delay;
 
     private bool _isInRange;
 
@@ -27,7 +33,8 @@ public class FlowerTrigger : MonoBehaviour
         if (_isInRange&&_inputManager.GetInteractPressed())
         {
             OnFlowerChange?.Invoke();
-            ChangeSprite();
+            SetFog();
+            StartCoroutine(SetDelay(_delay));
         }
     }
 
@@ -47,9 +54,26 @@ public class FlowerTrigger : MonoBehaviour
         }
     }
 
+    private void SetFog()
+    {
+        _fogPrefab.SetActive(true);
+    }
+
+    private void RemoveFog()
+    {
+        _fogPrefab.SetActive(false);
+    }
+
     private void ChangeSprite()
     {
         _spriteRenderer.sprite = _sprite;
         Destroy(this);
+    }
+
+    private IEnumerator SetDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ChangeSprite();
+        RemoveFog();
     }
 }

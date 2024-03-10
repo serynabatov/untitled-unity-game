@@ -1,11 +1,18 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.Audio;
 
 public class AudioOptionsManager : MonoBehaviour
 {
 
     public static float musicVolume { get; private set; }
     public static float soundsEffectVolume { get; private set; }
+
+    [SerializeField]
+    private AudioMixerGroup musicMixerGroup;
+
+    [SerializeField]
+    private AudioMixerGroup soundEffectMixerGroup;
 
     [SerializeField]
     private TextMeshProUGUI musicSliderText;
@@ -36,7 +43,7 @@ public class AudioOptionsManager : MonoBehaviour
         musicSliderText.text = castedValue;
         PlayerPrefs.SetString(Constants.preferenceAudioVolumeText, castedValue);
 
-        AudioManager.Instance.UpdateMixerVolume();
+        musicMixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(musicVolume) * 20);
     }
 
     public void OnEffectSliderValueChanged(float value)
@@ -49,7 +56,7 @@ public class AudioOptionsManager : MonoBehaviour
         soundEffectSliderText.text = castedValue;
         PlayerPrefs.SetString(Constants.preferenceSoundEffectsVolumeText, castedValue);
 
-        AudioManager.Instance.UpdateMixerVolume();
+        soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log10(soundsEffectVolume) * 20);
     }
 
     public void ResetOptions()
