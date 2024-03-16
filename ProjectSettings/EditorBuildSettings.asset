@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Riddle 3.unity
     guid: 22c78ecd69121584fadf615078640082
+  - enabled: 1
+    path: Assets/Scenes/ExampleRiddle.unity
+    guid: c1b9cb74d5ce55545a2ce85d7fb8ad35
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: fdb54268a8874de479b0e02f6b08eed7,
       type: 2}
