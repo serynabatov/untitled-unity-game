@@ -12,9 +12,9 @@ INCLUDE globals.ink
 Принц, обещаешь ли ты что удержишься от соблазна и спасёшь принцессу, а не присвоишь цветок себе?
 +[Да, обещаю]
 ->END
-+[Нет, не обещаю] #start:ExampleRiddle #exit:0
++[Нет, не обещаю] #start:ExampleRiddle
 ->END
-+[Не могу сказать] #start:ExampleRiddle #exit:0
++[Не могу сказать] #start:ExampleRiddle
 ->END
 
 = exit 
