@@ -10,6 +10,10 @@ public class Boulder : MonoBehaviour
     [SerializeField]
     private float pushForce;
 
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float acceleration;
+
     private Vector2 _startingPosition;
 
     private Quaternion _startingRotation;
@@ -65,7 +69,7 @@ public class Boulder : MonoBehaviour
 
     private void LateUpdate()
     {
-        rb.AddForce(Vector2.right, ForceMode2D.Force);
+        rb.AddForce(Vector2.right * acceleration, ForceMode2D.Force);
         ShadowRotationBlock();
     }
 
