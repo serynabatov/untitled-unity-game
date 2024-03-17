@@ -15,9 +15,9 @@ INCLUDE globals.ink
 Принц, я вижу вы ещё не прошли испытание. Вам напомнить о его деталях ? #layout:left #speaker:Лемас #portrait:Violet Mage
 +[Нужна подсказка]
 ->purpose
-+[Нет, до свидания] #exit:0
++[Нет, до свидания]
 ->END
-+[ПРОЙТИ ИСПЫТАНИЕ] #start:Crate Puzzle #exit:0
++[ПРОЙТИ ИСПЫТАНИЕ] #start:Crate Puzzle
 ->END 
 
 = exit
@@ -26,5 +26,5 @@ INCLUDE globals.ink
 ->END
 
 = finishedPuzzle
-Поздравляю вас принц вы прошли испытание внимательности. ##speaker:Лемас #portrait:Violet Mage
-+[ПРОЙТИ ИСПЫТАНИЕ]->END #start:Crate Puzzle #exit:0
+Поздравляю вас принц вы прошли испытание внимательности. #speaker:Лемас #portrait:Violet Mage
+->END
