@@ -39,6 +39,8 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        concurrentSounds.ClearDictionary();
+
         Instance = this;
 
         if (PlayerPrefs.HasKey(preferenceAudioMute))
@@ -58,6 +60,11 @@ public class AudioManager : MonoBehaviour
             soundEffectSlider.value = PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume);
         }
         AddMusicToManage(sounds);
+    }
+
+    private void Start()
+    {
+        UpdateMixerVolume();
     }
 
     public void ResetSliders()
@@ -218,8 +225,8 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     public void UpdateMixerVolume()
     {
-        soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log10(AudioOptionsManager.soundsEffectVolume) * 20);
-        musicMixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(AudioOptionsManager.musicVolume) * 20);
+        soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log10(soundEffectSlider.value) * 20);
+        musicMixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(musicVolumeSlider.value) * 20);
     }
 
 

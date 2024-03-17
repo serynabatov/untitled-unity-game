@@ -13,6 +13,9 @@ public class FlowerTrigger : MonoBehaviour
     private GameObject _fogPrefab;
 
     [SerializeField]
+    private GameObject _trigger;
+
+    [SerializeField]
     private Sprite _sprite;
 
     [SerializeField]
@@ -41,6 +44,7 @@ public class FlowerTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            _trigger.SetActive(true);
             _isInRange = true;
         }
     }
@@ -49,6 +53,7 @@ public class FlowerTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            _trigger.SetActive(false);
             _isInRange = false;
         }
     }

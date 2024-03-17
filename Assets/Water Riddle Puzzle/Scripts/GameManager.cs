@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
     public bool gameOver;
     public bool gameClear;
 
-
     private void Awake()
     {
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);

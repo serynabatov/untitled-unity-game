@@ -11,7 +11,7 @@ public class PipeController : MonoBehaviour
 
     private Camera cam;
 
-    private AudioPlayer _audioPlayer;
+    private MessageBrokerImpl _broker = MessageBrokerImpl.Instance;
 
     public int AngleState;
     public int PipeState;
@@ -30,7 +30,6 @@ public class PipeController : MonoBehaviour
         cam = Camera.main;
         collide = gameObject.GetComponent<CircleCollider2D>();
         gameManager = GameObject.Find("GameManagers").GetComponent<GameManager>();
-        _audioPlayer = GameObject.Find("AudioPlayer").GetComponent<AudioPlayer>();
         animator = gameObject.GetComponent<Animator>();
 
         if (gameObject.CompareTag("Turn"))
@@ -47,7 +46,7 @@ public class PipeController : MonoBehaviour
             Vector3 mousePosition = mouse.position.ReadValue();
             if (collide.OverlapPoint(cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 1))))
             {
-                _audioPlayer.PlaySound();
+                _broker.Publish<int>((int)AudioClipName.WaterLevelSounds, 0, false, true, 0);
                 if (!gameManager.gameRunning)
                 {
                     if (gameObject.CompareTag("Turn"))

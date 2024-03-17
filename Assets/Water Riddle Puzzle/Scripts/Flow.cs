@@ -3,6 +3,7 @@
 public class Flow : MonoBehaviour
 {
     public enum States { Clear, Dark, Light };
+
     private PipeController pipe;
     private GameManager gameManager;
 
@@ -14,6 +15,8 @@ public class Flow : MonoBehaviour
 
     [SerializeField]
     private float speed;
+
+    private MessageBrokerImpl _broker = MessageBrokerImpl.Instance;
 
     // Start is called before the first frame update
     void Start()
@@ -59,22 +62,27 @@ public class Flow : MonoBehaviour
 
         if (collision.CompareTag("Dark"))
         {
+            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 1);
             currentState = States.Dark;
         }
         if (collision.CompareTag("Dark Block") && (currentState != States.Dark))
         {
+            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
             gameManager.gameOver = true;
         }
         if (collision.CompareTag("Light"))
         {
+            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 1);
             currentState = States.Light;
         }
         if (collision.CompareTag("Light Block") && (currentState != States.Light))
         {
+            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
             gameManager.gameOver = true;
         }
         if (collision.CompareTag("Edge"))
         {
+            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
             gameManager.gameOver = true;
         }
         if (collision.CompareTag("Turn"))
@@ -87,6 +95,7 @@ public class Flow : MonoBehaviour
         }
         if (collision.CompareTag("Goal"))
         {
+            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 2);
             gameManager.gameClear = true;
         }
     }
@@ -119,6 +128,7 @@ public class Flow : MonoBehaviour
                             direction = 3;
                             break;
                         default:
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
                             gameManager.gameOver = true;
                             break;
                     }
@@ -147,6 +157,7 @@ public class Flow : MonoBehaviour
                             direction = 3;
                             break;
                         default:
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
                             gameManager.gameOver = true;
                             break;
                     }
@@ -175,6 +186,7 @@ public class Flow : MonoBehaviour
                             direction = 0;
                             break;
                         default:
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
                             gameManager.gameOver = true;
                             break;
                     }
@@ -203,6 +215,7 @@ public class Flow : MonoBehaviour
                             direction = 2;
                             break;
                         default:
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
                             gameManager.gameOver = true;
                             break;
                     }
@@ -238,6 +251,7 @@ public class Flow : MonoBehaviour
                                 animator.Play("Light Right - Left (Start)");
                             break;
                         default:
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
                             gameManager.gameOver = true;
                             break;
                     }
@@ -264,6 +278,7 @@ public class Flow : MonoBehaviour
                                 animator.Play("Light Up - Down (Start)");
                             break;
                         default:
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
                             gameManager.gameOver = true;
                             break;
                     }

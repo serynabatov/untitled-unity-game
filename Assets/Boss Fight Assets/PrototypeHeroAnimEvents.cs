@@ -31,7 +31,6 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
     void AE_runStop()
     {
         broker.Publish<int>((int)AudioClipName.RunStop);
-        //m_audioManager.PlaySound("RunStop");
         float dustXOffset = 0.6f;
         float dustYOffset = 0.078125f;
         m_player.SpawnDustEffect(m_RunStopDust, dustXOffset, dustYOffset);
@@ -39,15 +38,12 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
 
     void AE_footstep()
     {
-        //Debug.Log("AE_footstep");
         broker.Publish<int>((int)AudioClipName.FootstepEffect);
     }
 
     void AE_Jump()
     {
         broker.Publish<int>((int)AudioClipName.Jump);
-        // m_audioManager.PlaySound("Jump");
-        //Debug.Log("AE_Jump");
         float dustYOffset = 0.078125f;
         m_player.SpawnDustEffect(m_JumpDust, 0.0f, dustYOffset);
     }
@@ -55,14 +51,11 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
     void AE_Landing()
     {
         broker.Publish<int>((int)AudioClipName.Landing);
-        //Debug.Log("AE_Landing");
-        //m_audioManager.PlaySound("Landing");
         float dustYOffset = -0.3f;
         m_player.SpawnDustEffect(m_LandingDust, 0.0f, dustYOffset);
     }
     void AE_Hurt()
     {
         broker.Publish<int>((int)AudioClipName.Hurt);
-        //m_audioManager.PlaySound("Hurt");
     }
 }

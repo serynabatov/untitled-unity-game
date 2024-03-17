@@ -28,6 +28,11 @@ public class ConcurrentDictionaryImpl
         sounds = new ConcurrentDictionary<AudioClipName, BasicSound>();
     }
 
+    public void ClearDictionary()
+    {
+        sounds.Clear();
+    }
+
     public void FillSounds(List<BasicSound> values)
     {
         if (AudioManager.Instance == null)

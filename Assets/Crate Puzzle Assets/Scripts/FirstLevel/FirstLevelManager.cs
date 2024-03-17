@@ -18,6 +18,8 @@ public class FirstLevelManager : MonoBehaviour
 
     private static FirstLevelManager instance;
 
+    private MessageBrokerImpl _broker = MessageBrokerImpl.Instance;
+
     private void Awake()
     {
         if (instance != null)
@@ -72,6 +74,7 @@ public class FirstLevelManager : MonoBehaviour
         if (triggerGO.name == "IceTrigger" && triggerStat != iceGateActiv)
         {
             triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+            _broker.Publish<int>((int)AudioClipName.IceBox);
             boxAnimator.Play(triggerStat ? "IceActive" : "IceDeactive");
             iceGateActiv = triggerStat;
             this.CheckGates(iceGateActiv, iceGate, iceTrigger);
@@ -83,6 +86,7 @@ public class FirstLevelManager : MonoBehaviour
         if (triggerGO.name == "FireTrigger" && triggerStat != fireGateActiv)
         {
             triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+            _broker.Publish<int>((int)AudioClipName.FireBox);
             boxAnimator.Play(triggerStat ? "FireActive" : "FireDeactive");
             fireGateActiv = triggerStat;
             this.CheckGates(fireGateActiv, fireGate, fireTrigger);

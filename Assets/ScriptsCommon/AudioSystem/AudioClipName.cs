@@ -22,5 +22,6 @@ public enum AudioClipName
     CrateMovement = 12,
     SpikeHurtSound = 13,
     MushroomHurtSound = 14,
+    WaterLevelSounds = 15,
     BoulderMove = 20
 }
