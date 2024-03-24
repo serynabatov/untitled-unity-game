@@ -10,8 +10,8 @@ INCLUDE globals.ink
 
 = prePurpose
 Принц, обещаешь ли ты что удержишься от соблазна и спасёшь принцессу, а не присвоишь цветок себе?
-+[Да, обещаю]
-->END
++[Да, обещаю] 
+->finishedBoss
 +[Нет, не обещаю] #start:ExampleRiddle
 ->END
 +[Не могу сказать] #start:ExampleRiddle
@@ -25,4 +25,5 @@ INCLUDE globals.ink
 Ты доказал, что тебе можно доверять, держи флягу и наполни её водой из святого источника.  #speaker:Вадос #portrait:Green Mage
 И ещё одно.
 Спасибо тебе
+~ mainVarBossFinished = true
 ->END
