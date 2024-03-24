@@ -1,3 +1,4 @@
+using Ink.Runtime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,8 +8,19 @@ public class BlockerBehavior : MonoBehaviour
 {
     public event Action OnBlockerDisable;
 
+    private DialogueVariables _variables;
+
     [SerializeField]
     private int _blockerIndex;
+
+    [SerializeField]
+    private TextAsset loadGlobalsJSON;
+
+    private void Awake()
+    {
+        _variables = new DialogueVariables(loadGlobalsJSON);
+    }
+
     void Start()
     {
         DisableBlocker(_blockerIndex);
@@ -43,7 +55,16 @@ public class BlockerBehavior : MonoBehaviour
             PlayerPrefs.SetInt("mainVarCrate", 1);
             Destroy(gameObject);
         }
-        DialogueManager.DialogueEnded -= OpenPath;
+        if (_blockerIndex == 0) 
+        {
+            if (_variables.variables["mainVarBossFinished"])
+            {
+                print(_variables.variables["mainVarBossFinished"]);
+                PlayerPrefs.SetInt(GameManager.LastWaterSceneStatus, 1);
+                OnBlockerDisable?.Invoke();
+                Destroy(gameObject);
+            }
+        }
     }
 
     private void CheckBlockerStatus(int status)

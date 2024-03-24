@@ -126,6 +126,7 @@ public class Boulder : MonoBehaviour
 
     private void BoulderEnd()
     {
+        PlayerPrefs.SetInt("BoulderStatus", 1);
         _boulderEffect.SetActive(true);
         StartCoroutine(BoulderShrink());
     }

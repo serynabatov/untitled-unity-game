@@ -7,6 +7,10 @@ public class TrapsTriggers : MonoBehaviour
     private void Start()
     {
         Boulder.OnBoulderEnd += CleanTrigger;
+        if (PlayerPrefs.GetInt("BoulderStatus") == 1)
+        {
+            CleanTrigger();
+        }
     }
 
     private void OnDestroy()
