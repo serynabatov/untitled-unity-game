@@ -95,11 +95,12 @@ public class Flow : MonoBehaviour
         }
         if (collision.CompareTag("Goal"))
         {
+            GoalCheck(collision);
             _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 2);
             gameManager.gameClear = true;
         }
     }
-    public void TurnCheck(Collider2D turn)
+    private void TurnCheck(Collider2D turn)
     {
         pipe = turn.GetComponent<PipeController>();
         animator = turn.GetComponent<Animator>();
@@ -224,7 +225,7 @@ public class Flow : MonoBehaviour
         }
     }
 
-    public void StraightCheck(Collider2D straight)
+    private void StraightCheck(Collider2D straight)
     {
         pipe = straight.GetComponent<PipeController>();
         animator = straight.GetComponent<Animator>();
@@ -285,6 +286,12 @@ public class Flow : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    private void GoalCheck(Collider2D goal)
+    {
+        animator = goal.GetComponent<Animator>();
+        animator.Play("Goal");
     }
 
     public void BlockerAnimation(Collider2D blocker)

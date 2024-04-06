@@ -57,9 +57,8 @@ public class BlockerBehavior : MonoBehaviour
         }
         if (_blockerIndex == 0) 
         {
-            if (_variables.variables["mainVarBossFinished"])
+            if (_variables.variables["mainVarBossFinished"].ToString().ToLower() == "true")
             {
-                print(_variables.variables["mainVarBossFinished"]);
                 PlayerPrefs.SetInt(GameManager.LastWaterSceneStatus, 1);
                 OnBlockerDisable?.Invoke();
                 Destroy(gameObject);

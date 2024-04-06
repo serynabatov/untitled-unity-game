@@ -19,6 +19,8 @@ public class MovementCrate : MonoBehaviour
     [SerializeField]
     private InputActionReference interact;
 
+    [SerializeField]
+    private GameObject _sprite;
 
     public Transform grabDetect;
 
@@ -30,6 +32,7 @@ public class MovementCrate : MonoBehaviour
 
     private GameObject boxTemp;
     private Transform boxHolderTemp;
+    private SpriteRotationCorrection _spriteRotation;
 
     private MessageBrokerImpl broker;
 
@@ -51,6 +54,7 @@ public class MovementCrate : MonoBehaviour
         //SaveSystem.GetInstance().SavePosition(transform.position);
         transform.position = SaveSystem.LoadPosition();
         broker = MessageBrokerImpl.Instance;
+        _spriteRotation = _sprite.GetComponent<SpriteRotationCorrection>();
     }
     public void OnApplicationQuit()
     {
@@ -103,6 +107,7 @@ public class MovementCrate : MonoBehaviour
                 boxTemp.transform.SetParent(null);
                 boxTemp = null;
                 boxHolderTemp = null;
+                _spriteRotation.Active = true;
             }
         }
     }
@@ -135,6 +140,8 @@ public class MovementCrate : MonoBehaviour
 
         boxTemp.transform.position = boxHolderTemp.position;
         boxTemp.transform.SetParent(boxHolderTemp);
+
+        _spriteRotation.Active = false;
     }
 
 
@@ -142,6 +149,7 @@ public class MovementCrate : MonoBehaviour
     {
         Vector2 moveDirection = InputManager.GetInstance().GetMoveDirection();
         rb.velocity = new Vector2(moveDirection.x * runSpeedX, moveDirection.y * runSpeedY);
+
     }
     private void RevealInteractiveCue()
     {
