@@ -9,10 +9,21 @@ public enum Locations
     Lower = 2
 }
 
+public enum LocationType
+{
+    Forest = 0,
+    Cave = 1
+}
+
 public class LocationCheck : MonoBehaviour
 {
     [SerializeField]
     private Locations _currentLocation;
+
+    [SerializeField]
+    private LocationType _currentLocationType;
+
+    public LocationType CurrentLocationType {  get { return _currentLocationType; } }
 
     public Locations CurrentLocation { get { return _currentLocation; } }
 

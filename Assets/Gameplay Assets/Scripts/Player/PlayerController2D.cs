@@ -13,6 +13,8 @@ public class PlayerController2D : MonoBehaviour
     public static event Action OnRespawn;
     public static event Action OnDamaged;
 
+    public static int currentLocation;
+
     [SerializeField]
     private Timer onTimer;
 
@@ -409,6 +411,7 @@ public class PlayerController2D : MonoBehaviour
         if (collision.gameObject.CompareTag("Location"))
         {
             LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
+            currentLocation = (int)locationCheck.CurrentLocation;
             locationCheck.ChangeLocationName();
 
             if (locationCheck.SpriteRenderer != null)
@@ -417,6 +420,12 @@ public class PlayerController2D : MonoBehaviour
                 locationConceal.enabled = false;
             }
 
+            if (currentLocation == 0)
+            {
+                broker.Publish<int>((int)AudioClipName.WindSound);
+            }
+
+            broker.Publish<int>((int)AudioClipName.Ambience, locationCheck.FadeDuration, true, true, (int)locationCheck.CurrentLocationType);
             broker.Publish<int>((int)AudioClipName.MusicEffect, locationCheck.FadeDuration, true, true, (int)locationCheck.CurrentLocation);
         }
 
@@ -463,6 +472,9 @@ public class PlayerController2D : MonoBehaviour
         {
             LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
 
+            broker.Publish<int>((int)AudioClipName.WindSound, locationCheck.FadeDuration, true);
+
+            broker.Publish<int>((int)AudioClipName.Ambience, locationCheck.FadeDuration, true);
             broker.Publish<int>((int)AudioClipName.MusicEffect, locationCheck.FadeDuration, true);
 
             if (locationCheck.SpriteRenderer != null)

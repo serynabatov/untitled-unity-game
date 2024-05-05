@@ -23,5 +23,9 @@ public enum AudioClipName
     SpikeHurtSound = 13,
     MushroomHurtSound = 14,
     WaterLevelSounds = 15,
-    BoulderMove = 20
+    WaterSound = 16,
+    BoulderMove = 20,
+    CaveFootsteps = 21,
+    Ambience = 22,
+    WindSound = 24
 }

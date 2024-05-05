@@ -38,7 +38,14 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
 
     void AE_footstep()
     {
-        broker.Publish<int>((int)AudioClipName.FootstepEffect);
+        if (PlayerController2D.currentLocation != 2)
+        {
+            broker.Publish<int>((int)AudioClipName.FootstepEffect);
+        }
+        else
+        {
+            broker.Publish<int>((int)AudioClipName.CaveFootsteps);
+        }
     }
 
     void AE_Jump()

@@ -7,13 +7,18 @@ public class WaterPoolTrigger : MonoBehaviour
     [SerializeField]
     private GameObject _trigger;
 
+    private AudioSource _waterSound;
+
     private bool _isInRange;
 
     private InputManager _inputManager;
 
+
     private void Start()
     {
         _inputManager = InputManager.GetInstance();
+        _waterSound = GetComponent<AudioSource>();
+        _waterSound.Play();
     }
 
     private void FixedUpdate()
