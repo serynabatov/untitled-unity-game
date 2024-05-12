@@ -213,6 +213,10 @@ public class MenuManager : MonoBehaviour
         ConfirmationManager.GetInstance().ExecuteNoButton(сonfirmationWindow);
     }
 
+    public void ExitOnEnd()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }
 
 

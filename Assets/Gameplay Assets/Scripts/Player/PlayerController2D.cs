@@ -362,7 +362,7 @@ public class PlayerController2D : MonoBehaviour
 
     }
 
-    private void RemovingControl()
+    public void RemovingControl()
     {
         if (animator != null)
         {
