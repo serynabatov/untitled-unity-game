@@ -84,14 +84,14 @@ public class AudioManager : MonoBehaviour
         return sound;
     }
 
-    public void Play(int audioClipName, int fadeDuration = 0, bool isSpecific = false, int clip = 0)
+    public void Play(int audioClipName, bool isSpecific = false, int clip = 0)
     {
         BasicSound s = GetSound((AudioClipName)audioClipName);
         if (s != null)
         {
             if (!isSpecific)
             {
-                Play(audioClipName, fadeDuration);
+                Play(audioClipName);
             }
             else
             {
@@ -101,10 +101,6 @@ public class AudioManager : MonoBehaviour
                 }
                 s.audioSource.clip = s.audioClip[clip];
                 s.audioSource.Play();
-                if (fadeDuration != 0)
-                {
-                    StartCoroutine(MusicFadeIn(s, fadeDuration));
-                }
             }
         }
     }
@@ -113,24 +109,6 @@ public class AudioManager : MonoBehaviour
     /// Plays the specified audioClip.
     /// </summary>
     /// <param name="audioClipName">Audio clip name.</param>
-    public void Play(int audioClipName, int fadeDuration = 0)
-    {
-        BasicSound s = GetSound((AudioClipName)audioClipName);
-        if (s != null)
-        {
-            if (s.audioClip.Length > 1)
-            {
-                int randomClip = UnityEngine.Random.Range(0, s.audioClip.Length);
-                s.audioSource.clip = s.audioClip[randomClip];
-            }
-            s.audioSource.Play();
-            if (fadeDuration != 0)
-            {
-                StartCoroutine(MusicFadeIn(s, fadeDuration));
-            }
-        }
-    }
-
     public void Play(int audioClipName)
     {
         BasicSound s = GetSound((AudioClipName)audioClipName);
@@ -146,14 +124,14 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public void Stop(int audioClipName, int fadeDuration = 0, bool isChanging = false, int clip = 0)
+    public void Stop(int audioClipName, bool isChanging = false, int clip = 0)
     {
         BasicSound s = GetSound((AudioClipName)audioClipName);
         if (s != null)
         {
             if (!isChanging)
             {
-                Stop(audioClipName, fadeDuration);
+                Stop(audioClipName);
             }
             else
             {
@@ -161,15 +139,8 @@ public class AudioManager : MonoBehaviour
                 {
                     clip %= s.audioClip.Length;
                 }
-                if (fadeDuration != 0)
-                {
-                    StartCoroutine(MusicFadeOut(s, fadeDuration, isChanging, clip));
-                }
-                else
-                {
-                    s.audioSource.clip = s.audioClip[clip];
-                    s.audioSource.Play();
-                }
+                s.audioSource.clip = s.audioClip[clip];
+                s.audioSource.Play();
             }
         }
     }
@@ -178,22 +149,6 @@ public class AudioManager : MonoBehaviour
     /// Stop the specified audioClipName.
     /// </summary>
     /// <param name="audioClipName">Audio clip name.</param>
-    public void Stop(int audioClipName, int fadeDuration = 0)
-    {
-        BasicSound s = GetSound((AudioClipName)audioClipName);
-        if (s != null)
-        {
-            if (fadeDuration != 0)
-            {
-                StartCoroutine(MusicFadeOut(s, fadeDuration));
-            }
-            else
-            {
-                s.audioSource.Stop();
-            }
-        }
-    }
-
     public void Stop(int audioClipName)
     {
         BasicSound s = GetSound((AudioClipName)audioClipName);
@@ -202,6 +157,7 @@ public class AudioManager : MonoBehaviour
             s.audioSource.Stop();
         }
     }
+
 
     /// <summary>
     /// Mute the sounds.
@@ -246,7 +202,7 @@ public class AudioManager : MonoBehaviour
         {
             if (audio.payload >= 0)
             {
-                Stop(audio.payload, audio.fade, audio.isChanging, audio.clipNumber);
+                Stop(audio.payload, audio.isChanging, audio.clipNumber);
             }
             else
             {
@@ -257,7 +213,7 @@ public class AudioManager : MonoBehaviour
         {
             if (audio.payload >= 0)
             {
-                Play(audio.payload, audio.fade, audio.isChanging, audio.clipNumber);
+                Play(audio.payload, audio.isChanging, audio.clipNumber);
             }
             else
             {
@@ -325,46 +281,4 @@ public class AudioManager : MonoBehaviour
         PlayTheSpecifiedSound();
 
     }
-
-    IEnumerator MusicFadeIn(BasicSound audio, float fadeDuration)
-    {
-        float volume = 0f;
-        float timer = 0f;
-        while (volume <= 1f)
-        {
-            volume = timer / fadeDuration;
-            timer += Time.deltaTime;
-            audio.audioSource.volume = volume;
-            if (volume > 1f)
-            {
-                audio.audioSource.volume = 1f;
-            }
-            yield return null;
-        }
-    }
-
-    IEnumerator MusicFadeOut(BasicSound audio, float fadeDuration, bool isChanging = false, int clip = 0)
-    {
-        float volume = 1f;
-        float timer = 0f;
-        while (volume > 0f)
-        {
-            volume = (fadeDuration - timer / fadeDuration);
-            timer += Time.deltaTime;
-            audio.audioSource.volume = volume;
-            if (volume < 0.05f)
-            {
-                audio.audioSource.volume = 0f;
-                audio.audioSource.Stop();
-                if (isChanging)
-                {
-                    audio.audioSource.clip = audio.audioClip[clip];
-                    audio.audioSource.Play();
-                    StartCoroutine(MusicFadeIn(audio, fadeDuration));
-                }
-            }
-            yield return null;
-        }
-    }
-
 }

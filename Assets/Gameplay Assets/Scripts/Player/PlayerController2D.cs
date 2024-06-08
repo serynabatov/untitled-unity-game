@@ -391,7 +391,7 @@ public class PlayerController2D : MonoBehaviour
                 print("Saved!");
                 PositionSave();
             }
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(2.5f);
         }
     }
 
@@ -411,6 +411,8 @@ public class PlayerController2D : MonoBehaviour
         if (collision.gameObject.CompareTag("Location"))
         {
             LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
+            LocationMusicChanger locationMusicChanger = collision.gameObject.GetComponent<LocationMusicChanger>();
+
             currentLocation = (int)locationCheck.CurrentLocation;
             locationCheck.ChangeLocationName();
 
@@ -420,13 +422,10 @@ public class PlayerController2D : MonoBehaviour
                 locationConceal.enabled = false;
             }
 
-            if (currentLocation == 0)
-            {
-                broker.Publish<int>((int)AudioClipName.WindSound);
-            }
 
-            broker.Publish<int>((int)AudioClipName.Ambience, locationCheck.FadeDuration, true, true, (int)locationCheck.CurrentLocationType);
-            broker.Publish<int>((int)AudioClipName.MusicEffect, locationCheck.FadeDuration, true, true, (int)locationCheck.CurrentLocation);
+            locationMusicChanger.StartMusic();
+
+            broker.Publish<int>((int)AudioClipName.Ambience, false, true, (int)locationCheck.CurrentLocationType);
         }
 
         if (collision.gameObject.CompareTag("Revealable"))
@@ -471,11 +470,9 @@ public class PlayerController2D : MonoBehaviour
         if (collision.gameObject.CompareTag("Location"))
         {
             LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
+            LocationMusicChanger locationMusicChanger = collision.gameObject.GetComponent<LocationMusicChanger>();
 
-            broker.Publish<int>((int)AudioClipName.WindSound, locationCheck.FadeDuration, true);
-
-            broker.Publish<int>((int)AudioClipName.Ambience, locationCheck.FadeDuration, true);
-            broker.Publish<int>((int)AudioClipName.MusicEffect, locationCheck.FadeDuration, true);
+            locationMusicChanger.StopMusic();
 
             if (locationCheck.SpriteRenderer != null)
             {
@@ -496,7 +493,7 @@ public class PlayerController2D : MonoBehaviour
         if (collision.gameObject.CompareTag("Boulder"))
         {
             OnBoulderCollision?.Invoke();
-            broker.Publish<int>((int)AudioClipName.BoulderHit);
+            broker.Publish<int>((int)AudioClipName.Hurt);
             Respawn();
         }
     }

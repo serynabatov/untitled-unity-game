@@ -182,7 +182,7 @@ public class MovementCrate : MonoBehaviour
         }
         else
         {
-            broker.Publish<int>((int)AudioClipName.CrateMovement, 0, true);
+            broker.Publish<int>((int)AudioClipName.CrateMovement, true);
             _soundPlaying = false;
         }
     }

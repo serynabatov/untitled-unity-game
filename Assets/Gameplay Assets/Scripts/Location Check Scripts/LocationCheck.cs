@@ -32,10 +32,6 @@ public class LocationCheck : MonoBehaviour
 
     public SpriteRenderer SpriteRenderer { get { return _spriteRenderer; } }
 
-    [SerializeField]
-    private int _fadeDuration;
-
-    public int FadeDuration { get { return _fadeDuration; } }
 
     [SerializeField]
     private GameObject location;

@@ -62,27 +62,27 @@ public class Flow : MonoBehaviour
 
         if (collision.CompareTag("Dark"))
         {
-            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 1);
+            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 1);
             currentState = States.Dark;
         }
         if (collision.CompareTag("Dark Block") && (currentState != States.Dark))
         {
-            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
+            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
             gameManager.gameOver = true;
         }
         if (collision.CompareTag("Light"))
         {
-            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 1);
+            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 1);
             currentState = States.Light;
         }
         if (collision.CompareTag("Light Block") && (currentState != States.Light))
         {
-            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
+            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
             gameManager.gameOver = true;
         }
         if (collision.CompareTag("Edge"))
         {
-            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
+            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
             gameManager.gameOver = true;
         }
         if (collision.CompareTag("Turn"))
@@ -96,7 +96,7 @@ public class Flow : MonoBehaviour
         if (collision.CompareTag("Goal"))
         {
             GoalCheck(collision);
-            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 2);
+            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 2);
             gameManager.gameClear = true;
         }
     }
@@ -129,7 +129,7 @@ public class Flow : MonoBehaviour
                             direction = 3;
                             break;
                         default:
-                            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
                             gameManager.gameOver = true;
                             break;
                     }
@@ -158,7 +158,7 @@ public class Flow : MonoBehaviour
                             direction = 3;
                             break;
                         default:
-                            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
                             gameManager.gameOver = true;
                             break;
                     }
@@ -187,7 +187,7 @@ public class Flow : MonoBehaviour
                             direction = 0;
                             break;
                         default:
-                            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
                             gameManager.gameOver = true;
                             break;
                     }
@@ -216,7 +216,7 @@ public class Flow : MonoBehaviour
                             direction = 2;
                             break;
                         default:
-                            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
                             gameManager.gameOver = true;
                             break;
                     }
@@ -252,7 +252,7 @@ public class Flow : MonoBehaviour
                                 animator.Play("Light Right - Left (Start)");
                             break;
                         default:
-                            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
                             gameManager.gameOver = true;
                             break;
                     }
@@ -279,7 +279,7 @@ public class Flow : MonoBehaviour
                                 animator.Play("Light Up - Down (Start)");
                             break;
                         default:
-                            _broker.Publish((int)AudioClipName.WaterLevelSounds, 0, false, true, 3);
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
                             gameManager.gameOver = true;
                             break;
                     }

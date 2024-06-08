@@ -16,7 +16,7 @@ public enum AudioClipName
     Landing = 6,
     Hurt = 7,
     UnveilSound = 8,
-    BoulderHit = 9,
+    BoulderLanding = 9,
     IceBox = 10,
     FireBox = 11,
     CrateMovement = 12,

@@ -82,8 +82,10 @@ public class Boulder : MonoBehaviour
         _spriteRenderer.enabled = true;
         _shadowSprite.enabled = true;
 
+        _broker.Publish<int>((int)AudioClipName.BoulderLanding);
+
         rb.constraints = RigidbodyConstraints2D.None;
-        rb.AddForce(Vector2.down * pushForce, ForceMode2D.Impulse);
+        //rb.AddForce(Vector2.down * pushForce, ForceMode2D.Impulse);
     }
 
     private void ResetPosition()
@@ -109,14 +111,14 @@ public class Boulder : MonoBehaviour
 
     private void StartBoulderSound()
     {
-        _broker.Publish<int>((int)AudioClipName.MusicEffect, 0, false, true, 3);
+       // _broker.Publish<int>((int)AudioClipName.MusicEffect, false, true, 3);
         _broker.Publish<int>((int)AudioClipName.BoulderMove);
     }
 
     private void StopBoulderSound()
     {
-        _broker.Publish<int>((int)AudioClipName.MusicEffect, 0, false, true, 2);
-        _broker.Publish<int>((int)AudioClipName.BoulderMove, 0, true);
+      //  _broker.Publish<int>((int)AudioClipName.MusicEffect, false, true, 2);
+        _broker.Publish<int>((int)AudioClipName.BoulderMove, true);
     }
 
     private void ShadowRotationBlock()
