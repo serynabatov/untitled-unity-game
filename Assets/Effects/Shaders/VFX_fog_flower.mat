@@ -9,8 +9,11 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: VFX_fog_flower
   m_Shader: {fileID: 4800000, guid: 8caf6b9b7d0ec1942ac0f0382b2e5390, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _MIN_BLENDING
+  - _USE_BLENDADD
   - _USE_LERP1
   - _USE_SMOOTHSTEP_OFF
   m_InvalidKeywords: []
@@ -20,16 +23,17 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 5aa7a98020511b543891751ea35c8a10, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 2, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex2:
-        m_Texture: {fileID: 2800000, guid: c875e6ed28390794eac11b603752d811, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 5aa7a98020511b543891751ea35c8a10, type: 3}
+        m_Scale: {x: 2, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
         m_Texture: {fileID: 2800000, guid: 6d2ee8ff8bfd1f743b7c0153c7e2a6cc, type: 3}
@@ -39,16 +43,16 @@ Material:
     m_Floats:
     - _Blend: 1
     - _Blend1: 5
-    - _Blend2: 1
-    - _Lerp: 0
+    - _Blend2: 10
+    - _Lerp: 1
     - _Max: 1
     - _Min: 0
     - _Min_Blending: 1
-    - _Mult: 1.7
-    - _USpeed1: 0
-    - _USpeed2: 0
+    - _Mult: 3
+    - _USpeed1: 0.15
+    - _USpeed2: -0.15
     - _Use: 1
-    - _Use_BlendAdd: 0
+    - _Use_BlendAdd: 1
     - _Use_Smoothstep: 0
     - _VSpeed1: 0.1
     - _VSpeed2: -0.1
