@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         {
             case "Riddle 1":
                 WaterPuzzleSolved();
-                SceneSystem.GetInstance().LoadThisLevel("Gameplay"); // Должно быть Riddle 2
+                SceneSystem.GetInstance().LoadThisLevel("Riddle 2"); // Должно быть Riddle 2
                 break;
             case "Riddle 2":
                 SceneSystem.GetInstance().LoadThisLevel("Riddle 3");

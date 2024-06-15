@@ -6,17 +6,33 @@ public class LocationMusicChanger : MonoBehaviour
 {
     private AudioSource _music;
 
+    private LocationCheck _locationCheck;
+
     private bool _isStarting;
     private bool _isStoping;
 
+    private int _index;
+
     [SerializeField]
     private int _fadeDuration;
+
+    [SerializeField]
+    private List<AudioClip> _musics;
 
     public int FadeDuration { get { return _fadeDuration; } }
 
     private void Awake()
     {
         _music = GetComponent<AudioSource>();
+        _locationCheck = GetComponent<LocationCheck>();
+    }
+
+    private void LateUpdate()
+    {
+       if (!_music.isPlaying&&((int)_locationCheck.CurrentLocation==PlayerController2D.currentLocation))
+        {
+            ChangeMusicInLocation();
+        }
     }
 
     public void StartMusic()
@@ -29,6 +45,14 @@ public class LocationMusicChanger : MonoBehaviour
     {
         _isStarting = false;
         StartCoroutine(StopingMusic(_fadeDuration));
+    }
+
+    private void ChangeMusicInLocation()
+    {
+        _index += 1;
+        _index %= _musics.Count;
+        _music.clip = _musics[_index];
+        _music.Play();
     }
 
     IEnumerator StopingMusic(int fadeDuration)
@@ -57,10 +81,10 @@ public class LocationMusicChanger : MonoBehaviour
 
     IEnumerator StartingMusic(int fadeDuration)
     {
-        if (!_music.isPlaying)
+       /* if (!_music.isPlaying)
         {
-            _music.Play();
-        }
+            ChangeMusicInLocation();
+        }*/
         _isStarting = true;
 
         float volume = _music.volume;
