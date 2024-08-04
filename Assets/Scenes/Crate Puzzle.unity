@@ -67016,7 +67016,7 @@ MonoBehaviour:
   - audioSource: {fileID: 0}
     audioClipName: 11
     audioClip:
-    - {fileID: 8300000, guid: 8958954b3d1c8a641a643f91e6d7fc6c, type: 3}
+    - {fileID: 8300000, guid: e3b7e51c107872a48b7031a4078eeafc, type: 3}
     isLoop: 0
     playOnAwake: 0
     AudioRolloffMode: 0
@@ -67028,7 +67028,7 @@ MonoBehaviour:
   - audioSource: {fileID: 0}
     audioClipName: 10
     audioClip:
-    - {fileID: 8300000, guid: 487a9b8d97409c442b5355eaf3a1882a, type: 3}
+    - {fileID: 8300000, guid: de34a5388b3812043b02bf6326bd8ed2, type: 3}
     isLoop: 0
     playOnAwake: 0
     AudioRolloffMode: 0
@@ -67039,6 +67039,18 @@ MonoBehaviour:
     spatialBlend: 0
   - audioSource: {fileID: 0}
     audioClipName: 12
+    audioClip:
+    - {fileID: 8300000, guid: c52c947de65393347b337ad188255c6d, type: 3}
+    isLoop: 1
+    playOnAwake: 0
+    AudioRolloffMode: 0
+    mixerGroup: 1
+    minDistance: 0
+    maxDistance: 0
+    volume: 1
+    spatialBlend: 0
+  - audioSource: {fileID: 0}
+    audioClipName: 13
     audioClip:
     - {fileID: 8300000, guid: 48efba4df5596d44ca4c9d51e0b48e72, type: 3}
     isLoop: 1

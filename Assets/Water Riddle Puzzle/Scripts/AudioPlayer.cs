@@ -18,7 +18,6 @@ public class AudioPlayer : MonoBehaviour
 
     private void LateUpdate()
     {
-        print(_index);
         if (!_audioSource.isPlaying)
         {
             ChangeSoundClip();

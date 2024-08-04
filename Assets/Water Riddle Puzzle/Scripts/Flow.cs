@@ -65,20 +65,34 @@ public class Flow : MonoBehaviour
             _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 1);
             currentState = States.Dark;
         }
-        if (collision.CompareTag("Dark Block") && (currentState != States.Dark))
+        if (collision.CompareTag("Dark Block"))
         {
-            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
-            gameManager.gameOver = true;
+            if (currentState != States.Dark)
+            {
+                _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
+                gameManager.gameOver = true;
+            }
+            else
+            {
+                _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 4);
+            }
         }
         if (collision.CompareTag("Light"))
         {
             _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 1);
             currentState = States.Light;
         }
-        if (collision.CompareTag("Light Block") && (currentState != States.Light))
+        if (collision.CompareTag("Light Block"))
         {
-            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
-            gameManager.gameOver = true;
+            if (currentState != States.Light)
+            {
+                _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
+                gameManager.gameOver = true;
+            }
+            else
+            {
+                _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 5);
+            }
         }
         if (collision.CompareTag("Edge"))
         {

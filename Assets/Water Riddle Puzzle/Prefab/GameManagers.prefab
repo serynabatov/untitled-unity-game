@@ -434,12 +434,14 @@ MonoBehaviour:
   soundEffectSlider: {fileID: 0}
   sounds:
   - audioSource: {fileID: 0}
-    audioClipName: 15
+    audioClipName: 16
     audioClip:
     - {fileID: 8300000, guid: 473cc60c8dd60554089fa5f7e6459ccd, type: 3}
     - {fileID: 8300000, guid: 855ab620793f6154db11d66fc2785fe8, type: 3}
     - {fileID: 8300000, guid: a6a3a32e6acd28b439b757f31a0cb774, type: 3}
     - {fileID: 8300000, guid: 7bd44c0998af51c488e1cacb2f1b2b2a, type: 3}
+    - {fileID: 8300000, guid: 4e21fe283aee84b43bd7fe20be8554ac, type: 3}
+    - {fileID: 8300000, guid: 19b06dcd331604e4497401c1e194ce84, type: 3}
     isLoop: 0
     playOnAwake: 0
     AudioRolloffMode: 0
@@ -449,9 +451,9 @@ MonoBehaviour:
     volume: 1
     spatialBlend: 0
   - audioSource: {fileID: 0}
-    audioClipName: 16
+    audioClipName: 17
     audioClip:
-    - {fileID: 8300000, guid: 38bc3eb7f715aea49b7cd91d7880a533, type: 3}
+    - {fileID: 8300000, guid: 41d7862e7f2c5fa468d710c71e2a2e7e, type: 3}
     isLoop: 1
     playOnAwake: 0
     AudioRolloffMode: 0
