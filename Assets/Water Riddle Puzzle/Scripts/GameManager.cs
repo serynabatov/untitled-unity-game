@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public const string LastWaterSceneStatus = "mainVarBossFinished";
 
     public GameObject clearButton;
-    public GameObject gameOverNote;
     public GameObject restartButton;
     public GameObject stateText;
     public GameObject startButton;
@@ -34,7 +33,6 @@ public class GameManager : MonoBehaviour
     {
         if (gameOver)
         {
-            gameOverNote.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
         }
         if (gameClear)

@@ -1727,74 +1727,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 611707431}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &665590050
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 665590052}
-  - component: {fileID: 665590051}
-  m_Layer: 0
-  m_Name: Game Over Video
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!328 &665590051
-VideoPlayer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 665590050}
-  m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 46fe4542ef7983f4ab270b2045946aaa, type: 3}
-  m_TargetCameraAlpha: 1
-  m_TargetCamera3DLayout: 0
-  m_TargetCamera: {fileID: 1446800878}
-  m_TargetTexture: {fileID: 0}
-  m_TimeReference: 0
-  m_TargetMaterialRenderer: {fileID: 0}
-  m_TargetMaterialProperty: _MainTex
-  m_RenderMode: 1
-  m_AspectRatio: 2
-  m_DataSource: 0
-  m_TimeUpdateMode: 2
-  m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
-  m_TargetAudioSources:
-  - {fileID: 0}
-  m_DirectAudioVolumes:
-  - 0.2
-  m_Url: 
-  m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 00
-  m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 1
-  m_SkipOnDrop: 1
-  m_Looping: 0
-  m_WaitForFirstFrame: 1
-  m_FrameReadyEventEnabled: 0
-  m_VideoShaders: []
---- !u!4 &665590052
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 665590050}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &723124147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5123,7 +5055,7 @@ PrefabInstance:
         type: 3}
       propertyPath: gameOverNote
       value: 
-      objectReference: {fileID: 665590050}
+      objectReference: {fileID: 0}
     - target: {fileID: 9192788152191383499, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
         type: 3}
       propertyPath: restartButton
@@ -5269,6 +5201,23 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3374452991565017314, guid: a82d5f3a4968f42409b5208671a74e3b,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 7ad919c796b7be74f88f801aea075c12,
+        type: 2}
+    - target: {fileID: 3374452991565017314, guid: a82d5f3a4968f42409b5208671a74e3b,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1902884327815351324, guid: 7ad919c796b7be74f88f801aea075c12,
+        type: 2}
+    - target: {fileID: 3374452991565017314, guid: a82d5f3a4968f42409b5208671a74e3b,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3374452991703178933, guid: a82d5f3a4968f42409b5208671a74e3b,
         type: 3}
       propertyPath: m_IsActive
@@ -5394,6 +5343,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3374452993085990210, guid: a82d5f3a4968f42409b5208671a74e3b,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 7ad919c796b7be74f88f801aea075c12,
+        type: 2}
+    - target: {fileID: 3374452993085990210, guid: a82d5f3a4968f42409b5208671a74e3b,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3374452993246252197, guid: a82d5f3a4968f42409b5208671a74e3b,
         type: 3}
       propertyPath: m_IsActive
@@ -5462,7 +5422,7 @@ PrefabInstance:
     - target: {fileID: 3374452993246252199, guid: a82d5f3a4968f42409b5208671a74e3b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_IntArgument
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3374452993246252199, guid: a82d5f3a4968f42409b5208671a74e3b,
         type: 3}
@@ -5663,5 +5623,4 @@ SceneRoots:
   - {fileID: 204728363}
   - {fileID: 1971775357359061852}
   - {fileID: 3374452991831746992}
-  - {fileID: 665590052}
   - {fileID: 763933548}
