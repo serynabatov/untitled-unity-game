@@ -17,7 +17,7 @@ INCLUDE globals.ink
 +[Нужна подсказка]
 ->purpose
 +[Нет, до свидания]
-->finishedPuzzle
+->END
 +[ПРОЙТИ ИСПЫТАНИЕ] #start:Riddle 1
 ->END
 
