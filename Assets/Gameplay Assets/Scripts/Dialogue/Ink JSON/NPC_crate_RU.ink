@@ -15,7 +15,7 @@ INCLUDE globals.ink
 Принц, я вижу вы ещё не прошли испытание. Вам напомнить о его деталях ? #layout:left #speaker:Лемас #portrait:Violet Mage
 +[Нужна подсказка]
 ->purpose
-+[Нет, до свидания]
++[Нет, до свидания] #exit:0.2
 ->END
 +[ПРОЙТИ ИСПЫТАНИЕ] #start:Crate Puzzle
 ->END 
