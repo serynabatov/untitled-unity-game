@@ -16,8 +16,8 @@ INCLUDE globals.ink
 Принц, я вижу вы ещё не прошли испытание. Вам напомнить о его деталях? #speaker:Гори #portrait:Orange Mage
 +[Нужна подсказка]
 ->purpose
-+[Нет, до свидания]
-->finishedPuzzle
++[Нет, до свидания] #exit:0.2
+->END
 +[ПРОЙТИ ИСПЫТАНИЕ] #start:Riddle 1
 ->END
 
