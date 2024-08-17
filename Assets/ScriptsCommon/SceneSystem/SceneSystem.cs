@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneSystem : MonoBehaviour
 {
+
     private static SceneSystem instance;
     public Animator transition;
     public float transitionTime = 1f;
@@ -24,7 +26,7 @@ public class SceneSystem : MonoBehaviour
     }
 
     public void LoadThisLevel(string levelName)
-    {      
+    {
         StartCoroutine(LoadLevel(levelName));
     }
 

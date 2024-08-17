@@ -63,6 +63,8 @@ public class PlayerController2D : MonoBehaviour
     private bool takingDamage;
     private bool _canSave = true;
 
+    private bool _isChangingScene;
+
     private Vector2 newVelocity;
     private Vector2 newForce;
 
@@ -84,7 +86,7 @@ public class PlayerController2D : MonoBehaviour
 
         Boulder.OnBoulderEnd += StartSavingPosition;
 
-        //transform.position = SaveSystem.LoadPosition();
+        transform.position = SaveSystem.LoadPosition();
         timer = startTimerValue;
 
         rb = GetComponent<Rigidbody2D>();
@@ -96,6 +98,8 @@ public class PlayerController2D : MonoBehaviour
         Move += ApplyMovement;
         StartCoroutine(SavingPosition());
         savedPosition = transform.position;
+
+        _isChangingScene = false;
     }
 
     private void OnDestroy()
@@ -107,6 +111,8 @@ public class PlayerController2D : MonoBehaviour
         OnBoulderCollision -= StartSavingPosition;
 
         Boulder.OnBoulderEnd -= StartSavingPosition;
+
+        _isChangingScene = true;
     }
 
     private void Update()
@@ -472,7 +478,11 @@ public class PlayerController2D : MonoBehaviour
             LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
             LocationMusicChanger locationMusicChanger = collision.gameObject.GetComponent<LocationMusicChanger>();
 
-            locationMusicChanger.StopMusic();
+            if (!_isChangingScene)
+            {
+                locationMusicChanger.StopMusic();
+            }
+            
 
             if (locationCheck.SpriteRenderer != null)
             {

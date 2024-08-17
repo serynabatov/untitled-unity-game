@@ -27,9 +27,14 @@ public class LocationMusicChanger : MonoBehaviour
         _locationCheck = GetComponent<LocationCheck>();
     }
 
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
+
     private void LateUpdate()
     {
-       if (!_music.isPlaying&&((int)_locationCheck.CurrentLocation==PlayerController2D.currentLocation))
+        if (!_music.isPlaying && ((int)_locationCheck.CurrentLocation == PlayerController2D.currentLocation))
         {
             ChangeMusicInLocation();
         }
@@ -62,6 +67,7 @@ public class LocationMusicChanger : MonoBehaviour
         float timer = 0.0f;
         _isStoping = true;
 
+
         while (_isStoping)
         {
             volumeHolder = volume - timer / fadeDuration;
@@ -81,10 +87,10 @@ public class LocationMusicChanger : MonoBehaviour
 
     IEnumerator StartingMusic(int fadeDuration)
     {
-       /* if (!_music.isPlaying)
-        {
-            ChangeMusicInLocation();
-        }*/
+        /* if (!_music.isPlaying)
+         {
+             ChangeMusicInLocation();
+         }*/
         _isStarting = true;
 
         float volume = _music.volume;
@@ -97,7 +103,7 @@ public class LocationMusicChanger : MonoBehaviour
             timer += Time.deltaTime;
             _music.volume = volumeHolder;
 
-            if (volumeHolder >0.95f)
+            if (volumeHolder > 0.95f)
             {
                 _music.volume = 1.0f;
                 _isStarting = false;
@@ -107,4 +113,5 @@ public class LocationMusicChanger : MonoBehaviour
         }
 
     }
+
 }

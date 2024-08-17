@@ -73,48 +73,13 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// !Начало игры с нового сейва
-    /// </summary>
-    public void NewGame()
-    {
-        // TODO: Запускал новую игру с нового сейв файла
-        if (!ConfirmationManager.GetInstance().ActiveSelf(сonfirmationWindow))
-        {
-            PlayerPrefs.DeleteKey("PlayerPosXGameplay");
-            PlayerPrefs.DeleteKey("PlayerPosYGameplay");
-            SceneManager.LoadScene("Gameplay");
-        }
-    }
 
     /// <summary>
     /// !Загрузить игру с сейва
     /// </summary>
     public void LoadGame()
     {
-
-        if (!ConfirmationManager.GetInstance().ActiveSelf(сonfirmationWindow))
-        {
-            // TODO: Запускал игру с сейв файла
-            optionsMenu.SetActive(false);
-            loadGameMenu.SetActive(loadGameMenu.activeSelf == true ? false : true);
-
-            Navigation navigation = loadButton.navigation;
-            navigation.selectOnRight = loadFirstButton;
-            loadButton.navigation = navigation;
-
-            navigation = resumeButton.navigation;
-            navigation.selectOnRight = loadFirstButton;
-            resumeButton.navigation = navigation;
-
-            navigation = optionsButton.navigation;
-            navigation.selectOnRight = loadFirstButton;
-            optionsButton.navigation = navigation;
-
-            navigation = exitButton.navigation;
-            navigation.selectOnRight = loadFirstButton;
-            exitButton.navigation = navigation;
-        }
+        SceneManager.LoadScene("Gameplay");
     }
 
     /// <summary>
@@ -192,7 +157,7 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     private void ConfirmateExitToMainMenu()
     {
-        ConfirmationManager.GetInstance().GetYesButton(сonfirmationWindow).onClick.AddListener(() => ExecuteYesButtonToMainMenu());
+       ConfirmationManager.GetInstance().GetYesButton(сonfirmationWindow).onClick.AddListener(() => ExecuteYesButtonToMainMenu());
     }
 
     private void ExecuteYesButtonToMainMenu()

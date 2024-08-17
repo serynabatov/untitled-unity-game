@@ -67,7 +67,7 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
 
     private void Start()
     {
-        DeactivateDialoguePanel();
+       // DeactivateDialoguePanel();
 
 
         // get all of the choices text 
