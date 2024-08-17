@@ -92308,7 +92308,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 158815556}
   - {fileID: 802979782}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -104635,7 +104634,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _clipList.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 5ea7ff7ca7a2c774d90dfd6099ce8e4b, type: 3}
+      objectReference: {fileID: 8300000, guid: 999f52bb7bc00784fa95034b72c17ff5, type: 3}
     - target: {fileID: 7370233560379034603, guid: 5fc8e18bac8ea544caf54121401d3513,
         type: 3}
       propertyPath: OutputAudioMixerGroup
