@@ -10,6 +10,7 @@ public class LocationMusicChanger : MonoBehaviour
 
     private bool _isStarting;
     private bool _isStoping;
+    private bool _isAborting;
 
     private int _index;
 
@@ -23,12 +24,21 @@ public class LocationMusicChanger : MonoBehaviour
 
     private void Awake()
     {
+        SceneSystem.OnSceneChange += AbortMusicChange;
+
         _music = GetComponent<AudioSource>();
         _locationCheck = GetComponent<LocationCheck>();
     }
 
+    private void Start()
+    {
+        _isAborting = false;
+    }
+
     private void OnDestroy()
     {
+        SceneSystem.OnSceneChange -= AbortMusicChange;
+
         StopAllCoroutines();
     }
 
@@ -67,21 +77,23 @@ public class LocationMusicChanger : MonoBehaviour
         float timer = 0.0f;
         _isStoping = true;
 
-
-        while (_isStoping)
+        if (!_isAborting)
         {
-            volumeHolder = volume - timer / fadeDuration;
-            timer += Time.deltaTime;
-            _music.volume = volumeHolder;
-
-            if (volumeHolder < 0.05f)
+            while (_isStoping)
             {
-                _music.volume = 0.0f;
-                _isStoping = false;
-                _music.Stop();
-            }
+                volumeHolder = volume - timer / fadeDuration;
+                timer += Time.deltaTime;
+                _music.volume = volumeHolder;
 
-            yield return null;
+                if (volumeHolder < 0.05f)
+                {
+                    _music.volume = 0.0f;
+                    _isStoping = false;
+                    _music.Stop();
+                }
+
+                yield return null;
+            }
         }
     }
 
@@ -114,4 +126,8 @@ public class LocationMusicChanger : MonoBehaviour
 
     }
 
+    private void AbortMusicChange()
+    {
+        _isAborting = true;
+    }
 }

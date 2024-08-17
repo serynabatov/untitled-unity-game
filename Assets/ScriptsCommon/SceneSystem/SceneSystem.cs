@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneSystem : MonoBehaviour
 {
+    public static event Action OnSceneChange;
 
     private static SceneSystem instance;
     public Animator transition;
@@ -27,6 +28,7 @@ public class SceneSystem : MonoBehaviour
 
     public void LoadThisLevel(string levelName)
     {
+        OnSceneChange?.Invoke();
         StartCoroutine(LoadLevel(levelName));
     }
 

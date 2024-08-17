@@ -112,7 +112,6 @@ public class PlayerController2D : MonoBehaviour
 
         Boulder.OnBoulderEnd -= StartSavingPosition;
 
-        _isChangingScene = true;
     }
 
     private void Update()
@@ -478,11 +477,8 @@ public class PlayerController2D : MonoBehaviour
             LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
             LocationMusicChanger locationMusicChanger = collision.gameObject.GetComponent<LocationMusicChanger>();
 
-            if (!_isChangingScene)
-            {
-                locationMusicChanger.StopMusic();
-            }
-            
+            locationMusicChanger.StopMusic();
+
 
             if (locationCheck.SpriteRenderer != null)
             {
