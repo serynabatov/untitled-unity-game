@@ -1,29 +1,25 @@
 //Этот диалог предназначен для БОССА-НПС. С ним игрок встречается уже после того, как поговорил с основным НПС.
 INCLUDE globals.ink
-{mainVarBossFinished: ->main.finishedBoss|{cantalktoBoss: { mainVarBoss: ->main.prePurpose|{certificate: ->main|->main.exit}}| ->main.exit}}
+{mainVarBossFinished: ->main.finishedBoss|{cantalktoBoss: { mainVarBoss: ->main.prePurpose|->main}}}
 
 
 === main ===
-Я ждал тебя. Наконец ты прошёл все испытания, осталось последнее. Цветок не только может спасти принцессу, но и дать власть тому, кто его использует. Поэтому задам тебе вопрос #speaker:Вадос #portrait:Green Mage
+Снова встретились. Наконец, ты прошёл все испытания, осталось последнее. Цветком может владеть лишь достойный, не думай, что, пройдя все испытания, ты стал достоен.  #speaker:Адос #portrait:Green Mage
+Но не беспокойся, это самое простое испытание, тебе нужно лишь ответить на вопрос.
 ~ mainVarBoss = true
 ->prePurpose
 
 = prePurpose
-Принц, обещаешь ли ты что удержишься от соблазна и спасёшь принцессу, а не присвоишь цветок себе?
+Обещаешь ли ты, что будешь бороться до конца, даже когда потеряешь всякую надежду и даже когда забудешь свою цель?
 +[Да, обещаю] 
 ->finishedBoss
-+[Нет, не обещаю] #start:ExampleRiddle
++[Нет, не обещаю] #start:ExampleRiddle #exit:0,2
 ->END
-+[Не могу сказать] #start:ExampleRiddle
-->END
-
-= exit 
-Рыцарь тебе рано приходить ко мне. Сначала пройди испытания, которые для тебя подготовили мои братья #speaker:Вадос #portrait:Green Mage
++[Не могу сказать] #start:ExampleRiddle #exit:0,2
 ->END
 
 = finishedBoss
-Ты доказал, что тебе можно доверять, держи флягу и наполни её водой из святого источника.  #speaker:Вадос #portrait:Green Mage
-И ещё одно.
-Спасибо тебе
+Ты доказал, что тебе можно доверять, держи флягу и наполни её водой из святого источника.  #speaker:Адос #portrait:Green Mage
+И ещё одно. Спасибо тебе!
 ~ mainVarBossFinished = true
 ->END
