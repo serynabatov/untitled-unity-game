@@ -13,9 +13,9 @@ INCLUDE globals.ink
 Обещаешь ли ты, что будешь бороться до конца, даже когда потеряешь всякую надежду и даже когда забудешь свою цель?
 +[Да, обещаю] 
 ->finishedBoss
-+[Нет, не обещаю] #start:ExampleRiddle #exit:0,2
++[Нет, не обещаю] #start:ExampleRiddle #exit:0
 ->END
-+[Не могу сказать] #start:ExampleRiddle #exit:0,2
++[Не могу сказать] #start:ExampleRiddle #exit:0
 ->END
 
 = finishedBoss

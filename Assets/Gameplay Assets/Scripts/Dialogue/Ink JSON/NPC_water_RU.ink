@@ -15,7 +15,7 @@ INCLUDE globals.ink
 ->purpose
 +[Пройду позже] #exit:0,2
 ->END
-+[<b>ПРОЙТИ ИСПЫТАНИЕ</b>] #start:Riddle 1 #exit:0,2
++[<b>ПРОЙТИ ИСПЫТАНИЕ</b>] #start:Riddle 1 #exit:0
 ->END
 
 = prePurpose
@@ -24,7 +24,7 @@ INCLUDE globals.ink
 ->purpose
 +[Нет, до свидания] #exit:0,2
 ->END
-+[<b>ПРОЙТИ ИСПЫТАНИЕ</b>] #start:Riddle 1 #exit:0,2
++[<b>ПРОЙТИ ИСПЫТАНИЕ</b>] #start:Riddle 1 #exit:0
 ->END
 
 = finishedPuzzle
