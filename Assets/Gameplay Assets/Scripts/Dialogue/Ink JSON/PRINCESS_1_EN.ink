@@ -1,10 +1,15 @@
 INCLUDE globals.ink
-->main
+{mainVarBossFinished: ->main.finishGame|->main}
 
 === main ===
-Неужели это ты принц?! Я успела высвободить свой дух из тела, я помогу тебе выполнить испытания.
-Этот цветок поможет разбудить меня, но я думаю тебе уже сказал об этом волшебник.
-Злодей Торгат воспользовался нестабильностью в королевстве, и напал с полчищей тёмных чудищ.
-Он хочет завладеть цветком, но он не знал что мы заранее спрятали его в этом лесу, но из-за этого волшебная сила цветка начала увядать. 
-Этот цветок "спящая принцесса" может исполнять желания, Торгат хочет воскресить свою любимую, чтобы вместе с ней править нашим королевством
+Is that really you?! I was able to release my spirit from my body before I lost the battle. And I'll help you get the flower. #speaker:Ailin #portrait:Princess
+This flower can wake me up, but I think the wizard already told you that.
+The villain Torgath has taken advantage of the instability in the kingdom and broken the seal that holds back the darkness.
+He wants to take possession of the flower, but we have protected the Forest of Dreams with an additional barrier against the darkness beforehand, so we have some time.
+This flower <color=\#F8FF30>nilurium</color> can resist the darkness. I don't know why the flower has such power. 
+Legend has it that the last seed of the <color=\#F8FF30>Telurin</color> tree fell out and scattered to the wind, falling into the clutches of evil. The future <color=\#F8FF30>Nilurium</color> was so beautiful that the evil retreated. Since then, it has been his only weakness.
+->END
+
+= finishGame
+Let's plant a flower beside me, you <color=\#F8FF30>have met all the tests</color>, save me. Together we can resist the darkness. #speaker:Ailin #portrait:Princess
 ->END

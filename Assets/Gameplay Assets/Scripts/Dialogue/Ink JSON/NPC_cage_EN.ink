@@ -1,81 +1,28 @@
 //Этот диалог предназначен для главного НПС, который находится около клетки с трупом с флягой. С ним по сюжету игрок производит диалог впервые.
 INCLUDE globals.ink
-{keyCount:
--0: {mainVarCage: ->main.prePurpose|->main}
--1:-> main.keyCount1
--2:-> main.keyCount2
--3:-> main.keyCount3
-}
+{mainVarCage: ->main.prePurpose|->main}
 
 === main ===
-#speaker:Dr. Green 
-#portrait:dr_green_neutral 
-#layout:left
-Who are you ? Look like <color=\#F8FF30>pidor</color>, полагаю так оно и есть. Я прав ?
-+[Да, наверное]
-+[Не знаю, не уверен]
+You've come, <color=\#F8FF30>prince</color>, we've been expecting you. The princess is in danger, no the kingdom is in danger, her highness is left in a burning castle. We must save her or the darkness will take over the kingdom, turn this blooming place into a desert.  #speaker:Ados #portrait:Green Mage
 
- - Почему это ты не уверен ?! Ты же <b><color=\#5B81FF>должен</color></b> знать кто ты такой и зачем пришёл. Хотя погоди 
- Кажется я знаю кто ты, ты похож на нашего спасителя. Видимо ты и прибыл по зову принцессы
- Спасти её хочешь? #layout:right
+Our knights tried to rescue her, but the enemy is too strong, none of them returned.
  + [...]
  
- - А, что же это я о своём. Дай секунду, взгляну на приглашение от принцессы там должны находиться ваши данные.
- Такс, такс вы принц из королевства Кайрос, прибыли сюда с 16 всадниками, чтобы спасти принцессу и очистить замок от тьмы.
- +[Хорошо, а где мои 16 всадников?]
+ - Princess Ailina is holding back the darkness that is trying to consume the kingdom, but a sorcerer has overpowered the princess with a spell, now she is in a coma.
  
-  -Это я у вас должен спросить, кто как ни вы прибыть должны с ними.
-  Или вы хотите сказать, что раз не видно 16 всадников, то значит вы не тот кого мы все уже давно ждём ?
-  +[Всё верно] // Отсылка на Ведьмака про чудовищ
-    Нет, я уверен что вы тот, кто нам нужен
-  +[Нет, я тот самый принц] //Возможно расширить диалог, добавив мыслей самого принца
-  
-  - Давайте я тогда сообщу всем нашим о вашем долгожданном прибытии. Вы пока располагайтесь... в лесу
-  Боже мой, чуть не забыл. Приготовьтесь ваше величество, я сейчас вам всё кратко расскажу
-  Приготовились ?
-  +[Да]
-  +[Пока нет]
-  Чушь, там не сложно всё понять
-  
-  - Принцесса Эйлина лежит в замке. Какая-то тёмная хворь поразила её, поэтому нужно изготовить лечебное снадобье. Все ингридиенты мы собрали, кроме двух
-  Это цветок на возвышенности, который вы уже видели. Мы срываем его каждый раз, когда принцессу поражает недуг. Удивительно, но каждый раз он вырастает заново, воистину чудо.
-  Но не на этот раз. Цветок также поразил недуг, и он не расцвёл. Хорошо что на этот случай у нас есть предписания от принцессы 
-  ~ mainVarCage = true
+For now, this forest is protected, and by getting the <color=\#F8FF30>nilurium</color> flower, we can awaken Ailina and she will save us all. We have to hurry.
+ ~ mainVarCage = true
   ->purpose
   
-  = purpose 
-  Вы должны раздобыть три ключа в лесу. С помощью клчюей открыть клетку, рядом с которой я нахожусь. А дальше возьмите флягу и идите к святому источнику в этом лесу. Наполните флягу водой и полейте святой водой цветок.
-  {certificate: ->END| Держите сертификат, с ним вы имеете право проходить испытания, чтобы спасти принцессу. И первый ключ я вам тоже дарю, но только потому что вы наш спаситель, а то он у меня залежался}
+  = purpose
+  You need to pass one trial each from my brothers, and then you will be able to <color=\#F8FF30>fill the flask</color> with sacred water. This water will help the flower to bloom. Only then will you be able to use it to help Eilina.
+  Explore the space and you will meet my brothers, talk to each of them, they will help you. Good luck and patience prince, you will need it.
   ~ certificate = true
   -> END
   
   = prePurpose
-Prince, what are you doing here?! Remind you of your business?
-+ [Да]
+Prince, what are you doing here?! Need I remind you of your business? #speaker:Ados #portrait:Green Mage 
++ [Yes]
 ->purpose
-+ [Нет]
-->END
-
-= keyCount1
-Вы уже добыли первый ключ, как славно. Принц продолжайте дальше, только вы можете спасти принцессу
-Вам напомнить о вашей цели ?
-+ [Да]
-->purpose
-+ [Нет]
-->END
-
-= keyCount2
-Отлично уже два ключа у вас, остался последний. Так держать принц, вы хорошо поиграли.
-Вам напомнить о вашей цели ?
-+ [Да]
-->purpose
-+ [Нет]
-->END
-
-= keyCount3
-Наконец вы добыли все 3 ключа, надеюсь это приключение было занятным. А теперь откройте пожалуйста клетку рядом со мной и заберите пустую флягу
-Вам напомнить о вашей цели ?
-+ [Да]
-->purpose
-+ [Нет]
++ [No]
 ->END

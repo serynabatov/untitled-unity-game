@@ -2,6 +2,6 @@ INCLUDE globals.ink
 ->main
 
 === main ===
-Поздравляю ты прошёл все испытания, осталось всего лишь полить цветок водой и он расцветёт. Не знаю, что бы я без тебя делала, скорей помоги мне, иначе Торгат захватит всё королевство.
-У нас осталось мало времени, но с твоей помощью я думаю у нас всё получится
+Congratulations, you've passed all the tests, all you have to do is water the flower and it will bloom. I don't know what I'd do without you, so help me, we don't have much time left. #speaker:Ailin #portrait:Princess
+With your help, I think we can do this.
 ->END

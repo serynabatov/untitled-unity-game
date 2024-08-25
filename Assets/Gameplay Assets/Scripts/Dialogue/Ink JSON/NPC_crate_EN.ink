@@ -1,28 +1,30 @@
 //Этот диалог предназначен для НПС головоломки с ящиками. С ним игрок встречается уже после того, как поговорил с основным НПС.
 INCLUDE globals.ink
  //Эта переменная извне должна стать true в тот моент, когда игрок погвоорит с основным НПС.
-{mainVarCrate: ->main.prePurpose|{certificate: ->main|->main.exit}}
-
+{mainVarCrateFinished: ->main.finishedPuzzle|{mainVarCrate: ->main.prePurpose|->main}}
 === main ===
-Наконец-то, это вы принц. Я ваш проводник для этого испытания внимательности и усидчивости. Только пройдя его, вы сможете получить от меня заветный ключ #layout:right #speaker:Lemas #portrait:heroFace 
+I've been waiting a long time for you. The sunset outside my tent lasts indefinitely, I don't know why, but it helps brighten the wait. #speaker:Lemas #portrait:Violet Mage 
+Have you ever wondered what it would be like to wait for the end of a sunset that doesn't want to end? Few people seem to have that thought.
+Okay, we don't have a lot of time, so let's get right to it.
 ~ mainVarCrate = true
 ->purpose
 
 = purpose
-Чтобы пройти испытание, вы должны направить русло воды. Источник воды в лесу обмелел, нужно направить поток воды и восстановить течение.
-Нажимайте на кнопки воды, чтобы повернуть их, таким образом вы должны в правильную сторону повернуть все ячейки и направить русло воды до конечной точки.
+To pass the test, you must drag the crates to the place where their shadow is hidden, and open the way up. It's simple, you don't even have to think of anything complicated.
++[I'll be back later.] #exit:0
 ->END
++[<b>PASS THE TEST</b>] #start:Crate Puzzle #exit:0
+->END 
 
 = prePurpose
-Принц, я вижу вы ещё не прошли испытание. Вам напомнить о его деталях ?
-+[Нужна подсказка]
+Prince, I see you haven't passed the test yet. Need I remind you of the details? #speaker:Lemas #portrait:Violet Mage
++[Need a hint]
 ->purpose
-+[Нет, до свидания]
++[No, goodbye] #exit:0
 ->END
-+[ПРОЙТИ ИСПЫТАНИЕ]
-->END
++[<b>PASS THE TEST</b>] #start:Crate Puzzle #exit:0
+->END 
 
-= exit
-#layout:right #speaker:Lemas #portrait:heroFace
-Вы кто ?, я не вижу у вас право проходить у меня испытания для спасения принцессы. Может вам стоит получить этот сертификат у моего брата. Он похож на меня, только у него белая шляпа.
+= finishedPuzzle
+Congratulations, you have passed the attention test and put the boxes in the right place. I hope you didn't get tired, remember if it was hard, you are probably doing something worthwhile. #speaker:Lemas #portrait:Violet Mage
 ->END
