@@ -447,6 +447,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2065391125203005367, guid: a82d5f3a4968f42409b5208671a74e3b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3374452991565017314, guid: a82d5f3a4968f42409b5208671a74e3b,
         type: 3}
       propertyPath: m_fontAsset
@@ -709,7 +714,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &87543165 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3374452993085990208, guid: a82d5f3a4968f42409b5208671a74e3b,
+  m_CorrespondingSourceObject: {fileID: 2065391125203005367, guid: a82d5f3a4968f42409b5208671a74e3b,
     type: 3}
   m_PrefabInstance: {fileID: 87543162}
   m_PrefabAsset: {fileID: 0}

@@ -67,8 +67,6 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
 
     private void Start()
     {
-       // DeactivateDialoguePanel();
-
 
         // get all of the choices text 
         choicesText = new TextMeshProUGUI[choices.Length];
@@ -101,6 +99,7 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
         DialogueStarted?.Invoke();
 
         SaveSystem.SavePosition(GameObject.FindGameObjectWithTag("Player").transform.position);
+
         this.currentStory = new Story(inkJSON.text);
 
         this.dialogueIsPlaying = true;
@@ -127,12 +126,13 @@ public class DialogueManager : MonoBehaviour//, IDataPersistence
         DeactivateDialoguePanel();
         dialogueText.text = "";
 
-        DialogueEnded?.Invoke();
 
         if (dialogueVariables != null)
         {
             dialogueVariables.SaveVariables();
         }
+
+        DialogueEnded?.Invoke();
 
         //DataPersistenceManager dpManager = FindObjectsOfType<DataPersistenceManager>()[0];
 

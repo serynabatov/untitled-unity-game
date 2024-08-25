@@ -64,6 +64,16 @@ public class DialogueVariables
         // only maintain variables that vere initialized from the globals ink file
         if (variables.ContainsKey(name))
         {
+            if (variables["mainVarCage"].ToString().ToLower() == "true")
+            {
+                PlayerPrefs.SetInt("mainVarCage", 1);
+            }
+
+            if (variables["mainVarBossFinished"].ToString().ToLower() == "true")
+            {
+                PlayerPrefs.SetInt(GameManager.LastWaterSceneStatus, 1);
+            }
+
             variables.Remove(name);
             variables.Add(name, value);
         }

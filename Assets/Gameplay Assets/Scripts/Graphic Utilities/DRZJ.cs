@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class DRZJ : MonoBehaviour , IRevealable
 {
-    private SpriteRenderer sprite;
+    [SerializeField]
+    private GameObject _bees;
 
-    private void Start()
-    {
-        sprite = GetComponent<SpriteRenderer>();
-    }
     public void Reveal()
     {
-        print("Here is DRZJ");
-        sprite.enabled = true;
+        _bees.SetActive(true);
     }
 
     public void Conceal()
     {
-        sprite.enabled = false;
+        _bees.SetActive(false);
     }
 }

@@ -7,9 +7,10 @@ pause_4;Exit to menu;Выйти в меню
 main_Menu_Title;Main Menu;Главное Меню
 main_Menu_1;Continue;Продолжить
 main_Menu_2;New Game;Новая Игра
-main_Menu_3;Load Game;Загрузить Игру
+main_Menu_3;Continue;Продолжить
 main_Menu_4;Options;Настройки
 main_Menu_5;Exit Game;Выйти Из Игры
+main_Menu_Exit_Window;Are you sure you want to exit game?;Хотите ли вы выйти из игры?
 option_Graphic;Graphics;Графика
 option_Graphic_1;Resolution:;Разрешение:
 option_Graphic_2;Fullscreen;Полноэкранный
@@ -27,7 +28,7 @@ option_Control_6;Skill;Способность
 option_Control_7;Attack;Атака
 option_Control_8;Dodge;Уклонение
 option_Control_9;Reset All;Сброс
-location_Name_1;The Forest of Lemas;Лес Димасовов
-location_Name_2;The Grotto of Dawn;Грот Восхода
-location_Name_3;The Cave of Mehrojivich;Пещера Мехроджовичей
+location_Name_1;The Forest of Dreams;Лес Сновидений
+location_Name_2;The Lawn of Dawn;Закатный луг
+location_Name_3;The Cave of Moon Waterfall;Пещера Лунного Водопада
 help_Text_In_Water_Puzzle;Dimas Mega Progger();Нужно от старта добраться до финиша, построив путь для воды. Вода может двигается только в одном направлении. Для того чтобы сменить направление движения нужно пройти через угловые блоки. А для того чтобы пройти через кристаллы тьмы или света, необходимо изменять полярность воды.

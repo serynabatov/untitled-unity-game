@@ -7,6 +7,8 @@ public class FlowerTrigger : MonoBehaviour
 {
     private InputManager _inputManager;
 
+    private AudioSource _audioSource;
+
     [SerializeField]
     private SpriteRenderer _flowerSprite;
 
@@ -29,12 +31,14 @@ public class FlowerTrigger : MonoBehaviour
     private void Start()
     {
         _inputManager = InputManager.GetInstance();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
     {
         if (_isInRange&&_inputManager.GetInteractPressed())
         {
+            _audioSource.Play();
             SetFog();
             StartCoroutine(SetDelay(_delay));
         }

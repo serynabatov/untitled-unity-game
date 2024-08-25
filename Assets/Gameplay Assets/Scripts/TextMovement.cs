@@ -9,6 +9,9 @@ public class TextMovement : MonoBehaviour
     private RectTransform m_RectTransform;
 
     [SerializeField]
+    private float _finalPoz;
+
+    [SerializeField]
     private float _upSpeed;
 
     [SerializeField]
@@ -23,15 +26,15 @@ public class TextMovement : MonoBehaviour
 
     void Update()
     {
-        TextUpMovement();
-        if (m_RectTransform.anchoredPosition.y > 200f)
+        if (m_RectTransform.anchoredPosition.y < _finalPoz)
         {
-            if (_isLastCredit)
+            TextUpMovement();
+            if (_isLastCredit && m_RectTransform.anchoredPosition.y >= _finalPoz)
             {
                 OnCreditEnd?.Invoke();
             }
-            gameObject.SetActive(false);
         }
+
     }
 
     private void TextUpMovement()

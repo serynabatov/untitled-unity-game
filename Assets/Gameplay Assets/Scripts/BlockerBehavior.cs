@@ -42,7 +42,7 @@ public class BlockerBehavior : MonoBehaviour
                 CheckBlockerStatus(blockStatus);
                 break;
             case 1:
-                blockStatus = PlayerPrefs.GetInt("mainVarCrate", 0);
+                blockStatus = PlayerPrefs.GetInt("mainVarCage", 0);
                 CheckBlockerStatus(blockStatus);
                 break;
         }
@@ -52,14 +52,15 @@ public class BlockerBehavior : MonoBehaviour
     {
         if (_blockerIndex == 1)
         {
-            PlayerPrefs.SetInt("mainVarCrate", 1);
-            Destroy(gameObject);
-        }
-        if (_blockerIndex == 0) 
-        {
-            if (_variables.variables["mainVarBossFinished"].ToString().ToLower() == "true")
+            if (PlayerPrefs.GetInt("mainVarCage") == 1)
             {
-                PlayerPrefs.SetInt(GameManager.LastWaterSceneStatus, 1);
+                Destroy(gameObject);
+            }
+        }
+        if (_blockerIndex == 0)
+        {
+            if (PlayerPrefs.GetInt(GameManager.LastWaterSceneStatus) == 1)
+            {
                 OnBlockerDisable?.Invoke();
                 Destroy(gameObject);
             }

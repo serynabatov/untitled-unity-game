@@ -1320,7 +1320,7 @@ PrefabInstance:
         type: 3}
       propertyPath: clearText
       value: 
-      objectReference: {fileID: 370670426}
+      objectReference: {fileID: 535983875}
     - target: {fileID: 9192788152191383499, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
         type: 3}
       propertyPath: stateText
@@ -2584,12 +2584,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 357453196}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &370670426 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3374452993085990208, guid: a82d5f3a4968f42409b5208671a74e3b,
-    type: 3}
-  m_PrefabInstance: {fileID: 535983874}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &416359836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2914,6 +2908,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2065391125203005367, guid: a82d5f3a4968f42409b5208671a74e3b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3374452991565017314, guid: a82d5f3a4968f42409b5208671a74e3b,
         type: 3}
       propertyPath: m_fontAsset
@@ -3152,6 +3151,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a82d5f3a4968f42409b5208671a74e3b, type: 3}
+--- !u!1 &535983875 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2065391125203005367, guid: a82d5f3a4968f42409b5208671a74e3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 535983874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &542544641
 PrefabInstance:
   m_ObjectHideFlags: 0
