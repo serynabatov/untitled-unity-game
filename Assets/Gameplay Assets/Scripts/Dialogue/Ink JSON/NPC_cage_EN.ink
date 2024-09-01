@@ -24,5 +24,5 @@ For now, this forest is protected, and by obtaining the <color=\#F8FF30>nilurium
 Prince, what are you doing here?! Need I remind you of your business? #speaker:Vados #portrait:Green Mage 
 + [Yes]
 ->purpose
-+ [No]
++ [No] #exit:0
 ->END

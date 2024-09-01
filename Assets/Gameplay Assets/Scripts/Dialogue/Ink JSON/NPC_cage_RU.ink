@@ -24,5 +24,5 @@ INCLUDE globals.ink
 Принц, что вы тут делаете?! Вам напомнить о ваших делах? #speaker:Вадос #portrait:Green Mage 
 + [Да]
 ->purpose
-+ [Нет]
++ [Нет] #exit:0
 ->END
