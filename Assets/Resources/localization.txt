@@ -25,7 +25,7 @@ option_Control_1;Jump;Прыжок
 option_Control_2;Move Left;Двигаться влево
 option_Control_3;Move Right;Двигаться вправо
 option_Control_4;Interact;Взаимодействовать
-option_Control_5;Submit;Представить
+option_Control_5;Submit;Продолжить
 option_Control_6;Skill;Способность
 option_Control_7;Attack;Атака
 option_Control_8;Dodge;Уклонение

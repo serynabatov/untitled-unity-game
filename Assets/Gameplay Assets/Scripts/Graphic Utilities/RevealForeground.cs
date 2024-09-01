@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RevealForeground : MonoBehaviour, IRevealable
 {
+    [SerializeField]
     private GameObject _fog;
 
     private SpriteRenderer sprite;
@@ -11,7 +12,7 @@ public class RevealForeground : MonoBehaviour, IRevealable
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("Fog Status")==1)
+        if (PlayerPrefs.GetInt("Fog Status") == 1)
         {
             Destroy(_fog);
         }

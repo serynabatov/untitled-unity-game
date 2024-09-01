@@ -24,8 +24,6 @@ public class LocationMusicChanger : MonoBehaviour
 
     private void Awake()
     {
-        SceneSystem.OnSceneChange += AbortMusicChange;
-
         _music = GetComponent<AudioSource>();
         _locationCheck = GetComponent<LocationCheck>();
     }
@@ -37,8 +35,6 @@ public class LocationMusicChanger : MonoBehaviour
 
     private void OnDestroy()
     {
-        SceneSystem.OnSceneChange -= AbortMusicChange;
-
         StopAllCoroutines();
     }
 
@@ -77,32 +73,27 @@ public class LocationMusicChanger : MonoBehaviour
         float timer = 0.0f;
         _isStoping = true;
 
-        if (!_isAborting)
+
+        while (_isStoping)
         {
-            while (_isStoping)
+            volumeHolder = volume - timer / fadeDuration;
+            timer += Time.deltaTime;
+            _music.volume = volumeHolder;
+
+            if (volumeHolder < 0.05f)
             {
-                volumeHolder = volume - timer / fadeDuration;
-                timer += Time.deltaTime;
-                _music.volume = volumeHolder;
-
-                if (volumeHolder < 0.05f)
-                {
-                    _music.volume = 0.0f;
-                    _isStoping = false;
-                    _music.Stop();
-                }
-
-                yield return null;
+                _music.volume = 0.0f;
+                _isStoping = false;
+                _music.Stop();
             }
+
+            yield return null;
         }
+
     }
 
     IEnumerator StartingMusic(int fadeDuration)
     {
-        /* if (!_music.isPlaying)
-         {
-             ChangeMusicInLocation();
-         }*/
         _isStarting = true;
 
         float volume = _music.volume;
@@ -126,8 +117,4 @@ public class LocationMusicChanger : MonoBehaviour
 
     }
 
-    private void AbortMusicChange()
-    {
-        _isAborting = true;
-    }
 }

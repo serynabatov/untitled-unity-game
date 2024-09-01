@@ -63,7 +63,7 @@ public class PlayerController2D : MonoBehaviour
     private bool takingDamage;
     private bool _canSave = true;
 
-    private bool _isChangingScene;
+    private bool _isMusicStoppng;
 
     private Vector2 newVelocity;
     private Vector2 newForce;
@@ -78,6 +78,8 @@ public class PlayerController2D : MonoBehaviour
 
     private void Start()
     {
+        SceneSystem.OnSceneChange += CannotStopMusic;
+
         DialogueManager.DialogueStarted += RemovingControl;
         DialogueManager.DialogueEnded += ResumingControl;
 
@@ -99,11 +101,13 @@ public class PlayerController2D : MonoBehaviour
         StartCoroutine(SavingPosition());
         savedPosition = transform.position;
 
-        _isChangingScene = false;
+        _isMusicStoppng = true;
     }
 
     private void OnDestroy()
     {
+        SceneSystem.OnSceneChange -= CannotStopMusic;
+
         DialogueManager.DialogueStarted -= RemovingControl;
         DialogueManager.DialogueEnded -= ResumingControl;
 
@@ -477,7 +481,10 @@ public class PlayerController2D : MonoBehaviour
             LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
             LocationMusicChanger locationMusicChanger = collision.gameObject.GetComponent<LocationMusicChanger>();
 
-            locationMusicChanger.StopMusic();
+            if (_isMusicStoppng)
+            {
+                locationMusicChanger.StopMusic();
+            }
 
 
             if (locationCheck.SpriteRenderer != null)
@@ -512,5 +519,10 @@ public class PlayerController2D : MonoBehaviour
     private void StopSavingPosition()
     {
         _canSave = false;
+    }
+
+    private void CannotStopMusic()
+    {
+        _isMusicStoppng = false;
     }
 }
