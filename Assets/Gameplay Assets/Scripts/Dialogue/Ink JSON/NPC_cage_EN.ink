@@ -15,7 +15,7 @@ For now, this forest is protected, and by obtaining the <color=\#F8FF30>nilurium
   ->purpose
   
   = purpose
-  You need to pass one trial from each of my brothers, and then you will be able to <color=\#F8FF30>fill the flask</color> with sacred water. This water will help the flower to bloom. Only then will you be able to use it to help Eilina.
+  You need to pass one trial from each of my brothers, and then you will be able to <color=\#F8FF30>fill the flask</color> with sacred water. This water will help the flower to bloom. Only then will you be able to use it to help Ailina.
   Explore the space, and you will meet my brothers. Talk to each of them; they will help you. Good luck and patience prince, you will need it.
   ~ certificate = true
   -> END
