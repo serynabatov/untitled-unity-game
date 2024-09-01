@@ -2,6 +2,7 @@
 ->start
 
 === start ===
-ENGLISH На замок напали, прицесса в опасности, скоро тьма поглотит всё королевство. Зов о помощи был послан #speaker:Narrator #portrait:Black Mage 
-Принц хочет помочь спасти королевство, и поэтому собрал отряд на помощь. По дороге на них напали, остался лишь один принц. Теперь лишь он может помочь спасти принцессу
+The castle was under attack, <color=\#F8FF30>princess in danger</color>, soon darkness would engulf the entire kingdom. A call for help has been sent.  #speaker:Narrator #portrait:Black Mage 
+Our prince wants to help, he has gathered a troop to help. On the way they are attacked, our hero is left alone. Will he have to deal with this all by himself?! 
+They say, “Even one man can change the course of the future.” Well, it's time to find out the truth.
 ->END
