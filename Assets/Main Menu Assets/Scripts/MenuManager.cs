@@ -13,16 +13,14 @@ public class MenuManager : MonoBehaviour
     private GameObject optionsMenu;
 
     [SerializeField]
-    private GameObject loadGameMenu;
+    private GameObject creditsPanel;
 
     [SerializeField]
     private Button resumeButton;
     [SerializeField]
     private Button exitButton;
     [SerializeField]
-    private Button loadButton;
-    [SerializeField]
-    private Button loadFirstButton;
+    private Button creditsButton;
     [SerializeField]
     private Button optionsButton;
     [SerializeField]
@@ -82,6 +80,16 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("Gameplay");
     }
 
+    public void Credits()
+    {
+        if (!ConfirmationManager.GetInstance().ActiveSelf(сonfirmationWindow))
+        {
+            optionsMenu.SetActive(false);
+            creditsPanel.SetActive(creditsPanel.activeSelf == true ? false : true);
+        }
+
+    }
+
     /// <summary>
     /// !Включает/выключает плашку options
     /// </summary>
@@ -89,16 +97,22 @@ public class MenuManager : MonoBehaviour
     {
         if (!ConfirmationManager.GetInstance().ActiveSelf(сonfirmationWindow))
         {
-            loadGameMenu.SetActive(false);
+            if (creditsPanel != null)
+            {
+                creditsPanel.SetActive(false);
+            }
             optionsMenu.SetActive(optionsMenu.activeSelf == true ? false : true);
 
             Navigation navigation = optionsButton.navigation;
             navigation.selectOnRight = optionsFirstButton;
             optionsButton.navigation = navigation;
 
-            navigation = loadButton.navigation;
-            navigation.selectOnRight = optionsFirstButton;
-            loadButton.navigation = navigation;
+            if (creditsButton != null)
+            {
+                navigation = creditsButton.navigation;
+                navigation.selectOnRight = optionsFirstButton;
+                creditsButton.navigation = navigation;
+            }
 
             navigation = resumeButton.navigation;
             navigation.selectOnRight = optionsFirstButton;
@@ -157,7 +171,7 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     private void ConfirmateExitToMainMenu()
     {
-       ConfirmationManager.GetInstance().GetYesButton(сonfirmationWindow).onClick.AddListener(() => ExecuteYesButtonToMainMenu());
+        ConfirmationManager.GetInstance().GetYesButton(сonfirmationWindow).onClick.AddListener(() => ExecuteYesButtonToMainMenu());
     }
 
     private void ExecuteYesButtonToMainMenu()

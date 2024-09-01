@@ -11,7 +11,7 @@ public class Boulder : MonoBehaviour
     private float pushForce;
 
     [SerializeField]
-    [Range(0f, 1f)]
+    [Range(0f, 5f)]
     private float acceleration;
 
     private Vector2 _startingPosition;
@@ -52,6 +52,7 @@ public class Boulder : MonoBehaviour
 
         OnBoulderEnd += BoulderEnd;
         OnBoulderEnd += StopBoulderSound;
+
     }
 
     private void OnDestroy()
@@ -67,7 +68,7 @@ public class Boulder : MonoBehaviour
         OnBoulderEnd -= StopBoulderSound;
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         rb.AddForce(Vector2.right * acceleration, ForceMode2D.Force);
         ShadowRotationBlock();
@@ -85,7 +86,7 @@ public class Boulder : MonoBehaviour
         _broker.Publish<int>((int)AudioClipName.BoulderLanding);
 
         rb.constraints = RigidbodyConstraints2D.None;
-        //rb.AddForce(Vector2.down * pushForce, ForceMode2D.Impulse);
+        rb.AddForce(Vector2.down * pushForce, ForceMode2D.Impulse);
     }
 
     private void ResetPosition()

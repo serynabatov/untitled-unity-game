@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6910395003545364870
 RectTransform:
   m_ObjectHideFlags: 0
@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 3374452991565017313}
   - component: {fileID: 3374452991565017315}
   - component: {fileID: 3374452991565017314}
+  - component: {fileID: 1906554197763928000}
   m_Layer: 5
   m_Name: State Text
   m_TagString: Untagged
@@ -143,8 +144,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Preparing
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7ad919c796b7be74f88f801aea075c12, type: 2}
+  m_sharedMaterial: {fileID: -1902884327815351324, guid: 7ad919c796b7be74f88f801aea075c12,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -210,6 +212,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1906554197763928000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374452991565017312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282b7654fc7b69144a7aaf22f6f6d4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iD: water_Puzzle_State
 --- !u!1 &3374452991603066626
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,7 +498,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: GameRestart
+        m_MethodName: ToNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1240,6 +1255,7 @@ GameObject:
   - component: {fileID: 3374452992390346313}
   - component: {fileID: 3374452992390346315}
   - component: {fileID: 3374452992390346314}
+  - component: {fileID: 1844067677894413461}
   m_Layer: 5
   m_Name: Restart Button Text
   m_TagString: Untagged
@@ -1325,7 +1341,7 @@ MonoBehaviour:
   m_fontSize: 50
   m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -1364,6 +1380,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1844067677894413461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374452992390346312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282b7654fc7b69144a7aaf22f6f6d4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iD: water_Puzzle_Restart
 --- !u!1 &3374452992408519571
 GameObject:
   m_ObjectHideFlags: 0
@@ -2318,6 +2347,7 @@ GameObject:
   - component: {fileID: 3374452993085990209}
   - component: {fileID: 3374452993085990211}
   - component: {fileID: 3374452993085990210}
+  - component: {fileID: 7674162523622970122}
   m_Layer: 5
   m_Name: Clear Text
   m_TagString: Untagged
@@ -2342,7 +2372,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 100}
+  m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3374452993085990211
 CanvasRenderer:
@@ -2374,8 +2404,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Cleared!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7ad919c796b7be74f88f801aea075c12, type: 2}
+  m_sharedMaterial: {fileID: -1902884327815351324, guid: 7ad919c796b7be74f88f801aea075c12,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2441,6 +2472,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7674162523622970122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374452993085990208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282b7654fc7b69144a7aaf22f6f6d4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iD: water_Puzzle_Clear
 --- !u!1 &3374452993134390555
 GameObject:
   m_ObjectHideFlags: 0
@@ -2774,6 +2818,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: StartBlockBehavior, Assembly-CSharp
+        m_MethodName: StartAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 17
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3374452993377990164
 GameObject:
   m_ObjectHideFlags: 0
@@ -2785,6 +2853,7 @@ GameObject:
   - component: {fileID: 3374452993377990165}
   - component: {fileID: 3374452993377990167}
   - component: {fileID: 3374452993377990166}
+  - component: {fileID: 6330935005062397659}
   m_Layer: 5
   m_Name: Start Button Twxt
   m_TagString: Untagged
@@ -2867,10 +2936,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 72
   m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -2909,6 +2978,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6330935005062397659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374452993377990164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282b7654fc7b69144a7aaf22f6f6d4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iD: water_Puzzle_Start
 --- !u!1 &3374452993413174777
 GameObject:
   m_ObjectHideFlags: 0
@@ -3128,6 +3210,7 @@ GameObject:
   - component: {fileID: 3374452993675801765}
   - component: {fileID: 3374452993675801767}
   - component: {fileID: 3374452993675801766}
+  - component: {fileID: 4833109891072774789}
   m_Layer: 5
   m_Name: Clear Button Text
   m_TagString: Untagged
@@ -3213,7 +3296,7 @@ MonoBehaviour:
   m_fontSize: 50
   m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -3252,3 +3335,16 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4833109891072774789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374452993675801764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282b7654fc7b69144a7aaf22f6f6d4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iD: water_Puzzle_Next

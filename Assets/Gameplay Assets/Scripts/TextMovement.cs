@@ -24,7 +24,7 @@ public class TextMovement : MonoBehaviour
         m_RectTransform = GetComponent<RectTransform>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (m_RectTransform.anchoredPosition.y < _finalPoz)
         {

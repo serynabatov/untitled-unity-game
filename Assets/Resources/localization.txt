@@ -4,13 +4,15 @@ pause_1;Continue;Продолжить
 pause_2;Load game;Загрузить сохранение
 pause_3;Options;Настройки
 pause_4;Exit to menu;Выйти в меню
+pause_Exit_Window;Exit to main menu?;Хотите выйти в главное меню
 main_Menu_Title;Main Menu;Главное Меню
 main_Menu_1;Continue;Продолжить
 main_Menu_2;New Game;Новая Игра
 main_Menu_3;Continue;Продолжить
+main_Menu_3.0;Credits;Титры
 main_Menu_4;Options;Настройки
-main_Menu_5;Exit Game;Выйти Из Игры
-main_Menu_Exit_Window;Are you sure you want to exit game?;Хотите ли вы выйти из игры?
+main_Menu_5;Exit Game;Выйти из игры
+main_Menu_Exit_Window;Are you sure you want to exit the game?;Хотите ли вы выйти из игры?
 option_Graphic;Graphics;Графика
 option_Graphic_1;Resolution:;Разрешение:
 option_Graphic_2;Fullscreen;Полноэкранный
@@ -31,4 +33,11 @@ option_Control_9;Reset All;Сброс
 location_Name_1;The Forest of Dreams;Лес Сновидений
 location_Name_2;The Lawn of Dawn;Закатный луг
 location_Name_3;The Cave of Moon Waterfall;Пещера Лунного Водопада
-help_Text_In_Water_Puzzle;Dimas Mega Progger();Нужно от старта добраться до финиша, построив путь для воды. Вода может двигается только в одном направлении. Для того чтобы сменить направление движения нужно пройти через угловые блоки. А для того чтобы пройти через кристаллы тьмы или света, необходимо изменять полярность воды.
+water_Puzzle_State;Preparing;Подготовка
+water_Puzzle_Start;Start;Старт
+water_Puzzle_Clear;Cleared;Пройдено;
+water_Puzzle_Next;Next level;Следующий уровень
+water_Puzzle_Restart;Restart;Переиграть
+help_Text_In_Water_Puzzle;Dimas Mega Progger();Нужно от старта добраться до финиша, построив путь для воды. Вода может двигается только в одном направлении. Для того чтобы сменить направление движения нужно пройти через угловые блоки. Для того чтобы пройти через кристаллы тьмы или света, необходимо изменять полярность воды. Чтобы изменить полярность воды пройдите через специальный блок цвета кристалла. На картинках есть подсказка
+yes_Text;Yes;Да
+no_Text;No;Нет

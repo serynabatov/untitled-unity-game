@@ -14,6 +14,6 @@ public class DRZJ : MonoBehaviour , IRevealable
 
     public void Conceal()
     {
-        _bees.SetActive(false);
+
     }
 }
