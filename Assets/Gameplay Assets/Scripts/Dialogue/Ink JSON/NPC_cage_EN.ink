@@ -3,7 +3,7 @@ INCLUDE globals.ink
 {mainVarCage: ->main.prePurpose|->main}
 
 === main ===
-You've come, <color=\#F8FF30>prince</color>, we've been expecting you. The princess is in danger, no the kingdom is in danger, her highness is left in a burning castle. We must save her or the darkness will take over the kingdom, turn this blooming place into a desert.  #speaker:Ados #portrait:Green Mage
+You've come, <color=\#F8FF30>prince</color>, we've been expecting you. The princess is in danger, no the kingdom is in danger, her highness is alone in a burning castle. She must be rescued or the darkness will take over the kingdom and turn this blooming place into a desert.  #speaker:Ados #portrait:Green Mage
 
 Our knights tried to rescue her, but the enemy is too strong, none of them returned.
  + [...]
