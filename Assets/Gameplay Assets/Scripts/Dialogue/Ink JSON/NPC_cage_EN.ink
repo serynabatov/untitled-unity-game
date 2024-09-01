@@ -3,7 +3,7 @@ INCLUDE globals.ink
 {mainVarCage: ->main.prePurpose|->main}
 
 === main ===
-You've come, <color=\#F8FF30>prince</color>; we've been expecting you. The princess is in danger — no the kingdom is in danger, her highness is alone in a burning castle. She must be rescued or the darkness will take over the kingdom and turn this blooming place into a desert.  #speaker:Ados #portrait:Green Mage
+You've come, <color=\#F8FF30>prince</color>; we've been expecting you. The princess is in danger — no the kingdom is in danger, her highness is alone in a burning castle. She must be rescued or the darkness will take over the kingdom and turn this blooming place into a desert. #speaker:Vados #portrait:Green Mage
 
 Our knights tried to save her, but the enemy is too strong, and none of them returned.
  + [...]
@@ -21,7 +21,7 @@ For now, this forest is protected, and by obtaining the <color=\#F8FF30>nilurium
   -> END
   
   = prePurpose
-Prince, what are you doing here?! Need I remind you of your business? #speaker:Ados #portrait:Green Mage 
+Prince, what are you doing here?! Need I remind you of your business? #speaker:Vados #portrait:Green Mage 
 + [Yes]
 ->purpose
 + [No]
