@@ -29,7 +29,7 @@ option_Control_5;Submit dialogue;Продолжить диалог
 option_Control_6;Skill;Способность
 option_Control_7;Attack;Атака
 option_Control_8;Dodge;Уклонение
-option_Control_9;Reset All;Сброс
+option_Control_9;Reset settings;Восстановить по умолчанию
 option_Reset;Full reset;Полный сброс
 location_Name_1;The Forest of Dreams;Лес Сновидений
 location_Name_2;The Lawn of Dawn;Закатный луг
@@ -40,5 +40,14 @@ water_Puzzle_Clear;Cleared;Пройдено;
 water_Puzzle_Next;Next level;Следующий уровень
 water_Puzzle_Restart;Restart;Переиграть
 help_Text_In_Water_Puzzle;Dimas Mega Progger();Нужно от старта добраться до финиша, построив путь для воды. Вода может двигается только в одном направлении. Для того чтобы сменить направление движения нужно пройти через угловые блоки. Для того чтобы пройти через кристаллы тьмы или света, необходимо изменять полярность воды. Чтобы изменить полярность воды пройдите через специальный блок цвета кристалла. На картинках есть подсказка
+credits_0;Game was brought by;Над игрой работали
+credits_1;<color=#00FFFF><b>Gamedever</b></color><br>Mehrodzh Musaev;<color=#00FFFF><b>Геймдизайнер</b></color><br>Мехродж Мусаев
+credits_2;<color=#00FFFF><b>Artist</b></color><br>Egor Golda;<color=#00FFFF><b>Художник</b></color><br>Егор Гольда
+credits_3;<color=#00FFFF><b>Gamedever assistant</b></color><br>Aram Kazaryan;<color=#00FFFF><b>Ассистент Геймдизайнера</b></color><br>Арам Казарян
+credits_4;<color=#00FFFF><b>Sound director</b></color><br>Nikolay Maiburov;<color=#00FFFF><b>Звукорежиссёр</b></color><br>Николай Майбуров
+credits_5;Special thanks;Отдельное спасибо
+credits_6;<color=#00FFFF><b>Effects consultant</b></color><br>Alena Subanova;<color=#00FFFF><b>Консультация по эффектам</b></color><br>Алёна Субанова
+credits_7;<color=#00FFFF><b>Tech support</b></color><br>Sergey Nabatov;<color=#00FFFF><b>Помощь в технической реализации</b></color><br>Сергей Набатов
+credits_8;Thanks for playing!;Спасибо за игру!
 yes_Text;Yes;Да
 no_Text;No;Нет
