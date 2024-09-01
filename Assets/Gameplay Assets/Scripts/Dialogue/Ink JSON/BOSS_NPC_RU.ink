@@ -26,5 +26,6 @@ INCLUDE globals.ink
 ->END
 
 = dismissBoss
+~ mainVarBossFinished = true
 Ты ещё не прошёл все испытания. Вернись ко мне, когда будешь готов. #speaker:Вадос #portrait:Green Mage
 ->END

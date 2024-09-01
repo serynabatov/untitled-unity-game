@@ -38,7 +38,7 @@ public class SaveSystem : MonoBehaviour
                 break;
             case "Crate Puzzle":
                 position.x = PlayerPrefs.GetFloat("PlayerPosXCrate", 0);
-                position.y = PlayerPrefs.GetFloat("PlayerPosYCrate", 24.81f); //-5f default (24.81f - это не дефолтный для прохождения 3 уровня)
+                position.y = PlayerPrefs.GetFloat("PlayerPosYCrate", -5f); //-5f default (24.81f - это не дефолтный для прохождения 3 уровня)
                 break;
             default:
                 Debug.LogWarning("Something wrong with scene name here to Load " + SceneManager.GetActiveScene().name);
