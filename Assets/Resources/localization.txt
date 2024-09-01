@@ -4,7 +4,7 @@ pause_1;Continue;Продолжить
 pause_2;Load game;Загрузить сохранение
 pause_3;Options;Настройки
 pause_4;Exit to menu;Выйти в меню
-pause_Exit_Window;Exit to main menu?;Хотите выйти в главное меню
+pause_Exit_Window;Exit to main menu?;Хотите выйти в главное меню?
 main_Menu_Title;Main Menu;Главное Меню
 main_Menu_1;Continue;Продолжить
 main_Menu_2;New Game;Новая Игра
@@ -12,7 +12,7 @@ main_Menu_3;Continue;Продолжить
 main_Menu_3.0;Credits;Титры
 main_Menu_4;Options;Настройки
 main_Menu_5;Exit Game;Выйти из игры
-main_Menu_Exit_Window;Are you sure you want to exit the game?;Хотите ли вы выйти из игры?
+main_Menu_Exit_Window;Are you sure you want to exit the game?;Хотите выйти из игры?
 option_Graphic;Graphics;Графика
 option_Graphic_1;Resolution:;Разрешение:
 option_Graphic_2;Fullscreen;Полноэкранный
@@ -39,7 +39,7 @@ water_Puzzle_Start;Start;Старт
 water_Puzzle_Clear;Cleared;Пройдено;
 water_Puzzle_Next;Next level;Следующий уровень
 water_Puzzle_Restart;Restart;Переиграть
-help_Text_In_Water_Puzzle;Dimas Mega Progger();Нужно от старта добраться до финиша, построив путь для воды. Вода может двигается только в одном направлении. Для того чтобы сменить направление движения нужно пройти через угловые блоки. Для того чтобы пройти через кристаллы тьмы или света, необходимо изменять полярность воды. Чтобы изменить полярность воды пройдите через специальный блок цвета кристалла. На картинках есть подсказка
+help_Text_In_Water_Puzzle;You need to get from the start to the finish by building a path for the water. Water can only move in one direction. In order to change the direction of movement you need to pass through the corner blocks. In order to pass through the crystals of darkness or light, you must change the polarity of the water. To change the polarity of water pass through a special block of crystal color. There is a hint on the pictures;Нужно от старта добраться до финиша, построив путь для воды. Вода может двигается только в одном направлении. Для того чтобы сменить направление движения нужно пройти через угловые блоки. Для того чтобы пройти через кристаллы тьмы или света, необходимо изменять полярность воды. Чтобы изменить полярность воды пройдите через специальный блок цвета кристалла. На картинках есть подсказка
 credits_0;Game was brought by;Над игрой работали
 credits_1;<color=#00FFFF><b>Gamedesigner</b></color><br>Mehrodzh Musaev;<color=#00FFFF><b>Геймдизайнер</b></color><br>Мехродж Мусаев
 credits_2;<color=#00FFFF><b>2D Artist</b></color><br>Egor Golda;<color=#00FFFF><b>2D Художник</b></color><br>Егор Гольда
