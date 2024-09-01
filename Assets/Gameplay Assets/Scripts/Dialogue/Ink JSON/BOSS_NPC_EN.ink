@@ -11,7 +11,8 @@ But don't worry, this is the easiest test, all you have to do is answer the ques
 
 = prePurpose
 Do you promise that you will fight to the end, even when you lose all hope and even when you forget your goal?
-+[Yes, I promise] 
++[Yes, I promise]
+~ mainVarBossFinished = true 
 ->finishedBoss
 +[No, I'm not] #start:ExampleRiddle #exit:0
 ->END

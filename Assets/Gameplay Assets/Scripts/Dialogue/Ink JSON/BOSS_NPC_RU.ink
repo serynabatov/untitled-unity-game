@@ -11,8 +11,9 @@ INCLUDE globals.ink
 
 = prePurpose
 Обещаешь ли ты, что будешь бороться до конца, даже когда потеряешь всякую надежду и даже когда забудешь свою цель?
-+[Да, обещаю] 
-->finishedBoss
++[Да, обещаю]
+~ mainVarBossFinished = true 
+->finishedBoss 
 +[Нет, не обещаю] #start:ExampleRiddle #exit:0
 ->END
 +[Не могу сказать] #start:ExampleRiddle #exit:0
