@@ -4,21 +4,21 @@ INCLUDE globals.ink
 {mainVarWaterFinished: ->main.finishedPuzzle|{mainVarWater: ->main.prePurpose|->main}}
 
 === main ===
-You came. My brother told me about you. I am your guide for this challenge. My name is <color=\#F8FF30><b>Gory</b></color>, emphasis on the first syllable. #speaker:Gory #portrait:Orange Mage
-Remember your path-breaking skills, and if you didn't have them, now acquire them.
+You came. My brother told me about you. I am your guide for this trial. My name is <color=\#F8FF30><b>Gory</b></color>, emphasis on the first syllable. #speaker:Gory #portrait:Orange Mage
+Remember your path-breaking skills, and if you don't have them, now acquire them.
 ~ mainVarWater = true
 ->purpose
 
 = purpose
-To pass the test, you must correctly direct the riverbed. In some places the river is infected with darkness, but you can overcome it, just be careful. I trust your instincts, so you will figure out the rest of the details on your own. 
-The burden is yours, and if you fail, no one else will.
+To pass the test, you must correctly direct the riverbed. In some places, the river is contaminated with darkness, but you can overcome it; the main thing is to be careful. I trust your instincts, so you will figure out the rest of the details on your own. 
+This burden has fallen to you, and if you fail, no one will. 
 +[I'll come back later.] #exit:0
 ->END
 +[<b>PASS THE TEST</b>] #start:Riddle 1 #exit:0
 ->END
 
 = prePurpose
-Prince, I see you haven't passed the test yet. Need I remind you of the details? #speaker:Gory #portrait:Orange Mage
+Prince, I see you haven't passed the test yet. Shall I remind you of the details? #speaker:Gory #portrait:Orange Mage
 +[Need a hint]
 ->purpose
 +[No, goodbye] #exit:0
@@ -27,5 +27,5 @@ Prince, I see you haven't passed the test yet. Need I remind you of the details?
 ->END
 
 = finishedPuzzle
-Way to go Prince, you <color=\#F8FF30>recovered the water channel</color>, I was sure you could do it, I'm proud of you. #speaker:Gory #portrait:Orange Mage
+Way to go, Prince! You <color=\#F8FF30>recovered the water course</color>. I was sure you could do it. I'm proud of you. #speaker:Gory #portrait:Orange Mage
 ->END
