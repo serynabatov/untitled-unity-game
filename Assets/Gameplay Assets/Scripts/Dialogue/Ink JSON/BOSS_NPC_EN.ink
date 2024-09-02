@@ -10,7 +10,7 @@ But don't worry, this is the easiest test, all you have to do is answer the ques
 ->prePurpose
 
 = prePurpose
-Do you promise that you will fight to the end, even when you lose all hope and even when you forget your goal?
+Do you promise that you will fight to the end, even when you lose all hope and even when you forget your goal? #speaker:Vados #portrait:Green Mage
 +[Yes, I promise]
 ~ mainVarBossFinished = true 
 ->finishedBoss

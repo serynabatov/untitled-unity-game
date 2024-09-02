@@ -3,9 +3,9 @@ INCLUDE globals.ink
 {mainVarCage: ->main.prePurpose|->main}
 
 === main ===
-You've come, <color=\#F8FF30>prince</color>; we've been expecting you. The princess is in danger — no the kingdom is in danger, her highness is alone in a burning castle. She must be rescued or the darkness will take over the kingdom and turn this blooming place into a desert. #speaker:Vados #portrait:Green Mage
+You've come, <color=\#F8FF30>prince</color>; we've been expecting you. The princess is in danger — no the kingdom is in danger, her highness in a burning castle. She must be rescued or the darkness will take over the kingdom and turn this blooming place into a desert. #speaker:Vados #portrait:Green Mage
 
-Our knights tried to save her, but the enemy is too strong, and none of them returned.
+The enemy is too strong, our knights tried to rescue her, but none of them returned.
  + [...]
  
  - Princess Ailina is holding back the darkness that is trying to consume the kingdom, but a sorcerer has overpowered her with a spell, and now she is in a coma.

@@ -2,7 +2,7 @@ INCLUDE globals.ink
 {mainVarBossFinished: ->main.finishGame|->main}
 
 === main ===
-Is that really you?! I was able to release my spirit from my body before I lost the battle. And I'll help you get the flower. #speaker:Ailin #portrait:Princess
+Is that really you?! I was able to release my spirit from my body before I lost the battle. And I'll help you get the flower. #speaker:Ailina #portrait:Princess
 This flower can wake me up, but I think you already talked to the wizard about it.
 The villain Torgath has taken advantage of the instability in the kingdom and broken the seal that holds back the darkness.
 He wants to take possession of the flower, but we have protected the forest with an additional barrier against the darkness beforehand, so we have some time.
@@ -11,5 +11,5 @@ According to legend, the last seed of the <color=\#F8FF30>Telurin</color> tree w
 ->END
 
 = finishGame
-Let's plant a flower beside me; you <color=\#F8FF30>have met all the tests</color>. Save me. Together we can resist the darkness. #speaker:Ailin #portrait:Princess
+Let's plant a flower beside me; you <color=\#F8FF30>have met all the tests</color>. Save me. Together we can resist the darkness. #speaker:Ailina #portrait:Princess
 ->END
