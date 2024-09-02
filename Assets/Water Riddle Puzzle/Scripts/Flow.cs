@@ -69,24 +69,7 @@ public class Flow : MonoBehaviour
         {
             if (currentState != States.Dark)
             {
-                _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
-                gameManager.gameOver = true;
-            }
-            else
-            {
                 _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 4);
-            }
-        }
-        if (collision.CompareTag("Light"))
-        {
-            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 1);
-            currentState = States.Light;
-        }
-        if (collision.CompareTag("Light Block"))
-        {
-            if (currentState != States.Light)
-            {
-                _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
                 gameManager.gameOver = true;
             }
             else
@@ -94,9 +77,26 @@ public class Flow : MonoBehaviour
                 _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 5);
             }
         }
+        if (collision.CompareTag("Light"))
+        {
+            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 2);
+            currentState = States.Light;
+        }
+        if (collision.CompareTag("Light Block"))
+        {
+            if (currentState != States.Light)
+            {
+                _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 4);
+                gameManager.gameOver = true;
+            }
+            else
+            {
+                _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 6);
+            }
+        }
         if (collision.CompareTag("Edge"))
         {
-            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
+            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 4);
             gameManager.gameOver = true;
         }
         if (collision.CompareTag("Turn"))
@@ -110,7 +110,7 @@ public class Flow : MonoBehaviour
         if (collision.CompareTag("Goal"))
         {
             GoalCheck(collision);
-            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 2);
+            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
             gameManager.gameClear = true;
         }
     }
@@ -143,7 +143,7 @@ public class Flow : MonoBehaviour
                             direction = 3;
                             break;
                         default:
-                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 4);
                             gameManager.gameOver = true;
                             break;
                     }
@@ -172,7 +172,7 @@ public class Flow : MonoBehaviour
                             direction = 3;
                             break;
                         default:
-                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 4);
                             gameManager.gameOver = true;
                             break;
                     }
@@ -201,7 +201,7 @@ public class Flow : MonoBehaviour
                             direction = 0;
                             break;
                         default:
-                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 4);
                             gameManager.gameOver = true;
                             break;
                     }
@@ -230,7 +230,7 @@ public class Flow : MonoBehaviour
                             direction = 2;
                             break;
                         default:
-                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 4);
                             gameManager.gameOver = true;
                             break;
                     }
@@ -266,7 +266,7 @@ public class Flow : MonoBehaviour
                                 animator.Play("Light Right - Left (Start)");
                             break;
                         default:
-                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 4);
                             gameManager.gameOver = true;
                             break;
                     }
@@ -293,7 +293,7 @@ public class Flow : MonoBehaviour
                                 animator.Play("Light Up - Down (Start)");
                             break;
                         default:
-                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
+                            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 4);
                             gameManager.gameOver = true;
                             break;
                     }
