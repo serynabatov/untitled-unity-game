@@ -6,6 +6,9 @@ using TMPro;
 
 public class MovementCrate : MonoBehaviour
 {
+    [SerializeField]
+    private List<CheckpointsScript> _checkpointsScripts;
+
     [Header("Movement Params")]
     public float runSpeedX = 5.0f;
     public float runSpeedY = 5.0f;
@@ -45,20 +48,26 @@ public class MovementCrate : MonoBehaviour
 
     private void Awake()
     {
+        transform.position = SaveSystem.LoadPosition();
         tmp = GetComponentInChildren<TMP_Text>();
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
     {
-        //SaveSystem.GetInstance().SavePosition(transform.position);
-        transform.position = SaveSystem.LoadPosition();
+        _checkpointsScripts[0].OnCheckpointTrigger += SaveCheckpointPosition;
+        _checkpointsScripts[1].OnCheckpointTrigger += SaveCheckpointPosition;
+        _checkpointsScripts[2].OnCheckpointTrigger += SaveCheckpointPosition;
+
         broker = MessageBrokerImpl.Instance;
         _spriteRotation = _sprite.GetComponent<SpriteRotationCorrection>();
     }
-    public void OnApplicationQuit()
+
+    private void OnDestroy()
     {
-        SaveSystem.SavePosition(GameObject.FindGameObjectWithTag("Player").transform.position);
+        _checkpointsScripts[0].OnCheckpointTrigger -= SaveCheckpointPosition;
+        _checkpointsScripts[1].OnCheckpointTrigger -= SaveCheckpointPosition;
+        _checkpointsScripts[2].OnCheckpointTrigger -= SaveCheckpointPosition;
     }
     private void FixedUpdate()
     {
@@ -185,5 +194,10 @@ public class MovementCrate : MonoBehaviour
             broker.Publish<int>((int)AudioClipName.CrateMovement, true);
             _soundPlaying = false;
         }
+    }
+
+    private void SaveCheckpointPosition(Vector2 position)
+    {
+        SaveSystem.SavePosition(position);
     }
 }

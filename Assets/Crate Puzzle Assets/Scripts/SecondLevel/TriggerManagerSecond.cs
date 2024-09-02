@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TriggerManagerSecond : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private MessageBrokerImpl _broker = MessageBrokerImpl.Instance;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("Trigger Enter = " + collision.gameObject.name + " Game object = " + this.name);
@@ -14,9 +14,11 @@ public class TriggerManagerSecond : MonoBehaviour
                 SecondLevelManager.GetInstance().BaseBox(true, this.gameObject, collision.GetComponent<Animator>());
                 break;
             case "IceBox":
+                _broker.Publish<int>((int)AudioClipName.IceBox);
                 SecondLevelManager.GetInstance().IceBox(true, this.gameObject, collision.GetComponent<Animator>());
                 break;
             case "FireBox":
+                _broker.Publish<int>((int)AudioClipName.FireBox);
                 SecondLevelManager.GetInstance().FireBox(true, this.gameObject, collision.GetComponent<Animator>());
                 break;
         }
