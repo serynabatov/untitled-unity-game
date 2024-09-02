@@ -9,8 +9,6 @@ public class SaveSystem : MonoBehaviour
 
     public static void SavePosition(Vector3 position)
     {
-        Debug.Log("PlayerPosition = " + position);
-        Debug.Log($"Current scene = {SceneManager.GetActiveScene().name}");
         switch (SceneManager.GetActiveScene().name)
         {
             case "Gameplay":
@@ -47,4 +45,8 @@ public class SaveSystem : MonoBehaviour
         return position;
     }
 
+    public static void SaveCurrentScene()
+    {
+        PlayerPrefs.SetString("Saved scene", SceneManager.GetActiveScene().name);
+    }
 }

@@ -28,7 +28,11 @@ public class GameManager : MonoBehaviour
     {
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
     }
-    // Update is called once per frame
+
+    private void Start()
+    {
+        SaveSystem.SaveCurrentScene();
+    }
     void Update()
     {
         if (gameOver)

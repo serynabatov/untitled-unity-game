@@ -10,6 +10,7 @@ public class CheckpointsScript : MonoBehaviour
     [SerializeField]
     private Vector2 _checkPoinPosition;
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")

@@ -78,6 +78,8 @@ public class PlayerController2D : MonoBehaviour
 
     private void Start()
     {
+        SaveSystem.SaveCurrentScene();
+
         SceneSystem.OnSceneChange += CannotStopMusic;
 
         DialogueManager.DialogueStarted += RemovingControl;

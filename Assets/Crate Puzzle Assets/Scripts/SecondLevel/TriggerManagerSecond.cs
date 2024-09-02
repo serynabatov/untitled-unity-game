@@ -11,6 +11,7 @@ public class TriggerManagerSecond : MonoBehaviour
         switch (collision.name)
         {
             case "BaseBox":
+                _broker.Publish<int>((int)AudioClipName.BaseBox);
                 SecondLevelManager.GetInstance().BaseBox(true, this.gameObject, collision.GetComponent<Animator>());
                 break;
             case "IceBox":
