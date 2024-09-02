@@ -39,9 +39,9 @@ water_Puzzle_Start;Start;Старт
 water_Puzzle_Clear;Cleared;Пройдено;
 water_Puzzle_Next;Next level;Следующий уровень
 water_Puzzle_Restart;Restart;Переиграть
-help_Text_In_Water_Puzzle;You need to get from the start to the finish by building a path for the water. Water can only move in one direction. In order to change the direction of movement you need to pass through the corner blocks. In order to pass through the crystals of darkness or light, you must change the polarity of the water. To change the polarity of water pass through a special block of crystal color. There is a hint on the pictures;Нужно от старта добраться до финиша, построив путь для воды. Вода может двигается только в одном направлении. Для того чтобы сменить направление движения нужно пройти через угловые блоки. Для того чтобы пройти через кристаллы тьмы или света, необходимо изменять полярность воды. Чтобы изменить полярность воды пройдите через специальный блок цвета кристалла. На картинках есть подсказка
+help_Text_In_Water_Puzzle;You have to build a path for the water. Water can only move in one direction. In order to change the direction of movement, you need to pass through the corner blocks. And in order to pass through the crystals of darkness or light, you need to change the polarity of water. There is a hint on the pictures;Нужно построить путь для воды. Вода может двигаться только в одном направлении. Для того, чтобы сменить направление движения, нужно пройти через угловые блоки. А для того, чтобы пройти через кристаллы тьмы или света, необходимо изменять полярность воды. На картинках есть подсказка
 credits_0;Game was brought by;Над игрой работали
-credits_1;<color=#00FFFF><b>Gamedesigner</b></color><br>Mehrodzh Musaev;<color=#00FFFF><b>Геймдизайнер</b></color><br>Мехродж Мусаев
+credits_1;<color=#00FFFF><b>Gamedesigner</b></color><br>Mekhrodzh Musaev;<color=#00FFFF><b>Геймдизайнер</b></color><br>Мехродж Мусаев
 credits_2;<color=#00FFFF><b>2D Artist</b></color><br>Egor Golda;<color=#00FFFF><b>2D Художник</b></color><br>Егор Гольда
 credits_3;<color=#00FFFF><b>Gamedesigner assistant</b></color><br>Aram Kazaryan;<color=#00FFFF><b>Ассистент Геймдизайнера</b></color><br>Арам Казарян
 credits_4;<color=#00FFFF><b>Sound designer</b></color><br>Nikolay Maiburov;<color=#00FFFF><b>Звукорежиссёр</b></color><br>Николай Майбуров
