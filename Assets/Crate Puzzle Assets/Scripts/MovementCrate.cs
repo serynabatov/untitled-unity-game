@@ -59,6 +59,8 @@ public class MovementCrate : MonoBehaviour
         _checkpointsScripts[1].OnCheckpointTrigger += SaveCheckpointPosition;
         _checkpointsScripts[2].OnCheckpointTrigger += SaveCheckpointPosition;
 
+        SaveSystem.SaveCurrentScene();
+
         broker = MessageBrokerImpl.Instance;
         _spriteRotation = _sprite.GetComponent<SpriteRotationCorrection>();
     }

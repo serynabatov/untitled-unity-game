@@ -11,6 +11,7 @@ public class TriggerManagerThird : MonoBehaviour
         switch (collision.name)
         {
             case "BaseBox":
+                broker.Publish<int>((int)AudioClipName.BaseBox);
                 ThirdLevelManager.GetInstance().BaseBox(true, this.gameObject, collision.GetComponent<Animator>());
                 break;
             case "IceBox":

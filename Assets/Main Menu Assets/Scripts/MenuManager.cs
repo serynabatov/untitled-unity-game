@@ -53,11 +53,7 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     public void ContinueGameCheckpoint()
     {
-        // TODO: Загружал чтоб по последнему сайву
-        if (!ConfirmationManager.GetInstance().ActiveSelf(сonfirmationWindow))
-        {
-            SceneManager.LoadScene("Gameplay");
-        }
+        SceneSystem.GetInstance().LoadThisLevel(PlayerPrefs.GetString("Saved scene"));
     }
 
     /// <summary>
@@ -181,7 +177,8 @@ public class MenuManager : MonoBehaviour
         {
             SaveSystem.SavePosition(GameObject.FindWithTag("Player").transform.position);
         }
-        SceneManager.LoadScene("MainMenu");
+        PauseManager.GetInstance().ResumeGame();
+        SceneSystem.GetInstance().LoadThisLevel("MainMenu");
     }
 
     /// <summary>
