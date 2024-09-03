@@ -34,7 +34,7 @@ option_Reset;Full reset;Полный сброс
 location_Name_1;The Forest of Dreams;Лес Сновидений
 location_Name_2;Sunset Meadow;Закатный луг
 location_Name_3;The Cave of Moon Waterfall;Пещера Лунного Водопада
-water_Puzzle_State;<color=#F9DB24><b>Make way for water</b></color>;<color=#F9DB24><b>Проложите путь для воды</b></color>
+water_Puzzle_State;<b>Make way for water</b>;<b>Проложите путь для воды</b>
 water_Puzzle_Start;Start;Старт
 water_Puzzle_Clear;Cleared;Пройдено
 water_Puzzle_Next;Next level;Следующий уровень

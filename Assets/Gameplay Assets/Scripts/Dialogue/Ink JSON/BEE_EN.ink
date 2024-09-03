@@ -13,7 +13,7 @@ He decided to continue his studies and sought the help of the wise ones. Gradual
 Now, the <color=\#F8FF30>wisdom</color> itself: cultivate the habit of instantly starting to fulfill your plans, no matter how difficult they may seem. Otherwise, you risk burning out, doubting yourself, and succumbing to fear. The bolder the dream, the more likely it is to fade into nothing if not pursued.
 ->timecamp
 +[Second wisdom]
-We'll tell another story. A man wanted to be the best knight in the world and told everyone about it. He was good, and everyone praised him, wishing him luck in fulfilling his dream. 
+We'll tell another story. A boy wanted to be the best knight in the world and told everyone about it. He was good, and everyone praised him, wishing him luck in fulfilling his dream. 
 But everything turned out not so good: in time the boy grew up and became a merchant. One day, he met an old man to whom he had told about his dream as a child.
 The old man said: “Well, young man, when will you become a knight?” “It won't work, I missed that moment, I don't know why.” “And I'll tell you why, don't tell me your plans.” 
 Every time you speak of your plan, you make it happen in your inner world, and you waste energy. You don't have enough strength to fulfill your plan in reality because you have already realized it in another world.”
