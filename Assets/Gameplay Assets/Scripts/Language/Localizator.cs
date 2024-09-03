@@ -6,7 +6,21 @@ using System.Text.RegularExpressions;
 public class Localizator : MonoBehaviour
 {
     public string iD;
+    private Regex reg;
+    private List<string[]> rows = new List<string[]>();
 
+    void Awake()
+    {
+        reg = new Regex(";");
+        TextAsset txtData = (TextAsset)Resources.Load("localization");
+        string localTxt = txtData.text;
+        string[] rows = localTxt.Split('\n');
+        for (int i = 1; i < rows.Length; i++)
+        {
+            string[] highlightedRow = reg.Split(rows[i]);
+            this.rows.Add(highlightedRow);
+        }
+    }
     void Update()
     {
         if (PlayerPrefs.HasKey("GameLanguage"))
@@ -27,12 +41,9 @@ public class Localizator : MonoBehaviour
 
     private string LocalizedText(string iD, string language)
     {
-        TextAsset txtData = (TextAsset)Resources.Load("localization");
-        string localTxt = txtData.text;
-        string[] rows = localTxt.Split('\n');
-        for (int i = 1; i < rows.Length; i++)
+        for (int i = 0; i < this.rows.Count; i++)
         {
-            string[] highlightedRow = Regex.Split(rows[i], ";");
+            string[] highlightedRow = this.rows[i];
             if (iD == highlightedRow[0])
             {
                 if (language == "EN")
