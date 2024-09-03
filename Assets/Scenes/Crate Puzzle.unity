@@ -67995,7 +67995,7 @@ MonoBehaviour:
     audioClipName: 12
     audioClip:
     - {fileID: 8300000, guid: c52c947de65393347b337ad188255c6d, type: 3}
-    isLoop: 1
+    isLoop: 0
     playOnAwake: 0
     AudioRolloffMode: 0
     mixerGroup: 1

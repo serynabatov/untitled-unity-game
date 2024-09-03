@@ -53,21 +53,11 @@ public class AudioManager : MonoBehaviour
             musicMixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat(Constants.preferenceAudioVolume) * 20));
             musicVolumeSlider.value = PlayerPrefs.GetFloat(Constants.preferenceAudioVolume);
         }
-        else
-        {
-            musicMixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(0.1f * 20));
-            musicVolumeSlider.value = 0.1f;
-        }
 
         if (PlayerPrefs.HasKey(Constants.preferenceSoundEffectsVolume))
         {
             soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log10(PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume) * 20));
             soundEffectSlider.value = PlayerPrefs.GetFloat(Constants.preferenceSoundEffectsVolume);
-        }
-        else
-        {
-            soundEffectMixerGroup.audioMixer.SetFloat("SoundsEffect", Mathf.Log10(0.1f * 20));
-            soundEffectSlider.value = 0.1f;
         }
         AddMusicToManage(sounds);
     }
