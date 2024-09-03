@@ -5275,16 +5275,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3774027915397993521, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: _clipList.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3774027915397993521, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: _clipList.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: de552ee49f11d684f823773c02f6aa38, type: 3}
     - target: {fileID: 4063982494195008227, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
         type: 3}
       propertyPath: musicVolumeSlider
@@ -5295,76 +5285,6 @@ PrefabInstance:
       propertyPath: soundEffectSlider
       value: 
       objectReference: {fileID: 1971775357359061862}
-    - target: {fileID: 4063982494195008227, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4063982494195008227, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.data[2].isLoop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4063982494195008227, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.data[2].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4063982494195008227, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.data[2].mixerGroup
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4063982494195008227, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.data[2].audioClipName
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4063982494195008227, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.data[0].audioClip.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4063982494195008227, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.data[2].audioClip.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4063982494195008227, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.data[0].audioClip.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 47f25c292dd5f8a47ae9de6ee4e836f1, type: 3}
-    - target: {fileID: 4063982494195008227, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.data[0].audioClip.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 5a2bd1c4e648ea644bb543b6ddde80e5, type: 3}
-    - target: {fileID: 4063982494195008227, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.data[0].audioClip.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: a6a3a32e6acd28b439b757f31a0cb774, type: 3}
-    - target: {fileID: 4063982494195008227, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.data[0].audioClip.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 7bd44c0998af51c488e1cacb2f1b2b2a, type: 3}
-    - target: {fileID: 4063982494195008227, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.data[0].audioClip.Array.data[5]
-      value: 
-      objectReference: {fileID: 8300000, guid: 4e21fe283aee84b43bd7fe20be8554ac, type: 3}
-    - target: {fileID: 4063982494195008227, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.data[0].audioClip.Array.data[6]
-      value: 
-      objectReference: {fileID: 8300000, guid: 19b06dcd331604e4497401c1e194ce84, type: 3}
-    - target: {fileID: 4063982494195008227, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: sounds.Array.data[2].audioClip.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 050ef18134a248e4db999036c9215eb3, type: 3}
     - target: {fileID: 9192788152005796579, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
         type: 3}
       propertyPath: musicSliderText
@@ -5395,11 +5315,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManagers
       objectReference: {fileID: 0}
-    - target: {fileID: 9192788152191383496, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9192788152191383499, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
         type: 3}
       propertyPath: flow
@@ -5425,11 +5340,6 @@ PrefabInstance:
       propertyPath: startButton
       value: 
       objectReference: {fileID: 1959847189}
-    - target: {fileID: 9192788152191383499, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: gameOverNote
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 9192788152191383499, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
         type: 3}
       propertyPath: restartButton
@@ -5502,11 +5412,6 @@ PrefabInstance:
       objectReference: {fileID: 1971775357359061866}
     - target: {fileID: 9192788152353767382, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
         type: 3}
-      propertyPath: loadGameMenu
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9192788152353767382, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
       propertyPath: pauseBackground
       value: 
       objectReference: {fileID: 1971775357359061867}
@@ -5517,19 +5422,9 @@ PrefabInstance:
       objectReference: {fileID: 1971775357359061856}
     - target: {fileID: 9192788152358022484, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
         type: 3}
-      propertyPath: loadButton
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9192788152358022484, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
       propertyPath: optionsMenu
       value: 
       objectReference: {fileID: 1971775357359061866}
-    - target: {fileID: 9192788152358022484, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: loadGameMenu
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 9192788152358022484, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
         type: 3}
       propertyPath: resumeButton
@@ -5540,11 +5435,6 @@ PrefabInstance:
       propertyPath: optionsButton
       value: 
       objectReference: {fileID: 1971775357359061855}
-    - target: {fileID: 9192788152358022484, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
-        type: 3}
-      propertyPath: optionsFirstButton
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 9192788152358022484, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
         type: 3}
       propertyPath: "\u0441onfirmationWindow"

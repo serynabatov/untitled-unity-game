@@ -63,6 +63,7 @@ public class MenuManager : MonoBehaviour
     {
         if (!ConfirmationManager.GetInstance().ActiveSelf(сonfirmationWindow))
         {
+            CursorScript.HideCursor();
             PauseManager.GetInstance().ResumeGame();
         }
     }

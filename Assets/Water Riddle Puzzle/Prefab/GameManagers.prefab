@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9192788150647381350}
   - component: {fileID: 9192788150647381349}
   - component: {fileID: 9192788150647381348}
+  - component: {fileID: 7455705036255919540}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -382,6 +383,18 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!114 &7455705036255919540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5598999132269311328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495cea24293f3fd4aaeae4c29bf01ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5622145976231918680
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +450,8 @@ MonoBehaviour:
     audioClipName: 16
     audioClip:
     - {fileID: 8300000, guid: 473cc60c8dd60554089fa5f7e6459ccd, type: 3}
-    - {fileID: 8300000, guid: 855ab620793f6154db11d66fc2785fe8, type: 3}
+    - {fileID: 8300000, guid: 47f25c292dd5f8a47ae9de6ee4e836f1, type: 3}
+    - {fileID: 8300000, guid: 5a2bd1c4e648ea644bb543b6ddde80e5, type: 3}
     - {fileID: 8300000, guid: a6a3a32e6acd28b439b757f31a0cb774, type: 3}
     - {fileID: 8300000, guid: 7bd44c0998af51c488e1cacb2f1b2b2a, type: 3}
     - {fileID: 8300000, guid: 4e21fe283aee84b43bd7fe20be8554ac, type: 3}
@@ -461,6 +475,18 @@ MonoBehaviour:
     minDistance: 0
     maxDistance: 0
     volume: 0.3
+    spatialBlend: 0
+  - audioSource: {fileID: 0}
+    audioClipName: 0
+    audioClip:
+    - {fileID: 8300000, guid: 050ef18134a248e4db999036c9215eb3, type: 3}
+    isLoop: 0
+    playOnAwake: 0
+    AudioRolloffMode: 0
+    mixerGroup: 1
+    minDistance: 0
+    maxDistance: 0
+    volume: 1
     spatialBlend: 0
 --- !u!1 &9192788151961765114
 GameObject:
@@ -658,7 +684,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearButton: {fileID: 0}
-  gameOverNote: {fileID: 0}
   restartButton: {fileID: 0}
   stateText: {fileID: 0}
   startButton: {fileID: 0}
@@ -828,7 +853,6 @@ MonoBehaviour:
   firstButton: {fileID: 0}
   pauseBackground: {fileID: 0}
   optionsMenu: {fileID: 0}
-  loadGameMenu: {fileID: 0}
 --- !u!114 &9192788152353767381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -888,11 +912,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionsMenu: {fileID: 0}
-  loadGameMenu: {fileID: 0}
+  creditsPanel: {fileID: 0}
   resumeButton: {fileID: 0}
   exitButton: {fileID: 0}
-  loadButton: {fileID: 0}
-  loadFirstButton: {fileID: 0}
+  creditsButton: {fileID: 0}
   optionsButton: {fileID: 0}
   optionsFirstButton: {fileID: 0}
   "\u0441onfirmationWindow": {fileID: 0}

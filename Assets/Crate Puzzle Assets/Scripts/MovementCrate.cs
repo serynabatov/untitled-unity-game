@@ -59,6 +59,8 @@ public class MovementCrate : MonoBehaviour
         _checkpointsScripts[1].OnCheckpointTrigger += SaveCheckpointPosition;
         _checkpointsScripts[2].OnCheckpointTrigger += SaveCheckpointPosition;
 
+        CursorScript.HideCursor();
+
         SaveSystem.SaveCurrentScene();
 
         broker = MessageBrokerImpl.Instance;

@@ -55,6 +55,8 @@ public class PauseManager : MonoBehaviour
         pauseBackground.SetActive(true);
         optionsMenu.SetActive(false);
 
+        CursorScript.ShowCursor();
+
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(firstButton);
     }
