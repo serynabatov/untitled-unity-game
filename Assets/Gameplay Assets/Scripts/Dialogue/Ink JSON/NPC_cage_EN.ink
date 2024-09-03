@@ -3,14 +3,14 @@ INCLUDE globals.ink
 {mainVarCage: ->main.prePurpose|->main}
 
 === main ===
-You've come, <color=\#F8FF30>prince</color>; we've been expecting you. The princess is in danger — no the kingdom is in danger, her highness in a burning castle. She must be rescued or the darkness will take over the kingdom and turn this blooming place into a desert. #speaker:Vados #portrait:Green Mage
+You've come, <color=\#F8FF30>prince</color>; we've been expecting you. The princess is in danger — no the kingdom is in danger, her highness in a burning castle. She must be rescued or the darkness will take over the kingdom and turn this blooming place into a desert. #speaker:Vádos #portrait:Green Mage
 
 The enemy is too strong, our knights tried to rescue her, but none of them returned.
  + [...]
  
  - Princess Ailina has been holding back the darkness that is trying to consume the kingdom, but a sorcerer has overpowered her with a spell, and now she is in a coma.
  
-For now, this forest is protected, and by obtaining the <color=\#F8FF30>nilurium</color> flower, we can awaken Ailina, and she will save us all. We have to hurry.
+For now, this forest is protected, and by obtaining the <color=\#F8FF30>nilúrium</color> flower, we can awaken Ailina, and she will save us all. We have to hurry.
  ~ mainVarCage = true
   ->purpose
   
@@ -21,7 +21,7 @@ For now, this forest is protected, and by obtaining the <color=\#F8FF30>nilurium
   -> END
   
   = prePurpose
-Prince, what are you doing here?! Need I remind you of your business? #speaker:Vados #portrait:Green Mage 
+Prince, what are you doing here?! Need I remind you of your business? #speaker:Vádos #portrait:Green Mage 
 + [Yes]
 ->purpose
 + [No] #exit:0

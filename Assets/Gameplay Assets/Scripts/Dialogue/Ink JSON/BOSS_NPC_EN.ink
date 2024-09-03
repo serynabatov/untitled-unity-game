@@ -4,13 +4,13 @@ INCLUDE globals.ink
 
 
 === main ===
-We meet again. Finally, you've passed all the tests, the last one is left. Only the worthy can possess the flower, so don't think you're worthy after passing all the tests.  #speaker:Vados #portrait:Green Mage
+We meet again. Finally, you've passed all the tests, the last one is left. Only the worthy can possess the flower, so don't think you're worthy after passing all the tests.  #speaker:Vádos #portrait:Green Mage
 But don't worry, this is the easiest test, all you have to do is answer the question.
 ~ mainVarBoss = true
 ->prePurpose
 
 = prePurpose
-Do you promise that you will fight to the end, even when you lose all hope and even when you forget your goal? #speaker:Vados #portrait:Green Mage
+Do you promise that you will fight to the end, even when you lose all hope and even when you forget your goal? #speaker:Vádos #portrait:Green Mage
 +[Yes, I promise]
 ~ mainVarBossFinished = true 
 ->finishedBoss
@@ -20,11 +20,11 @@ Do you promise that you will fight to the end, even when you lose all hope and e
 ->END
 
 = finishedBoss
-You've proven you can be trusted, hold the flask and fill it with water from the holy spring.  #speaker:Vados #portrait:Green Mage
+You've proven you can be trusted, hold the flask and fill it with water from the holy spring.  #speaker:Vádos #portrait:Green Mage
 One more thing. Thank you!
 ~ mainVarBossFinished = true
 ->END
 
 = dismissBoss
-You haven't passed all the tests yet. Come back to me when you're ready. #speaker:Vados #portrait:Green Mage
+You haven't passed all the tests yet. Come back to me when you're ready. #speaker:Vádos #portrait:Green Mage
 ->END
