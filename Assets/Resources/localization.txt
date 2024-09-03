@@ -44,7 +44,7 @@ credits_0;Game was brought by;Над игрой работали
 credits_1;<color=#00FFFF><b>Gamedesigner</b></color><br>Musaev Mekhrodzh;<color=#00FFFF><b>Геймдизайнер</b></color><br>Мусаев Мехродж
 credits_2;<color=#00FFFF><b>2D Artist</b></color><br>Golda Egor;<color=#00FFFF><b>2D Художник</b></color><br>Гольда Егор
 credits_3;<color=#00FFFF><b>Gamedesigner assistant</b></color><br>Kazaryan Aram;<color=#00FFFF><b>Ассистент Геймдизайнера</b></color><br>Казарян Арам
-credits_4;<color=#00FFFF><b>Sound designer</b></color><br>Maiburov Nikolay;<color=#00FFFF><b>Звукорежиссёр</b></color><br>Майбуров Николай
+credits_4;<color=#00FFFF><b>Sound designer</b></color><br>Mayburov Nick;<color=#00FFFF><b>Звукорежиссёр</b></color><br>Майбуров Николай
 credits_5;Special thanks;Отдельное спасибо
 credits_6;<color=#00FFFF><b>VFX consultant</b></color><br>Subanova Alena;<color=#00FFFF><b>Консультация по эффектам</b></color><br>Субанова Алёна
 credits_7;<color=#00FFFF><b>Tech support</b></color><br>Nabatov Sergey;<color=#00FFFF><b>Помощь в разработке</b></color><br>Набатов Сергей
