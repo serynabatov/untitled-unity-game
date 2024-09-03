@@ -27,5 +27,5 @@ INCLUDE globals.ink
 ->END
 
 = finishedPuzzle
-Так держать, принц! Вы <color=\#F8FF30>восстановили русло воды</color>. Я был уверен, что у вас это получится. Я горжусь вами. #speaker:Гори #portrait:Orange Mage
+Так держать, принц! Вы <color=\#F8FF30>восстановили русло реки</color>. Я был уверен, что у вас это получится. Я горжусь вами. #speaker:Гори #portrait:Orange Mage
 ->END

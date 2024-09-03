@@ -8,8 +8,8 @@ We hold the world's wisdom, and we have chosen you to share the knowledge.
 = wisdom
 What wisdom do you wish to learn?
 +[First wisdom]
-We'll tell you a story. One man tried to fulfill his dream, but he felt he wasn't ready enough, so he put it off and started learning new skills. Eventually, he realized that these new skills were not enough. 
-He decided to continue his studies and sought guidance from wise mentors. Gradually, he began to doubt himself more and more and eventually abandoned the dream, convinced that he would never be ready for it.
+We'll tell you a story. One man tried to fulfill his dream, but he felt he wasn't ready enough, so he put it off and started learning skills. Eventually, he realized that these new skills were not enough. 
+He decided to continue his studies and sought the help of the wise ones. Gradually, he began to doubt himself more and more and eventually abandoned the dream, convinced that he would never be ready for it.
 Now, the <color=\#F8FF30>wisdom</color> itself: cultivate the habit of instantly starting to fulfill your plans, no matter how difficult they may seem. Otherwise, you risk burning out, doubting yourself, and succumbing to fear. The bolder the dream, the more likely it is to fade into nothing if not pursued.
 ->timecamp
 +[Second wisdom]

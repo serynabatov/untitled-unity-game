@@ -27,5 +27,5 @@ Prince, I see you haven't passed the test yet. Shall I remind you of the details
 ->END
 
 = finishedPuzzle
-Way to go, Prince! You <color=\#F8FF30>recovered the water course</color>. I was sure you could do it. I'm proud of you. #speaker:Gory #portrait:Orange Mage
+Way to go, Prince! You <color=\#F8FF30>restored the riverbed</color>. I was sure you could do it. I'm proud of you. #speaker:Gory #portrait:Orange Mage
 ->END

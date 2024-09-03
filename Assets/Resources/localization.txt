@@ -32,23 +32,23 @@ option_Control_8;Dodge;Уклонение
 option_Control_9;Reset settings;Сброс по умолчанию
 option_Reset;Full reset;Полный сброс
 location_Name_1;The Forest of Dreams;Лес Сновидений
-location_Name_2;The Lawn of Dawn;Закатный луг
+location_Name_2;Sunset Meadow;Закатный луг
 location_Name_3;The Cave of Moon Waterfall;Пещера Лунного Водопада
 water_Puzzle_State;Preparing;Подготовка
 water_Puzzle_Start;Start;Старт
 water_Puzzle_Clear;Cleared;Пройдено;
 water_Puzzle_Next;Next level;Следующий уровень
 water_Puzzle_Restart;Restart;Переиграть
-help_Text_In_Water_Puzzle;You have to build a path for the water. Water can only move in one direction. In order to change the direction of movement, you need to pass through the corner blocks. And in order to pass through the crystals of darkness or light, you need to change the polarity of water. There is a hint on the pictures;Нужно построить путь для воды. Вода может двигаться только в одном направлении. Для того, чтобы сменить направление движения, нужно пройти через угловые блоки. А для того, чтобы пройти через кристаллы тьмы или света, необходимо изменять полярность воды. На картинках есть подсказка
+help_Text_In_Water_Puzzle;You have to build a path for the water. Water can only move in one direction. In order to change the direction of movement, you need to pass through the corner blocks. And in order to pass through the crystals of darkness or light, you need to change the polarity of water. There is a hint on the pictures:;Нужно построить путь для воды. Вода может двигаться только в одном направлении. Для того, чтобы сменить направление движения, нужно пройти через угловые блоки. А для того, чтобы пройти через кристаллы тьмы или света, необходимо изменять полярность воды. На картинках есть подсказка:
 credits_0;Game was brought by;Над игрой работали
-credits_1;<color=#00FFFF><b>Gamedesigner</b></color><br>Mekhrodzh Musaev;<color=#00FFFF><b>Геймдизайнер</b></color><br>Мехродж Мусаев
-credits_2;<color=#00FFFF><b>2D Artist</b></color><br>Egor Golda;<color=#00FFFF><b>2D Художник</b></color><br>Егор Гольда
-credits_3;<color=#00FFFF><b>Gamedesigner assistant</b></color><br>Aram Kazaryan;<color=#00FFFF><b>Ассистент Геймдизайнера</b></color><br>Арам Казарян
-credits_4;<color=#00FFFF><b>Sound designer</b></color><br>Nikolay Maiburov;<color=#00FFFF><b>Звукорежиссёр</b></color><br>Николай Майбуров
+credits_1;<color=#00FFFF><b>Gamedesigner</b></color><br>Musaev Mekhrodzh;<color=#00FFFF><b>Геймдизайнер</b></color><br>Мусаев Мехродж
+credits_2;<color=#00FFFF><b>2D Artist</b></color><br>Golda Egor;<color=#00FFFF><b>2D Художник</b></color><br>Гольда Егор
+credits_3;<color=#00FFFF><b>Gamedesigner assistant</b></color><br>Kazaryan Aram;<color=#00FFFF><b>Ассистент Геймдизайнера</b></color><br>Казарян Арам
+credits_4;<color=#00FFFF><b>Sound designer</b></color><br>Maiburov Nikolay;<color=#00FFFF><b>Звукорежиссёр</b></color><br>Майбуров Николай
 credits_5;Special thanks;Отдельное спасибо
-credits_6;<color=#00FFFF><b>VFX consultant</b></color><br>Alena Subanova;<color=#00FFFF><b>Консультация по эффектам</b></color><br>Алёна Субанова
-credits_7;<color=#00FFFF><b>Tech support</b></color><br>Sergey Nabatov;<color=#00FFFF><b>Помощь в разработке</b></color><br>Сергей Набатов
+credits_6;<color=#00FFFF><b>VFX consultant</b></color><br>Subanova Alena;<color=#00FFFF><b>Консультация по эффектам</b></color><br>Субанова Алёна
+credits_7;<color=#00FFFF><b>Tech support</b></color><br>Nabatov Sergey;<color=#00FFFF><b>Помощь в разработке</b></color><br>Набатов Сергей
 credits_8;Thanks for playing!;Спасибо за игру!
-credits_9;<color=#00FFFF><b>Unity developer</b></color><br>Vadim Tsoy;<color=#00FFFF><b>Unity разработчик</b></color><br>Вадим Цой
+credits_9;<color=#00FFFF><b>Unity developer</b></color><br>Tsoy Vadim;<color=#00FFFF><b>Unity разработчик</b></color><br>Цой Вадим
 yes_Text;Yes;Да
 no_Text;No;Нет
