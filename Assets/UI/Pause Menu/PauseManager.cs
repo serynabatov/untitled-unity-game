@@ -38,10 +38,12 @@ public class PauseManager : MonoBehaviour
         {
             if (paused)
             {
+                CursorScript.HideCursor();
                 ResumeGame();
             }
             else
             {
+                CursorScript.ShowCursor();
                 PauseGame();
             }
         }
@@ -54,8 +56,6 @@ public class PauseManager : MonoBehaviour
         paused = true;
         pauseBackground.SetActive(true);
         optionsMenu.SetActive(false);
-
-        CursorScript.ShowCursor();
 
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(firstButton);
