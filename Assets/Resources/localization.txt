@@ -3,8 +3,8 @@ pause_Title;PAUSE;ПАУЗА
 pause_1;Continue;Продолжить
 pause_2;Load game;Загрузить сохранение
 pause_3;Options;Настройки
-pause_4;Exit to menu;Выйти в меню
-pause_Exit_Window;Exit to main menu?;Хотите выйти в главное меню?
+pause_4;<color=#F9DB24>Exit to menu</color>;<color=#F9DB24>Выйти</color> в меню
+pause_Exit_Window;Are you sure you want to <color=#F9DB24>exit</color> to main menu?;Вы точно хотите <color=#F9DB24>выйти</color> в главное меню?
 main_Menu_Title;Main Menu;Главное Меню
 main_Menu_1;Continue;Продолжить
 main_Menu_2;New Game;Новая Игра
@@ -12,7 +12,7 @@ main_Menu_3;Continue;Продолжить
 main_Menu_3.0;Credits;Титры
 main_Menu_4;Options;Настройки
 main_Menu_5;Exit Game;Выйти из игры
-main_Menu_Exit_Window;Are you sure you want to exit the game?;Хотите выйти из игры?
+main_Menu_Exit_Window;Are you sure you want to <color=#F9DB24>exit</color> the game?;Вы точно хотите <color=#F9DB24>выйти</color> из игры?
 option_Graphic;Graphics;Графика
 option_Graphic_1;Resolution:;Разрешение:
 option_Graphic_2;Fullscreen;Полноэкранный
