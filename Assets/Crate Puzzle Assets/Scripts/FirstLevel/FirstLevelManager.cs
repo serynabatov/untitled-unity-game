@@ -18,7 +18,7 @@ public class FirstLevelManager : MonoBehaviour
 
     private static FirstLevelManager instance;
 
-
+    private MessageBrokerImpl _broker = MessageBrokerImpl.Instance;
 
     private void Awake()
     {
@@ -36,6 +36,7 @@ public class FirstLevelManager : MonoBehaviour
 
     public void BaseBox(bool triggerStat, GameObject triggerGO, Animator boxAnimator)
     {
+
         switch (triggerGO.name)
         {
             case "FinalGateTrigger":
@@ -45,6 +46,10 @@ public class FirstLevelManager : MonoBehaviour
                     finalGateTrigger = triggerStat;
                     topGate.SetActive(!triggerStat);
                     triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+                    if (triggerStat)
+                    {
+                        _broker.Publish<int>((int)AudioClipName.BaseBox);
+                    }
                     boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
                 }
                 break;
@@ -54,6 +59,10 @@ public class FirstLevelManager : MonoBehaviour
                     iceTrigger = triggerStat;
                     this.CheckGates(iceGateActiv, iceGate, iceTrigger);
                     triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+                    if (triggerStat)
+                    {
+                        _broker.Publish<int>((int)AudioClipName.BaseBox);
+                    }
                     boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
                 }
                 break;
@@ -63,6 +72,10 @@ public class FirstLevelManager : MonoBehaviour
                     fireTrigger = triggerStat;
                     this.CheckGates(fireGateActiv, fireGate, fireTrigger);
                     triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+                    if (triggerStat)
+                    {
+                        _broker.Publish<int>((int)AudioClipName.BaseBox);
+                    }
                     boxAnimator.Play(triggerStat ? "BaseBoxActive" : "BaseBoxDeactive");
                 }
                 break;
@@ -71,9 +84,15 @@ public class FirstLevelManager : MonoBehaviour
 
     public void IceBox(bool triggerStat, GameObject triggerGO, Animator boxAnimator)
     {
+
+
         if (triggerGO.name == "IceTrigger" && triggerStat != iceGateActiv)
         {
             triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+            if (triggerStat)
+            {
+                _broker.Publish<int>((int)AudioClipName.IceBox);
+            }
             boxAnimator.Play(triggerStat ? "IceActive" : "IceDeactive");
             iceGateActiv = triggerStat;
             this.CheckGates(iceGateActiv, iceGate, iceTrigger);
@@ -82,9 +101,14 @@ public class FirstLevelManager : MonoBehaviour
 
     public void FireBox(bool triggerStat, GameObject triggerGO, Animator boxAnimator)
     {
+
         if (triggerGO.name == "FireTrigger" && triggerStat != fireGateActiv)
         {
             triggerGO.GetComponentInChildren<Animator>().Play(triggerStat ? "TriggerActive" : "TriggerDeactive");
+            if (triggerStat)
+            {
+                _broker.Publish<int>((int)AudioClipName.FireBox);
+            }
             boxAnimator.Play(triggerStat ? "FireActive" : "FireDeactive");
             fireGateActiv = triggerStat;
             this.CheckGates(fireGateActiv, fireGate, fireTrigger);
