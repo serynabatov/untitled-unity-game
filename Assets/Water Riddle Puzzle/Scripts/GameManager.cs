@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        CursorScript.ShowCursor();
         SaveSystem.SaveCurrentScene();
     }
     void Update()
