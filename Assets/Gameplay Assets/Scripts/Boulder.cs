@@ -24,10 +24,15 @@ public class Boulder : MonoBehaviour
 
     private CircleCollider2D _circleCollider;
 
+    private AudioSource _audioSource;
+
     [SerializeField]
     private GameObject _boulderShadow;
     [SerializeField]
     private GameObject _boulderEffect;
+
+    [SerializeField]
+    private LocationMusicChanger _location;
 
     private SpriteRenderer _shadowSprite;
 
@@ -42,6 +47,7 @@ public class Boulder : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         _circleCollider = GetComponent<CircleCollider2D>();
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _audioSource = GetComponent<AudioSource>();
 
         _shadowSprite = _boulderShadow.GetComponent<SpriteRenderer>();
 
@@ -112,13 +118,15 @@ public class Boulder : MonoBehaviour
 
     private void StartBoulderSound()
     {
-       // _broker.Publish<int>((int)AudioClipName.MusicEffect, false, true, 3);
+        _location.JustStop();
+        _audioSource?.Play();
         _broker.Publish<int>((int)AudioClipName.BoulderMove);
     }
 
     private void StopBoulderSound()
     {
-      //  _broker.Publish<int>((int)AudioClipName.MusicEffect, false, true, 2);
+        _location.JustStart();
+        _audioSource?.Stop();
         _broker.Publish<int>((int)AudioClipName.BoulderMove, true);
     }
 

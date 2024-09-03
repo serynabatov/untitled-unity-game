@@ -10,7 +10,6 @@ public class LocationMusicChanger : MonoBehaviour
 
     private bool _isStarting;
     private bool _isStoping;
-    private bool _isAborting;
 
     private int _index;
 
@@ -28,10 +27,6 @@ public class LocationMusicChanger : MonoBehaviour
         _locationCheck = GetComponent<LocationCheck>();
     }
 
-    private void Start()
-    {
-        _isAborting = false;
-    }
 
     private void OnDestroy()
     {
@@ -56,6 +51,16 @@ public class LocationMusicChanger : MonoBehaviour
     {
         _isStarting = false;
         StartCoroutine(StopingMusic(_fadeDuration));
+    }
+
+    public void JustStop()
+    {
+        _music.Stop();
+    }
+
+    public void JustStart()
+    {
+        _music.Play();
     }
 
     private void ChangeMusicInLocation()
