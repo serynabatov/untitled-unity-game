@@ -11,7 +11,7 @@ main_Menu_2;New Game;Новая Игра
 main_Menu_3;Continue;Продолжить
 main_Menu_3.0;Credits;Титры
 main_Menu_4;Options;Настройки
-main_Menu_5;Exit Game;Выйти из игры
+main_Menu_5;<color=#F9DB24>Exit</color> Game;<color=#F9DB24>Выйти</color> из игры
 main_Menu_Exit_Window;Are you sure you want to <color=#F9DB24>exit</color> the game?;Вы действительно хотите <color=#F9DB24>выйти</color> из игры?
 option_Graphic;Graphics;Графика
 option_Graphic_1;Resolution:;Разрешение:

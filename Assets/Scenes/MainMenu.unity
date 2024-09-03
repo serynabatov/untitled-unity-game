@@ -87263,8 +87263,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7ad919c796b7be74f88f801aea075c12, type: 2}
-  m_sharedMaterial: {fileID: -1902884327815351324, guid: 7ad919c796b7be74f88f801aea075c12,
+  m_fontAsset: {fileID: 11400000, guid: 96d8bb3bb8f29f745a066d8216b394e7, type: 2}
+  m_sharedMaterial: {fileID: -1902884327815351324, guid: 96d8bb3bb8f29f745a066d8216b394e7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
