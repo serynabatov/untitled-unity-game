@@ -91,6 +91,7 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     public void Options()
     {
+
         if (!ConfirmationManager.GetInstance().ActiveSelf(сonfirmationWindow))
         {
             if (creditsPanel != null)

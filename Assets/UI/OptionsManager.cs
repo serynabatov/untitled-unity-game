@@ -40,6 +40,13 @@ public class OptionsManager : MonoBehaviour
     }
     void Start()
     {
+        TMP_Text currentResolution;
+
+        bool isOriginal = true;
+
+        currentResolution = resolutionDropdown.GetComponentInChildren<TMP_Text>();
+
+        List<string> values = new List<string>();
         //* Разрешение экрана дефолтное изменённое запускаем и фуллскрин или в окне
         if (PlayerPrefs.HasKey("defaultIndexResolution"))
         {
@@ -47,8 +54,23 @@ public class OptionsManager : MonoBehaviour
         }
         else
         {
+            values.Add(Screen.currentResolution.width.ToString() + 'x' + Screen.currentResolution.height.ToString());
+            foreach (TMP_Dropdown.OptionData value in resolutionDropdown.options)
+            {
+                if (value.text == values[0])
+                {
+                    isOriginal = false;
+                }
+            }
+
+            if (isOriginal)
+            {
+                resolutionDropdown.AddOptions(values);
+            }
+            currentResolution.text = values[0];
             Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
         }
+
         if (PlayerPrefs.HasKey("fullscreenStatus"))
         {
             SetFullscreen(PlayerPrefs.GetInt("fullscreenStatus", 1) == 1 ? true : false);
