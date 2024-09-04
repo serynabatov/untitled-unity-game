@@ -10,7 +10,7 @@ The enemy is too strong, our knights tried to rescue her, but none of them retur
  
  - Princess Ailina has been holding back the darkness that is trying to consume the kingdom, but a sorcerer has overpowered her with a spell, and now she is in a coma.
  
-For now, this forest is protected, and by obtaining the <color=\#F8FF30>nilúrium</color> flower, we can awaken Ailina, and she will save us all. We have to hurry.
+For now, this forest is protected, and by obtaining the <color=\#F8FF30>nilúria</color> flower, we can awaken Ailina, and she will save us all. We have to hurry.
  ~ mainVarCage = true
   ->purpose
   
