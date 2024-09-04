@@ -7677,7 +7677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 2
   currentState: 0
-  speed: 2
+  speed: 1.5
 --- !u!4 &1797452172
 Transform:
   m_ObjectHideFlags: 0
