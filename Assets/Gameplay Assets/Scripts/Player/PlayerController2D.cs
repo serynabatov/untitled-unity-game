@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-using UnityEditor.SceneManagement;
 
 public class PlayerController2D : MonoBehaviour
 {
