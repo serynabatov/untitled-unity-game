@@ -48,28 +48,34 @@ public class OptionsManager : MonoBehaviour
 
         List<string> values = new List<string>();
         //* Разрешение экрана дефолтное изменённое запускаем и фуллскрин или в окне
+
         if (PlayerPrefs.HasKey("defaultIndexResolution"))
         {
             SetResolution(PlayerPrefs.GetInt("defaultIndexResolution", 0));
         }
         else
         {
-            values.Add(Screen.currentResolution.width.ToString() + 'x' + Screen.currentResolution.height.ToString());
-            foreach (TMP_Dropdown.OptionData value in resolutionDropdown.options)
-            {
-                if (value.text == values[0])
-                {
-                    isOriginal = false;
-                }
-            }
-
-            if (isOriginal)
-            {
-                resolutionDropdown.AddOptions(values);
-            }
-            currentResolution.text = values[0];
             Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
         }
+        values.Add(Screen.currentResolution.width.ToString() + 'x' + Screen.currentResolution.height.ToString());
+        foreach (TMP_Dropdown.OptionData value in resolutionDropdown.options)
+        {
+            if (value.text == values[0])
+            {
+                isOriginal = false;
+                resolutionDropdown.value = resolutionDropdown.options.IndexOf(value);
+            }
+        }
+
+        if (isOriginal)
+        {
+            resolutionDropdown.AddOptions(values);
+            if (!PlayerPrefs.HasKey("defaultIndexResolution"))
+            {
+                resolutionDropdown.value = resolutionDropdown.options.Count - 1;
+            }
+        }
+        //resolutionDropdown.options.ForEach(option => Debug.LogError(option.text));
 
         if (PlayerPrefs.HasKey("fullscreenStatus"))
         {
