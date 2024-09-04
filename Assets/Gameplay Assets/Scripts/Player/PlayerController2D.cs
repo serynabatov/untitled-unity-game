@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEditor.SceneManagement;
 
 public class PlayerController2D : MonoBehaviour
 {
@@ -441,6 +442,10 @@ public class PlayerController2D : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Revealable"))
         {
+            if (collision.gameObject.name == "DRZ")
+            {
+                Destroy(collision.gameObject.GetComponent<BoxCollider2D>());
+            }
             broker.Publish<int>((int)AudioClipName.UnveilSound);
 
             IRevealable reveal = collision.gameObject.GetComponent<IRevealable>();
