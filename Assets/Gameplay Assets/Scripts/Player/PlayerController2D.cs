@@ -399,7 +399,7 @@ public class PlayerController2D : MonoBehaviour
         {
             if (isGrounded && !takingDamage && _canSave)
             {
-                print("Saved!");
+                //print("Saved!");
                 PositionSave();
             }
             yield return new WaitForSeconds(2.5f);
