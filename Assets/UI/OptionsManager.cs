@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.EventSystems;
 
+
 public class OptionsManager : MonoBehaviour
 {
     [SerializeField] GameObject optionsMenu;
@@ -49,14 +50,6 @@ public class OptionsManager : MonoBehaviour
         List<string> values = new List<string>();
         //* Разрешение экрана дефолтное изменённое запускаем и фуллскрин или в окне
 
-        if (PlayerPrefs.HasKey("defaultIndexResolution"))
-        {
-            SetResolution(PlayerPrefs.GetInt("defaultIndexResolution", 0));
-        }
-        else
-        {
-            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
-        }
         values.Add(Screen.currentResolution.width.ToString() + 'x' + Screen.currentResolution.height.ToString());
         foreach (TMP_Dropdown.OptionData value in resolutionDropdown.options)
         {
@@ -66,16 +59,34 @@ public class OptionsManager : MonoBehaviour
                 resolutionDropdown.value = resolutionDropdown.options.IndexOf(value);
             }
         }
-
-        if (isOriginal)
+        if (PlayerPrefs.HasKey("ourResolution"))
         {
-            resolutionDropdown.AddOptions(values);
+            var ourOption = new TMP_Dropdown.OptionData();
+            ourOption.text = PlayerPrefs.GetString("ourResolution", "");
+            List<TMP_Dropdown.OptionData> mexa = new List<TMP_Dropdown.OptionData>();
+            mexa.Add(ourOption);
+            resolutionDropdown.AddOptions(mexa);
             if (!PlayerPrefs.HasKey("defaultIndexResolution"))
             {
                 resolutionDropdown.value = resolutionDropdown.options.Count - 1;
             }
         }
+        if (isOriginal)
+        {
+            if (!PlayerPrefs.HasKey("ourResolution"))
+            {
+                resolutionDropdown.AddOptions(values);
+                resolutionDropdown.value = resolutionDropdown.options.Count - 1;
+                PlayerPrefs.SetString("ourResolution", resolutionDropdown.options[resolutionDropdown.options.Count - 1].text);
+                SetResolution(resolutionDropdown.options.Count - 1);
+            }
+        }
+        if (PlayerPrefs.HasKey("defaultIndexResolution"))
+        {
+            SetResolution(PlayerPrefs.GetInt("defaultIndexResolution", 0));
+        }
         //resolutionDropdown.options.ForEach(option => Debug.LogError(option.text));
+
 
         if (PlayerPrefs.HasKey("fullscreenStatus"))
         {
