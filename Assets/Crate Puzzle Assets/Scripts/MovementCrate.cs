@@ -146,7 +146,7 @@ public class MovementCrate : MonoBehaviour
                 runSpeedY = 6f;
                 break;
         }
-        broker.Publish(0);
+        broker.Publish(18);
 
         boxTemp = grabCheck.collider.gameObject;
         boxHolderTemp = boxHolder;

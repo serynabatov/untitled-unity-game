@@ -21,6 +21,7 @@ public enum AudioClipName
     FireBox = 11,
     BaseBox = 12,
     CrateMovement = 13,
+    GrabSound = 18,
     SpikeHurtSound = 14,
     MushroomHurtSound = 15,
     WaterLevelSounds = 16,

@@ -67864,6 +67864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495cea24293f3fd4aaeae4c29bf01ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isCursorShown: 0
 --- !u!1 &2133022582 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4973591527016887714, guid: 81aee0b0fd2f6f145a438231405d52e6,
@@ -68355,6 +68356,18 @@ MonoBehaviour:
     audioClipName: 0
     audioClip:
     - {fileID: 8300000, guid: 46b19df76b5008c45900efc4a14b379d, type: 3}
+    isLoop: 0
+    playOnAwake: 0
+    AudioRolloffMode: 0
+    mixerGroup: 1
+    minDistance: 0
+    maxDistance: 0
+    volume: 1
+    spatialBlend: 0
+  - audioSource: {fileID: 0}
+    audioClipName: 18
+    audioClip:
+    - {fileID: 8300000, guid: 786549f15fa441d4a8bc85537d94f771, type: 3}
     isLoop: 0
     playOnAwake: 0
     AudioRolloffMode: 0
