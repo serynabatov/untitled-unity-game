@@ -15,7 +15,7 @@ main_Menu_5;<color=#F9DB24>Exit</color> Game;<color=#F9DB24>Выйти</color> �
 main_Menu_Exit_Window;Are you sure you want to <color=#F9DB24>exit</color> the game?;Вы действительно хотите <color=#F9DB24>выйти</color> из игры?
 option_Graphic;Graphics;Графика
 option_Graphic_1;Resolution:;Разрешение:
-option_Graphic_2;Fullscreen;Полноэкранный
+option_Graphic_2;Fullscreen:;Полноэкранный:
 option_Sound;Sounds;Звуки
 option_Sound_1;Music Volume;Громкость музыки
 option_Sound_2;Effects Volume;Громкость эффектов
@@ -30,7 +30,7 @@ option_Control_6;Skill;Способность
 option_Control_7;Attack;Атака
 option_Control_8;Dodge;Уклонение
 option_Control_9;Reset settings;Сброс по умолчанию
-option_Reset;Full reset;Полный сброс
+option_Reset;Reset <color=#F9DB24>saves and settings</color>;Сброс <color=#F9DB24>сохранений и настроек</color>
 location_Name_1;The Forest of Dreams;Лес Сновидений
 location_Name_2;Sunset Meadow;Закатный луг
 location_Name_3;The Cave of Moon Waterfall;Пещера Лунного Водопада
