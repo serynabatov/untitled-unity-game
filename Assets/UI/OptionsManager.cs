@@ -40,34 +40,19 @@ public class OptionsManager : MonoBehaviour
     }
     void Start()
     {
-        TMP_Text currentResolution;
 
-        bool isOriginal = true;
-
-        currentResolution = resolutionDropdown.GetComponentInChildren<TMP_Text>();
-
-        List<string> values = new List<string>();
         //* Разрешение экрана дефолтное изменённое запускаем и фуллскрин или в окне
         if (PlayerPrefs.HasKey("defaultIndexResolution"))
         {
-            SetResolution(PlayerPrefs.GetInt("defaultIndexResolution", 0));
+            if (PlayerPrefs.HasKey("Custom resolution"))
+            {
+                LoadCustomResolution();
+            }          
+            SetResolution(PlayerPrefs.GetInt("defaultIndexResolution"));
         }
         else
         {
-            values.Add(Screen.currentResolution.width.ToString() + 'x' + Screen.currentResolution.height.ToString());
-            foreach (TMP_Dropdown.OptionData value in resolutionDropdown.options)
-            {
-                if (value.text == values[0])
-                {
-                    isOriginal = false;
-                }
-            }
-
-            if (isOriginal)
-            {
-                resolutionDropdown.AddOptions(values);
-            }
-            currentResolution.text = values[0];
+            AddCustomResolution();
             Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
         }
 
@@ -100,5 +85,45 @@ public class OptionsManager : MonoBehaviour
         fullscreenToogle.isOn = _fullscreen;
         PlayerPrefs.SetInt("fullscreenStatus", _fullscreen == true ? 1 : 0);
         EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    private void AddCustomResolution()
+    {
+        List<string> customResolution = new List<string>();
+
+        bool isOriginal = true;
+        int index = 0;
+
+        customResolution.Add(Screen.currentResolution.width.ToString() + 'x' + Screen.currentResolution.height.ToString());
+
+        foreach (TMP_Dropdown.OptionData option in resolutionDropdown.options)
+        {
+            if (customResolution[0] == option.text)
+            {
+                isOriginal = false;
+                resolutionDropdown.value = index;
+
+                PlayerPrefs.SetInt("defaultIndexResolution", index);
+            }
+            index++;
+        }
+
+        if (isOriginal)
+        {
+            resolutionDropdown.AddOptions(customResolution);
+            resolutionDropdown.value = index;
+
+            PlayerPrefs.SetInt("defaultIndexResolution", index);
+            PlayerPrefs.SetString("Custom resolution", customResolution[0]);
+        }
+    }
+
+    private void LoadCustomResolution()
+    {
+        List<string> customResolution = new List<string>();
+
+        customResolution.Add(PlayerPrefs.GetString("Custom resolution"));
+
+        resolutionDropdown.AddOptions(customResolution);
     }
 }
