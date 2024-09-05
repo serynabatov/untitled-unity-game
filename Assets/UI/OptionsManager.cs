@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.EventSystems;
 
+
 public class OptionsManager : MonoBehaviour
 {
     [SerializeField] GameObject optionsMenu;
@@ -55,6 +56,8 @@ public class OptionsManager : MonoBehaviour
             AddCustomResolution();
             Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
         }
+        //resolutionDropdown.options.ForEach(option => Debug.LogError(option.text));
+
 
         if (PlayerPrefs.HasKey("fullscreenStatus"))
         {
