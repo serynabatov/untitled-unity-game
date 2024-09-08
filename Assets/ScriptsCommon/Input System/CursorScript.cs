@@ -19,6 +19,13 @@ public class CursorScript : MonoBehaviour
         DialogueManager.DialogueEnded += HideCursor;
     }
 
+    private void OnDestroy()
+    {
+        DialogueManager.DialogueStarted -= ShowCursor;
+
+        DialogueManager.DialogueEnded -= HideCursor;
+    }
+
     public static void HideCursor()
     {
         Cursor.visible = false;

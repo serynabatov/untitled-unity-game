@@ -26,6 +26,8 @@ public class FlowerTrigger : MonoBehaviour
 
     private bool _isInRange;
 
+    public UnityEvent OnGameComplete;
+
     public UnityEvent OnFlowerChange;
 
     private void Start()
@@ -40,6 +42,7 @@ public class FlowerTrigger : MonoBehaviour
         {
             _audioSource.Play();
             SetFog();
+            OnGameComplete?.Invoke();
             StartCoroutine(SetDelay(_delay));
         }
     }

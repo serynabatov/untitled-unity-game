@@ -13,6 +13,9 @@ public class PauseManager : MonoBehaviour
 
 
     public static bool paused;
+
+    private bool _isPausable;
+
     [SerializeField] GameObject pauseBackground;
     [SerializeField] GameObject optionsMenu;
     private static PauseManager instance;
@@ -26,6 +29,11 @@ public class PauseManager : MonoBehaviour
         ResumeGame();
     }
 
+    private void Start()
+    {
+        _isPausable = true;
+    }
+
     public static PauseManager GetInstance()
     {
         return instance;
@@ -34,7 +42,7 @@ public class PauseManager : MonoBehaviour
 
     private void Update()
     {
-        if (InputManager.GetInstance().GetEscPressed())
+        if (InputManager.GetInstance().GetEscPressed()&&_isPausable)
         {
             if (paused)
             {
@@ -70,5 +78,10 @@ public class PauseManager : MonoBehaviour
 
         optionsMenu.SetActive(false);
 
+    }
+
+    public void BlockPause()
+    {
+        _isPausable = false;
     }
 }
