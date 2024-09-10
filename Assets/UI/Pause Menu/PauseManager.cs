@@ -11,13 +11,16 @@ public class PauseManager : MonoBehaviour
     [SerializeField]
     private GameObject firstButton;
 
-
     public static bool paused;
 
     private bool _isPausable;
 
     [SerializeField] GameObject pauseBackground;
     [SerializeField] GameObject optionsMenu;
+
+    [SerializeField]
+    private bool _hideCursor;
+
     private static PauseManager instance;
     private void Awake()
     {
@@ -31,7 +34,16 @@ public class PauseManager : MonoBehaviour
 
     private void Start()
     {
-        _isPausable = true;
+        DialogueManager.DialogueStarted += BlockPause;
+        DialogueManager.DialogueEnded += UnBlockPause;
+
+        UnBlockPause();
+    }
+
+    private void OnDestroy()
+    {
+        DialogueManager.DialogueStarted -= BlockPause;
+        DialogueManager.DialogueEnded -= UnBlockPause;
     }
 
     public static PauseManager GetInstance()
@@ -42,11 +54,15 @@ public class PauseManager : MonoBehaviour
 
     private void Update()
     {
-        if (InputManager.GetInstance().GetEscPressed()&&_isPausable)
+        if (InputManager.GetInstance().GetEscPressed() && _isPausable)
         {
             if (paused)
             {
-                CursorScript.HideCursor();
+                if (!_hideCursor)
+                {
+                    CursorScript.HideCursor();
+                }
+
                 ResumeGame();
             }
             else
@@ -83,5 +99,10 @@ public class PauseManager : MonoBehaviour
     public void BlockPause()
     {
         _isPausable = false;
+    }
+
+    public void UnBlockPause()
+    {
+        _isPausable = true;
     }
 }

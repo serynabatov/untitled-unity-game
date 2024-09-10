@@ -68705,6 +68705,7 @@ MonoBehaviour:
   firstButton: {fileID: 191980156}
   pauseBackground: {fileID: 507282482}
   optionsMenu: {fileID: 1581797158}
+  _hideCursor: 1
 --- !u!4 &1951634668055475580
 Transform:
   m_ObjectHideFlags: 0

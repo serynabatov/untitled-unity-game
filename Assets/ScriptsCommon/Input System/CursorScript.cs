@@ -7,6 +7,7 @@ public class CursorScript : MonoBehaviour
     [SerializeField]
     private bool _isCursorShown;
 
+
     private void Start()
     {
         if (_isCursorShown)
