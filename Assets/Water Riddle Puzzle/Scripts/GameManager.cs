@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public GameObject clearText;
     public GameObject flow;
 
+    [Range(0, 3)]
+    public int direction;
+
     [Header("Load Globals JSON")]
     [SerializeField] private TextAsset loadGlobalsJSON;
     private DialogueVariables dialogueVariables;
@@ -115,6 +118,6 @@ public class GameManager : MonoBehaviour
         {
             dialogueVariables.variables["mainVarBossFinished"] = Value.Create(true);
             dialogueVariables.SaveVariables();
-        }      
+        }
     }
 }

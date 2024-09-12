@@ -4924,6 +4924,11 @@ PrefabInstance:
       objectReference: {fileID: 906262391}
     - target: {fileID: 9192788152191383499, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
         type: 3}
+      propertyPath: direction
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192788152191383499, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
+        type: 3}
       propertyPath: stateText
       value: 
       objectReference: {fileID: 1040196412}

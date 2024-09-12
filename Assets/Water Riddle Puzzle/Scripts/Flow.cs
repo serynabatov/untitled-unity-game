@@ -109,9 +109,17 @@ public class Flow : MonoBehaviour
         }
         if (collision.CompareTag("Goal"))
         {
-            GoalCheck(collision);
-            _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
-            gameManager.gameClear = true;
+            if (direction == gameManager.direction)
+            {
+                GoalCheck(collision);
+                _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 3);
+                gameManager.gameClear = true;
+            }
+            else
+            {
+                _broker.Publish((int)AudioClipName.WaterLevelSounds, false, true, 4);
+                gameManager.gameOver = true;
+            }
         }
     }
     private void TurnCheck(Collider2D turn)
