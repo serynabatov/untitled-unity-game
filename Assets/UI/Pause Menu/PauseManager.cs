@@ -19,7 +19,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] GameObject optionsMenu;
 
     [SerializeField]
-    private bool _hideCursor;
+    private bool _hideCursorOnUnpause;
 
     private static PauseManager instance;
     private void Awake()
@@ -58,7 +58,7 @@ public class PauseManager : MonoBehaviour
         {
             if (paused)
             {
-                if (!_hideCursor)
+                if (_hideCursorOnUnpause)
                 {
                     CursorScript.HideCursor();
                 }

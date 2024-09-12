@@ -10,6 +10,8 @@ public class CursorScript : MonoBehaviour
 
     private void Start()
     {
+        HideCursor();
+
         if (_isCursorShown)
         {
             ShowCursor();
@@ -29,11 +31,13 @@ public class CursorScript : MonoBehaviour
 
     public static void HideCursor()
     {
+        print("Cursor is hidden");
         Cursor.visible = false;
     }
 
     public static void ShowCursor()
     {
+        print("Cursor is shown");
         Cursor.visible = true;
     }
 }

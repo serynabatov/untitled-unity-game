@@ -68234,8 +68234,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3612164071380024427, guid: 39965ca35cd62dd458bf8c649544efbd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2134690707}
   m_SourcePrefab: {fileID: 100100000, guid: 39965ca35cd62dd458bf8c649544efbd, type: 3}
+--- !u!1 &2134690706 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3612164071380024427, guid: 39965ca35cd62dd458bf8c649544efbd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2134690705}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2134690707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134690706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495cea24293f3fd4aaeae4c29bf01ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isCursorShown: 0
 --- !u!1 &2141786325
 GameObject:
   m_ObjectHideFlags: 0
@@ -68864,7 +68887,7 @@ MonoBehaviour:
   firstButton: {fileID: 191980156}
   pauseBackground: {fileID: 507282482}
   optionsMenu: {fileID: 1581797158}
-  _hideCursor: 1
+  _hideCursorOnUnpause: 1
 --- !u!4 &1951634668055475580
 Transform:
   m_ObjectHideFlags: 0
