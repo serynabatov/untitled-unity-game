@@ -52,4 +52,4 @@ credits_8;<color=#F9DB24><b>Thank you for playing!</b></color>;<color=#F9DB24><b
 credits_9;<color=#00FFFF><b>Unity developer</b></color><br>Tsoy Vadim;<color=#00FFFF><b>Unity разработчик</b></color><br>Цой Вадим
 yes_Text;Yes;Да
 no_Text;No;Нет
-crate_Puzzle_Help_Text;Move the crates to the place where their shadow is hidden<br>Use the <color=#F9DB24><b>E</b></color> key on your keyboard<br>;Переместите ящики на то место, где спрятана их тень<br>Используйте клавишу <color=#F9DB24><b>"Е"</b></color> на клавиатуре<br>
+crate_Puzzle_Help_Text;Move: <color=#F9DB24><b>"WASD"</b></color>.    Take/release crate: <color=#F9DB24><b>"E"</b></color>.<br>Move the crates to the place where their shadow is hidden.;Передвижение: <color=#F9DB24><b>"WASD"</b></color>.    Взять/отпустить ящик: <color=#F9DB24><b>"Е"</b></color>.<br>Переместите ящики на то место, где спрятана их тень.
