@@ -1,4 +1,5 @@
-->main
+INCLUDE globals.ink
+{beeTalk: ->main.wisdom|->main}
 
 === main ===
 Вы нашли нас, мы думали, мелкое препятствие остановит Вас. Мы <color=\#F8FF30>мировые пчёлы</color>. #speaker:Мировые пчёлы #portrait:Black Mage

@@ -14,3 +14,5 @@ VAR mainVarCrateFinished = false //переменная для проверки 
 VAR mainVarBossFinished = false //переменная для проверки диалога с боссом
 
 VAR cantalktoBoss = false
+
+VAR beeTalk = false
