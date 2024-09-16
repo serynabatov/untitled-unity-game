@@ -1,7 +1,9 @@
-->main
+INCLUDE globals.ink
+{beeTalk: ->main.wisdom|->main}
 
 === main ===
 You found us, we thought a minor obstacle would stop you. We're <color=\#F8FF30>world bees</color>. #speaker:World bees #portrait:Black Mage
+  ~ beeTalk = true
 We hold the world's wisdom, and we have chosen you to share the knowledge.
 ->wisdom
 
