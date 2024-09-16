@@ -55,6 +55,8 @@ public class MovementCrate : MonoBehaviour
 
     private void Start()
     {
+        PauseManager.OnPause += StopCrateMovementSound;
+
         _checkpointsScripts[0].OnCheckpointTrigger += SaveCheckpointPosition;
         _checkpointsScripts[1].OnCheckpointTrigger += SaveCheckpointPosition;
         _checkpointsScripts[2].OnCheckpointTrigger += SaveCheckpointPosition;
@@ -69,6 +71,8 @@ public class MovementCrate : MonoBehaviour
 
     private void OnDestroy()
     {
+        PauseManager.OnPause += StopCrateMovementSound;
+
         _checkpointsScripts[0].OnCheckpointTrigger -= SaveCheckpointPosition;
         _checkpointsScripts[1].OnCheckpointTrigger -= SaveCheckpointPosition;
         _checkpointsScripts[2].OnCheckpointTrigger -= SaveCheckpointPosition;
@@ -184,6 +188,7 @@ public class MovementCrate : MonoBehaviour
 
     private void CrateMovementSound()
     {
+
         if (transform.hasChanged && !interactPress)
         {
             if (!_soundPlaying)
@@ -198,6 +203,12 @@ public class MovementCrate : MonoBehaviour
             broker.Publish<int>((int)AudioClipName.CrateMovement, true);
             _soundPlaying = false;
         }
+    }
+
+    private void StopCrateMovementSound()
+    {
+        broker.Publish<int>((int)AudioClipName.CrateMovement, true);
+        _soundPlaying = false;
     }
 
     private void SaveCheckpointPosition(Vector2 position)

@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System;
 
 public class PauseManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject firstButton;
 
-    public static bool paused;
+
 
     private bool _isPausable;
 
@@ -22,6 +23,10 @@ public class PauseManager : MonoBehaviour
     private bool _hideCursorOnUnpause;
 
     private static PauseManager instance;
+
+    public static event Action OnPause;
+
+    public static bool paused;
     private void Awake()
     {
         if (instance != null)
@@ -80,6 +85,8 @@ public class PauseManager : MonoBehaviour
         paused = true;
         pauseBackground.SetActive(true);
         optionsMenu.SetActive(false);
+
+        OnPause?.Invoke();
 
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(firstButton);
