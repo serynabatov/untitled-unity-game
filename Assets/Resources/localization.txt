@@ -31,6 +31,7 @@ option_Control_7;Attack;Атака
 option_Control_8;Dodge;Уклонение
 option_Control_9;Reset settings;Сброс по умолчанию
 option_Reset;Reset <color=#F9DB24>saves and settings</color>;Сброс <color=#F9DB24>сохранений и настроек</color>
+option_Reset_confirm;Are you sure you want to <color=#F9DB24>Reset</color>?;Вы действительно хотите сбросить <color=#F9DB24>все</color> настройки и сохранения?
 location_Name_1;The Forest of Dreams;Лес Сновидений
 location_Name_2;Sunset Meadow;Закатный луг
 location_Name_3;The Cave of Moon Waterfall;Пещера Лунного Водопада

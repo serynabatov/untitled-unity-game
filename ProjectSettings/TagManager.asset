@@ -25,6 +25,7 @@ TagManager:
   - Location
   - Trap
   - Trap End
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

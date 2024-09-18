@@ -4525,6 +4525,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -300
       objectReference: {fileID: 0}
+    - target: {fileID: 7150472030092788250, guid: 81aee0b0fd2f6f145a438231405d52e6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1771367303}
+    - target: {fileID: 7150472030092788250, guid: 81aee0b0fd2f6f145a438231405d52e6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1771367304}
+    - target: {fileID: 7150472030092788250, guid: 81aee0b0fd2f6f145a438231405d52e6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FullReset
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150472030092788250, guid: 81aee0b0fd2f6f145a438231405d52e6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
     - target: {fileID: 7313661100794715213, guid: 81aee0b0fd2f6f145a438231405d52e6,
         type: 3}
       propertyPath: m_fontAsset
@@ -11758,6 +11778,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1749383000}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1771367303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 252436400572244364, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
+    type: 3}
+  m_PrefabInstance: {fileID: 392364847}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625b8f068ee860642abedf57ac4f3182, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1771367304 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9192788152353767382, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
+    type: 3}
+  m_PrefabInstance: {fileID: 392364847}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e035afa4a72924c85faf33f62b14f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1805521966
 PrefabInstance:
   m_ObjectHideFlags: 0

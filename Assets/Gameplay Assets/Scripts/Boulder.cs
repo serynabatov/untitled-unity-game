@@ -14,6 +14,8 @@ public class Boulder : MonoBehaviour
     [Range(0f, 5f)]
     private float acceleration;
 
+    private bool _isChasing;
+
     private Vector2 _startingPosition;
 
     private Quaternion _startingRotation;
@@ -51,10 +53,15 @@ public class Boulder : MonoBehaviour
 
         _shadowSprite = _boulderShadow.GetComponent<SpriteRenderer>();
 
+        _isChasing = false;
+
         PlayerController2D.OnTrapActivated += TrapActivation;
         PlayerController2D.OnTrapActivated += StartBoulderSound;
         PlayerController2D.OnBoulderCollision += StopBoulderSound;
         PlayerController2D.OnBoulderCollision += ResetPosition;
+
+        PauseManager.OnPause += StopSfxOnPause;
+        PauseManager.OnResume += ResumeSfxOnResume;
 
         OnBoulderEnd += BoulderEnd;
         OnBoulderEnd += StopBoulderSound;
@@ -70,6 +77,9 @@ public class Boulder : MonoBehaviour
         PlayerController2D.OnRespawn -= ResetPosition;
         PlayerController2D.OnRespawn -= StopBoulderSound;
 
+        PauseManager.OnPause -= StopSfxOnPause;
+        PauseManager.OnResume -= ResumeSfxOnResume;
+
         OnBoulderEnd -= BoulderEnd;
         OnBoulderEnd -= StopBoulderSound;
     }
@@ -78,6 +88,7 @@ public class Boulder : MonoBehaviour
     {
         rb.AddForce(Vector2.right * acceleration, ForceMode2D.Force);
         ShadowRotationBlock();
+
     }
 
     private void TrapActivation()
@@ -88,6 +99,8 @@ public class Boulder : MonoBehaviour
         _circleCollider.enabled = true;
         _spriteRenderer.enabled = true;
         _shadowSprite.enabled = true;
+
+        _isChasing = true;
 
         _broker.Publish<int>((int)AudioClipName.BoulderLanding);
 
@@ -104,6 +117,8 @@ public class Boulder : MonoBehaviour
         _spriteRenderer.enabled = false;
         _shadowSprite.enabled = false;
 
+        _isChasing = false;
+
         transform.position = _startingPosition;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
@@ -118,9 +133,12 @@ public class Boulder : MonoBehaviour
 
     private void StartBoulderSound()
     {
-        _location.JustStop();
-        _audioSource?.Play();
-        _broker.Publish<int>((int)AudioClipName.BoulderMove);
+        if (!_isChasing)
+        {
+            _location.JustStop();
+            _audioSource?.Play();
+            _broker.Publish<int>((int)AudioClipName.BoulderMove);
+        }
     }
 
     private void StopBoulderSound()
@@ -144,10 +162,22 @@ public class Boulder : MonoBehaviour
 
     private IEnumerator BoulderShrink()
     {
-        while (transform.localScale.x > 0) {
+        while (transform.localScale.x > 0)
+        {
             transform.localScale = transform.localScale - new Vector3(Time.deltaTime, Time.deltaTime);
             yield return new WaitForFixedUpdate();
         }
         Destroy(gameObject);
     }
+
+    private void StopSfxOnPause()
+    {
+        _broker.Publish<int>((int)AudioClipName.BoulderMove, true);
+    }
+
+    private void ResumeSfxOnResume()
+    {
+        _broker.Publish<int>((int)AudioClipName.BoulderMove);
+    }
+
 }
