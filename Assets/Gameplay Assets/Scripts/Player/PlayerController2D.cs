@@ -60,8 +60,6 @@ public class PlayerController2D : MonoBehaviour
     private bool canWalkOnSlope;
     private bool canJump;
     private bool jumpIsBuffered;
-    private bool takingDamage;
-    private bool _canSave = true;
 
     private bool _isMusicStoppng;
 
@@ -82,13 +80,10 @@ public class PlayerController2D : MonoBehaviour
 
         SceneSystem.OnSceneChange += CannotStopMusic;
 
+        DebugScript.OnSceneReset += CannotStopMusic;
+
         DialogueManager.DialogueStarted += RemovingControl;
         DialogueManager.DialogueEnded += ResumingControl;
-
-        OnTrapActivated += StopSavingPosition;
-        OnBoulderCollision += StartSavingPosition;
-
-        Boulder.OnBoulderEnd += StartSavingPosition;
 
         transform.position = SaveSystem.LoadPosition();
         timer = startTimerValue;
@@ -100,7 +95,6 @@ public class PlayerController2D : MonoBehaviour
 
         Input += CheckInput;
         Move += ApplyMovement;
-        StartCoroutine(SavingPosition());
         savedPosition = transform.position;
 
         _isMusicStoppng = true;
@@ -110,13 +104,10 @@ public class PlayerController2D : MonoBehaviour
     {
         SceneSystem.OnSceneChange -= CannotStopMusic;
 
+        DebugScript.OnSceneReset -= CannotStopMusic;
+
         DialogueManager.DialogueStarted -= RemovingControl;
         DialogueManager.DialogueEnded -= ResumingControl;
-
-        OnTrapActivated -= StopSavingPosition;
-        OnBoulderCollision -= StartSavingPosition;
-
-        Boulder.OnBoulderEnd -= StartSavingPosition;
 
     }
 
@@ -358,7 +349,6 @@ public class PlayerController2D : MonoBehaviour
         OnDamaged?.Invoke();
         RemovingControl();
         animator.SetTrigger("Damaged");
-        takingDamage = true;
         xInput = 0;
         rb.velocity = new Vector2(0, 0);
     }
@@ -367,7 +357,6 @@ public class PlayerController2D : MonoBehaviour
     {
         OnRespawn?.Invoke();
         animator.SetFloat("VelocityX", 0);
-        takingDamage = false;
         transform.position = savedPosition;
         ResumingControl();
 
@@ -388,68 +377,55 @@ public class PlayerController2D : MonoBehaviour
         onTimer.SetTimer(0.4f, () => { Input += CheckInput; });
     }
 
-    private void PositionSave()
-    {
-        savedPosition = transform.position;
-    }
 
-    IEnumerator SavingPosition()
-    {
-        while (SceneManager.GetActiveScene().name == "Gameplay")
-        {
-            if (isGrounded && !takingDamage && _canSave)
-            {
-                //print("Saved!");
-                PositionSave();
-            }
-            yield return new WaitForSeconds(2.5f);
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        switch (collision.tag)
         {
-            HazardBehavior hazard = collision.GetComponent<HazardBehavior>();
-            hazard.PlayHazardSound();
+            case "Enemy":
+                HazardBehavior hazard = collision.GetComponent<HazardBehavior>();
+                hazard.PlayHazardSound();
+                break;
+            case "Trap":
+                OnTrapActivated?.Invoke();
+                break;
+            case "Location":
+                LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
+                LocationMusicChanger locationMusicChanger = collision.gameObject.GetComponent<LocationMusicChanger>();
+
+                currentLocation = (int)locationCheck.CurrentLocation;
+                locationCheck.ChangeLocationName();
+
+                if (locationCheck.SpriteRenderer != null)
+                {
+                    SpriteRenderer locationConceal = locationCheck.SpriteRenderer;
+                    locationConceal.enabled = false;
+                }
+
+                locationMusicChanger.StartMusic();
+
+                broker.Publish<int>((int)AudioClipName.Ambience, false, true, (int)locationCheck.CurrentLocationType);
+                break;
+            case "Revealable":
+                if (collision.gameObject.name == "DRZ")
+                {
+                    Destroy(collision.gameObject.GetComponent<BoxCollider2D>());
+                }
+                broker.Publish<int>((int)AudioClipName.UnveilSound);
+
+                IRevealable reveal = collision.gameObject.GetComponent<IRevealable>();
+                reveal.Reveal();
+                break;
+            case "Checkpoint":
+                collision.TryGetComponent(out CheckpointScript checkpointScript);
+                if (checkpointScript != null)
+                {
+                    savedPosition = checkpointScript.Position;
+                }
+                break;
         }
-
-        if (collision.gameObject.CompareTag("Trap"))
-        {
-            OnTrapActivated?.Invoke();
-        }
-
-        if (collision.gameObject.CompareTag("Location"))
-        {
-            LocationCheck locationCheck = collision.gameObject.GetComponent<LocationCheck>();
-            LocationMusicChanger locationMusicChanger = collision.gameObject.GetComponent<LocationMusicChanger>();
-
-            currentLocation = (int)locationCheck.CurrentLocation;
-            locationCheck.ChangeLocationName();
-
-            if (locationCheck.SpriteRenderer != null)
-            {
-                SpriteRenderer locationConceal = locationCheck.SpriteRenderer;
-                locationConceal.enabled = false;
-            }
-
-
-            locationMusicChanger.StartMusic();
-
-            broker.Publish<int>((int)AudioClipName.Ambience, false, true, (int)locationCheck.CurrentLocationType);
-        }
-
-        if (collision.gameObject.CompareTag("Revealable"))
-        {
-            if (collision.gameObject.name == "DRZ")
-            {
-                Destroy(collision.gameObject.GetComponent<BoxCollider2D>());
-            }
-            broker.Publish<int>((int)AudioClipName.UnveilSound);
-
-            IRevealable reveal = collision.gameObject.GetComponent<IRevealable>();
-            reveal.Reveal();
-        }
+      
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -515,16 +491,6 @@ public class PlayerController2D : MonoBehaviour
             broker.Publish<int>((int)AudioClipName.Hurt);
             Respawn();
         }
-    }
-
-    private void StartSavingPosition()
-    {
-        _canSave = true;
-    }
-
-    private void StopSavingPosition()
-    {
-        _canSave = false;
     }
 
     private void CannotStopMusic()

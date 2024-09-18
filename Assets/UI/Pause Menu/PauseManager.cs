@@ -25,6 +25,7 @@ public class PauseManager : MonoBehaviour
     private static PauseManager instance;
 
     public static event Action OnPause;
+    public static event Action OnResume;
 
     public static bool paused;
     private void Awake()
