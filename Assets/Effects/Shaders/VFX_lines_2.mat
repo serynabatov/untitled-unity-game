@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: VFX_lines_2
+  m_Shader: {fileID: 4800000, guid: 8caf6b9b7d0ec1942ac0f0382b2e5390, type: 3}
+  m_ValidKeywords:
+  - _MIN_BLENDING
+  - _USE_OFF
+  - _USE_SMOOTHSTEP_OFF
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: c01794d59ca9e5341a03019a5581c288, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex2:
+        m_Texture: {fileID: 2800000, guid: 905ee35c82b09df4398c73b308c232ab, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask:
+        m_Texture: {fileID: 2800000, guid: 4d00d2d5f9026c44a879334a6c893393, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Blend: 1
+    - _Blend1: 1
+    - _Blend2: 1
+    - _Lerp: 1
+    - _Max: 1
+    - _Min: 0
+    - _Min_Blending: 1
+    - _Mult: 2
+    - _USpeed1: 0.5
+    - _USpeed2: -0.5
+    - _Use: 0
+    - _Use_BlendAdd: 0
+    - _Use_Smoothstep: 0
+    - _VSpeed1: 0.5
+    - _VSpeed2: -0.5
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

@@ -1,0 +1,432 @@
+{
+    "folder": "",
+    "subfolders": [
+        {
+            "folder": "Backgrounds",
+            "subfolders": [
+                {
+                    "folder": "Ver_0.1"
+                },
+                {
+                    "folder": "Ver_0.2"
+                },
+                {
+                    "folder": "Ver_0.3"
+                },
+                {
+                    "folder": "Ver_0.4"
+                },
+                {
+                    "folder": "Ver_0.5"
+                },
+                {
+                    "folder": "Ver_0.6"
+                },
+                {
+                    "folder": "Ver_0.7"
+                },
+                {
+                    "folder": "Ver_0.7.1"
+                }
+            ]
+        },
+        {
+            "folder": "BaseBox",
+            "subfolders": [
+                {
+                    "folder": "Idle"
+                }
+            ]
+        },
+        {
+            "folder": "CratePuzzle"
+        },
+        {
+            "folder": "Grass_yellow_animation"
+        },
+        {
+            "folder": "Dialogue",
+            "subfolders": [
+                {
+                    "folder": "Portraits",
+                    "subfolders": [
+                        {
+                            "folder": "Default"
+                        },
+                        {
+                            "folder": "DrGreen"
+                        },
+                        {
+                            "folder": "MsYellow"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "folder": "FireBox",
+            "subfolders": [
+                {
+                    "folder": "Idle"
+                }
+            ]
+        },
+        {
+            "folder": "HitParticles"
+        },
+        {
+            "folder": "IceBox",
+            "subfolders": [
+                {
+                    "folder": "Idle"
+                }
+            ]
+        },
+        {
+            "folder": "NPC"
+        },
+        {
+            "folder": "Water Riddle Sprites",
+            "subfolders": [
+                {
+                    "folder": "Angles",
+                    "subfolders": [
+                        {
+                            "folder": "Down - Left",
+                            "subfolders": [
+                                {
+                                    "folder": "Dark",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Light",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Start"
+                                }
+                            ]
+                        },
+                        {
+                            "folder": "Down - Right",
+                            "subfolders": [
+                                {
+                                    "folder": "Dark",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Light",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Start"
+                                }
+                            ]
+                        },
+                        {
+                            "folder": "Left - Down",
+                            "subfolders": [
+                                {
+                                    "folder": "Dark",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Light",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Start"
+                                }
+                            ]
+                        },
+                        {
+                            "folder": "Left - Up",
+                            "subfolders": [
+                                {
+                                    "folder": "Dark",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Light",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Start"
+                                }
+                            ]
+                        },
+                        {
+                            "folder": "Right - Down",
+                            "subfolders": [
+                                {
+                                    "folder": "Dark",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Light",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Start"
+                                }
+                            ]
+                        },
+                        {
+                            "folder": "Right - Up",
+                            "subfolders": [
+                                {
+                                    "folder": "Dark",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Light",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Start"
+                                }
+                            ]
+                        },
+                        {
+                            "folder": "Up - Left",
+                            "subfolders": [
+                                {
+                                    "folder": "Dark",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Light",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Start"
+                                }
+                            ]
+                        },
+                        {
+                            "folder": "Up - Right",
+                            "subfolders": [
+                                {
+                                    "folder": "Dark",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Light",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Start"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "folder": "Elemental block",
+                    "subfolders": [
+                        {
+                            "folder": "Idle",
+                            "subfolders": [
+                                {
+                                    "folder": "Dark"
+                                },
+                                {
+                                    "folder": "Light"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "folder": "Obstacles",
+                    "subfolders": [
+                        {
+                            "folder": "Idle",
+                            "subfolders": [
+                                {
+                                    "folder": "Dark"
+                                },
+                                {
+                                    "folder": "Light"
+                                }
+                            ]
+                        },
+                        {
+                            "folder": "Passed",
+                            "subfolders": [
+                                {
+                                    "folder": "Dark"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "folder": "Straight",
+                    "subfolders": [
+                        {
+                            "folder": "Down - Up",
+                            "subfolders": [
+                                {
+                                    "folder": "Dark",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Light",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Start"
+                                }
+                            ]
+                        },
+                        {
+                            "folder": "Left - Right",
+                            "subfolders": [
+                                {
+                                    "folder": "Dark",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Light",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Start"
+                                }
+                            ]
+                        },
+                        {
+                            "folder": "Right - Left",
+                            "subfolders": [
+                                {
+                                    "folder": "Dark",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Light",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Start"
+                                }
+                            ]
+                        },
+                        {
+                            "folder": "Up - Down",
+                            "subfolders": [
+                                {
+                                    "folder": "Dark",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Light",
+                                    "subfolders": [
+                                        {
+                                            "folder": "Start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "folder": "Start"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
