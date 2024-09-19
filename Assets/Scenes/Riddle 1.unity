@@ -5069,6 +5069,11 @@ PrefabInstance:
       propertyPath: sounds.Array.data[1].volume
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 7455705036255919540, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
+        type: 3}
+      propertyPath: _isCursorShown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9192788152005796579, guid: 9a31b7cd5a9adde44851e8e0dcd04df6,
         type: 3}
       propertyPath: musicSliderText
