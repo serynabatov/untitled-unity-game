@@ -133,7 +133,7 @@ public class Boulder : MonoBehaviour
 
     private void StartBoulderSound()
     {
-        if (!_isChasing)
+        if (_isChasing)
         {
             _location.JustStop();
             _audioSource?.Play();
